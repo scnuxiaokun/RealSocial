@@ -14,12 +14,29 @@
 
 @implementation AppDelegate
 
++ (AppDelegate*)shareInstance
+{
+    return (AppDelegate *)[UIApplication sharedApplication].delegate;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [self showMainView];
     return YES;
 }
 
+- (void)showMainView {
+    self.window.rootViewController = self.tabBarController;
+    [self.window makeKeyWindow];
+}
+
+-(RSUITabBarController *)tabBarController {
+    if (_tabBarController) {
+        return _tabBarController;
+    }
+    _tabBarController = [[RSUITabBarController alloc] init];
+    return _tabBarController;
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

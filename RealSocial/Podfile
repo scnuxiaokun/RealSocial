@@ -1,0 +1,56 @@
+# Uncomment this line to define a global platform for your project
+source 'https://github.com/CocoaPods/Specs.git'
+ platform :ios, "10.0"
+
+
+ target "RealSocial" do
+#  pod 'ReactiveCocoa', '2.3.1'
+#pod 'ReactiveCocoa', '~> 2.3.1'
+pod 'ReactiveObjC'
+
+#  pod 'libextobjc'
+#  pod 'ReactiveViewModel', '0.1.1'
+#  pod 'UIColor-Utilities', '1.0.1'
+
+
+# Remove 64-bit build architecture from Pods targets
+pod 'Masonry'
+pod 'FMDB'
+pod 'FMDB/SQLCipher'
+pod 'MBProgressHUD'
+pod 'CocoaSecurity'
+pod 'SDWebImage'
+pod 'YYCache'
+pod 'YYCategories'
+pod 'YYDispatchQueuePool'
+pod 'SSZipArchive'
+pod 'AFNetworking'
+pod 'FDStackView'
+#pod 'PNChart'
+#pod 'TTTAttributedLabel'
+pod 'MJRefresh'
+#pod 'AFNetworking-RACExtensions'
+#pod 'UITableView+FDTemplateLayoutCell'
+#pod 'FDStackView'
+#pod 'ActionSheetPicker-3.0', '~> 2.0.5'
+pod 'UITextView+Placeholder'
+#pod 'MMNumberKeyboard'
+pod 'YYText'
+pod 'LGAlertView'
+pod 'YYModel'
+pod 'MLeaksFinder'
+#pod 'MSNumberScrollAnimatedView'
+#pod 'Charts', '~> 2.2.5'
+pod 'BlocksKit'
+# 取决于你的工程如何组织，你的node_modules文件夹可能会在别的地方。
+# 请将:path后面的内容修改为正确的路径。
+#pod 'React', :path => './node_modules/react-native', :subspecs => [
+#  'Core',
+#  'RCTImage',
+#  'RCTNetwork',
+#  'RCTText',
+#  'RCTWebSocket',
+#  # 添加其他你想在工程中使用的依赖。
+#]
+pod 'WechatOpenSDK'
+end
