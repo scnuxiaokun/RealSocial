@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"Chat";  f IU
+    self.title = @"Chat";
 }
 
 - (void)didReceiveMemoryWarning {

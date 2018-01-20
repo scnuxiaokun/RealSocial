@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "RSLoginViewController.h"
 
 @interface AppDelegate ()
 
@@ -26,7 +27,9 @@
 }
 
 - (void)showMainView {
-    self.window.rootViewController = self.tabBarController;
+    RSLoginViewController *loginCtr = [[RSLoginViewController alloc] init];
+    RSUINavigationController *navCtr = [[RSUINavigationController alloc] initWithRootViewController:loginCtr];
+    self.window.rootViewController = navCtr;
     [self.window makeKeyWindow];
 }
 
