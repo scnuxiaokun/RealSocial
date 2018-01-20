@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 #import "RSLoginViewController.h"
+#import "RSLaunchService.h"
+#import "RSLoginService.h"
+#import "RSLanchViewController.h"
 
 @interface AppDelegate ()
 
@@ -22,15 +25,46 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [self showMainView];
+    @weakify(self);
+    [[RSLaunchService shareInstance] setStartBlock:^{
+        @RSStrongify(self);
+        [self showStartView];
+    }];
+    [[RSLaunchService shareInstance] setStartCompleteBlock:^{
+        @RSStrongify(self);
+        [self showMainView];
+    }];
+    [[RSLaunchService shareInstance] setStartErrorBlock:^{
+        @RSStrongify(self);
+        [self showMainView];
+    }];
+    [[RSLaunchService shareInstance] setLoginCompleteBlock:^{
+        @RSStrongify(self);
+        [self showMainView];
+    }];
+    [[RSLaunchService shareInstance] start];
     return YES;
 }
 
 - (void)showMainView {
-    RSLoginViewController *loginCtr = [[RSLoginViewController alloc] init];
-    RSUINavigationController *navCtr = [[RSUINavigationController alloc] initWithRootViewController:loginCtr];
-    self.window.rootViewController = navCtr;
-    [self.window makeKeyWindow];
+    dispatch_sync_on_main_queue(^{
+        if ([RSLoginService shareInstance].isLogined) {
+            self.window.rootViewController = self.tabBarController;
+        } else {
+            RSLoginViewController *loginCtr = [[RSLoginViewController alloc] init];
+            RSUINavigationController *navCtr = [[RSUINavigationController alloc] initWithRootViewController:loginCtr];
+            self.window.rootViewController = navCtr;
+        }
+        [self.window makeKeyWindow];
+    });
+}
+
+- (void)showStartView {
+    dispatch_sync_on_main_queue(^{
+        RSLanchViewController *ctr = [[RSLanchViewController alloc] init];
+        self.window.rootViewController = ctr;
+        [self.window makeKeyWindow];
+    });
 }
 
 -(RSUITabBarController *)tabBarController {

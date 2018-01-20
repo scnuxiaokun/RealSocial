@@ -44,7 +44,7 @@
 }
 
 +(void)showTipViewWithMessage:(NSString*)msg {
-    [[self class] showTipViewWithMessage:msg lastTime:3];
+    [[self class] showTipViewWithMessage:msg lastTime:1];
 }
 
 + (void)showTipViewWithMessage:(NSString*)msg lastTime:(NSInteger)lastTime{

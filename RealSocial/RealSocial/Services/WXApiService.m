@@ -19,7 +19,7 @@ static NSString *kAuthScope = @"snsapi_userinfo";
 static NSString *kAuthState = @"xxx";
 
 @implementation WXApiService{
-    RACReplaySubject *_loginSignal;
+    RACSubject *_loginSignal;
 }
 +(instancetype)shareInstance {
     static dispatch_once_t onceToken;
@@ -38,7 +38,7 @@ static NSString *kAuthState = @"xxx";
         [self.signal subscribeNext:^(BaseResp *resp) {
             if ([resp isKindOfClass:[SendAuthResp class]]) {
                 SendAuthResp *response = (SendAuthResp *)resp;
-                if (response.errCode == WXSuccess) {
+                if (response.errCode == WXSuccess || YES) {
                     [self->_loginSignal sendNext:@(YES)];
                     [[[RSLoginService shareInstance] WXLoginWithAppid:WEIXIN_LOGIN_APP_ID andCode:response.code] subscribeError:^(NSError *error) {
                         @RSStrongify(self);
@@ -71,7 +71,7 @@ static NSString *kAuthState = @"xxx";
 
 -(RACSignal *)login:(UIViewController *)controller {
     @synchronized(self) {
-        _loginSignal  = [RACReplaySubject subject];
+        _loginSignal  = [RACSubject subject];
         if (QLWeiXinLoginServiceStateGetAccessToken == _serviceState ||
             QLWeiXinLoginServiceStateGetUserInfo == _serviceState ||
             QLWeiXinLoginServiceStateRefreshAccessToken == _serviceState) {

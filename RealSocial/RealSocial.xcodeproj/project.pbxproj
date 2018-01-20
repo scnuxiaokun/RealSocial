@@ -80,8 +80,6 @@
 		AD3E94E6200F99820019138F /* NSMutableArray+SafeKit.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3E92B1200F997E0019138F /* NSMutableArray+SafeKit.m */; };
 		AD3E94E7200F99820019138F /* NSObject+Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3E92B3200F997E0019138F /* NSObject+Swizzle.m */; };
 		AD3E94E8200F99820019138F /* SafeKitLog.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3E92B6200F997E0019138F /* SafeKitLog.m */; };
-		AD3E955D200F9B850019138F /* RSUIConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3E9559200F9B850019138F /* RSUIConstants.m */; };
-		AD3E955E200F9B850019138F /* RSConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3E955A200F9B850019138F /* RSConstants.m */; };
 		AD3E9561200F9C9E0019138F /* RSHandleOpenUrlHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3E9560200F9C9E0019138F /* RSHandleOpenUrlHelper.m */; };
 		AD3E9564200F9D6B0019138F /* WXApiService.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3E9563200F9D6B0019138F /* WXApiService.m */; };
 		AD3E9567200F9E6B0019138F /* RSLoginInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3E9566200F9E6B0019138F /* RSLoginInfoModel.m */; };
@@ -94,6 +92,12 @@
 		ADDC6A62201310E000439D01 /* RSLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A61201310E000439D01 /* RSLoginViewController.m */; };
 		ADDC6A65201316BB00439D01 /* NSError+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A63201316BA00439D01 /* NSError+Util.m */; };
 		ADDC6A6B20131AB600439D01 /* RSUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A6A20131AB600439D01 /* RSUtils.m */; };
+		ADDC6A6E2013250900439D01 /* RSNetWorkService.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A6D2013250900439D01 /* RSNetWorkService.m */; };
+		ADDC6A71201325ED00439D01 /* RSRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A70201325ED00439D01 /* RSRequest.m */; };
+		ADDC6A7420132AA500439D01 /* RSLaunchService.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A7320132AA500439D01 /* RSLaunchService.m */; };
+		ADDC6A7B20132FCF00439D01 /* RSLanchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A7A20132FCF00439D01 /* RSLanchViewController.m */; };
+		ADDC6A89201337DD00439D01 /* FPSecretKeyUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A86201337DD00439D01 /* FPSecretKeyUtils.m */; };
+		ADDC6A8A201337DD00439D01 /* FPKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A88201337DD00439D01 /* FPKeychainUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -267,8 +271,6 @@
 		AD3E92B5200F997E0019138F /* SafeKitLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SafeKitLog.h; sourceTree = "<group>"; };
 		AD3E92B6200F997E0019138F /* SafeKitLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafeKitLog.m; sourceTree = "<group>"; };
 		AD3E9558200F9B100019138F /* RealSocial-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RealSocial-PrefixHeader.pch"; sourceTree = "<group>"; };
-		AD3E9559200F9B850019138F /* RSUIConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSUIConstants.m; sourceTree = "<group>"; };
-		AD3E955A200F9B850019138F /* RSConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSConstants.m; sourceTree = "<group>"; };
 		AD3E955B200F9B850019138F /* RSUIConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSUIConstants.h; sourceTree = "<group>"; };
 		AD3E955C200F9B850019138F /* RSConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSConstants.h; sourceTree = "<group>"; };
 		AD3E955F200F9C9E0019138F /* RSHandleOpenUrlHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSHandleOpenUrlHelper.h; sourceTree = "<group>"; };
@@ -294,6 +296,20 @@
 		ADDC6A64201316BB00439D01 /* NSError+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+Util.h"; sourceTree = "<group>"; };
 		ADDC6A6920131AB600439D01 /* RSUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSUtils.h; sourceTree = "<group>"; };
 		ADDC6A6A20131AB600439D01 /* RSUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSUtils.m; sourceTree = "<group>"; };
+		ADDC6A6C2013250900439D01 /* RSNetWorkService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSNetWorkService.h; sourceTree = "<group>"; };
+		ADDC6A6D2013250900439D01 /* RSNetWorkService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSNetWorkService.m; sourceTree = "<group>"; };
+		ADDC6A6F201325ED00439D01 /* RSRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSRequest.h; sourceTree = "<group>"; };
+		ADDC6A70201325ED00439D01 /* RSRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSRequest.m; sourceTree = "<group>"; };
+		ADDC6A7220132AA500439D01 /* RSLaunchService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSLaunchService.h; sourceTree = "<group>"; };
+		ADDC6A7320132AA500439D01 /* RSLaunchService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSLaunchService.m; sourceTree = "<group>"; };
+		ADDC6A7920132FCF00439D01 /* RSLanchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSLanchViewController.h; sourceTree = "<group>"; };
+		ADDC6A7A20132FCF00439D01 /* RSLanchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSLanchViewController.m; sourceTree = "<group>"; };
+		ADDC6A7D201336DD00439D01 /* RSKeyChainConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKeyChainConstants.h; sourceTree = "<group>"; };
+		ADDC6A7F201336DD00439D01 /* RSNSUserDefaultsConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSNSUserDefaultsConstants.h; sourceTree = "<group>"; };
+		ADDC6A85201337DD00439D01 /* FPKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPKeychainUtils.h; sourceTree = "<group>"; };
+		ADDC6A86201337DD00439D01 /* FPSecretKeyUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPSecretKeyUtils.m; sourceTree = "<group>"; };
+		ADDC6A87201337DD00439D01 /* FPSecretKeyUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPSecretKeyUtils.h; sourceTree = "<group>"; };
+		ADDC6A88201337DD00439D01 /* FPKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPKeychainUtils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -413,6 +429,12 @@
 				AD3E9147200F995E0019138F /* RSLoginService.m */,
 				AD3E9562200F9D6B0019138F /* WXApiService.h */,
 				AD3E9563200F9D6B0019138F /* WXApiService.m */,
+				ADDC6A6C2013250900439D01 /* RSNetWorkService.h */,
+				ADDC6A6D2013250900439D01 /* RSNetWorkService.m */,
+				ADDC6A6F201325ED00439D01 /* RSRequest.h */,
+				ADDC6A70201325ED00439D01 /* RSRequest.m */,
+				ADDC6A7220132AA500439D01 /* RSLaunchService.h */,
+				ADDC6A7320132AA500439D01 /* RSLaunchService.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -427,10 +449,10 @@
 		AD3E9149200F995F0019138F /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				ADDC6A7D201336DD00439D01 /* RSKeyChainConstants.h */,
+				ADDC6A7F201336DD00439D01 /* RSNSUserDefaultsConstants.h */,
 				AD3E955C200F9B850019138F /* RSConstants.h */,
-				AD3E955A200F9B850019138F /* RSConstants.m */,
 				AD3E955B200F9B850019138F /* RSUIConstants.h */,
-				AD3E9559200F9B850019138F /* RSUIConstants.m */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -438,6 +460,10 @@
 		AD3E914E200F995F0019138F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				ADDC6A85201337DD00439D01 /* FPKeychainUtils.h */,
+				ADDC6A88201337DD00439D01 /* FPKeychainUtils.m */,
+				ADDC6A87201337DD00439D01 /* FPSecretKeyUtils.h */,
+				ADDC6A86201337DD00439D01 /* FPSecretKeyUtils.m */,
 				ADDC6A64201316BB00439D01 /* NSError+Util.h */,
 				ADDC6A63201316BA00439D01 /* NSError+Util.m */,
 				ADDC6A6920131AB600439D01 /* RSUtils.h */,
@@ -449,6 +475,7 @@
 		AD3E9171200F995F0019138F /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				ADDC6A7820132FAD00439D01 /* Launch */,
 				ADDC6A5F201310BE00439D01 /* Login */,
 				ADDC6A5420130D9E00439D01 /* ChatList */,
 				ADDC6A5320130D9E00439D01 /* FeedList */,
@@ -780,6 +807,15 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		ADDC6A7820132FAD00439D01 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				ADDC6A7920132FCF00439D01 /* RSLanchViewController.h */,
+				ADDC6A7A20132FCF00439D01 /* RSLanchViewController.m */,
+			);
+			path = Launch;
+			sourceTree = "<group>";
+		};
 		F3E8C49B86B6F16FA471C826 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -995,12 +1031,15 @@
 				ADDC6A5820130E0F00439D01 /* RSUIViewController.m in Sources */,
 				AD3E94A3200F99820019138F /* CALayer+Compat.m in Sources */,
 				AD3E94C4200F99820019138F /* LOTNumberInterpolator.m in Sources */,
+				ADDC6A7B20132FCF00439D01 /* RSLanchViewController.m in Sources */,
 				AD3E94E5200F99820019138F /* NSException+SafeKit.m in Sources */,
 				AD3E94D1200F99820019138F /* LOTStrokeRenderer.m in Sources */,
+				ADDC6A8A201337DD00439D01 /* FPKeychainUtils.m in Sources */,
 				AD3E94AE200F99820019138F /* LOTShapeGroup.m in Sources */,
 				AD3E94C7200F99820019138F /* LOTSizeInterpolator.m in Sources */,
 				AD3E94AF200F99820019138F /* LOTShapePath.m in Sources */,
 				AD3E949B200F99820019138F /* LOTLayerContainer.m in Sources */,
+				ADDC6A71201325ED00439D01 /* RSRequest.m in Sources */,
 				AD3E9122200F97160019138F /* main.m in Sources */,
 				AD3E94A9200F99820019138F /* LOTLayerGroup.m in Sources */,
 				AD3E94C5200F99820019138F /* LOTPathInterpolator.m in Sources */,
@@ -1026,6 +1065,7 @@
 				AD3E94A8200F99820019138F /* LOTLayer.m in Sources */,
 				AD3E94E8200F99820019138F /* SafeKitLog.m in Sources */,
 				AD3E94B3200F99820019138F /* LOTShapeStroke.m in Sources */,
+				ADDC6A89201337DD00439D01 /* FPSecretKeyUtils.m in Sources */,
 				AD3E94CB200F99820019138F /* LOTRenderNode.m in Sources */,
 				AD3E9561200F9C9E0019138F /* RSHandleOpenUrlHelper.m in Sources */,
 				AD3E94A2200F99820019138F /* UIColor+Expanded.m in Sources */,
@@ -1034,6 +1074,7 @@
 				AD3E94C2200F99820019138F /* LOTArrayInterpolator.m in Sources */,
 				AD3E94AA200F99820019138F /* LOTMask.m in Sources */,
 				AD3E94D0200F99820019138F /* LOTRepeaterRenderer.m in Sources */,
+				ADDC6A7420132AA500439D01 /* RSLaunchService.m in Sources */,
 				AD3E94A6200F99820019138F /* LOTAsset.m in Sources */,
 				AD3E94B7200F99820019138F /* LOTAnimatedSwitch.m in Sources */,
 				AD3E94B9200F99820019138F /* LOTAnimationTransitionController.m in Sources */,
@@ -1042,18 +1083,17 @@
 				AD3E94C8200F99820019138F /* LOTTransformInterpolator.m in Sources */,
 				AD3E94A1200F99820019138F /* LOTRadialGradientLayer.m in Sources */,
 				AD3E94B8200F99820019138F /* LOTAnimationCache.m in Sources */,
-				AD3E955D200F9B850019138F /* RSUIConstants.m in Sources */,
 				AD3E94BF200F99820019138F /* LOTPolygonAnimator.m in Sources */,
 				AD3E949D200F99820019138F /* LOTBezierData.m in Sources */,
 				AD3E956A200FA0070019138F /* RSModel.m in Sources */,
 				AD3E9567200F9E6B0019138F /* RSLoginInfoModel.m in Sources */,
 				AD3E949C200F99820019138F /* LOTMaskContainer.m in Sources */,
-				AD3E955E200F9B850019138F /* RSConstants.m in Sources */,
 				ADDC6A6B20131AB600439D01 /* RSUtils.m in Sources */,
 				AD3E94E6200F99820019138F /* NSMutableArray+SafeKit.m in Sources */,
 				AD3E94AC200F99820019138F /* LOTShapeFill.m in Sources */,
 				AD3E949F200F99820019138F /* CGGeometry+LOTAdditions.m in Sources */,
 				AD3E94A5200F99820019138F /* UIColor.m in Sources */,
+				ADDC6A6E2013250900439D01 /* RSNetWorkService.m in Sources */,
 				AD3E94E7200F99820019138F /* NSObject+Swizzle.m in Sources */,
 				AD3E94CF200F99820019138F /* LOTRenderGroup.m in Sources */,
 				AD3E94B2200F99820019138F /* LOTShapeStar.m in Sources */,

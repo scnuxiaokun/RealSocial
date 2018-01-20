@@ -54,17 +54,17 @@
     [_wxLoginButtom addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
         @RSStrongify(self);
         @weakify(self);
-        [[[WXApiService shareInstance] login:self] subscribeNext:^(id  _Nullable x) {
+        [[[[WXApiService shareInstance] login:self] deliverOnMainThread] subscribeNext:^(id  _Nullable x) {
             @RSStrongify(self);
             [self.progressHud showAnimated:YES];
         } error:^(NSError * _Nullable error) {
             @RSStrongify(self);
-            [self.progressHud showAnimated:NO];
+            [self.progressHud hideAnimated:YES];
             [RSUtils showTipViewWithMessage:[error localizedDescription]];
         } completed:^{
             @RSStrongify(self);
-            [self.progressHud showAnimated:NO];
-            [RSUtils showTipViewWithMessage:WXloginSuccessTips lastTime:1];
+            [self.progressHud hideAnimated:YES];
+            [RSUtils showTipViewWithMessage:WXloginSuccessTips];
         }];
     }];
     return _wxLoginButtom;

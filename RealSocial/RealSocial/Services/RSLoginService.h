@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "RSLoginInfoModel.h"
 @interface RSLoginService : NSObject
-@property (nonatomic, retain) RACSubject *loginSignal;
-@property (nonatomic, retain) RACSubject *logoutSignal;
+@property (nonatomic, strong) RACSubject *loginSignal;
+@property (nonatomic, strong) RACSubject *logoutSignal;
 
 @property (nonatomic, strong) RACSignal *loginStateSignal;
 

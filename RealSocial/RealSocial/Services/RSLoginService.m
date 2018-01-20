@@ -7,11 +7,9 @@
 //
 
 #import "RSLoginService.h"
-//#import "FPKeychainUtils.h"
-//#import "FPNetWorkHelper.h"
-//#import "FPTQQLoginCmdReq.h"
-//#import "FPRequestFactory.h"
-//#import "FPTWXLoginCmdReq.h"
+#import "RSNetWorkService.h"
+#import "RSKeyChainConstants.h"
+#import "FPKeychainUtils.h"
 
 @implementation RSLoginService
 +(RSLoginService *)shareInstance {
@@ -31,30 +29,27 @@
         
         _loginStateSignal = [RACSignal merge:@[_loginSignal, _logoutSignal]];
         
-//        id data = [[NSUserDefaults standardUserDefaults] objectForKey:kFPLoginServiceKeyChainValidKey];
-//        if (!data) {
-//            [FPKeychainUtils delete:kFPLoginServiceKeyChainKey];
-//            [[NSUserDefaults standardUserDefaults] setObject:@(YES) forKey:kFPLoginServiceKeyChainValidKey];
-//            [[NSUserDefaults standardUserDefaults] synchronize];
-//            self.loginInfo = [[FPLoginInfoModel alloc] init];
-//        } else {
-//            id tmpData = [FPKeychainUtils load:kFPLoginServiceKeyChainKey];
-//            if (tmpData) {
-//                self.loginInfo = (FPLoginInfoModel *)tmpData;
-//                [self.loginInfo decryption];
-//            } else {
-//                self.loginInfo = [[FPLoginInfoModel alloc] init];
-//            }
-//        }
+        id data = [[NSUserDefaults standardUserDefaults] objectForKey:kFPLoginServiceKeyChainValidKey];
+        if (!data) {
+            [FPKeychainUtils delete:kFPLoginServiceKeyChainKey];
+            [[NSUserDefaults standardUserDefaults] setObject:@(YES) forKey:kFPLoginServiceKeyChainValidKey];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            self.loginInfo = [[RSLoginInfoModel alloc] init];
+        } else {
+            id tmpData = [FPKeychainUtils load:kFPLoginServiceKeyChainKey];
+            if (tmpData) {
+                self.loginInfo = (RSLoginInfoModel *)tmpData;
+            } else {
+                self.loginInfo = [[RSLoginInfoModel alloc] init];
+            }
+        }
         _logoutUid = @"";
     }
     return self;
 }
 
 -(void)saveLoginInfo {
-//    [self.loginInfo encryption];
-//    [FPKeychainUtils save:kFPLoginServiceKeyChainKey data:self.loginInfo];
-//    [self.loginInfo decryption];
+    [FPKeychainUtils save:kFPLoginServiceKeyChainKey data:self.loginInfo];
 }
 
 -(BOOL)isLogined {
@@ -67,44 +62,20 @@
     return YES;
 }
 
-//-(RACSignal *)FPQQLoginWithUid:(NSString *)uid andA2Key:(NSData *)a2Key andAccount:(NSString *)account {
-//    RACReplaySubject *signal = [RACReplaySubject subject];
-//    FPTQQLoginCmdReq *req = [[FPTQQLoginCmdReq alloc] init];
-//    req.jce_uid = uid;
-//    req.jce_A2key = a2Key;
-//    req.jce_account = account;
-//    req.jce_isneedinfo = YES;
-//    FPRequest *fpRequest = [FPRequestFactory requestWithJce:req cmd:FPELogicSvrCmd_ECmdQQLogin];
-//    @weakify(self);
-//    [[FPNetWorkHelper sendRequest:fpRequest] subscribeNext:^(FPResponse *response) {
-//        @FPStrongify(self);
-//        if ([response jceErrorCode] != 0) {
-//            [signal sendError:[response jceError]];
-//            return;
-//        }
-//        FPTQQLoginCmdRes *jceResp = [FPTQQLoginCmdRes fromData:[response jceData]];
-//        if (!jceResp) {
-//            [signal sendError:nil];
-//            return;
-//        }
-//        if (!jceResp.jce_sessionkey) {
-//            [signal sendError:nil];
-//            return;
-//        }
-//        [self.loginInfo updateLoginInfoWithQQLoginInfo:jceResp];
-//        [self saveLoginInfo];
-//        [signal sendCompleted];
-//        [_loginSignal sendNext:self.loginInfo];
-//    } error:^(NSError *error) {
-//        [signal sendError:error];
-//    } completed:^{
-//        
-//    }];
-//    return signal;
-//}
 
 -(RACSignal *)WXLoginWithAppid:(NSString *)appid andCode:(NSString *)code {
-    RACReplaySubject *signal = [RACReplaySubject subject];
+    RACSubject *signal = [RACSubject subject];
+    [[RSNetWorkService sendDebugRequest:[RSRequest new]] subscribeNext:^(id  _Nullable x) {
+        self.loginInfo = [[RSLoginInfoModel alloc] init];
+        self.loginInfo.sessionKey = @"123456";
+        [self saveLoginInfo];
+        [self.loginSignal sendNext:@(YES)];
+        [signal sendCompleted];
+    } error:^(NSError * _Nullable error) {
+        [signal sendError:error];
+    } completed:^{
+        [signal sendCompleted];
+    }];
 //    FPTWXLoginCmdReq *req = [[FPTWXLoginCmdReq alloc] init];
 //    req.jce_isneedinfo = YES;
 //    req.jce_code = code;
