@@ -13,6 +13,7 @@ typedef void (^NULLBlock)();
 @property(nonatomic, copy) NULLBlock startCompleteBlock;
 @property(nonatomic, copy) NULLBlock startErrorBlock;
 @property(nonatomic, copy) NULLBlock loginCompleteBlock;
+@property(nonatomic, copy) NULLBlock logoutCompleteBlock;
 +(RSLaunchService *)shareInstance;
 -(void)start;
 @end

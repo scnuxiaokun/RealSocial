@@ -25,17 +25,26 @@
         [[RSLoginService shareInstance].loginSignal subscribeNext:^(id  _Nullable x) {
             self.loginCompleteBlock();
         }];
+        [[RSLoginService shareInstance].logoutSignal subscribeNext:^(id  _Nullable x) {
+            self.logoutCompleteBlock();
+        }];
     }
     return self;
 }
 -(void)start {
     self.startBlock();
-    [[RSNetWorkService sendDebugRequest:[RSRequest new]] subscribeNext:^(id  _Nullable x) {
+    RSRequest *request = [RSRequest new];
+    request.mokeResponseData = [self mokeResponse];
+    [[RSNetWorkService sendRequest:request] subscribeNext:^(id  _Nullable x) {
         
     } error:^(NSError * _Nullable error) {
         self.startErrorBlock();
     } completed:^{
         self.startCompleteBlock();
     }];
+}
+
+-(NSData *)mokeResponse {
+    return [NSData data];
 }
 @end

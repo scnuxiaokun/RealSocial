@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface RSRequest : NSObject
-
+@property (nonatomic, strong) NSData *mokeResponseData;
 @end

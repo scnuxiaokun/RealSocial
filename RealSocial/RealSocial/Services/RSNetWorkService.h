@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "RSRequest.h"
+#import "RSResponse.h"
 @interface RSNetWorkService : NSObject
-+(RACSignal *)sendDebugRequest:(RSRequest *)request;
++(RACSignal *)sendRequest:(RSRequest *)request;
 @end

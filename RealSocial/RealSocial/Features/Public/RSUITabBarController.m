@@ -9,6 +9,7 @@
 #import "RSUITabBarController.h"
 #import "RSChatListViewController.h"
 #import "RSUINavigationController.h"
+#import "RSMineViewController.h"
 
 @interface RSUITabBarController ()
 
@@ -22,7 +23,9 @@
     self.view.backgroundColor = [UIColor redColor];
     
     RSUINavigationController *tab1 = [[RSUINavigationController alloc] initWithRootViewController:[[RSChatListViewController alloc] init]];
-    self.viewControllers = @[tab1];
+    RSUINavigationController *tab2 = [[RSUINavigationController alloc] initWithRootViewController:[[RSMineViewController alloc] init]];
+    
+    self.viewControllers = @[tab1, tab2];
 }
 
 - (void)didReceiveMemoryWarning {

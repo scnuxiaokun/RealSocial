@@ -11,6 +11,7 @@
 #import "RSKeyChainConstants.h"
 #import "FPKeychainUtils.h"
 
+
 @implementation RSLoginService
 +(RSLoginService *)shareInstance {
     static dispatch_once_t once;
@@ -62,12 +63,20 @@
     return YES;
 }
 
+-(NSData *)mokeResponse {
+//    return nil;
+    LoginInfo *loginInfo = [LoginInfo new];
+    loginInfo.sessionKey = @"kuncai_test_sessionKey";
+    loginInfo.wxuid = @"kuncai_test_wxuid@wx.tencent.com";
+    return [loginInfo data];
+}
 
 -(RACSignal *)WXLoginWithAppid:(NSString *)appid andCode:(NSString *)code {
     RACSubject *signal = [RACSubject subject];
-    [[RSNetWorkService sendDebugRequest:[RSRequest new]] subscribeNext:^(id  _Nullable x) {
-        self.loginInfo = [[RSLoginInfoModel alloc] init];
-        self.loginInfo.sessionKey = @"123456";
+    RSRequest *request = [RSRequest new];
+    request.mokeResponseData = [self mokeResponse];
+    [[RSNetWorkService sendRequest:request] subscribeNext:^(RSResponse *response) {
+        [self.loginInfo updateWithLoginInfo:[LoginInfo parseFromData:response.data error:nil]];
         [self saveLoginInfo];
         [self.loginSignal sendNext:@(YES)];
         [signal sendCompleted];
@@ -114,8 +123,8 @@
     if([self.loginInfo.uid length] > 0) {
         self.logoutUid = self.loginInfo.uid;
     }
-//    [self.loginInfo clear];
-//    [FPKeychainUtils save:kFPLoginServiceKeyChainKey data:self.loginInfo];
+    [self.loginInfo clear];
+    [FPKeychainUtils save:kFPLoginServiceKeyChainKey data:self.loginInfo];
     [_logoutSignal sendNext:@(YES)];
     return YES;
 }

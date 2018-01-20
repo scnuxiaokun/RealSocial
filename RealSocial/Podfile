@@ -53,4 +53,6 @@ pod 'BlocksKit'
 #  # 添加其他你想在工程中使用的依赖。
 #]
 pod 'WechatOpenSDK'
+pod 'Protobuf'
+#pod 'WCDB'
 end

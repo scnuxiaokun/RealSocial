@@ -42,6 +42,11 @@
         @RSStrongify(self);
         [self showMainView];
     }];
+    [[RSLaunchService shareInstance] setLogoutCompleteBlock:^{
+        @RSStrongify(self);
+        self.tabBarController = nil;
+        [self showLoginView];
+    }];
     [[RSLaunchService shareInstance] start];
     return YES;
 }
@@ -50,11 +55,19 @@
     dispatch_sync_on_main_queue(^{
         if ([RSLoginService shareInstance].isLogined) {
             self.window.rootViewController = self.tabBarController;
+            [self.window makeKeyWindow];
         } else {
-            RSLoginViewController *loginCtr = [[RSLoginViewController alloc] init];
-            RSUINavigationController *navCtr = [[RSUINavigationController alloc] initWithRootViewController:loginCtr];
-            self.window.rootViewController = navCtr;
+            [self showLoginView];
         }
+        
+    });
+}
+
+- (void)showLoginView {
+    dispatch_sync_on_main_queue(^{
+        RSLoginViewController *loginCtr = [[RSLoginViewController alloc] init];
+        RSUINavigationController *navCtr = [[RSUINavigationController alloc] initWithRootViewController:loginCtr];
+        self.window.rootViewController = navCtr;
         [self.window makeKeyWindow];
     });
 }

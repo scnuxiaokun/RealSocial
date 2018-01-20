@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message LoginInfo {
+    string sessionKey = 1;
+    string wxuid = 2;
+}

@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "RSModel.h"
+#import "LoginInfo.pbobjc.h"
 @interface RSLoginInfoModel : RSModel
 @property (nonatomic, retain) NSString *uid;
 //@property (nonatomic, retain) NSString *qquid;
 @property (nonatomic, retain) NSString *wxuid;
 @property (nonatomic, retain) NSString *sessionKey;
+-(void)updateWithLoginInfo:(LoginInfo *)loginInfo;
+-(void)clear;
 @end

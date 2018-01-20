@@ -19,4 +19,13 @@
     return @"";
 }
 
+-(void)updateWithLoginInfo:(LoginInfo *)loginInfo {
+    self.wxuid = loginInfo.wxuid;
+    self.sessionKey = loginInfo.sessionKey;
+}
+
+-(void)clear {
+    self.wxuid = @"";
+    self.sessionKey = @"";
+}
 @end

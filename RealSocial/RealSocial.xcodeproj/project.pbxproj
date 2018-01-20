@@ -98,6 +98,10 @@
 		ADDC6A7B20132FCF00439D01 /* RSLanchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A7A20132FCF00439D01 /* RSLanchViewController.m */; };
 		ADDC6A89201337DD00439D01 /* FPSecretKeyUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A86201337DD00439D01 /* FPSecretKeyUtils.m */; };
 		ADDC6A8A201337DD00439D01 /* FPKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A88201337DD00439D01 /* FPKeychainUtils.m */; };
+		ADDC6A9720134A1600439D01 /* RSResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A9620134A1600439D01 /* RSResponse.m */; };
+		ADDC6A9B2013508C00439D01 /* RSMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A9A2013508C00439D01 /* RSMineViewController.m */; };
+		ADDC6AA1201352A800439D01 /* LoginInfo.proto in Resources */ = {isa = PBXBuildFile; fileRef = ADDC6A9D201352A800439D01 /* LoginInfo.proto */; };
+		ADDC6AA2201352A800439D01 /* LoginInfo.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6AA0201352A800439D01 /* LoginInfo.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -310,6 +314,13 @@
 		ADDC6A86201337DD00439D01 /* FPSecretKeyUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPSecretKeyUtils.m; sourceTree = "<group>"; };
 		ADDC6A87201337DD00439D01 /* FPSecretKeyUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPSecretKeyUtils.h; sourceTree = "<group>"; };
 		ADDC6A88201337DD00439D01 /* FPKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPKeychainUtils.m; sourceTree = "<group>"; };
+		ADDC6A9520134A1600439D01 /* RSResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSResponse.h; sourceTree = "<group>"; };
+		ADDC6A9620134A1600439D01 /* RSResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSResponse.m; sourceTree = "<group>"; };
+		ADDC6A992013508C00439D01 /* RSMineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSMineViewController.h; sourceTree = "<group>"; };
+		ADDC6A9A2013508C00439D01 /* RSMineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSMineViewController.m; sourceTree = "<group>"; };
+		ADDC6A9D201352A800439D01 /* LoginInfo.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LoginInfo.proto; sourceTree = "<group>"; };
+		ADDC6A9F201352A800439D01 /* LoginInfo.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginInfo.pbobjc.h; sourceTree = "<group>"; };
+		ADDC6AA0201352A800439D01 /* LoginInfo.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginInfo.pbobjc.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -350,6 +361,7 @@
 		AD3E9106200F97160019138F = {
 			isa = PBXGroup;
 			children = (
+				ADDC6A9C201352A800439D01 /* Protoc */,
 				AD3E9558200F9B100019138F /* RealSocial-PrefixHeader.pch */,
 				AD3E9111200F97160019138F /* RealSocial */,
 				AD3E912A200F97160019138F /* RealSocialTests */,
@@ -435,6 +447,8 @@
 				ADDC6A70201325ED00439D01 /* RSRequest.m */,
 				ADDC6A7220132AA500439D01 /* RSLaunchService.h */,
 				ADDC6A7320132AA500439D01 /* RSLaunchService.m */,
+				ADDC6A9520134A1600439D01 /* RSResponse.h */,
+				ADDC6A9620134A1600439D01 /* RSResponse.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -475,6 +489,7 @@
 		AD3E9171200F995F0019138F /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				ADDC6A982013506A00439D01 /* Mine */,
 				ADDC6A7820132FAD00439D01 /* Launch */,
 				ADDC6A5F201310BE00439D01 /* Login */,
 				ADDC6A5420130D9E00439D01 /* ChatList */,
@@ -816,6 +831,33 @@
 			path = Launch;
 			sourceTree = "<group>";
 		};
+		ADDC6A982013506A00439D01 /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				ADDC6A992013508C00439D01 /* RSMineViewController.h */,
+				ADDC6A9A2013508C00439D01 /* RSMineViewController.m */,
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		ADDC6A9C201352A800439D01 /* Protoc */ = {
+			isa = PBXGroup;
+			children = (
+				ADDC6A9D201352A800439D01 /* LoginInfo.proto */,
+				ADDC6A9E201352A800439D01 /* ObjC */,
+			);
+			path = Protoc;
+			sourceTree = "<group>";
+		};
+		ADDC6A9E201352A800439D01 /* ObjC */ = {
+			isa = PBXGroup;
+			children = (
+				ADDC6A9F201352A800439D01 /* LoginInfo.pbobjc.h */,
+				ADDC6AA0201352A800439D01 /* LoginInfo.pbobjc.m */,
+			);
+			path = ObjC;
+			sourceTree = "<group>";
+		};
 		F3E8C49B86B6F16FA471C826 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -933,6 +975,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADDC6AA1201352A800439D01 /* LoginInfo.proto in Resources */,
 				AD3E911F200F97160019138F /* LaunchScreen.storyboard in Resources */,
 				AD3E911C200F97160019138F /* Assets.xcassets in Resources */,
 				AD3E956C2010C47D0019138F /* Images.xcassets in Resources */,
@@ -970,7 +1013,7 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1024,7 +1067,10 @@
 				ADDC6A5B20130E2D00439D01 /* RSUINavigationController.m in Sources */,
 				AD3E94AD200F99820019138F /* LOTShapeGradientFill.m in Sources */,
 				AD3E956F2011B8310019138F /* RSUITabBarController.m in Sources */,
+				ADDC6A9720134A1600439D01 /* RSResponse.m in Sources */,
 				AD3E94BB200F99820019138F /* LOTCacheProvider.m in Sources */,
+				ADDC6AA2201352A800439D01 /* LoginInfo.pbobjc.m in Sources */,
+				ADDC6A9B2013508C00439D01 /* RSMineViewController.m in Sources */,
 				AD3E94CE200F99820019138F /* LOTGradientFillRender.m in Sources */,
 				AD3E94C1200F99820019138F /* LOTRoundedRectAnimator.m in Sources */,
 				AD3E9117200F97160019138F /* ViewController.m in Sources */,
@@ -1263,6 +1309,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A3N2LMHK78;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1288,6 +1335,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A3N2LMHK78;
 				FRAMEWORK_SEARCH_PATHS = (
