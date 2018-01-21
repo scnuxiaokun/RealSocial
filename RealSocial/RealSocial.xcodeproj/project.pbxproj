@@ -86,6 +86,37 @@
 		AD3E956A200FA0070019138F /* RSModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3E9569200FA0070019138F /* RSModel.m */; };
 		AD3E956C2010C47D0019138F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD3E956B2010C47D0019138F /* Images.xcassets */; };
 		AD3E956F2011B8310019138F /* RSUITabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3E956E2011B8310019138F /* RSUITabBarController.m */; };
+		ADAC4E2B2014F0240020DA91 /* libMGFacepp-0.5.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAC4E2A2014F0240020DA91 /* libMGFacepp-0.5.2.a */; };
+		ADAC4E772014F1150020DA91 /* megviifacepp_0_5_2_model in Resources */ = {isa = PBXBuildFile; fileRef = ADAC4E532014F1150020DA91 /* megviifacepp_0_5_2_model */; };
+		ADAC4E782014F1150020DA91 /* GLESUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4E5E2014F1150020DA91 /* GLESUtils.m */; };
+		ADAC4E792014F1150020DA91 /* MGOpenGLRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4E622014F1150020DA91 /* MGOpenGLRenderer.m */; };
+		ADAC4E7A2014F1150020DA91 /* MGOpenGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4E642014F1150020DA91 /* MGOpenGLView.m */; };
+		ADAC4EA82014F18C0020DA91 /* MGFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4E7D2014F18B0020DA91 /* MGFileManager.m */; };
+		ADAC4EA92014F18C0020DA91 /* MGDetectPictureVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4E812014F18C0020DA91 /* MGDetectPictureVC.m */; };
+		ADAC4EAA2014F18C0020DA91 /* BaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4E852014F18C0020DA91 /* BaseCell.m */; };
+		ADAC4EAB2014F18C0020DA91 /* BaseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADAC4E862014F18C0020DA91 /* BaseCell.xib */; };
+		ADAC4EAC2014F18C0020DA91 /* BaseCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4E882014F18C0020DA91 /* BaseCollectionCell.m */; };
+		ADAC4EAD2014F18C0020DA91 /* MCSetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4E8A2014F18C0020DA91 /* MCSetCell.m */; };
+		ADAC4EAE2014F18C0020DA91 /* MCSetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADAC4E8B2014F18C0020DA91 /* MCSetCell.xib */; };
+		ADAC4EAF2014F18C0020DA91 /* MGFaceCompareCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4E8D2014F18C0020DA91 /* MGFaceCompareCell.m */; };
+		ADAC4EB02014F18C0020DA91 /* TextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4E8F2014F18C0020DA91 /* TextCell.m */; };
+		ADAC4EB12014F18C0020DA91 /* TextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADAC4E902014F18C0020DA91 /* TextCell.xib */; };
+		ADAC4EB22014F18C0020DA91 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4E932014F18C0020DA91 /* BaseModel.m */; };
+		ADAC4EB32014F18C0020DA91 /* MCSetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4E952014F18C0020DA91 /* MCSetModel.m */; };
+		ADAC4EB42014F18C0020DA91 /* MGFaceCompareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4E972014F18C0020DA91 /* MGFaceCompareModel.m */; };
+		ADAC4EB52014F18C0020DA91 /* MGFaceModelArray.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4E992014F18C0020DA91 /* MGFaceModelArray.m */; };
+		ADAC4EB62014F18C0020DA91 /* TextModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4E9B2014F18C0020DA91 /* TextModel.m */; };
+		ADAC4EB72014F18C0020DA91 /* MGFaceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4E9E2014F18C0020DA91 /* MGFaceListViewController.m */; };
+		ADAC4EB82014F18C0020DA91 /* MGFaceListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADAC4E9F2014F18C0020DA91 /* MGFaceListViewController.storyboard */; };
+		ADAC4EB92014F18C0020DA91 /* MGMarkSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4EA12014F18C0020DA91 /* MGMarkSetViewController.m */; };
+		ADAC4EBA2014F18C0020DA91 /* MGVideoViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4EA32014F18C0020DA91 /* MGVideoViewController.mm */; };
+		ADAC4EBB2014F18C0020DA91 /* MGFaceLicenseHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4EA62014F18C0020DA91 /* MGFaceLicenseHandle.m */; };
+		ADAC4EBD2014F20B0020DA91 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAC4EBC2014F20B0020DA91 /* AVFoundation.framework */; };
+		ADAC4EBF2014F2160020DA91 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAC4EBE2014F2160020DA91 /* CoreMedia.framework */; };
+		ADAC4EC12014F2220020DA91 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAC4EC02014F2220020DA91 /* CoreMotion.framework */; };
+		ADAC4EC32014FAF10020DA91 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAC4EC22014FAF10020DA91 /* OpenGLES.framework */; };
+		ADAC4EC52014FB090020DA91 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAC4EC42014FB090020DA91 /* CoreVideo.framework */; };
+		ADAC4EC62014FBC30020DA91 /* MGBaseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAC4EC72014FBC30020DA91 /* MGBaseKit.framework */; };
 		ADDC6A5820130E0F00439D01 /* RSUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A5720130E0F00439D01 /* RSUIViewController.m */; };
 		ADDC6A5B20130E2D00439D01 /* RSUINavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A5A20130E2D00439D01 /* RSUINavigationController.m */; };
 		ADDC6A5E20130E5E00439D01 /* RSChatListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A5D20130E5E00439D01 /* RSChatListViewController.m */; };
@@ -102,6 +133,7 @@
 		ADDC6A9B2013508C00439D01 /* RSMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A9A2013508C00439D01 /* RSMineViewController.m */; };
 		ADDC6AA1201352A800439D01 /* LoginInfo.proto in Resources */ = {isa = PBXBuildFile; fileRef = ADDC6A9D201352A800439D01 /* LoginInfo.proto */; };
 		ADDC6AA2201352A800439D01 /* LoginInfo.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6AA0201352A800439D01 /* LoginInfo.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		ADDC6AD72014E84600439D01 /* RSVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6AD62014E84600439D01 /* RSVideoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -288,6 +320,69 @@
 		AD3E956B2010C47D0019138F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		AD3E956D2011B8310019138F /* RSUITabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSUITabBarController.h; sourceTree = "<group>"; };
 		AD3E956E2011B8310019138F /* RSUITabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSUITabBarController.m; sourceTree = "<group>"; };
+		ADAC4E282014EF1C0020DA91 /* libMGLicMgrSDK-0.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libMGLicMgrSDK-0.3.0.a"; path = "MGBaseKit/MegviiLicMgr-iOS-SDK/libMGLicMgrSDK-0.3.0.a"; sourceTree = "<group>"; };
+		ADAC4E2A2014F0240020DA91 /* libMGFacepp-0.5.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libMGFacepp-0.5.2.a"; path = "RealSocial/Vendors/FCPPSDK/MGFaceppSDK/libMGFacepp-0.5.2.a"; sourceTree = "<group>"; };
+		ADAC4E2D2014F07C0020DA91 /* MGBaseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MGBaseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADAC4E522014F1150020DA91 /* libMGFacepp-0.5.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libMGFacepp-0.5.2.a"; sourceTree = "<group>"; };
+		ADAC4E532014F1150020DA91 /* megviifacepp_0_5_2_model */ = {isa = PBXFileReference; lastKnownFileType = file; path = megviifacepp_0_5_2_model; sourceTree = "<group>"; };
+		ADAC4E542014F1150020DA91 /* MGAlgorithmInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGAlgorithmInfo.h; sourceTree = "<group>"; };
+		ADAC4E552014F1150020DA91 /* MGDetectRectInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGDetectRectInfo.h; sourceTree = "<group>"; };
+		ADAC4E562014F1150020DA91 /* MGFaceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFaceInfo.h; sourceTree = "<group>"; };
+		ADAC4E572014F1150020DA91 /* MGFacepp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFacepp.h; sourceTree = "<group>"; };
+		ADAC4E582014F1150020DA91 /* MGFaceppCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFaceppCommon.h; sourceTree = "<group>"; };
+		ADAC4E592014F1150020DA91 /* MGFaceppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFaceppConfig.h; sourceTree = "<group>"; };
+		ADAC4E5A2014F1150020DA91 /* MGImageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGImageData.h; sourceTree = "<group>"; };
+		ADAC4E5D2014F1150020DA91 /* GLESUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLESUtils.h; sourceTree = "<group>"; };
+		ADAC4E5E2014F1150020DA91 /* GLESUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLESUtils.m; sourceTree = "<group>"; };
+		ADAC4E602014F1150020DA91 /* MGOpenGLConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGOpenGLConfig.h; sourceTree = "<group>"; };
+		ADAC4E612014F1150020DA91 /* MGOpenGLRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGOpenGLRenderer.h; sourceTree = "<group>"; };
+		ADAC4E622014F1150020DA91 /* MGOpenGLRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGOpenGLRenderer.m; sourceTree = "<group>"; };
+		ADAC4E632014F1150020DA91 /* MGOpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGOpenGLView.h; sourceTree = "<group>"; };
+		ADAC4E642014F1150020DA91 /* MGOpenGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGOpenGLView.m; sourceTree = "<group>"; };
+		ADAC4E7C2014F18B0020DA91 /* MGFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFileManager.h; sourceTree = "<group>"; };
+		ADAC4E7D2014F18B0020DA91 /* MGFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGFileManager.m; sourceTree = "<group>"; };
+		ADAC4E7E2014F18B0020DA91 /* MGHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGHeader.h; sourceTree = "<group>"; };
+		ADAC4E802014F18C0020DA91 /* MGDetectPictureVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGDetectPictureVC.h; sourceTree = "<group>"; };
+		ADAC4E812014F18C0020DA91 /* MGDetectPictureVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGDetectPictureVC.m; sourceTree = "<group>"; };
+		ADAC4E842014F18C0020DA91 /* BaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCell.h; sourceTree = "<group>"; };
+		ADAC4E852014F18C0020DA91 /* BaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCell.m; sourceTree = "<group>"; };
+		ADAC4E862014F18C0020DA91 /* BaseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseCell.xib; sourceTree = "<group>"; };
+		ADAC4E872014F18C0020DA91 /* BaseCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCollectionCell.h; sourceTree = "<group>"; };
+		ADAC4E882014F18C0020DA91 /* BaseCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCollectionCell.m; sourceTree = "<group>"; };
+		ADAC4E892014F18C0020DA91 /* MCSetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCSetCell.h; sourceTree = "<group>"; };
+		ADAC4E8A2014F18C0020DA91 /* MCSetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCSetCell.m; sourceTree = "<group>"; };
+		ADAC4E8B2014F18C0020DA91 /* MCSetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MCSetCell.xib; sourceTree = "<group>"; };
+		ADAC4E8C2014F18C0020DA91 /* MGFaceCompareCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFaceCompareCell.h; sourceTree = "<group>"; };
+		ADAC4E8D2014F18C0020DA91 /* MGFaceCompareCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGFaceCompareCell.m; sourceTree = "<group>"; };
+		ADAC4E8E2014F18C0020DA91 /* TextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextCell.h; sourceTree = "<group>"; };
+		ADAC4E8F2014F18C0020DA91 /* TextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextCell.m; sourceTree = "<group>"; };
+		ADAC4E902014F18C0020DA91 /* TextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextCell.xib; sourceTree = "<group>"; };
+		ADAC4E922014F18C0020DA91 /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
+		ADAC4E932014F18C0020DA91 /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
+		ADAC4E942014F18C0020DA91 /* MCSetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCSetModel.h; sourceTree = "<group>"; };
+		ADAC4E952014F18C0020DA91 /* MCSetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCSetModel.m; sourceTree = "<group>"; };
+		ADAC4E962014F18C0020DA91 /* MGFaceCompareModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFaceCompareModel.h; sourceTree = "<group>"; };
+		ADAC4E972014F18C0020DA91 /* MGFaceCompareModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGFaceCompareModel.m; sourceTree = "<group>"; };
+		ADAC4E982014F18C0020DA91 /* MGFaceModelArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFaceModelArray.h; sourceTree = "<group>"; };
+		ADAC4E992014F18C0020DA91 /* MGFaceModelArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGFaceModelArray.m; sourceTree = "<group>"; };
+		ADAC4E9A2014F18C0020DA91 /* TextModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextModel.h; sourceTree = "<group>"; };
+		ADAC4E9B2014F18C0020DA91 /* TextModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextModel.m; sourceTree = "<group>"; };
+		ADAC4E9D2014F18C0020DA91 /* MGFaceListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFaceListViewController.h; sourceTree = "<group>"; };
+		ADAC4E9E2014F18C0020DA91 /* MGFaceListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGFaceListViewController.m; sourceTree = "<group>"; };
+		ADAC4E9F2014F18C0020DA91 /* MGFaceListViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MGFaceListViewController.storyboard; sourceTree = "<group>"; };
+		ADAC4EA02014F18C0020DA91 /* MGMarkSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGMarkSetViewController.h; sourceTree = "<group>"; };
+		ADAC4EA12014F18C0020DA91 /* MGMarkSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMarkSetViewController.m; sourceTree = "<group>"; };
+		ADAC4EA22014F18C0020DA91 /* MGVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGVideoViewController.h; sourceTree = "<group>"; };
+		ADAC4EA32014F18C0020DA91 /* MGVideoViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MGVideoViewController.mm; sourceTree = "<group>"; };
+		ADAC4EA52014F18C0020DA91 /* MGFaceLicenseHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFaceLicenseHandle.h; sourceTree = "<group>"; };
+		ADAC4EA62014F18C0020DA91 /* MGFaceLicenseHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGFaceLicenseHandle.m; sourceTree = "<group>"; };
+		ADAC4EA72014F18C0020DA91 /* MGNetAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGNetAccount.h; sourceTree = "<group>"; };
+		ADAC4EBC2014F20B0020DA91 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		ADAC4EBE2014F2160020DA91 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		ADAC4EC02014F2220020DA91 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		ADAC4EC22014FAF10020DA91 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		ADAC4EC42014FB090020DA91 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		ADAC4EC72014FBC30020DA91 /* MGBaseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MGBaseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADDC6A5620130E0F00439D01 /* RSUIViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSUIViewController.h; sourceTree = "<group>"; };
 		ADDC6A5720130E0F00439D01 /* RSUIViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSUIViewController.m; sourceTree = "<group>"; };
 		ADDC6A5920130E2D00439D01 /* RSUINavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSUINavigationController.h; sourceTree = "<group>"; };
@@ -321,6 +416,8 @@
 		ADDC6A9D201352A800439D01 /* LoginInfo.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LoginInfo.proto; sourceTree = "<group>"; };
 		ADDC6A9F201352A800439D01 /* LoginInfo.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginInfo.pbobjc.h; sourceTree = "<group>"; };
 		ADDC6AA0201352A800439D01 /* LoginInfo.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginInfo.pbobjc.m; sourceTree = "<group>"; };
+		ADDC6AD52014E84600439D01 /* RSVideoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSVideoViewController.h; sourceTree = "<group>"; };
+		ADDC6AD62014E84600439D01 /* RSVideoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSVideoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -328,6 +425,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADAC4EC62014FBC30020DA91 /* MGBaseKit.framework in Frameworks */,
+				ADAC4EC52014FB090020DA91 /* CoreVideo.framework in Frameworks */,
+				ADAC4EC32014FAF10020DA91 /* OpenGLES.framework in Frameworks */,
+				ADAC4EC12014F2220020DA91 /* CoreMotion.framework in Frameworks */,
+				ADAC4EBF2014F2160020DA91 /* CoreMedia.framework in Frameworks */,
+				ADAC4EBD2014F20B0020DA91 /* AVFoundation.framework in Frameworks */,
+				ADAC4E2B2014F0240020DA91 /* libMGFacepp-0.5.2.a in Frameworks */,
 				123DF128ED7439AB67995CDA /* libPods-RealSocial.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -527,6 +631,7 @@
 		AD3E9188200F997D0019138F /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				ADAC4E2E2014F1150020DA91 /* FCPPSDK */,
 				AD3E91FC200F997E0019138F /* lottie-ios */,
 				AD3E92AB200F997E0019138F /* SafeKit */,
 			);
@@ -790,6 +895,155 @@
 			path = SafeKit;
 			sourceTree = "<group>";
 		};
+		ADAC4E2E2014F1150020DA91 /* FCPPSDK */ = {
+			isa = PBXGroup;
+			children = (
+				ADAC4E7F2014F18C0020DA91 /* MGDetectPicture */,
+				ADAC4E822014F18C0020DA91 /* MGDetectVideo */,
+				ADAC4E7B2014F18B0020DA91 /* MGHelp */,
+				ADAC4EA42014F18C0020DA91 /* MGLicenseManagerHelper */,
+				ADAC4E512014F1150020DA91 /* MGFaceppSDK */,
+				ADAC4E5B2014F1150020DA91 /* OpenGL */,
+			);
+			path = FCPPSDK;
+			sourceTree = "<group>";
+		};
+		ADAC4E512014F1150020DA91 /* MGFaceppSDK */ = {
+			isa = PBXGroup;
+			children = (
+				ADAC4E522014F1150020DA91 /* libMGFacepp-0.5.2.a */,
+				ADAC4E532014F1150020DA91 /* megviifacepp_0_5_2_model */,
+				ADAC4E542014F1150020DA91 /* MGAlgorithmInfo.h */,
+				ADAC4E552014F1150020DA91 /* MGDetectRectInfo.h */,
+				ADAC4E562014F1150020DA91 /* MGFaceInfo.h */,
+				ADAC4E572014F1150020DA91 /* MGFacepp.h */,
+				ADAC4E582014F1150020DA91 /* MGFaceppCommon.h */,
+				ADAC4E592014F1150020DA91 /* MGFaceppConfig.h */,
+				ADAC4E5A2014F1150020DA91 /* MGImageData.h */,
+			);
+			path = MGFaceppSDK;
+			sourceTree = "<group>";
+		};
+		ADAC4E5B2014F1150020DA91 /* OpenGL */ = {
+			isa = PBXGroup;
+			children = (
+				ADAC4E5C2014F1150020DA91 /* GLUtilities */,
+				ADAC4E5F2014F1150020DA91 /* Manager */,
+				ADAC4E632014F1150020DA91 /* MGOpenGLView.h */,
+				ADAC4E642014F1150020DA91 /* MGOpenGLView.m */,
+			);
+			path = OpenGL;
+			sourceTree = "<group>";
+		};
+		ADAC4E5C2014F1150020DA91 /* GLUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				ADAC4E5D2014F1150020DA91 /* GLESUtils.h */,
+				ADAC4E5E2014F1150020DA91 /* GLESUtils.m */,
+			);
+			path = GLUtilities;
+			sourceTree = "<group>";
+		};
+		ADAC4E5F2014F1150020DA91 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				ADAC4E602014F1150020DA91 /* MGOpenGLConfig.h */,
+				ADAC4E612014F1150020DA91 /* MGOpenGLRenderer.h */,
+				ADAC4E622014F1150020DA91 /* MGOpenGLRenderer.m */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		ADAC4E7B2014F18B0020DA91 /* MGHelp */ = {
+			isa = PBXGroup;
+			children = (
+				ADAC4E7C2014F18B0020DA91 /* MGFileManager.h */,
+				ADAC4E7D2014F18B0020DA91 /* MGFileManager.m */,
+				ADAC4E7E2014F18B0020DA91 /* MGHeader.h */,
+			);
+			path = MGHelp;
+			sourceTree = "<group>";
+		};
+		ADAC4E7F2014F18C0020DA91 /* MGDetectPicture */ = {
+			isa = PBXGroup;
+			children = (
+				ADAC4E802014F18C0020DA91 /* MGDetectPictureVC.h */,
+				ADAC4E812014F18C0020DA91 /* MGDetectPictureVC.m */,
+			);
+			path = MGDetectPicture;
+			sourceTree = "<group>";
+		};
+		ADAC4E822014F18C0020DA91 /* MGDetectVideo */ = {
+			isa = PBXGroup;
+			children = (
+				ADAC4E832014F18C0020DA91 /* Cells */,
+				ADAC4E912014F18C0020DA91 /* Models */,
+				ADAC4E9C2014F18C0020DA91 /* ViewControllers */,
+			);
+			path = MGDetectVideo;
+			sourceTree = "<group>";
+		};
+		ADAC4E832014F18C0020DA91 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				ADAC4E842014F18C0020DA91 /* BaseCell.h */,
+				ADAC4E852014F18C0020DA91 /* BaseCell.m */,
+				ADAC4E862014F18C0020DA91 /* BaseCell.xib */,
+				ADAC4E872014F18C0020DA91 /* BaseCollectionCell.h */,
+				ADAC4E882014F18C0020DA91 /* BaseCollectionCell.m */,
+				ADAC4E892014F18C0020DA91 /* MCSetCell.h */,
+				ADAC4E8A2014F18C0020DA91 /* MCSetCell.m */,
+				ADAC4E8B2014F18C0020DA91 /* MCSetCell.xib */,
+				ADAC4E8C2014F18C0020DA91 /* MGFaceCompareCell.h */,
+				ADAC4E8D2014F18C0020DA91 /* MGFaceCompareCell.m */,
+				ADAC4E8E2014F18C0020DA91 /* TextCell.h */,
+				ADAC4E8F2014F18C0020DA91 /* TextCell.m */,
+				ADAC4E902014F18C0020DA91 /* TextCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		ADAC4E912014F18C0020DA91 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ADAC4E922014F18C0020DA91 /* BaseModel.h */,
+				ADAC4E932014F18C0020DA91 /* BaseModel.m */,
+				ADAC4E942014F18C0020DA91 /* MCSetModel.h */,
+				ADAC4E952014F18C0020DA91 /* MCSetModel.m */,
+				ADAC4E962014F18C0020DA91 /* MGFaceCompareModel.h */,
+				ADAC4E972014F18C0020DA91 /* MGFaceCompareModel.m */,
+				ADAC4E982014F18C0020DA91 /* MGFaceModelArray.h */,
+				ADAC4E992014F18C0020DA91 /* MGFaceModelArray.m */,
+				ADAC4E9A2014F18C0020DA91 /* TextModel.h */,
+				ADAC4E9B2014F18C0020DA91 /* TextModel.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		ADAC4E9C2014F18C0020DA91 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				ADAC4E9D2014F18C0020DA91 /* MGFaceListViewController.h */,
+				ADAC4E9E2014F18C0020DA91 /* MGFaceListViewController.m */,
+				ADAC4E9F2014F18C0020DA91 /* MGFaceListViewController.storyboard */,
+				ADAC4EA02014F18C0020DA91 /* MGMarkSetViewController.h */,
+				ADAC4EA12014F18C0020DA91 /* MGMarkSetViewController.m */,
+				ADAC4EA22014F18C0020DA91 /* MGVideoViewController.h */,
+				ADAC4EA32014F18C0020DA91 /* MGVideoViewController.mm */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		ADAC4EA42014F18C0020DA91 /* MGLicenseManagerHelper */ = {
+			isa = PBXGroup;
+			children = (
+				ADAC4EA52014F18C0020DA91 /* MGFaceLicenseHandle.h */,
+				ADAC4EA62014F18C0020DA91 /* MGFaceLicenseHandle.m */,
+				ADAC4EA72014F18C0020DA91 /* MGNetAccount.h */,
+			);
+			path = MGLicenseManagerHelper;
+			sourceTree = "<group>";
+		};
 		ADDC6A5320130D9E00439D01 /* FeedList */ = {
 			isa = PBXGroup;
 			children = (
@@ -834,6 +1088,7 @@
 		ADDC6A982013506A00439D01 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				ADDC6AD42014E82E00439D01 /* Video */,
 				ADDC6A992013508C00439D01 /* RSMineViewController.h */,
 				ADDC6A9A2013508C00439D01 /* RSMineViewController.m */,
 			);
@@ -858,9 +1113,27 @@
 			path = ObjC;
 			sourceTree = "<group>";
 		};
+		ADDC6AD42014E82E00439D01 /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				ADDC6AD52014E84600439D01 /* RSVideoViewController.h */,
+				ADDC6AD62014E84600439D01 /* RSVideoViewController.m */,
+			);
+			path = Video;
+			sourceTree = "<group>";
+		};
 		F3E8C49B86B6F16FA471C826 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ADAC4EC72014FBC30020DA91 /* MGBaseKit.framework */,
+				ADAC4EC42014FB090020DA91 /* CoreVideo.framework */,
+				ADAC4EC22014FAF10020DA91 /* OpenGLES.framework */,
+				ADAC4EC02014F2220020DA91 /* CoreMotion.framework */,
+				ADAC4EBE2014F2160020DA91 /* CoreMedia.framework */,
+				ADAC4EBC2014F20B0020DA91 /* AVFoundation.framework */,
+				ADAC4E2D2014F07C0020DA91 /* MGBaseKit.framework */,
+				ADAC4E2A2014F0240020DA91 /* libMGFacepp-0.5.2.a */,
+				ADAC4E282014EF1C0020DA91 /* libMGLicMgrSDK-0.3.0.a */,
 				16C194DAA8A9C057DA270C97 /* libPods-RealSocial.a */,
 			);
 			name = Frameworks;
@@ -977,8 +1250,13 @@
 			files = (
 				ADDC6AA1201352A800439D01 /* LoginInfo.proto in Resources */,
 				AD3E911F200F97160019138F /* LaunchScreen.storyboard in Resources */,
+				ADAC4EAB2014F18C0020DA91 /* BaseCell.xib in Resources */,
 				AD3E911C200F97160019138F /* Assets.xcassets in Resources */,
+				ADAC4EAE2014F18C0020DA91 /* MCSetCell.xib in Resources */,
+				ADAC4EB12014F18C0020DA91 /* TextCell.xib in Resources */,
 				AD3E956C2010C47D0019138F /* Images.xcassets in Resources */,
+				ADAC4E772014F1150020DA91 /* megviifacepp_0_5_2_model in Resources */,
+				ADAC4EB82014F18C0020DA91 /* MGFaceListViewController.storyboard in Resources */,
 				AD3E9499200F99820019138F /* .gitkeep in Resources */,
 				AD3E911A200F97160019138F /* Main.storyboard in Resources */,
 				AD3E9498200F99820019138F /* .gitkeep in Resources */,
@@ -1064,18 +1342,23 @@
 				AD3E949E200F99820019138F /* LOTKeyframe.m in Sources */,
 				AD3E94C3200F99820019138F /* LOTColorInterpolator.m in Sources */,
 				AD3E9564200F9D6B0019138F /* WXApiService.m in Sources */,
+				ADAC4EAA2014F18C0020DA91 /* BaseCell.m in Sources */,
 				ADDC6A5B20130E2D00439D01 /* RSUINavigationController.m in Sources */,
 				AD3E94AD200F99820019138F /* LOTShapeGradientFill.m in Sources */,
 				AD3E956F2011B8310019138F /* RSUITabBarController.m in Sources */,
+				ADAC4EB52014F18C0020DA91 /* MGFaceModelArray.m in Sources */,
 				ADDC6A9720134A1600439D01 /* RSResponse.m in Sources */,
 				AD3E94BB200F99820019138F /* LOTCacheProvider.m in Sources */,
 				ADDC6AA2201352A800439D01 /* LoginInfo.pbobjc.m in Sources */,
 				ADDC6A9B2013508C00439D01 /* RSMineViewController.m in Sources */,
+				ADAC4EB92014F18C0020DA91 /* MGMarkSetViewController.m in Sources */,
 				AD3E94CE200F99820019138F /* LOTGradientFillRender.m in Sources */,
+				ADAC4EB42014F18C0020DA91 /* MGFaceCompareModel.m in Sources */,
 				AD3E94C1200F99820019138F /* LOTRoundedRectAnimator.m in Sources */,
 				AD3E9117200F97160019138F /* ViewController.m in Sources */,
 				ADDC6A5820130E0F00439D01 /* RSUIViewController.m in Sources */,
 				AD3E94A3200F99820019138F /* CALayer+Compat.m in Sources */,
+				ADDC6AD72014E84600439D01 /* RSVideoViewController.m in Sources */,
 				AD3E94C4200F99820019138F /* LOTNumberInterpolator.m in Sources */,
 				ADDC6A7B20132FCF00439D01 /* RSLanchViewController.m in Sources */,
 				AD3E94E5200F99820019138F /* NSException+SafeKit.m in Sources */,
@@ -1086,6 +1369,7 @@
 				AD3E94AF200F99820019138F /* LOTShapePath.m in Sources */,
 				AD3E949B200F99820019138F /* LOTLayerContainer.m in Sources */,
 				ADDC6A71201325ED00439D01 /* RSRequest.m in Sources */,
+				ADAC4EB32014F18C0020DA91 /* MCSetModel.m in Sources */,
 				AD3E9122200F97160019138F /* main.m in Sources */,
 				AD3E94A9200F99820019138F /* LOTLayerGroup.m in Sources */,
 				AD3E94C5200F99820019138F /* LOTPathInterpolator.m in Sources */,
@@ -1094,26 +1378,33 @@
 				AD3E94AB200F99820019138F /* LOTShapeCircle.m in Sources */,
 				AD3E94A7200F99820019138F /* LOTAssetGroup.m in Sources */,
 				AD3E94C0200F99820019138F /* LOTPolystarAnimator.m in Sources */,
+				ADAC4EB62014F18C0020DA91 /* TextModel.m in Sources */,
 				AD3E94A0200F99820019138F /* LOTBezierPath.m in Sources */,
 				AD3E94C9200F99820019138F /* LOTValueInterpolator.m in Sources */,
 				AD3E94B0200F99820019138F /* LOTShapeRectangle.m in Sources */,
 				AD3E94B5200F99820019138F /* LOTShapeTrimPath.m in Sources */,
 				AD3E94B6200F99820019138F /* LOTAnimatedControl.m in Sources */,
 				AD3E94BD200F99820019138F /* LOTCircleAnimator.m in Sources */,
+				ADAC4EB02014F18C0020DA91 /* TextCell.m in Sources */,
 				AD3E94CA200F99820019138F /* LOTAnimatorNode.m in Sources */,
 				ADDC6A62201310E000439D01 /* RSLoginViewController.m in Sources */,
+				ADAC4EAF2014F18C0020DA91 /* MGFaceCompareCell.m in Sources */,
 				AD3E94C6200F99820019138F /* LOTPointInterpolator.m in Sources */,
 				AD3E94BE200F99820019138F /* LOTPathAnimator.m in Sources */,
+				ADAC4E7A2014F1150020DA91 /* MGOpenGLView.m in Sources */,
 				AD3E9174200F99600019138F /* RSLoginService.m in Sources */,
 				AD3E94E4200F99820019138F /* NSArray+safe.m in Sources */,
 				AD3E94CD200F99820019138F /* LOTFillRenderer.m in Sources */,
 				ADDC6A65201316BB00439D01 /* NSError+Util.m in Sources */,
+				ADAC4EBA2014F18C0020DA91 /* MGVideoViewController.mm in Sources */,
 				AD3E94A8200F99820019138F /* LOTLayer.m in Sources */,
 				AD3E94E8200F99820019138F /* SafeKitLog.m in Sources */,
 				AD3E94B3200F99820019138F /* LOTShapeStroke.m in Sources */,
 				ADDC6A89201337DD00439D01 /* FPSecretKeyUtils.m in Sources */,
 				AD3E94CB200F99820019138F /* LOTRenderNode.m in Sources */,
 				AD3E9561200F9C9E0019138F /* RSHandleOpenUrlHelper.m in Sources */,
+				ADAC4E782014F1150020DA91 /* GLESUtils.m in Sources */,
+				ADAC4EBB2014F18C0020DA91 /* MGFaceLicenseHandle.m in Sources */,
 				AD3E94A2200F99820019138F /* UIColor+Expanded.m in Sources */,
 				AD3E94B1200F99820019138F /* LOTShapeRepeater.m in Sources */,
 				AD3E94BC200F99820019138F /* LOTComposition.m in Sources */,
@@ -1122,20 +1413,26 @@
 				AD3E94D0200F99820019138F /* LOTRepeaterRenderer.m in Sources */,
 				ADDC6A7420132AA500439D01 /* RSLaunchService.m in Sources */,
 				AD3E94A6200F99820019138F /* LOTAsset.m in Sources */,
+				ADAC4E792014F1150020DA91 /* MGOpenGLRenderer.m in Sources */,
 				AD3E94B7200F99820019138F /* LOTAnimatedSwitch.m in Sources */,
+				ADAC4EAD2014F18C0020DA91 /* MCSetCell.m in Sources */,
 				AD3E94B9200F99820019138F /* LOTAnimationTransitionController.m in Sources */,
+				ADAC4EAC2014F18C0020DA91 /* BaseCollectionCell.m in Sources */,
 				ADDC6A5E20130E5E00439D01 /* RSChatListViewController.m in Sources */,
+				ADAC4EA92014F18C0020DA91 /* MGDetectPictureVC.m in Sources */,
 				AD3E949A200F99820019138F /* LOTCompositionContainer.m in Sources */,
 				AD3E94C8200F99820019138F /* LOTTransformInterpolator.m in Sources */,
 				AD3E94A1200F99820019138F /* LOTRadialGradientLayer.m in Sources */,
 				AD3E94B8200F99820019138F /* LOTAnimationCache.m in Sources */,
 				AD3E94BF200F99820019138F /* LOTPolygonAnimator.m in Sources */,
 				AD3E949D200F99820019138F /* LOTBezierData.m in Sources */,
+				ADAC4EA82014F18C0020DA91 /* MGFileManager.m in Sources */,
 				AD3E956A200FA0070019138F /* RSModel.m in Sources */,
 				AD3E9567200F9E6B0019138F /* RSLoginInfoModel.m in Sources */,
 				AD3E949C200F99820019138F /* LOTMaskContainer.m in Sources */,
 				ADDC6A6B20131AB600439D01 /* RSUtils.m in Sources */,
 				AD3E94E6200F99820019138F /* NSMutableArray+SafeKit.m in Sources */,
+				ADAC4EB22014F18C0020DA91 /* BaseModel.m in Sources */,
 				AD3E94AC200F99820019138F /* LOTShapeFill.m in Sources */,
 				AD3E949F200F99820019138F /* CGGeometry+LOTAdditions.m in Sources */,
 				AD3E94A5200F99820019138F /* UIColor.m in Sources */,
@@ -1143,6 +1440,7 @@
 				AD3E94E7200F99820019138F /* NSObject+Swizzle.m in Sources */,
 				AD3E94CF200F99820019138F /* LOTRenderGroup.m in Sources */,
 				AD3E94B2200F99820019138F /* LOTShapeStar.m in Sources */,
+				ADAC4EB72014F18C0020DA91 /* MGFaceListViewController.m in Sources */,
 				AD3E94BA200F99820019138F /* LOTAnimationView.m in Sources */,
 				AD3E94A4200F99820019138F /* NSValue+Compat.m in Sources */,
 			);
@@ -1312,6 +1610,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A3N2LMHK78;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/RealSocial/Vendors",
@@ -1322,6 +1621,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/RealSocial/Vendors/WXLoginSDK",
+					"$(PROJECT_DIR)/RealSocial/Vendors/FCPPSDK/MGFaceppSDK",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.scnukuncai.RealSocial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1338,6 +1638,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A3N2LMHK78;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/RealSocial/Vendors",
@@ -1348,6 +1649,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/RealSocial/Vendors/WXLoginSDK",
+					"$(PROJECT_DIR)/MGBaseKit/MegviiLicMgr-iOS-SDK",
+					"$(PROJECT_DIR)/RealSocial/Vendors/FCPPSDK/MGFaceppSDK",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.scnukuncai.RealSocial;
 				PRODUCT_NAME = "$(TARGET_NAME)";

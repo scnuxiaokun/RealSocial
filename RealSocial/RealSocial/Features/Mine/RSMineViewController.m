@@ -8,11 +8,16 @@
 
 #import "RSMineViewController.h"
 #import "RSLoginService.h"
+#import "MGVideoViewController.h"
+#import "MCSetModel.h"
+#import "MCSetCell.h"
+#import "MGHeader.h"
 
 @interface RSMineViewController ()
 @property (nonatomic, strong) UIButton *logoutButton;
 @property (nonatomic, strong) UILabel *sessionKeyLabel;
 @property (nonatomic, strong) UILabel *uidLabel;
+@property (nonatomic, strong) UIButton *takePhotoButton;
 @end
 
 @implementation RSMineViewController
@@ -24,6 +29,7 @@
     [self.view addSubview:self.uidLabel];
     [self.view addSubview:self.sessionKeyLabel];
     [self.view addSubview:self.logoutButton];
+    [self.view addSubview:self.takePhotoButton];
     [self.uidLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view).with.offset(20);
         make.top.equalTo(self.view).with.offset(kNaviBarHeightAndStatusBarHeight);
@@ -32,10 +38,62 @@
         make.left.equalTo(self.view).with.offset(20);
         make.top.equalTo(self.uidLabel.mas_bottom).with.offset(0);
     }];
+    [self.takePhotoButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.sessionKeyLabel.mas_bottom).with.offset(50);
+        make.centerX.equalTo(self.view);
+    }];
     [self.logoutButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(self.view);
     }];
+    
 }
+
+-(void)showVideoViewController {
+    NSString *modelPath = [[NSBundle mainBundle] pathForResource:KMGFACEMODELNAME ofType:@""];
+    NSData *modelData = [NSData dataWithContentsOfFile:modelPath];
+    int maxFaceCount = 1;
+    int faceSize = 100;
+    int internal = 40;
+    MGDetectROI detectROI = MGDetectROIMake(0, 0, 0, 0);
+    MGFacepp *markManager = [[MGFacepp alloc] initWithModel:modelData
+                                               maxFaceCount:maxFaceCount
+                                              faceppSetting:^(MGFaceppConfig *config) {
+                                                  config.minFaceSize = faceSize;
+                                                  config.interval = internal;
+                                                  config.orientation = 90;
+                                                  config.detectionMode = MGFppDetectionModeTrackingFast;
+                                                  
+                                                  config.detectROI = detectROI;
+                                                  config.pixelFormatType = PixelFormatTypeRGBA;
+                                              }];
+    AVCaptureDevicePosition device = [self getCamera:NO];
+    MGVideoManager *videoManager = [MGVideoManager videoPreset:AVCaptureSessionPreset640x480
+                                                devicePosition:device
+                                                   videoRecord:NO
+                                                    videoSound:NO];
+    MGVideoViewController *videoController = [[MGVideoViewController alloc] initWithNibName:nil bundle:nil];
+    videoController.detectRect = CGRectMake(100, 100, 300, 300);
+    videoController.videoSize = CGSizeMake(480, 640);
+    videoController.videoManager = videoManager;
+    videoController.markManager = markManager;
+    videoController.debug = NO;
+    videoController.pointsNum = 81;
+    videoController.show3D = YES;
+    videoController.faceInfo = YES;
+    videoController.faceCompare = NO;
+    [self.navigationController pushViewController:videoController animated:YES];
+}
+
+- (AVCaptureDevicePosition)getCamera:(BOOL)index{
+    AVCaptureDevicePosition tempVideo;
+    if (index == NO) {
+        tempVideo = AVCaptureDevicePositionFront;
+    }else{
+        tempVideo = AVCaptureDevicePositionBack;
+    }
+    return tempVideo;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -81,5 +139,20 @@
         [[RSLoginService shareInstance] logout];
     }];
     return _logoutButton;
+}
+
+-(UIButton *)takePhotoButton {
+    if (_takePhotoButton) {
+        return _takePhotoButton;
+    }
+    _takePhotoButton = [[UIButton alloc] init];
+    [_takePhotoButton setTitle:@"take photo" forState:UIControlStateNormal];
+    [_takePhotoButton setBackgroundColor:[UIColor greenColor]];
+    @weakify(self);
+    [_takePhotoButton addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
+        @RSStrongify(self);
+        [self showVideoViewController];
+    }];
+    return _takePhotoButton;
 }
 @end

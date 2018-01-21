@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:MGBaseKit/MGBaseKit.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:RealSocial.xcodeproj">
    </FileRef>
    <FileRef
