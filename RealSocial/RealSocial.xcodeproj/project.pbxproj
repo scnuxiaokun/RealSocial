@@ -117,6 +117,7 @@
 		ADAC4EC32014FAF10020DA91 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAC4EC22014FAF10020DA91 /* OpenGLES.framework */; };
 		ADAC4EC52014FB090020DA91 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAC4EC42014FB090020DA91 /* CoreVideo.framework */; };
 		ADAC4EC62014FBC30020DA91 /* MGBaseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAC4EC72014FBC30020DA91 /* MGBaseKit.framework */; };
+		ADAC4ECB201638760020DA91 /* RSImageUploadController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4ECA201638760020DA91 /* RSImageUploadController.m */; };
 		ADDC6A5820130E0F00439D01 /* RSUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A5720130E0F00439D01 /* RSUIViewController.m */; };
 		ADDC6A5B20130E2D00439D01 /* RSUINavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A5A20130E2D00439D01 /* RSUINavigationController.m */; };
 		ADDC6A5E20130E5E00439D01 /* RSChatListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A5D20130E5E00439D01 /* RSChatListViewController.m */; };
@@ -383,6 +384,8 @@
 		ADAC4EC22014FAF10020DA91 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		ADAC4EC42014FB090020DA91 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		ADAC4EC72014FBC30020DA91 /* MGBaseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MGBaseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADAC4EC9201638760020DA91 /* RSImageUploadController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSImageUploadController.h; sourceTree = "<group>"; };
+		ADAC4ECA201638760020DA91 /* RSImageUploadController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSImageUploadController.m; sourceTree = "<group>"; };
 		ADDC6A5620130E0F00439D01 /* RSUIViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSUIViewController.h; sourceTree = "<group>"; };
 		ADDC6A5720130E0F00439D01 /* RSUIViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSUIViewController.m; sourceTree = "<group>"; };
 		ADDC6A5920130E2D00439D01 /* RSUINavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSUINavigationController.h; sourceTree = "<group>"; };
@@ -1044,6 +1047,15 @@
 			path = MGLicenseManagerHelper;
 			sourceTree = "<group>";
 		};
+		ADAC4EC8201638310020DA91 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				ADAC4EC9201638760020DA91 /* RSImageUploadController.h */,
+				ADAC4ECA201638760020DA91 /* RSImageUploadController.m */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
 		ADDC6A5320130D9E00439D01 /* FeedList */ = {
 			isa = PBXGroup;
 			children = (
@@ -1088,6 +1100,7 @@
 		ADDC6A982013506A00439D01 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				ADAC4EC8201638310020DA91 /* Image */,
 				ADDC6AD42014E82E00439D01 /* Video */,
 				ADDC6A992013508C00439D01 /* RSMineViewController.h */,
 				ADDC6A9A2013508C00439D01 /* RSMineViewController.m */,
@@ -1375,6 +1388,7 @@
 				AD3E94C5200F99820019138F /* LOTPathInterpolator.m in Sources */,
 				AD3E94B4200F99820019138F /* LOTShapeTransform.m in Sources */,
 				AD3E9114200F97160019138F /* AppDelegate.m in Sources */,
+				ADAC4ECB201638760020DA91 /* RSImageUploadController.m in Sources */,
 				AD3E94AB200F99820019138F /* LOTShapeCircle.m in Sources */,
 				AD3E94A7200F99820019138F /* LOTAssetGroup.m in Sources */,
 				AD3E94C0200F99820019138F /* LOTPolystarAnimator.m in Sources */,
@@ -1623,7 +1637,7 @@
 					"$(PROJECT_DIR)/RealSocial/Vendors/WXLoginSDK",
 					"$(PROJECT_DIR)/RealSocial/Vendors/FCPPSDK/MGFaceppSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.scnukuncai.RealSocial;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kc.faceDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1652,7 +1666,7 @@
 					"$(PROJECT_DIR)/MGBaseKit/MegviiLicMgr-iOS-SDK",
 					"$(PROJECT_DIR)/RealSocial/Vendors/FCPPSDK/MGFaceppSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.scnukuncai.RealSocial;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kc.faceDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

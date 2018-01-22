@@ -12,12 +12,14 @@
 #import "MCSetModel.h"
 #import "MCSetCell.h"
 #import "MGHeader.h"
+#import "RSImageUploadController.h"
 
 @interface RSMineViewController ()
 @property (nonatomic, strong) UIButton *logoutButton;
 @property (nonatomic, strong) UILabel *sessionKeyLabel;
 @property (nonatomic, strong) UILabel *uidLabel;
 @property (nonatomic, strong) UIButton *takePhotoButton;
+@property (nonatomic, strong) UIButton *uploadPhotoButton;
 @end
 
 @implementation RSMineViewController
@@ -30,6 +32,7 @@
     [self.view addSubview:self.sessionKeyLabel];
     [self.view addSubview:self.logoutButton];
     [self.view addSubview:self.takePhotoButton];
+    [self.view addSubview:self.uploadPhotoButton];
     [self.uidLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view).with.offset(20);
         make.top.equalTo(self.view).with.offset(kNaviBarHeightAndStatusBarHeight);
@@ -42,6 +45,10 @@
         make.top.equalTo(self.sessionKeyLabel.mas_bottom).with.offset(50);
         make.centerX.equalTo(self.view);
     }];
+    [self.uploadPhotoButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.takePhotoButton.mas_bottom).with.offset(50);
+        make.centerX.equalTo(self.view);
+    }];
     [self.logoutButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(self.view);
     }];
@@ -51,12 +58,12 @@
 -(void)showVideoViewController {
     NSString *modelPath = [[NSBundle mainBundle] pathForResource:KMGFACEMODELNAME ofType:@""];
     NSData *modelData = [NSData dataWithContentsOfFile:modelPath];
-    int maxFaceCount = 1;
+    int maxFaceCount = 0;
     int faceSize = 100;
     int internal = 40;
     MGDetectROI detectROI = MGDetectROIMake(0, 0, 0, 0);
     MGFacepp *markManager = [[MGFacepp alloc] initWithModel:modelData
-                                               maxFaceCount:maxFaceCount
+                                               maxFaceCount:1
                                               faceppSetting:^(MGFaceppConfig *config) {
                                                   config.minFaceSize = faceSize;
                                                   config.interval = internal;
@@ -154,5 +161,21 @@
         [self showVideoViewController];
     }];
     return _takePhotoButton;
+}
+
+-(UIButton *)uploadPhotoButton {
+    if (_uploadPhotoButton) {
+        return _uploadPhotoButton;
+    }
+    _uploadPhotoButton = [[UIButton alloc] init];
+    [_uploadPhotoButton setTitle:@"upload photo" forState:UIControlStateNormal];
+    [_uploadPhotoButton setBackgroundColor:[UIColor greenColor]];
+    @weakify(self);
+    [_uploadPhotoButton addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
+        @RSStrongify(self);
+        RSImageUploadController *ctr = [[RSImageUploadController alloc] init];
+        [self.navigationController pushViewController:ctr animated:YES];
+    }];
+    return _uploadPhotoButton;
 }
 @end
