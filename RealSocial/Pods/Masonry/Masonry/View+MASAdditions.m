@@ -87,8 +87,6 @@
     };
 }
 
-#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000) || (__MAC_OS_X_VERSION_MIN_REQUIRED >= 101100)
-
 - (MASViewAttribute *)mas_firstBaseline {
     return [[MASViewAttribute alloc] initWithView:self layoutAttribute:NSLayoutAttributeFirstBaseline];
 }
@@ -96,9 +94,7 @@
     return [[MASViewAttribute alloc] initWithView:self layoutAttribute:NSLayoutAttributeLastBaseline];
 }
 
-#endif
-
-#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000)
+#if TARGET_OS_IPHONE || TARGET_OS_TV
 
 - (MASViewAttribute *)mas_leftMargin {
     return [[MASViewAttribute alloc] initWithView:self layoutAttribute:NSLayoutAttributeLeftMargin];
@@ -132,24 +128,81 @@
     return [[MASViewAttribute alloc] initWithView:self layoutAttribute:NSLayoutAttributeCenterYWithinMargins];
 }
 
-#endif
-
-#if (__IPHONE_OS_VERSION_MAX_ALLOWED >= 110000) || (__TV_OS_VERSION_MAX_ALLOWED >= 110000)
-
 - (MASViewAttribute *)mas_safeAreaLayoutGuide {
-    return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeBottom];
+    if (@available(iOS 11.0, *)) {
+        return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeNotAnAttribute];
+    }
+    return [[MASViewAttribute alloc] initWithView:self item:self layoutAttribute:NSLayoutAttributeNotAnAttribute];
 }
-- (MASViewAttribute *)mas_safeAreaLayoutGuideTop {
-    return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeTop];
+
+- (MASViewAttribute *)mas_safeAreaLayoutGuideLeading {
+    if (@available(iOS 11.0, *)) {
+        return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeLeading];
+    }
+    return [[MASViewAttribute alloc] initWithView:self item:self layoutAttribute:NSLayoutAttributeLeading];
 }
-- (MASViewAttribute *)mas_safeAreaLayoutGuideBottom {
-    return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeBottom];
+
+- (MASViewAttribute *)mas_safeAreaLayoutGuideTrailing {
+    if (@available(iOS 11.0, *)) {
+        return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeTrailing];
+    }
+    return [[MASViewAttribute alloc] initWithView:self item:self layoutAttribute:NSLayoutAttributeTrailing];
 }
+
 - (MASViewAttribute *)mas_safeAreaLayoutGuideLeft {
-    return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeLeft];
+    if (@available(iOS 11.0, *)) {
+        return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeLeft];
+    }
+    return [[MASViewAttribute alloc] initWithView:self item:self layoutAttribute:NSLayoutAttributeLeft];
 }
+
 - (MASViewAttribute *)mas_safeAreaLayoutGuideRight {
-    return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeRight];
+    if (@available(iOS 11.0, *)) {
+        return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeRight];
+    }
+    return [[MASViewAttribute alloc] initWithView:self item:self layoutAttribute:NSLayoutAttributeRight];
+}
+
+- (MASViewAttribute *)mas_safeAreaLayoutGuideTop {
+    if (@available(iOS 11.0, *)) {
+        return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeTop];
+    }
+    return [[MASViewAttribute alloc] initWithView:self item:self layoutAttribute:NSLayoutAttributeTop];
+}
+
+- (MASViewAttribute *)mas_safeAreaLayoutGuideBottom {
+    if (@available(iOS 11.0, *)) {
+        return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeBottom];
+    }
+    return [[MASViewAttribute alloc] initWithView:self item:self layoutAttribute:NSLayoutAttributeBottom];
+}
+
+- (MASViewAttribute *)mas_safeAreaLayoutGuideWidth {
+    if (@available(iOS 11.0, *)) {
+        return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeWidth];
+    }
+    return [[MASViewAttribute alloc] initWithView:self item:self layoutAttribute:NSLayoutAttributeWidth];
+}
+
+- (MASViewAttribute *)mas_safeAreaLayoutGuideHeight {
+    if (@available(iOS 11.0, *)) {
+        return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeHeight];
+    }
+    return [[MASViewAttribute alloc] initWithView:self item:self layoutAttribute:NSLayoutAttributeHeight];
+}
+
+- (MASViewAttribute *)mas_safeAreaLayoutGuideCenterX {
+    if (@available(iOS 11.0, *)) {
+        return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeCenterX];
+    }
+    return [[MASViewAttribute alloc] initWithView:self item:self layoutAttribute:NSLayoutAttributeCenterX];
+}
+
+- (MASViewAttribute *)mas_safeAreaLayoutGuideCenterY {
+    if (@available(iOS 11.0, *)) {
+        return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeCenterY];
+    }
+    return [[MASViewAttribute alloc] initWithView:self item:self layoutAttribute:NSLayoutAttributeCenterX];
 }
 
 #endif
@@ -168,7 +221,7 @@
 
 - (instancetype)mas_closestCommonSuperview:(MAS_VIEW *)view {
     MAS_VIEW *closestCommonSuperview = nil;
-
+    
     MAS_VIEW *secondViewSuperview = view;
     while (!closestCommonSuperview && secondViewSuperview) {
         MAS_VIEW *firstViewSuperview = self;
@@ -184,3 +237,4 @@
 }
 
 @end
+

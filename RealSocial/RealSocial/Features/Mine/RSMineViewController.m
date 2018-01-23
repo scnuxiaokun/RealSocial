@@ -29,7 +29,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"me";
     [self.view addSubview:self.uidLabel];
     [self.view addSubview:self.sessionKeyLabel];
     [self.view addSubview:self.logoutButton];

@@ -24,9 +24,12 @@
     self.view.backgroundColor = [UIColor redColor];
     
     RSUINavigationController *tab1 = [[RSUINavigationController alloc] initWithRootViewController:[[RSChatListViewController alloc] init]];
+    tab1.title = @"chat";
     
     RSUINavigationController *tab2 = [[RSUINavigationController alloc] initWithRootViewController:[[RSFriendListViewController alloc] init]];
+    tab2.title = @"friend";
     RSUINavigationController *tab3 = [[RSUINavigationController alloc] initWithRootViewController:[[RSMineViewController alloc] init]];
+    tab3.title = @"me";
     
     self.viewControllers = @[tab1, tab2, tab3];
 }

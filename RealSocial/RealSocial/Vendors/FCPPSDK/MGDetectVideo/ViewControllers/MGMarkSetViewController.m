@@ -85,7 +85,8 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
     [self hardCode];
     [self.view addSubview:self.button];
     [self.button mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.bottom.equalTo(self.view);
+        make.centerX.equalTo(self.view);
+        make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideBottom);
     }];
 }
 
