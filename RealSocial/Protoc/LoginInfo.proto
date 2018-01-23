@@ -11,4 +11,12 @@ message FriendList {
 message FriendInfo {
     string name = 1;
 }
+message ChatItem {
+    string name = 1;
+    string iconUrl = 2;
+    string text = 3;
+}
+message Chat {
+    repeated ChatItem list = 1;
+}
 

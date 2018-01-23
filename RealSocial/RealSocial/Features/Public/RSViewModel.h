@@ -10,7 +10,10 @@
 #import "RSNetWorkService.h"
 @interface RSViewModel : RSModel
 @property (nonatomic, retain, readonly) RACSubject *updateSignal;
+@property (nonatomic, retain, readonly) RACSubject *completeSignal;
+@property (nonatomic, retain, readonly) RACSubject *errorSignal;
 -(void)loadData;
--(void)loadDataFromLocal;
--(RACSignal *)loadDataFromServer;
+-(void)sendUpdateSignal;
+-(void)sendCompleteSignal;
+-(void)sendErrorSignal:(NSError *)error;
 @end

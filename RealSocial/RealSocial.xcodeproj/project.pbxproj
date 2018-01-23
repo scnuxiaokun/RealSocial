@@ -92,6 +92,10 @@
 		AD68317F20178E290085DDCD /* FacePointSize.glsl in Resources */ = {isa = PBXBuildFile; fileRef = AD68317920178E290085DDCD /* FacePointSize.glsl */; };
 		AD68318020178E290085DDCD /* VideoFrag.glsl in Resources */ = {isa = PBXBuildFile; fileRef = AD68317A20178E290085DDCD /* VideoFrag.glsl */; };
 		AD68318120178E290085DDCD /* VideoVert.glsl in Resources */ = {isa = PBXBuildFile; fileRef = AD68317B20178E290085DDCD /* VideoVert.glsl */; };
+		AD6831842017952F0085DDCD /* RSChatListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6831832017952F0085DDCD /* RSChatListViewModel.m */; };
+		AD683188201795A70085DDCD /* RSChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD683187201795A70085DDCD /* RSChatViewController.m */; };
+		AD68318B201795C70085DDCD /* RSChatViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD68318A201795C70085DDCD /* RSChatViewModel.m */; };
+		AD68318E2017996E0085DDCD /* RSChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD68318D2017996E0085DDCD /* RSChatTableViewCell.m */; };
 		ADAC4E2B2014F0240020DA91 /* libMGFacepp-0.5.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAC4E2A2014F0240020DA91 /* libMGFacepp-0.5.2.a */; };
 		ADAC4E772014F1150020DA91 /* megviifacepp_0_5_2_model in Resources */ = {isa = PBXBuildFile; fileRef = ADAC4E532014F1150020DA91 /* megviifacepp_0_5_2_model */; };
 		ADAC4E782014F1150020DA91 /* GLESUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4E5E2014F1150020DA91 /* GLESUtils.m */; };
@@ -337,6 +341,14 @@
 		AD68317920178E290085DDCD /* FacePointSize.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FacePointSize.glsl; sourceTree = "<group>"; };
 		AD68317A20178E290085DDCD /* VideoFrag.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VideoFrag.glsl; sourceTree = "<group>"; };
 		AD68317B20178E290085DDCD /* VideoVert.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VideoVert.glsl; sourceTree = "<group>"; };
+		AD6831822017952F0085DDCD /* RSChatListViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSChatListViewModel.h; sourceTree = "<group>"; };
+		AD6831832017952F0085DDCD /* RSChatListViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSChatListViewModel.m; sourceTree = "<group>"; };
+		AD683186201795A70085DDCD /* RSChatViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSChatViewController.h; sourceTree = "<group>"; };
+		AD683187201795A70085DDCD /* RSChatViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSChatViewController.m; sourceTree = "<group>"; };
+		AD683189201795C70085DDCD /* RSChatViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSChatViewModel.h; sourceTree = "<group>"; };
+		AD68318A201795C70085DDCD /* RSChatViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSChatViewModel.m; sourceTree = "<group>"; };
+		AD68318C2017996E0085DDCD /* RSChatTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSChatTableViewCell.h; sourceTree = "<group>"; };
+		AD68318D2017996E0085DDCD /* RSChatTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSChatTableViewCell.m; sourceTree = "<group>"; };
 		ADAC4E282014EF1C0020DA91 /* libMGLicMgrSDK-0.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libMGLicMgrSDK-0.3.0.a"; path = "MGBaseKit/MegviiLicMgr-iOS-SDK/libMGLicMgrSDK-0.3.0.a"; sourceTree = "<group>"; };
 		ADAC4E2A2014F0240020DA91 /* libMGFacepp-0.5.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libMGFacepp-0.5.2.a"; path = "RealSocial/Vendors/FCPPSDK/MGFaceppSDK/libMGFacepp-0.5.2.a"; sourceTree = "<group>"; };
 		ADAC4E2D2014F07C0020DA91 /* MGBaseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MGBaseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -620,6 +632,7 @@
 		AD3E9171200F995F0019138F /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				AD683185201795910085DDCD /* Chat */,
 				ADDC6A982013506A00439D01 /* Mine */,
 				ADDC6A7820132FAD00439D01 /* Launch */,
 				ADDC6A5F201310BE00439D01 /* Login */,
@@ -937,6 +950,19 @@
 			path = Shaders;
 			sourceTree = "<group>";
 		};
+		AD683185201795910085DDCD /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				AD683186201795A70085DDCD /* RSChatViewController.h */,
+				AD683187201795A70085DDCD /* RSChatViewController.m */,
+				AD683189201795C70085DDCD /* RSChatViewModel.h */,
+				AD68318A201795C70085DDCD /* RSChatViewModel.m */,
+				AD68318C2017996E0085DDCD /* RSChatTableViewCell.h */,
+				AD68318D2017996E0085DDCD /* RSChatTableViewCell.m */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
 		ADAC4E2E2014F1150020DA91 /* FCPPSDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -1108,6 +1134,8 @@
 			children = (
 				ADDC6A5C20130E5E00439D01 /* RSChatListViewController.h */,
 				ADDC6A5D20130E5E00439D01 /* RSChatListViewController.m */,
+				AD6831822017952F0085DDCD /* RSChatListViewModel.h */,
+				AD6831832017952F0085DDCD /* RSChatListViewModel.m */,
 			);
 			path = ChatList;
 			sourceTree = "<group>";
@@ -1433,6 +1461,7 @@
 				AD3E949B200F99820019138F /* LOTLayerContainer.m in Sources */,
 				ADDC6A71201325ED00439D01 /* RSRequest.m in Sources */,
 				ADAC4EB32014F18C0020DA91 /* MCSetModel.m in Sources */,
+				AD683188201795A70085DDCD /* RSChatViewController.m in Sources */,
 				AD3E9122200F97160019138F /* main.m in Sources */,
 				AD3E94A9200F99820019138F /* LOTLayerGroup.m in Sources */,
 				AD3E94C5200F99820019138F /* LOTPathInterpolator.m in Sources */,
@@ -1443,6 +1472,7 @@
 				AD3E94A7200F99820019138F /* LOTAssetGroup.m in Sources */,
 				AD3E94C0200F99820019138F /* LOTPolystarAnimator.m in Sources */,
 				ADAC4EB62014F18C0020DA91 /* TextModel.m in Sources */,
+				AD6831842017952F0085DDCD /* RSChatListViewModel.m in Sources */,
 				AD3E94A0200F99820019138F /* LOTBezierPath.m in Sources */,
 				AD3E94C9200F99820019138F /* LOTValueInterpolator.m in Sources */,
 				AD3E94B0200F99820019138F /* LOTShapeRectangle.m in Sources */,
@@ -1491,8 +1521,10 @@
 				AD3E94A1200F99820019138F /* LOTRadialGradientLayer.m in Sources */,
 				AD3E94B8200F99820019138F /* LOTAnimationCache.m in Sources */,
 				AD3E94BF200F99820019138F /* LOTPolygonAnimator.m in Sources */,
+				AD68318E2017996E0085DDCD /* RSChatTableViewCell.m in Sources */,
 				AD3E949D200F99820019138F /* LOTBezierData.m in Sources */,
 				ADAC4EA82014F18C0020DA91 /* MGFileManager.m in Sources */,
+				AD68318B201795C70085DDCD /* RSChatViewModel.m in Sources */,
 				AD3E956A200FA0070019138F /* RSModel.m in Sources */,
 				AD3E9567200F9E6B0019138F /* RSLoginInfoModel.m in Sources */,
 				AD3E949C200F99820019138F /* LOTMaskContainer.m in Sources */,

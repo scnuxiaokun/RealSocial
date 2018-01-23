@@ -7,7 +7,7 @@
 //
 
 #import "RSViewModel.h"
-@interface RSFriendListViewModelItem : RSViewModel
+@interface RSFriendListItemViewModel : RSViewModel
 @property (nonatomic, strong) NSString *name;
 @end
 @interface RSFriendListViewModel : RSViewModel

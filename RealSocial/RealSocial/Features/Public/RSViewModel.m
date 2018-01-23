@@ -14,6 +14,8 @@
     self = [super init];
     if (self) {
         _updateSignal = [RACReplaySubject subject];
+        _completeSignal = [RACReplaySubject subject];
+        _errorSignal = [RACReplaySubject subject];
     }
     return self;
 }
@@ -22,8 +24,20 @@
 {
     if (self = [super initWithCoder:aDecoder]) {
         _updateSignal = [RACReplaySubject subject];
+        _completeSignal = [RACReplaySubject subject];
+        _errorSignal = [RACReplaySubject subject];
     }
     return self;
+}
+
+-(void)sendUpdateSignal {
+    [_updateSignal sendNext:@(YES)];
+}
+-(void)sendCompleteSignal {
+    [_completeSignal sendNext:@(YES)];
+}
+-(void)sendErrorSignal:(NSError *)error {
+    [_errorSignal sendNext:error];
 }
 
 //-(RACSignal *)loadData {

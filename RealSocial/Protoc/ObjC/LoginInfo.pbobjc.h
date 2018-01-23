@@ -27,6 +27,7 @@
 
 CF_EXTERN_C_BEGIN
 
+@class ChatItem;
 @class FriendInfo;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -84,6 +85,38 @@ typedef GPB_ENUM(FriendInfo_FieldNumber) {
 @interface FriendInfo : GPBMessage
 
 @property(nonatomic, readwrite, copy, null_resettable) NSString *name;
+
+@end
+
+#pragma mark - ChatItem
+
+typedef GPB_ENUM(ChatItem_FieldNumber) {
+  ChatItem_FieldNumber_Name = 1,
+  ChatItem_FieldNumber_IconURL = 2,
+  ChatItem_FieldNumber_Text = 3,
+};
+
+@interface ChatItem : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *name;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *iconURL;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *text;
+
+@end
+
+#pragma mark - Chat
+
+typedef GPB_ENUM(Chat_FieldNumber) {
+  Chat_FieldNumber_ListArray = 1,
+};
+
+@interface Chat : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<ChatItem*> *listArray;
+/** The number of items in @c listArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger listArray_Count;
 
 @end
 

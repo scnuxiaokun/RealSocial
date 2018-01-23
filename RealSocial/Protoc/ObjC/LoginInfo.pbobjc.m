@@ -187,6 +187,119 @@ typedef struct FriendInfo__storage_ {
 
 @end
 
+#pragma mark - ChatItem
+
+@implementation ChatItem
+
+@dynamic name;
+@dynamic iconURL;
+@dynamic text;
+
+typedef struct ChatItem__storage_ {
+  uint32_t _has_storage_[1];
+  NSString *name;
+  NSString *iconURL;
+  NSString *text;
+} ChatItem__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "name",
+        .dataTypeSpecific.className = NULL,
+        .number = ChatItem_FieldNumber_Name,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(ChatItem__storage_, name),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "iconURL",
+        .dataTypeSpecific.className = NULL,
+        .number = ChatItem_FieldNumber_IconURL,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(ChatItem__storage_, iconURL),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "text",
+        .dataTypeSpecific.className = NULL,
+        .number = ChatItem_FieldNumber_Text,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(ChatItem__storage_, text),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[ChatItem class]
+                                     rootClass:[LoginInfoRoot class]
+                                          file:LoginInfoRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(ChatItem__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\001\002\005!!\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - Chat
+
+@implementation Chat
+
+@dynamic listArray, listArray_Count;
+
+typedef struct Chat__storage_ {
+  uint32_t _has_storage_[1];
+  NSMutableArray *listArray;
+} Chat__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "listArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(ChatItem),
+        .number = Chat_FieldNumber_ListArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(Chat__storage_, listArray),
+        .flags = GPBFieldRepeated,
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[Chat class]
+                                     rootClass:[LoginInfoRoot class]
+                                          file:LoginInfoRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(Chat__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
 
 #pragma clang diagnostic pop
 

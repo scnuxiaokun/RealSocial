@@ -54,5 +54,4 @@ pod 'BlocksKit'
 #]
 pod 'WechatOpenSDK'
 pod 'Protobuf'
-#pod 'WCDB'
-end
+<UITableViewDelegate, UITableViewDataSource>end

@@ -1,23 +1,23 @@
 //
-//  RSFriendListViewController.m
+//  RSChatViewController.m
 //  RealSocial
 //
-//  Created by kuncai on 2018/1/22.
+//  Created by kuncai on 2018/1/24.
 //  Copyright © 2018年 scnukuncai. All rights reserved.
 //
 
-#import "RSFriendListViewController.h"
-#import "RSFriendListViewModel.h"
+#import "RSChatViewController.h"
 #import <MJRefresh/MJRefresh.h>
 #import <BlocksKit/BlocksKit.h>
-#import "RSChatViewController.h"
+#import "RSChatViewModel.h"
+#import "RSChatTableViewCell.h"
 
-@interface RSFriendListViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface RSChatViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) RSFriendListViewModel *viewModel;
+@property (nonatomic, strong) RSChatViewModel *viewModel;
 @end
 
-@implementation RSFriendListViewController
+@implementation RSChatViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -43,14 +43,13 @@
     // Pass the selected object to the new view controller.
 }
 */
--(RSFriendListViewModel *)viewModel {
+-(RSChatViewModel *)viewModel {
     if (_viewModel) {
         return _viewModel;
     }
-    _viewModel = [[RSFriendListViewModel alloc] init];
+    _viewModel = [[RSChatViewModel alloc] init];
     return _viewModel;
 }
-
 -(UITableView *)tableView {
     if (_tableView) {
         return _tableView;
@@ -74,29 +73,25 @@
     }];
     return _tableView;
 }
-
+#pragma tableView delegate
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.viewModel.listData count];
 }
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *indentifier = @"RSFriendListViewCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@""];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:indentifier];
-    }
-    RSFriendListItemViewModel *itemViewModel = [self.viewModel.listData objectOrNilAtIndex:indexPath.row];
-    if (itemViewModel) {
-        cell.textLabel.text = itemViewModel.name;
-    }
-    return cell;
-}
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    RSChatViewController *ctr = [[RSChatViewController alloc] init];
-    ctr.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:ctr animated:YES];
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 60;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *indentifier = @"RSChatViewCell";
+    RSChatTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@""];
+    if (!cell) {
+        cell = [[RSChatTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:indentifier];
+    }
+    RSChatItemViewModel *itemViewModel = [self.viewModel.listData objectOrNilAtIndex:indexPath.row];
+    cell.viewModel = itemViewModel;
+    return cell;
 }
 @end
