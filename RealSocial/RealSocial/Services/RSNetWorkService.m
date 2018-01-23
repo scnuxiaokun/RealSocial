@@ -17,7 +17,7 @@
     return nil;
 }
 +(RACSignal *)sendDebugRequest:(RSRequest *)request {
-    RACSubject *signal = [RACSubject subject];
+    RACReplaySubject *signal = [RACReplaySubject subject];
     dispatch_async(YYDispatchQueueGetForQOS(NSQualityOfServiceBackground), ^{
         [NSThread sleepForTimeInterval:0.1];
         RSResponse *response = [RSResponse new];

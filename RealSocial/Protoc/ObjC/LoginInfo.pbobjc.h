@@ -27,6 +27,8 @@
 
 CF_EXTERN_C_BEGIN
 
+@class FriendInfo;
+
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - LoginInfoRoot
@@ -56,6 +58,32 @@ typedef GPB_ENUM(LoginInfo_FieldNumber) {
 @property(nonatomic, readwrite, copy, null_resettable) NSString *sessionKey;
 
 @property(nonatomic, readwrite, copy, null_resettable) NSString *wxuid;
+
+@end
+
+#pragma mark - FriendList
+
+typedef GPB_ENUM(FriendList_FieldNumber) {
+  FriendList_FieldNumber_ListArray = 1,
+};
+
+@interface FriendList : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<FriendInfo*> *listArray;
+/** The number of items in @c listArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger listArray_Count;
+
+@end
+
+#pragma mark - FriendInfo
+
+typedef GPB_ENUM(FriendInfo_FieldNumber) {
+  FriendInfo_FieldNumber_Name = 1,
+};
+
+@interface FriendInfo : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *name;
 
 @end
 

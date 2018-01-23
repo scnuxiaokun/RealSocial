@@ -101,6 +101,92 @@ typedef struct LoginInfo__storage_ {
 
 @end
 
+#pragma mark - FriendList
+
+@implementation FriendList
+
+@dynamic listArray, listArray_Count;
+
+typedef struct FriendList__storage_ {
+  uint32_t _has_storage_[1];
+  NSMutableArray *listArray;
+} FriendList__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "listArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(FriendInfo),
+        .number = FriendList_FieldNumber_ListArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(FriendList__storage_, listArray),
+        .flags = GPBFieldRepeated,
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[FriendList class]
+                                     rootClass:[LoginInfoRoot class]
+                                          file:LoginInfoRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(FriendList__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - FriendInfo
+
+@implementation FriendInfo
+
+@dynamic name;
+
+typedef struct FriendInfo__storage_ {
+  uint32_t _has_storage_[1];
+  NSString *name;
+} FriendInfo__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "name",
+        .dataTypeSpecific.className = NULL,
+        .number = FriendInfo_FieldNumber_Name,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(FriendInfo__storage_, name),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[FriendInfo class]
+                                     rootClass:[LoginInfoRoot class]
+                                          file:LoginInfoRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(FriendInfo__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
 
 #pragma clang diagnostic pop
 

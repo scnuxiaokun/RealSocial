@@ -13,6 +13,8 @@
 #import "MCSetCell.h"
 #import "MGHeader.h"
 #import "RSImageUploadController.h"
+#import "MGFaceLicenseHandle.h"
+#import "MGMarkSetViewController.h"
 
 @interface RSMineViewController ()
 @property (nonatomic, strong) UIButton *logoutButton;
@@ -53,9 +55,29 @@
         make.center.equalTo(self.view);
     }];
     
+    /** 进行联网授权版本判断，联网授权就需要进行网络授权 */
+    BOOL needLicense = [MGFaceLicenseHandle getNeedNetLicense];
+    
+    if (needLicense) {
+//        self.videoBtn.userInteractionEnabled = NO;
+        [MGFaceLicenseHandle licenseForNetwokrFinish:^(bool License, NSDate *sdkDate) {
+            if (!License) {
+                NSLog(@"联网授权失败 ！！！");
+            } else {
+                NSLog(@"联网授权成功");
+//                self.videoBtn.userInteractionEnabled = YES;
+            }
+        }];
+    } else {
+        NSLog(@"SDK 为非联网授权版本！");
+    }
 }
 
 -(void)showVideoViewController {
+    MGMarkSetViewController *ctr =  [[MGMarkSetViewController alloc] initWithNibName:nil bundle:nil];
+    ctr.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:ctr animated:YES];
+    return;
     NSString *modelPath = [[NSBundle mainBundle] pathForResource:KMGFACEMODELNAME ofType:@""];
     NSData *modelData = [NSData dataWithContentsOfFile:modelPath];
     int maxFaceCount = 0;
@@ -88,7 +110,9 @@
     videoController.show3D = YES;
     videoController.faceInfo = YES;
     videoController.faceCompare = NO;
-    [self.navigationController pushViewController:videoController animated:YES];
+    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:videoController];
+    [self.navigationController presentViewController:navi animated:YES completion:nil];
+//    [self.navigationController pushViewController:videoController animated:YES];
 }
 
 - (AVCaptureDevicePosition)getCamera:(BOOL)index{

@@ -20,9 +20,9 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
 
 @interface MGMarkSetViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (strong, nonatomic) UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *dataArray;
-
+@property (nonatomic, strong) UIButton *button;
 @end
 
 @implementation MGMarkSetViewController
@@ -77,27 +77,33 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    [self.view addSubview:self.collectionView];
+    [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
     [self creatView];
     [self hardCode];
+    [self.view addSubview:self.button];
+    [self.button mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.bottom.equalTo(self.view);
+    }];
 }
 
 - (void)creatView{
     self.title = NSLocalizedString(@"icon_title19", nil);
     
-    CGFloat cellWidth = (WIN_WIDTH-80)/3;
-    CGFloat cellHight = cellWidth*0.9;
+    
     
     [self.collectionView setBackgroundColor:[UIColor clearColor]];
     [self.collectionView registerNib:[UINib nibWithNibName:@"MCSetCell" bundle:nil]
           forCellWithReuseIdentifier:cellIdentifier];
     
-    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    flowLayout.minimumLineSpacing = 0;
-    flowLayout.minimumInteritemSpacing = 0;
-    flowLayout.itemSize = CGSizeMake(cellWidth, cellHight);
-    
-    self.collectionView.collectionViewLayout = flowLayout;
+//    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+//    flowLayout.minimumLineSpacing = 0;
+//    flowLayout.minimumInteritemSpacing = 0;
+//    flowLayout.itemSize = CGSizeMake(cellWidth, cellHight);
+//
+//    self.collectionView.collectionViewLayout = flowLayout;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -105,7 +111,51 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
     // Dispose of any resources that can be recreated.
 }
 
+-(UIButton *)button {
+    if (_button) {
+        return _button;
+    }
+    _button = [[UIButton alloc] init];
+    [_button setTitle:@"show video" forState:UIControlStateNormal];
+    [_button setBackgroundColor:[UIColor greenColor]];
+    @weakify(self);
+    [_button addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
+        @RSStrongify(self);
+        AVAuthorizationStatus authStatus =  [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+        if (authStatus == AVAuthorizationStatusRestricted || authStatus ==AVAuthorizationStatusDenied) {
+            [self showAVAuthorizationStatusDeniedAlert];
+        } else if (authStatus == AVAuthorizationStatusNotDetermined) {
+            [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+                if (granted) {
+                    [self showDetectViewController];
+                } else {
+                    [self showAVAuthorizationStatusDeniedAlert];
+                }
+            }];
+        } else {
+            [self showDetectViewController];
+        }
+    }];
+    return _button;
+}
 
+-(UICollectionView *)collectionView {
+    if (_collectionView) {
+        return _collectionView;
+    }
+    CGFloat cellWidth = (WIN_WIDTH-80)/3;
+    CGFloat cellHight = cellWidth*0.9;
+    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    flowLayout.minimumLineSpacing = 0;
+    flowLayout.minimumInteritemSpacing = 0;
+    flowLayout.itemSize = CGSizeMake(cellWidth, cellHight);
+    
+    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 0) collectionViewLayout:flowLayout];
+    _collectionView.delegate = self;
+    _collectionView.dataSource = self;
+    
+    return _collectionView;
+}
 #pragma mark -
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return self.dataArray.count;

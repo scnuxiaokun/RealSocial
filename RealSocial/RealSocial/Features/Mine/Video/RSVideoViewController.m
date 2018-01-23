@@ -17,6 +17,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    // 1 创建session
+    AVCaptureSession *session = [AVCaptureSession new];
+    //设置session显示分辨率
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+        [session setSessionPreset:AVCaptureSessionPreset640x480];
+    else
+        [session setSessionPreset:AVCaptureSessionPresetPhoto];
+    
 }
 
 - (void)didReceiveMemoryWarning {

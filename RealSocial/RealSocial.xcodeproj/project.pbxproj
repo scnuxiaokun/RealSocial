@@ -86,6 +86,12 @@
 		AD3E956A200FA0070019138F /* RSModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3E9569200FA0070019138F /* RSModel.m */; };
 		AD3E956C2010C47D0019138F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD3E956B2010C47D0019138F /* Images.xcassets */; };
 		AD3E956F2011B8310019138F /* RSUITabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3E956E2011B8310019138F /* RSUITabBarController.m */; };
+		AD68317C20178E290085DDCD /* Face3DFragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = AD68317620178E290085DDCD /* Face3DFragment.glsl */; };
+		AD68317D20178E290085DDCD /* Face3DVertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = AD68317720178E290085DDCD /* Face3DVertex.glsl */; };
+		AD68317E20178E290085DDCD /* FacePointColor.glsl in Resources */ = {isa = PBXBuildFile; fileRef = AD68317820178E290085DDCD /* FacePointColor.glsl */; };
+		AD68317F20178E290085DDCD /* FacePointSize.glsl in Resources */ = {isa = PBXBuildFile; fileRef = AD68317920178E290085DDCD /* FacePointSize.glsl */; };
+		AD68318020178E290085DDCD /* VideoFrag.glsl in Resources */ = {isa = PBXBuildFile; fileRef = AD68317A20178E290085DDCD /* VideoFrag.glsl */; };
+		AD68318120178E290085DDCD /* VideoVert.glsl in Resources */ = {isa = PBXBuildFile; fileRef = AD68317B20178E290085DDCD /* VideoVert.glsl */; };
 		ADAC4E2B2014F0240020DA91 /* libMGFacepp-0.5.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAC4E2A2014F0240020DA91 /* libMGFacepp-0.5.2.a */; };
 		ADAC4E772014F1150020DA91 /* megviifacepp_0_5_2_model in Resources */ = {isa = PBXBuildFile; fileRef = ADAC4E532014F1150020DA91 /* megviifacepp_0_5_2_model */; };
 		ADAC4E782014F1150020DA91 /* GLESUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4E5E2014F1150020DA91 /* GLESUtils.m */; };
@@ -118,6 +124,11 @@
 		ADAC4EC52014FB090020DA91 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAC4EC42014FB090020DA91 /* CoreVideo.framework */; };
 		ADAC4EC62014FBC30020DA91 /* MGBaseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAC4EC72014FBC30020DA91 /* MGBaseKit.framework */; };
 		ADAC4ECB201638760020DA91 /* RSImageUploadController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4ECA201638760020DA91 /* RSImageUploadController.m */; };
+		ADAC4ECE20163E590020DA91 /* RSFriendListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4ECD20163E590020DA91 /* RSFriendListViewController.m */; };
+		ADAC4ED12016422E0020DA91 /* RSViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4ED02016422E0020DA91 /* RSViewModel.m */; };
+		ADAC4ED4201643460020DA91 /* RSFriendListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4ED3201643460020DA91 /* RSFriendListViewModel.m */; };
+		ADAC4ED7201649B00020DA91 /* LoginInfo.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4ED5201649B00020DA91 /* LoginInfo.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		ADAC4ED920178B7F0020DA91 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADAC4ED820178B7D0020DA91 /* Localizable.strings */; };
 		ADDC6A5820130E0F00439D01 /* RSUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A5720130E0F00439D01 /* RSUIViewController.m */; };
 		ADDC6A5B20130E2D00439D01 /* RSUINavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A5A20130E2D00439D01 /* RSUINavigationController.m */; };
 		ADDC6A5E20130E5E00439D01 /* RSChatListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A5D20130E5E00439D01 /* RSChatListViewController.m */; };
@@ -133,7 +144,6 @@
 		ADDC6A9720134A1600439D01 /* RSResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A9620134A1600439D01 /* RSResponse.m */; };
 		ADDC6A9B2013508C00439D01 /* RSMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A9A2013508C00439D01 /* RSMineViewController.m */; };
 		ADDC6AA1201352A800439D01 /* LoginInfo.proto in Resources */ = {isa = PBXBuildFile; fileRef = ADDC6A9D201352A800439D01 /* LoginInfo.proto */; };
-		ADDC6AA2201352A800439D01 /* LoginInfo.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6AA0201352A800439D01 /* LoginInfo.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		ADDC6AD72014E84600439D01 /* RSVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6AD62014E84600439D01 /* RSVideoViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -321,6 +331,12 @@
 		AD3E956B2010C47D0019138F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		AD3E956D2011B8310019138F /* RSUITabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSUITabBarController.h; sourceTree = "<group>"; };
 		AD3E956E2011B8310019138F /* RSUITabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSUITabBarController.m; sourceTree = "<group>"; };
+		AD68317620178E290085DDCD /* Face3DFragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Face3DFragment.glsl; sourceTree = "<group>"; };
+		AD68317720178E290085DDCD /* Face3DVertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Face3DVertex.glsl; sourceTree = "<group>"; };
+		AD68317820178E290085DDCD /* FacePointColor.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FacePointColor.glsl; sourceTree = "<group>"; };
+		AD68317920178E290085DDCD /* FacePointSize.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FacePointSize.glsl; sourceTree = "<group>"; };
+		AD68317A20178E290085DDCD /* VideoFrag.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VideoFrag.glsl; sourceTree = "<group>"; };
+		AD68317B20178E290085DDCD /* VideoVert.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VideoVert.glsl; sourceTree = "<group>"; };
 		ADAC4E282014EF1C0020DA91 /* libMGLicMgrSDK-0.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libMGLicMgrSDK-0.3.0.a"; path = "MGBaseKit/MegviiLicMgr-iOS-SDK/libMGLicMgrSDK-0.3.0.a"; sourceTree = "<group>"; };
 		ADAC4E2A2014F0240020DA91 /* libMGFacepp-0.5.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libMGFacepp-0.5.2.a"; path = "RealSocial/Vendors/FCPPSDK/MGFaceppSDK/libMGFacepp-0.5.2.a"; sourceTree = "<group>"; };
 		ADAC4E2D2014F07C0020DA91 /* MGBaseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MGBaseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -386,6 +402,15 @@
 		ADAC4EC72014FBC30020DA91 /* MGBaseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MGBaseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADAC4EC9201638760020DA91 /* RSImageUploadController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSImageUploadController.h; sourceTree = "<group>"; };
 		ADAC4ECA201638760020DA91 /* RSImageUploadController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSImageUploadController.m; sourceTree = "<group>"; };
+		ADAC4ECC20163E590020DA91 /* RSFriendListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSFriendListViewController.h; sourceTree = "<group>"; };
+		ADAC4ECD20163E590020DA91 /* RSFriendListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSFriendListViewController.m; sourceTree = "<group>"; };
+		ADAC4ECF2016422E0020DA91 /* RSViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSViewModel.h; sourceTree = "<group>"; };
+		ADAC4ED02016422E0020DA91 /* RSViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSViewModel.m; sourceTree = "<group>"; };
+		ADAC4ED2201643460020DA91 /* RSFriendListViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSFriendListViewModel.h; sourceTree = "<group>"; };
+		ADAC4ED3201643460020DA91 /* RSFriendListViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSFriendListViewModel.m; sourceTree = "<group>"; };
+		ADAC4ED5201649B00020DA91 /* LoginInfo.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginInfo.pbobjc.m; sourceTree = "<group>"; };
+		ADAC4ED6201649B00020DA91 /* LoginInfo.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginInfo.pbobjc.h; sourceTree = "<group>"; };
+		ADAC4ED820178B7D0020DA91 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		ADDC6A5620130E0F00439D01 /* RSUIViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSUIViewController.h; sourceTree = "<group>"; };
 		ADDC6A5720130E0F00439D01 /* RSUIViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSUIViewController.m; sourceTree = "<group>"; };
 		ADDC6A5920130E2D00439D01 /* RSUINavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSUINavigationController.h; sourceTree = "<group>"; };
@@ -417,8 +442,6 @@
 		ADDC6A992013508C00439D01 /* RSMineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSMineViewController.h; sourceTree = "<group>"; };
 		ADDC6A9A2013508C00439D01 /* RSMineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSMineViewController.m; sourceTree = "<group>"; };
 		ADDC6A9D201352A800439D01 /* LoginInfo.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LoginInfo.proto; sourceTree = "<group>"; };
-		ADDC6A9F201352A800439D01 /* LoginInfo.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginInfo.pbobjc.h; sourceTree = "<group>"; };
-		ADDC6AA0201352A800439D01 /* LoginInfo.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginInfo.pbobjc.m; sourceTree = "<group>"; };
 		ADDC6AD52014E84600439D01 /* RSVideoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSVideoViewController.h; sourceTree = "<group>"; };
 		ADDC6AD62014E84600439D01 /* RSVideoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSVideoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -468,6 +491,7 @@
 		AD3E9106200F97160019138F = {
 			isa = PBXGroup;
 			children = (
+				ADAC4ED820178B7D0020DA91 /* Localizable.strings */,
 				ADDC6A9C201352A800439D01 /* Protoc */,
 				AD3E9558200F9B100019138F /* RealSocial-PrefixHeader.pch */,
 				AD3E9111200F97160019138F /* RealSocial */,
@@ -620,6 +644,8 @@
 				ADDC6A5720130E0F00439D01 /* RSUIViewController.m */,
 				ADDC6A5920130E2D00439D01 /* RSUINavigationController.h */,
 				ADDC6A5A20130E2D00439D01 /* RSUINavigationController.m */,
+				ADAC4ECF2016422E0020DA91 /* RSViewModel.h */,
+				ADAC4ED02016422E0020DA91 /* RSViewModel.m */,
 			);
 			path = Public;
 			sourceTree = "<group>";
@@ -898,9 +924,23 @@
 			path = SafeKit;
 			sourceTree = "<group>";
 		};
+		AD68317520178E290085DDCD /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				AD68317620178E290085DDCD /* Face3DFragment.glsl */,
+				AD68317720178E290085DDCD /* Face3DVertex.glsl */,
+				AD68317820178E290085DDCD /* FacePointColor.glsl */,
+				AD68317920178E290085DDCD /* FacePointSize.glsl */,
+				AD68317A20178E290085DDCD /* VideoFrag.glsl */,
+				AD68317B20178E290085DDCD /* VideoVert.glsl */,
+			);
+			path = Shaders;
+			sourceTree = "<group>";
+		};
 		ADAC4E2E2014F1150020DA91 /* FCPPSDK */ = {
 			isa = PBXGroup;
 			children = (
+				AD68317520178E290085DDCD /* Shaders */,
 				ADAC4E7F2014F18C0020DA91 /* MGDetectPicture */,
 				ADAC4E822014F18C0020DA91 /* MGDetectVideo */,
 				ADAC4E7B2014F18B0020DA91 /* MGHelp */,
@@ -1075,6 +1115,10 @@
 		ADDC6A5520130D9E00439D01 /* FriendList */ = {
 			isa = PBXGroup;
 			children = (
+				ADAC4ECC20163E590020DA91 /* RSFriendListViewController.h */,
+				ADAC4ECD20163E590020DA91 /* RSFriendListViewController.m */,
+				ADAC4ED2201643460020DA91 /* RSFriendListViewModel.h */,
+				ADAC4ED3201643460020DA91 /* RSFriendListViewModel.m */,
 			);
 			path = FriendList;
 			sourceTree = "<group>";
@@ -1120,8 +1164,8 @@
 		ADDC6A9E201352A800439D01 /* ObjC */ = {
 			isa = PBXGroup;
 			children = (
-				ADDC6A9F201352A800439D01 /* LoginInfo.pbobjc.h */,
-				ADDC6AA0201352A800439D01 /* LoginInfo.pbobjc.m */,
+				ADAC4ED6201649B00020DA91 /* LoginInfo.pbobjc.h */,
+				ADAC4ED5201649B00020DA91 /* LoginInfo.pbobjc.m */,
 			);
 			path = ObjC;
 			sourceTree = "<group>";
@@ -1264,15 +1308,22 @@
 				ADDC6AA1201352A800439D01 /* LoginInfo.proto in Resources */,
 				AD3E911F200F97160019138F /* LaunchScreen.storyboard in Resources */,
 				ADAC4EAB2014F18C0020DA91 /* BaseCell.xib in Resources */,
+				AD68318120178E290085DDCD /* VideoVert.glsl in Resources */,
+				AD68317F20178E290085DDCD /* FacePointSize.glsl in Resources */,
 				AD3E911C200F97160019138F /* Assets.xcassets in Resources */,
 				ADAC4EAE2014F18C0020DA91 /* MCSetCell.xib in Resources */,
 				ADAC4EB12014F18C0020DA91 /* TextCell.xib in Resources */,
+				AD68318020178E290085DDCD /* VideoFrag.glsl in Resources */,
 				AD3E956C2010C47D0019138F /* Images.xcassets in Resources */,
 				ADAC4E772014F1150020DA91 /* megviifacepp_0_5_2_model in Resources */,
 				ADAC4EB82014F18C0020DA91 /* MGFaceListViewController.storyboard in Resources */,
+				AD68317D20178E290085DDCD /* Face3DVertex.glsl in Resources */,
+				ADAC4ED920178B7F0020DA91 /* Localizable.strings in Resources */,
+				AD68317E20178E290085DDCD /* FacePointColor.glsl in Resources */,
 				AD3E9499200F99820019138F /* .gitkeep in Resources */,
 				AD3E911A200F97160019138F /* Main.storyboard in Resources */,
 				AD3E9498200F99820019138F /* .gitkeep in Resources */,
+				AD68317C20178E290085DDCD /* Face3DFragment.glsl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1362,7 +1413,6 @@
 				ADAC4EB52014F18C0020DA91 /* MGFaceModelArray.m in Sources */,
 				ADDC6A9720134A1600439D01 /* RSResponse.m in Sources */,
 				AD3E94BB200F99820019138F /* LOTCacheProvider.m in Sources */,
-				ADDC6AA2201352A800439D01 /* LoginInfo.pbobjc.m in Sources */,
 				ADDC6A9B2013508C00439D01 /* RSMineViewController.m in Sources */,
 				ADAC4EB92014F18C0020DA91 /* MGMarkSetViewController.m in Sources */,
 				AD3E94CE200F99820019138F /* LOTGradientFillRender.m in Sources */,
@@ -1396,6 +1446,7 @@
 				AD3E94A0200F99820019138F /* LOTBezierPath.m in Sources */,
 				AD3E94C9200F99820019138F /* LOTValueInterpolator.m in Sources */,
 				AD3E94B0200F99820019138F /* LOTShapeRectangle.m in Sources */,
+				ADAC4ED12016422E0020DA91 /* RSViewModel.m in Sources */,
 				AD3E94B5200F99820019138F /* LOTShapeTrimPath.m in Sources */,
 				AD3E94B6200F99820019138F /* LOTAnimatedControl.m in Sources */,
 				AD3E94BD200F99820019138F /* LOTCircleAnimator.m in Sources */,
@@ -1424,6 +1475,7 @@
 				AD3E94BC200F99820019138F /* LOTComposition.m in Sources */,
 				AD3E94C2200F99820019138F /* LOTArrayInterpolator.m in Sources */,
 				AD3E94AA200F99820019138F /* LOTMask.m in Sources */,
+				ADAC4ED7201649B00020DA91 /* LoginInfo.pbobjc.m in Sources */,
 				AD3E94D0200F99820019138F /* LOTRepeaterRenderer.m in Sources */,
 				ADDC6A7420132AA500439D01 /* RSLaunchService.m in Sources */,
 				AD3E94A6200F99820019138F /* LOTAsset.m in Sources */,
@@ -1445,8 +1497,10 @@
 				AD3E9567200F9E6B0019138F /* RSLoginInfoModel.m in Sources */,
 				AD3E949C200F99820019138F /* LOTMaskContainer.m in Sources */,
 				ADDC6A6B20131AB600439D01 /* RSUtils.m in Sources */,
+				ADAC4ECE20163E590020DA91 /* RSFriendListViewController.m in Sources */,
 				AD3E94E6200F99820019138F /* NSMutableArray+SafeKit.m in Sources */,
 				ADAC4EB22014F18C0020DA91 /* BaseModel.m in Sources */,
+				ADAC4ED4201643460020DA91 /* RSFriendListViewModel.m in Sources */,
 				AD3E94AC200F99820019138F /* LOTShapeFill.m in Sources */,
 				AD3E949F200F99820019138F /* CGGeometry+LOTAdditions.m in Sources */,
 				AD3E94A5200F99820019138F /* UIColor.m in Sources */,

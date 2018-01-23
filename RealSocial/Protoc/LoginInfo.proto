@@ -4,3 +4,11 @@ message LoginInfo {
     string sessionKey = 1;
     string wxuid = 2;
 }
+
+message FriendList {
+    repeated FriendInfo list = 1;
+}
+message FriendInfo {
+    string name = 1;
+}
+
