@@ -15,8 +15,8 @@ pod 'ReactiveObjC'
 
 # Remove 64-bit build architecture from Pods targets
 pod 'Masonry'
-pod 'FMDB'
-pod 'FMDB/SQLCipher'
+#pod 'FMDB'
+#pod 'FMDB/SQLCipher'
 pod 'MBProgressHUD'
 pod 'CocoaSecurity'
 pod 'SDWebImage'
@@ -54,4 +54,5 @@ pod 'BlocksKit'
 #]
 pod 'WechatOpenSDK'
 pod 'Protobuf'
-<UITableViewDelegate, UITableViewDataSource>end
+pod 'WCDB'
+end

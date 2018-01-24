@@ -96,6 +96,7 @@
 		AD683188201795A70085DDCD /* RSChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD683187201795A70085DDCD /* RSChatViewController.m */; };
 		AD68318B201795C70085DDCD /* RSChatViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD68318A201795C70085DDCD /* RSChatViewModel.m */; };
 		AD68318E2017996E0085DDCD /* RSChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD68318D2017996E0085DDCD /* RSChatTableViewCell.m */; };
+		AD87FDA42018D14B006C8A96 /* UIImage+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = AD87FDA32018D14B006C8A96 /* UIImage+Util.m */; };
 		ADAC4E2B2014F0240020DA91 /* libMGFacepp-0.5.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAC4E2A2014F0240020DA91 /* libMGFacepp-0.5.2.a */; };
 		ADAC4E772014F1150020DA91 /* megviifacepp_0_5_2_model in Resources */ = {isa = PBXBuildFile; fileRef = ADAC4E532014F1150020DA91 /* megviifacepp_0_5_2_model */; };
 		ADAC4E782014F1150020DA91 /* GLESUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4E5E2014F1150020DA91 /* GLESUtils.m */; };
@@ -349,6 +350,8 @@
 		AD68318A201795C70085DDCD /* RSChatViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSChatViewModel.m; sourceTree = "<group>"; };
 		AD68318C2017996E0085DDCD /* RSChatTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSChatTableViewCell.h; sourceTree = "<group>"; };
 		AD68318D2017996E0085DDCD /* RSChatTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSChatTableViewCell.m; sourceTree = "<group>"; };
+		AD87FDA22018D14B006C8A96 /* UIImage+Util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Util.h"; sourceTree = "<group>"; };
+		AD87FDA32018D14B006C8A96 /* UIImage+Util.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Util.m"; sourceTree = "<group>"; };
 		ADAC4E282014EF1C0020DA91 /* libMGLicMgrSDK-0.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libMGLicMgrSDK-0.3.0.a"; path = "MGBaseKit/MegviiLicMgr-iOS-SDK/libMGLicMgrSDK-0.3.0.a"; sourceTree = "<group>"; };
 		ADAC4E2A2014F0240020DA91 /* libMGFacepp-0.5.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libMGFacepp-0.5.2.a"; path = "RealSocial/Vendors/FCPPSDK/MGFaceppSDK/libMGFacepp-0.5.2.a"; sourceTree = "<group>"; };
 		ADAC4E2D2014F07C0020DA91 /* MGBaseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MGBaseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -625,6 +628,8 @@
 				ADDC6A63201316BA00439D01 /* NSError+Util.m */,
 				ADDC6A6920131AB600439D01 /* RSUtils.h */,
 				ADDC6A6A20131AB600439D01 /* RSUtils.m */,
+				AD87FDA22018D14B006C8A96 /* UIImage+Util.h */,
+				AD87FDA32018D14B006C8A96 /* UIImage+Util.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1525,6 +1530,7 @@
 				AD3E949D200F99820019138F /* LOTBezierData.m in Sources */,
 				ADAC4EA82014F18C0020DA91 /* MGFileManager.m in Sources */,
 				AD68318B201795C70085DDCD /* RSChatViewModel.m in Sources */,
+				AD87FDA42018D14B006C8A96 /* UIImage+Util.m in Sources */,
 				AD3E956A200FA0070019138F /* RSModel.m in Sources */,
 				AD3E9567200F9E6B0019138F /* RSLoginInfoModel.m in Sources */,
 				AD3E949C200F99820019138F /* LOTMaskContainer.m in Sources */,

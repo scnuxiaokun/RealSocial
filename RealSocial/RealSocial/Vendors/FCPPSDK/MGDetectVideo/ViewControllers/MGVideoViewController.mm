@@ -16,6 +16,7 @@
 #import "MGFileManager.h"
 #import <MGBaseKit/MGImage.h>
 #import "MGDetectRectInfo.h"
+#import "UIImage+Util.h"
 
 #define RETAINED_BUFFER_COUNT 6
 
@@ -47,7 +48,8 @@
 
 @property (nonatomic, assign) double allTime;
 @property (nonatomic, assign) NSInteger count;
-
+@property (nonatomic, strong) UIImageView *photoImageView;
+@property (nonatomic, assign) BOOL shouldShapshot;
 @end
 
 @implementation MGVideoViewController
@@ -61,6 +63,7 @@
     if (self) {
         self.pointsNum = 81;
         self.orientation = 90;
+        self.shouldShapshot = NO;
     }
     return self;
 }
@@ -193,6 +196,23 @@
         [btn addTarget:self action:@selector(registBtnAction) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:btn];
     }
+    
+    self.photoImageView = [[UIImageView alloc] init];
+    self.photoImageView.backgroundColor = [UIColor greenColor];
+    self.photoImageView.userInteractionEnabled = YES;
+    [self.view addSubview:self.photoImageView];
+    [self.photoImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.height.mas_equalTo(100);
+        make.bottom.right.equalTo(self.view);
+    }];
+    
+    @weakify(self);
+    [self.photoImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
+        @RSStrongify(self);
+        self.shouldShapshot = YES;
+//        UIImage *image = [UIImage imageWithCMSampleBufferRef:self.currentSampleBufferRef];
+//        [self.photoImageView setImage:image];
+    }]];
 }
 
 - (void)registBtnAction{
@@ -228,8 +248,7 @@
         
         // Front camera preview should be mirrored
         UIInterfaceOrientation currentInterfaceOrientation = [UIApplication sharedApplication].statusBarOrientation;
-        CGAffineTransform transform =  [self.videoManager transformFromVideoBufferOrientationToOrientation:(AVCaptureVideoOrientation)currentInterfaceOrientation
-                                                                                         withAutoMirroring:YES];
+        CGAffineTransform transform =  [self.videoManager transformFromVideoBufferOrientationToOrientation:(AVCaptureVideoOrientation)currentInterfaceOrientation withAutoMirroring:YES];
         self.previewView.transform = transform;
         
         [self.view insertSubview:self.previewView atIndex:0];
@@ -424,6 +443,16 @@
     [self.markManager endDetectionFrame];
     
     [self displayWithfaceModel:faceModelArray SampleBuffer:detectSampleBufferRef];
+    if (self.shouldShapshot == YES) {
+        @weakify(self);
+        dispatch_sync_on_main_queue(^{
+            @RSStrongify(self);
+            UIImage *image = [UIImage imageWithCMSampleBufferRef:detectSampleBufferRef];
+            [self.photoImageView setImage:image];
+            self.shouldShapshot = NO;
+        });
+        
+    }
 }
 
 - (void)trackRectWithSampleBuffer:(CMSampleBufferRef)detectSampleBufferRef {
@@ -454,6 +483,7 @@
 
     
     [self.markManager endDetectionFrame];
+    
     
     [self drawRects:mutableArr atSampleBuffer:detectSampleBufferRef];
 }
