@@ -1,0 +1,198 @@
+
+syntax="proto2";
+
+package wxproxy;
+
+import "comm/core/spbuiltintype.proto";
+
+option cc_generic_services = true;
+
+enum enWxAcct
+{
+    WXACCT_APP = 1;         // App
+    WXACCT_BIZ = 2;         // 公众号
+    WXACCT_WXAPP = 3;       // 小程序
+    WXACCT_BIZ_TEST = 4;    // 测试公众号
+}
+
+enum enWxSex
+{
+    WXSEX_MALE = 1;
+    WXSEX_FEMALE = 2;
+}
+
+message WxCertInfo
+{
+    required string AppId = 1;
+    required string AppSecret = 2;
+}
+
+message CodeToAccessTokenReq 
+{
+    required enWxAcct WxAcct = 1;
+    required string Code = 2;
+}
+
+message CodeToAccessTokenResp
+{
+    optional string AccessToken = 1;
+    optional uint32 ExpiresIn = 2;
+    optional string RefreshToken = 3;
+    optional string OpenId = 4;
+    optional string Scope = 5;
+    optional string UnionId = 6;
+    repeated string Test = 7;
+}
+
+message RefreshAccessTokenReq
+{
+    optional uint32 Uin = 1;
+    required enWxAcct WxAcct = 2;
+
+    // 应该由模块本身维护所有与微信内概念
+    // 外界不需要理解微信如何鉴权，
+    // 不维护 access_token 概念
+    // 为调试方便，暂时支持传入 refresh_token 
+    required string RefreshToken = 3;
+}
+
+message RefreshAccessTokenResp 
+{
+    optional string AccessToken = 1;
+    optional uint32 ExpiresIn = 2;
+    optional string RefreshToken = 3;
+    optional string OpenId = 4;
+    optional string Scope = 5;
+}
+
+message SnsAuthReq
+{
+    optional uint32 Uin = 1;
+    required enWxAcct WxAcct = 2;
+
+    // 应该由模块本身维护所有与微信内概念
+    // 外界不需要理解微信如何鉴权，
+    // 不维护 access_token 概念
+    // 为调试方便，暂时支持传入 access_token openid
+    required string AccessToken = 3;
+    required string OpenId = 4;
+}
+
+message SnsAuthResp
+{
+}
+
+message SnsUserInfoReq
+{
+    optional uint32 Uin = 1;
+    required enWxAcct WxAcct = 2;
+
+    // 应该由模块本身维护所有与微信内概念
+    // 外界不需要理解微信如何鉴权，
+    // 不维护 access_token 概念
+    // 为调试方便，暂时支持传入 access_token openid
+    required string AccessToken = 3;
+    required string OpenId = 4;
+}
+
+message SnsUserInfoResp
+{
+    optional string OpenId = 1;
+    optional string NickName = 2;
+    optional uint32 Sex = 3;
+    optional string Province = 4;
+    optional string City = 5;
+    optional string Country = 6;
+    optional string HeadImgUrl = 7;
+    optional string UnionId = 8;
+}
+
+message AccessTokenReq 
+{
+    required enWxAcct WxAcct = 1;
+}
+
+message AccessTokenResp
+{
+    optional string AccessToken = 1;
+    optional int32  ExpiresIn = 2;
+}
+
+message UserInfoReq
+{
+    required enWxAcct WxAcct = 1;
+    optional string openid = 2;
+
+    // 应该由模块本身维护所有与微信内概念
+    // 外界不需要理解微信如何鉴权，
+    // 不维护 access_token 概念
+    // 为调试方便，暂时支持传入 access_token
+    optional string AccessToken = 3;
+}
+
+message UserInfoResp
+{
+    optional string Subscribe = 1;
+    optional string OpenId = 2;
+    optional string NickName = 3;
+    optional uint32 Sex = 4;
+    optional string City = 5;
+    optional string Country = 6;
+    optional string Province = 7;
+    optional string Language = 8;
+    optional string HeadImgUrl = 9;
+    optional uint32 SubscribeTime = 10;
+    optional string UnionId = 11;
+    optional string Remark = 12;
+    optional string GroupId = 13;
+    repeated uint32 TagIdList = 14;
+}
+
+service WxProxy 
+{
+    rpc CodeToAccessToken( CodeToAccessTokenReq ) returns ( CodeToAccessTokenResp )
+    {
+        option ( spcomm.OptString ) = "w:d:";
+        option ( spcomm.Usage ) = "-w <wxacct> -d <code>";
+    }
+
+    // 应该由模块本身维护所有与微信内概念
+    // 外界不需要理解微信如何鉴权，
+    // 不维护 access_token 概念
+    // 为调试方便，暂时支持 RefreshAccessToken 
+    rpc RefreshAccessToken( RefreshAccessTokenReq ) returns ( RefreshAccessTokenResp )
+    {
+        option ( spcomm.OptString ) = "uw:r:";
+        option ( spcomm.Usage ) = "[-u <uin>] -w <wxacct> -r <refresh token>";
+    }
+
+    rpc SnsAuth( SnsAuthReq ) returns ( SnsAuthResp )
+    {
+        option ( spcomm.OptString ) = "uw:a:o:";
+        option ( spcomm.Usage ) = "[-u <uin>] -w <wxacct> -a <access token> -o <openid>";
+    }
+
+    rpc SnsUserInfo( SnsUserInfoReq ) returns ( SnsUserInfoResp )
+    {
+        option ( spcomm.OptString ) = "uw:a:o:";
+        option ( spcomm.Usage ) = "[-u <uin>] -w <wxacct> -a <access token> -o <openid>";
+    }
+
+    // 应该由模块本身维护所有与微信内概念
+    // 外界不需要理解微信如何鉴权，
+    // 不维护 access_token 概念
+    // 为调试方便，暂时支持 AccessToken
+  //  rpc AccessToken( AccessTokenReq ) returns ( AccessTokenResp )
+  //  {
+ //       option ( spcomm.OptString ) = "w:";
+  //      option ( spcomm.Usage ) = "-w <wxacct>";
+  //  }
+
+    rpc UserInfo( UserInfoReq ) returns ( UserInfoResp )
+    {
+        option ( spcomm.OptString ) = "uw:a:o:";
+        option ( spcomm.Usage ) = "[-u <uin>] -w <wxacct> -a <access token> -o <openid>";
+    }
+};
+
+

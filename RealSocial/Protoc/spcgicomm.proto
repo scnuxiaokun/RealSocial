@@ -1,0 +1,35 @@
+
+syntax="proto2";
+
+package spcgi;
+
+message BaseReq
+{
+}
+
+message BaseResp
+{
+    optional uint32 ErrCode = 1;
+    optional string ErrMsg = 2;
+}
+
+enum enSex
+{
+    SEX_UNKNOW = 0;
+    SEX_MALE = 1;
+    SEX_FEMALE = 2;
+}
+
+message Profile
+{
+    optional string NickName = 1;
+    optional enSex  Sex = 2;
+    optional string HeadImgUrl = 3;
+}
+
+message Msg
+{
+    optional uint64 Id = 1;
+    optional uint32 Type = 2;
+    optional bytes  Content = 3;
+}

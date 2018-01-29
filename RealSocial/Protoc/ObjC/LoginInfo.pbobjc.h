@@ -32,6 +32,30 @@ CF_EXTERN_C_BEGIN
 
 NS_ASSUME_NONNULL_BEGIN
 
+#pragma mark - Enum enWxAcct
+
+typedef GPB_ENUM(enWxAcct) {
+  /** App */
+  enWxAcct_WxacctApp = 1,
+
+  /** 公众号 */
+  enWxAcct_WxacctBiz = 2,
+
+  /** 小程序 */
+  enWxAcct_WxacctWxapp = 3,
+
+  /** 测试公众号 */
+  enWxAcct_WxacctBizTest = 4,
+};
+
+GPBEnumDescriptor *enWxAcct_EnumDescriptor(void);
+
+/**
+ * Checks to see if the given value is defined by the enum or was not known at
+ * the time this source was generated.
+ **/
+BOOL enWxAcct_IsValidValue(int32_t value);
+
 #pragma mark - LoginInfoRoot
 
 /**
@@ -57,8 +81,12 @@ typedef GPB_ENUM(LoginInfo_FieldNumber) {
 @interface LoginInfo : GPBMessage
 
 @property(nonatomic, readwrite, copy, null_resettable) NSString *sessionKey;
+/** Test to see if @c sessionKey has been set. */
+@property(nonatomic, readwrite) BOOL hasSessionKey;
 
 @property(nonatomic, readwrite, copy, null_resettable) NSString *wxuid;
+/** Test to see if @c wxuid has been set. */
+@property(nonatomic, readwrite) BOOL hasWxuid;
 
 @end
 
@@ -85,6 +113,8 @@ typedef GPB_ENUM(FriendInfo_FieldNumber) {
 @interface FriendInfo : GPBMessage
 
 @property(nonatomic, readwrite, copy, null_resettable) NSString *name;
+/** Test to see if @c name has been set. */
+@property(nonatomic, readwrite) BOOL hasName;
 
 @end
 
@@ -99,10 +129,16 @@ typedef GPB_ENUM(ChatItem_FieldNumber) {
 @interface ChatItem : GPBMessage
 
 @property(nonatomic, readwrite, copy, null_resettable) NSString *name;
+/** Test to see if @c name has been set. */
+@property(nonatomic, readwrite) BOOL hasName;
 
 @property(nonatomic, readwrite, copy, null_resettable) NSString *iconURL;
+/** Test to see if @c iconURL has been set. */
+@property(nonatomic, readwrite) BOOL hasIconURL;
 
 @property(nonatomic, readwrite, copy, null_resettable) NSString *text;
+/** Test to see if @c text has been set. */
+@property(nonatomic, readwrite) BOOL hasText;
 
 @end
 
@@ -118,6 +154,19 @@ typedef GPB_ENUM(Chat_FieldNumber) {
 /** The number of items in @c listArray without causing the array to be created. */
 @property(nonatomic, readonly) NSUInteger listArray_Count;
 
+@end
+
+#pragma mark - AccessTokenReq
+
+typedef GPB_ENUM(AccessTokenReq_FieldNumber) {
+  AccessTokenReq_FieldNumber_WxAcct = 1,
+};
+
+@interface AccessTokenReq : GPBMessage
+
+@property(nonatomic, readwrite) enWxAcct wxAcct;
+
+@property(nonatomic, readwrite) BOOL hasWxAcct;
 @end
 
 NS_ASSUME_NONNULL_END

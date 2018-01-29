@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		123DF128ED7439AB67995CDA /* libPods-RealSocial.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C194DAA8A9C057DA270C97 /* libPods-RealSocial.a */; };
+		AD3D1A8A201D7AC5006E584D /* LoginInfo.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3D1A83201D7AC5006E584D /* LoginInfo.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AD3E9114200F97160019138F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3E9113200F97160019138F /* AppDelegate.m */; };
 		AD3E9117200F97160019138F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3E9116200F97160019138F /* ViewController.m */; };
 		AD3E911A200F97160019138F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD3E9118200F97160019138F /* Main.storyboard */; };
@@ -97,6 +98,7 @@
 		AD68318B201795C70085DDCD /* RSChatViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD68318A201795C70085DDCD /* RSChatViewModel.m */; };
 		AD68318E2017996E0085DDCD /* RSChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD68318D2017996E0085DDCD /* RSChatTableViewCell.m */; };
 		AD87FDA42018D14B006C8A96 /* UIImage+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = AD87FDA32018D14B006C8A96 /* UIImage+Util.m */; };
+		AD87FDA6201C626B006C8A96 /* wxproxy.proto in Resources */ = {isa = PBXBuildFile; fileRef = AD87FDA5201C626A006C8A96 /* wxproxy.proto */; };
 		ADAC4E2B2014F0240020DA91 /* libMGFacepp-0.5.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAC4E2A2014F0240020DA91 /* libMGFacepp-0.5.2.a */; };
 		ADAC4E772014F1150020DA91 /* megviifacepp_0_5_2_model in Resources */ = {isa = PBXBuildFile; fileRef = ADAC4E532014F1150020DA91 /* megviifacepp_0_5_2_model */; };
 		ADAC4E782014F1150020DA91 /* GLESUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4E5E2014F1150020DA91 /* GLESUtils.m */; };
@@ -132,7 +134,6 @@
 		ADAC4ECE20163E590020DA91 /* RSFriendListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4ECD20163E590020DA91 /* RSFriendListViewController.m */; };
 		ADAC4ED12016422E0020DA91 /* RSViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4ED02016422E0020DA91 /* RSViewModel.m */; };
 		ADAC4ED4201643460020DA91 /* RSFriendListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4ED3201643460020DA91 /* RSFriendListViewModel.m */; };
-		ADAC4ED7201649B00020DA91 /* LoginInfo.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4ED5201649B00020DA91 /* LoginInfo.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		ADAC4ED920178B7F0020DA91 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADAC4ED820178B7D0020DA91 /* Localizable.strings */; };
 		ADDC6A5820130E0F00439D01 /* RSUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A5720130E0F00439D01 /* RSUIViewController.m */; };
 		ADDC6A5B20130E2D00439D01 /* RSUINavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A5A20130E2D00439D01 /* RSUINavigationController.m */; };
@@ -173,6 +174,8 @@
 		16C194DAA8A9C057DA270C97 /* libPods-RealSocial.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RealSocial.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50CA8B4FC9CDE384A43E0EBE /* Pods-RealSocial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealSocial.release.xcconfig"; path = "Pods/Target Support Files/Pods-RealSocial/Pods-RealSocial.release.xcconfig"; sourceTree = "<group>"; };
 		5FD2F8352C087E2A0B6E42C8 /* Pods-RealSocial.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealSocial.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RealSocial/Pods-RealSocial.debug.xcconfig"; sourceTree = "<group>"; };
+		AD3D1A83201D7AC5006E584D /* LoginInfo.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginInfo.pbobjc.m; sourceTree = "<group>"; };
+		AD3D1A88201D7AC5006E584D /* LoginInfo.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginInfo.pbobjc.h; sourceTree = "<group>"; };
 		AD3E910F200F97160019138F /* RealSocial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RealSocial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD3E9112200F97160019138F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AD3E9113200F97160019138F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -352,6 +355,7 @@
 		AD68318D2017996E0085DDCD /* RSChatTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSChatTableViewCell.m; sourceTree = "<group>"; };
 		AD87FDA22018D14B006C8A96 /* UIImage+Util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Util.h"; sourceTree = "<group>"; };
 		AD87FDA32018D14B006C8A96 /* UIImage+Util.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Util.m"; sourceTree = "<group>"; };
+		AD87FDA5201C626A006C8A96 /* wxproxy.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wxproxy.proto; sourceTree = "<group>"; };
 		ADAC4E282014EF1C0020DA91 /* libMGLicMgrSDK-0.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libMGLicMgrSDK-0.3.0.a"; path = "MGBaseKit/MegviiLicMgr-iOS-SDK/libMGLicMgrSDK-0.3.0.a"; sourceTree = "<group>"; };
 		ADAC4E2A2014F0240020DA91 /* libMGFacepp-0.5.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libMGFacepp-0.5.2.a"; path = "RealSocial/Vendors/FCPPSDK/MGFaceppSDK/libMGFacepp-0.5.2.a"; sourceTree = "<group>"; };
 		ADAC4E2D2014F07C0020DA91 /* MGBaseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MGBaseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -423,8 +427,6 @@
 		ADAC4ED02016422E0020DA91 /* RSViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSViewModel.m; sourceTree = "<group>"; };
 		ADAC4ED2201643460020DA91 /* RSFriendListViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSFriendListViewModel.h; sourceTree = "<group>"; };
 		ADAC4ED3201643460020DA91 /* RSFriendListViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSFriendListViewModel.m; sourceTree = "<group>"; };
-		ADAC4ED5201649B00020DA91 /* LoginInfo.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginInfo.pbobjc.m; sourceTree = "<group>"; };
-		ADAC4ED6201649B00020DA91 /* LoginInfo.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginInfo.pbobjc.h; sourceTree = "<group>"; };
 		ADAC4ED820178B7D0020DA91 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		ADDC6A5620130E0F00439D01 /* RSUIViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSUIViewController.h; sourceTree = "<group>"; };
 		ADDC6A5720130E0F00439D01 /* RSUIViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSUIViewController.m; sourceTree = "<group>"; };
@@ -1188,6 +1190,7 @@
 		ADDC6A9C201352A800439D01 /* Protoc */ = {
 			isa = PBXGroup;
 			children = (
+				AD87FDA5201C626A006C8A96 /* wxproxy.proto */,
 				ADDC6A9D201352A800439D01 /* LoginInfo.proto */,
 				ADDC6A9E201352A800439D01 /* ObjC */,
 			);
@@ -1197,8 +1200,8 @@
 		ADDC6A9E201352A800439D01 /* ObjC */ = {
 			isa = PBXGroup;
 			children = (
-				ADAC4ED6201649B00020DA91 /* LoginInfo.pbobjc.h */,
-				ADAC4ED5201649B00020DA91 /* LoginInfo.pbobjc.m */,
+				AD3D1A88201D7AC5006E584D /* LoginInfo.pbobjc.h */,
+				AD3D1A83201D7AC5006E584D /* LoginInfo.pbobjc.m */,
 			);
 			path = ObjC;
 			sourceTree = "<group>";
@@ -1346,6 +1349,7 @@
 				AD3E911C200F97160019138F /* Assets.xcassets in Resources */,
 				ADAC4EAE2014F18C0020DA91 /* MCSetCell.xib in Resources */,
 				ADAC4EB12014F18C0020DA91 /* TextCell.xib in Resources */,
+				AD87FDA6201C626B006C8A96 /* wxproxy.proto in Resources */,
 				AD68318020178E290085DDCD /* VideoFrag.glsl in Resources */,
 				AD3E956C2010C47D0019138F /* Images.xcassets in Resources */,
 				ADAC4E772014F1150020DA91 /* megviifacepp_0_5_2_model in Resources */,
@@ -1503,6 +1507,7 @@
 				ADDC6A89201337DD00439D01 /* FPSecretKeyUtils.m in Sources */,
 				AD3E94CB200F99820019138F /* LOTRenderNode.m in Sources */,
 				AD3E9561200F9C9E0019138F /* RSHandleOpenUrlHelper.m in Sources */,
+				AD3D1A8A201D7AC5006E584D /* LoginInfo.pbobjc.m in Sources */,
 				ADAC4E782014F1150020DA91 /* GLESUtils.m in Sources */,
 				ADAC4EBB2014F18C0020DA91 /* MGFaceLicenseHandle.m in Sources */,
 				AD3E94A2200F99820019138F /* UIColor+Expanded.m in Sources */,
@@ -1510,7 +1515,6 @@
 				AD3E94BC200F99820019138F /* LOTComposition.m in Sources */,
 				AD3E94C2200F99820019138F /* LOTArrayInterpolator.m in Sources */,
 				AD3E94AA200F99820019138F /* LOTMask.m in Sources */,
-				ADAC4ED7201649B00020DA91 /* LoginInfo.pbobjc.m in Sources */,
 				AD3E94D0200F99820019138F /* LOTRepeaterRenderer.m in Sources */,
 				ADDC6A7420132AA500439D01 /* RSLaunchService.m in Sources */,
 				AD3E94A6200F99820019138F /* LOTAsset.m in Sources */,

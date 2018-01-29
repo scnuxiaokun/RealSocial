@@ -1,0 +1,42 @@
+
+syntax="proto2";
+
+package spcomm;
+
+import "google/protobuf/descriptor.proto";
+
+message SPBuiltinInt32_PB
+{
+	optional int32 val = 1;
+}
+
+message SPBuiltinUint32_PB
+{
+	optional uint32 val = 1;
+}
+
+message SPBuiltinInt64_PB
+{
+	optional int64 val = 1;
+}
+
+message SPBuiltinUint64_PB
+{
+	optional uint64 val = 1;
+}
+
+message SPBuiltinEmpty_PB 
+{
+}
+
+extend google.protobuf.MethodOptions
+{ 
+      optional uint32 CmdID = 1000;
+      optional string OptString = 1001;
+      optional string Usage = 1002;
+}
+
+extend google.protobuf.ServiceOptions
+{
+    optional int32 Port = 1000;
+}

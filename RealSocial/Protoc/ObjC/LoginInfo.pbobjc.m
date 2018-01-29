@@ -37,17 +37,56 @@ static GPBFileDescriptor *LoginInfoRoot_FileDescriptor(void) {
   if (!descriptor) {
     GPB_DEBUG_CHECK_RUNTIME_VERSIONS();
     descriptor = [[GPBFileDescriptor alloc] initWithPackage:@""
-                                                     syntax:GPBFileSyntaxProto3];
+                                                     syntax:GPBFileSyntaxProto2];
   }
   return descriptor;
+}
+
+#pragma mark - Enum enWxAcct
+
+GPBEnumDescriptor *enWxAcct_EnumDescriptor(void) {
+  static GPBEnumDescriptor *descriptor = NULL;
+  if (!descriptor) {
+    static const char *valueNames =
+        "WxacctApp\000WxacctBiz\000WxacctWxapp\000WxacctBi"
+        "zTest\000";
+    static const int32_t values[] = {
+        enWxAcct_WxacctApp,
+        enWxAcct_WxacctBiz,
+        enWxAcct_WxacctWxapp,
+        enWxAcct_WxacctBizTest,
+    };
+    GPBEnumDescriptor *worker =
+        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(enWxAcct)
+                                       valueNames:valueNames
+                                           values:values
+                                            count:(uint32_t)(sizeof(values) / sizeof(int32_t))
+                                     enumVerifier:enWxAcct_IsValidValue];
+    if (!OSAtomicCompareAndSwapPtrBarrier(nil, worker, (void * volatile *)&descriptor)) {
+      [worker release];
+    }
+  }
+  return descriptor;
+}
+
+BOOL enWxAcct_IsValidValue(int32_t value__) {
+  switch (value__) {
+    case enWxAcct_WxacctApp:
+    case enWxAcct_WxacctBiz:
+    case enWxAcct_WxacctWxapp:
+    case enWxAcct_WxacctBizTest:
+      return YES;
+    default:
+      return NO;
+  }
 }
 
 #pragma mark - LoginInfo
 
 @implementation LoginInfo
 
-@dynamic sessionKey;
-@dynamic wxuid;
+@dynamic hasSessionKey, sessionKey;
+@dynamic hasWxuid, wxuid;
 
 typedef struct LoginInfo__storage_ {
   uint32_t _has_storage_[1];
@@ -67,7 +106,7 @@ typedef struct LoginInfo__storage_ {
         .number = LoginInfo_FieldNumber_SessionKey,
         .hasIndex = 0,
         .offset = (uint32_t)offsetof(LoginInfo__storage_, sessionKey),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
       {
@@ -76,7 +115,7 @@ typedef struct LoginInfo__storage_ {
         .number = LoginInfo_FieldNumber_Wxuid,
         .hasIndex = 1,
         .offset = (uint32_t)offsetof(LoginInfo__storage_, wxuid),
-        .flags = GPBFieldOptional,
+        .flags = GPBFieldRequired,
         .dataType = GPBDataTypeString,
       },
     };
@@ -148,7 +187,7 @@ typedef struct FriendList__storage_ {
 
 @implementation FriendInfo
 
-@dynamic name;
+@dynamic hasName, name;
 
 typedef struct FriendInfo__storage_ {
   uint32_t _has_storage_[1];
@@ -167,7 +206,7 @@ typedef struct FriendInfo__storage_ {
         .number = FriendInfo_FieldNumber_Name,
         .hasIndex = 0,
         .offset = (uint32_t)offsetof(FriendInfo__storage_, name),
-        .flags = GPBFieldOptional,
+        .flags = GPBFieldRequired,
         .dataType = GPBDataTypeString,
       },
     };
@@ -191,9 +230,9 @@ typedef struct FriendInfo__storage_ {
 
 @implementation ChatItem
 
-@dynamic name;
-@dynamic iconURL;
-@dynamic text;
+@dynamic hasName, name;
+@dynamic hasIconURL, iconURL;
+@dynamic hasText, text;
 
 typedef struct ChatItem__storage_ {
   uint32_t _has_storage_[1];
@@ -214,7 +253,7 @@ typedef struct ChatItem__storage_ {
         .number = ChatItem_FieldNumber_Name,
         .hasIndex = 0,
         .offset = (uint32_t)offsetof(ChatItem__storage_, name),
-        .flags = GPBFieldOptional,
+        .flags = GPBFieldRequired,
         .dataType = GPBDataTypeString,
       },
       {
@@ -223,7 +262,7 @@ typedef struct ChatItem__storage_ {
         .number = ChatItem_FieldNumber_IconURL,
         .hasIndex = 1,
         .offset = (uint32_t)offsetof(ChatItem__storage_, iconURL),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
       {
@@ -232,7 +271,7 @@ typedef struct ChatItem__storage_ {
         .number = ChatItem_FieldNumber_Text,
         .hasIndex = 2,
         .offset = (uint32_t)offsetof(ChatItem__storage_, text),
-        .flags = GPBFieldOptional,
+        .flags = GPBFieldRequired,
         .dataType = GPBDataTypeString,
       },
     };
@@ -292,6 +331,55 @@ typedef struct Chat__storage_ {
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
                                    storageSize:sizeof(Chat__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - AccessTokenReq
+
+@implementation AccessTokenReq
+
+@dynamic hasWxAcct, wxAcct;
+
+typedef struct AccessTokenReq__storage_ {
+  uint32_t _has_storage_[1];
+  enWxAcct wxAcct;
+} AccessTokenReq__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescriptionWithDefault fields[] = {
+      {
+        .defaultValue.valueEnum = enWxAcct_WxacctApp,
+        .core.name = "wxAcct",
+        .core.dataTypeSpecific.enumDescFunc = enWxAcct_EnumDescriptor,
+        .core.number = AccessTokenReq_FieldNumber_WxAcct,
+        .core.hasIndex = 0,
+        .core.offset = (uint32_t)offsetof(AccessTokenReq__storage_, wxAcct),
+        .core.flags = (GPBFieldFlags)(GPBFieldRequired | GPBFieldTextFormatNameCustom | GPBFieldHasEnumDescriptor),
+        .core.dataType = GPBDataTypeEnum,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[AccessTokenReq class]
+                                     rootClass:[LoginInfoRoot class]
+                                          file:LoginInfoRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescriptionWithDefault))
+                                   storageSize:sizeof(AccessTokenReq__storage_)
+                                         flags:GPBDescriptorInitializationFlag_FieldsWithDefault];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\001\001F\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;
   }
