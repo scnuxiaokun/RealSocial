@@ -12,12 +12,20 @@
 @end
 @implementation RSFriendListViewModel
 
+-(instancetype)init {
+    self = [super init];
+    if (self) {
+    }
+    return self;
+}
 -(void)loadData {
     RSRequest *request = [[RSRequest alloc] init];
     request.mokeResponseData = [self mokeResponse];
     RACSignal *signal = [RSNetWorkService sendRequest:request];
     [signal subscribeNext:^(RSResponse *response) {
         FriendList *list = [FriendList parseFromData:response.data error:nil];
+//        [self.liveData setData:list];
+        [self sendUpdateData:list];
         NSMutableArray *tmp = [[NSMutableArray alloc] init];
         for (FriendInfo *info in list.listArray) {
             RSFriendListItemViewModel *item = [RSFriendListItemViewModel new];
@@ -28,7 +36,6 @@
         dispatch_async_on_main_queue(^{
             @RSStrongify(self);
             self.listData = tmp;
-            [self sendUpdateSignal];
         });
     } error:^(NSError * _Nullable error) {
         [self sendErrorSignal:error];

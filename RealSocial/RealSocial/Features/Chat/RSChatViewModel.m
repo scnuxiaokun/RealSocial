@@ -18,6 +18,7 @@
     RACSignal *signal = [RSNetWorkService sendRequest:request];
     [signal subscribeNext:^(RSResponse *response) {
         Chat *list = [Chat parseFromData:response.data error:nil];
+        [self sendUpdateData:list];
         NSMutableArray *tmp = [[NSMutableArray alloc] init];
         for (ChatItem *info in list.listArray) {
             RSChatItemViewModel *item = [RSChatItemViewModel new];
@@ -30,7 +31,6 @@
         dispatch_async_on_main_queue(^{
             @RSStrongify(self);
             self.listData = tmp;
-            [self sendUpdateSignal];
         });
     } error:^(NSError * _Nullable error) {
         [self sendErrorSignal:error];

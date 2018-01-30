@@ -21,6 +21,7 @@ enum enWxSex
     WXSEX_FEMALE = 2;
 }
 
+
 message WxCertInfo
 {
     required string AppId = 1;

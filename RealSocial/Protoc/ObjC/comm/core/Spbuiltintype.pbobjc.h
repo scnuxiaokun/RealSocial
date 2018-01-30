@@ -48,6 +48,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (GPBExtensionDescriptor *)cmdId;
 + (GPBExtensionDescriptor *)optString;
 + (GPBExtensionDescriptor *)usage;
++ (GPBExtensionDescriptor *)cgiName;
 + (GPBExtensionDescriptor *)port;
 @end
 

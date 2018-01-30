@@ -14,16 +14,16 @@
 #import "LoginInfo.pbobjc.h"
 @implementation RSNetWorkService
 +(RACSignal *)sendRequest:(RSRequest *)request {
-//    if (request.mokeResponseData) {
-//        return [self sendDebugRequest:request];
-//    }
+    if (request.mokeResponseData) {
+        return [self sendDebugRequest:request];
+    }
     RACReplaySubject *signal = [RACReplaySubject subject];
     
     NSString *URLString = @"http://120.79.150.34:20000/WxProxy/AccessToken";
-    NSDictionary *parameters = @{@"WxAcct": @"WXACCT_BIZ_TEST"};
+//    NSDictionary *parameters = @{@"WxAcct": @"WXACCT_BIZ_TEST"};
     
     // 获得请求管理者
-    AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
+//    AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
     
     // 设置请求格式
 //    session.requestSerializer = [AFJSONRequestSerializer serializer];
@@ -45,6 +45,7 @@
     [urlRequest setValue:@"application/proto" forHTTPHeaderField:@"Content-Type"];
     NSData *data = [req data];
     [urlRequest setHTTPBody:data];
+    AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
     session.requestSerializer = [AFHTTPRequestSerializer serializer];
     session.responseSerializer = [AFHTTPResponseSerializer serializer];
 

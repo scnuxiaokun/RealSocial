@@ -13,8 +13,8 @@
  #import "GPBProtocolBuffers_RuntimeSupport.h"
 #endif
 
- #import "Spbuiltintype.pbobjc.h"
-// #import "GPBDescriptor.h"
+ #import "comm/core/Spbuiltintype.pbobjc.h"
+ #import "google/protobuf/Descriptor.pbobjc.h"
 // @@protoc_insertion_point(imports)
 
 #pragma clang diagnostic push
@@ -59,6 +59,16 @@
         .messageOrGroupClassName = NULL,
         .enumDescriptorFunc = NULL,
         .fieldNumber = 1002,
+        .dataType = GPBDataTypeString,
+        .options = GPBExtensionNone,
+      },
+      {
+        .defaultValue.valueString = nil,
+        .singletonName = GPBStringifySymbol(SpbuiltintypeRoot_cgiName),
+        .extendedClass = GPBStringifySymbol(GPBMethodOptions),
+        .messageOrGroupClassName = NULL,
+        .enumDescriptorFunc = NULL,
+        .fieldNumber = 1003,
         .dataType = GPBDataTypeString,
         .options = GPBExtensionNone,
       },

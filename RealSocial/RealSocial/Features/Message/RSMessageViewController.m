@@ -1,23 +1,21 @@
 //
-//  RSFriendListViewController.m
+//  RSMessageViewController.m
 //  RealSocial
 //
-//  Created by kuncai on 2018/1/22.
+//  Created by kuncai on 2018/1/30.
 //  Copyright © 2018年 scnukuncai. All rights reserved.
 //
 
-#import "RSFriendListViewController.h"
-#import "RSFriendListViewModel.h"
+#import "RSMessageViewController.h"
+#import "RSMessageViewModel.h"
 #import <MJRefresh/MJRefresh.h>
-#import <BlocksKit/BlocksKit.h>
-#import "RSChatViewController.h"
 
-@interface RSFriendListViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface RSMessageViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) RSFriendListViewModel *viewModel;
+@property (nonatomic, strong) RSMessageViewModel *viewModel;
 @end
 
-@implementation RSFriendListViewController
+@implementation RSMessageViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -43,14 +41,13 @@
     // Pass the selected object to the new view controller.
 }
 */
--(RSFriendListViewModel *)viewModel {
+-(RSMessageViewModel *)viewModel {
     if (_viewModel) {
         return _viewModel;
     }
-    _viewModel = [[RSFriendListViewModel alloc] init];
+    _viewModel = [[RSMessageViewModel alloc] init];
     return _viewModel;
 }
-
 -(UITableView *)tableView {
     if (_tableView) {
         return _tableView;
@@ -77,7 +74,7 @@
     }];
     return _tableView;
 }
-
+    
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -90,16 +87,16 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:indentifier];
     }
-    RSFriendListItemViewModel *itemViewModel = [self.viewModel.listData objectOrNilAtIndex:indexPath.row];
+    RSMessageItemViewModel *itemViewModel = [self.viewModel.listData objectOrNilAtIndex:indexPath.row];
     if (itemViewModel) {
         cell.textLabel.text = itemViewModel.name;
     }
     return cell;
 }
-
+    
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    RSChatViewController *ctr = [[RSChatViewController alloc] init];
-    ctr.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:ctr animated:YES];
+//    RSChatViewController *ctr = [[RSChatViewController alloc] init];
+//    ctr.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:ctr animated:YES];
 }
 @end

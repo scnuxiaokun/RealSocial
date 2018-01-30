@@ -29,9 +29,17 @@
     }
     return self;
 }
+    
+//-(RSLiveData *)liveData {
+//    if (_liveData) {
+//        return _liveData;
+//    }
+//    _liveData = [[RSLiveData alloc] init];
+//    return _liveData;
+//}
 
--(void)sendUpdateSignal {
-    [_updateSignal sendNext:@(YES)];
+-(void)sendUpdateData:(id)data {
+    [_updateSignal sendNext:data];
 }
 -(void)sendCompleteSignal {
     [_completeSignal sendNext:@(YES)];

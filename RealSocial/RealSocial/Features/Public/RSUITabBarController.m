@@ -11,7 +11,7 @@
 #import "RSUINavigationController.h"
 #import "RSMineViewController.h"
 #import "RSFriendListViewController.h"
-
+#import "RSMessageViewController.h"
 @interface RSUITabBarController ()
 
 @end
@@ -23,8 +23,8 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     
-    RSUINavigationController *tab1 = [[RSUINavigationController alloc] initWithRootViewController:[[RSChatListViewController alloc] init]];
-    tab1.title = @"chat";
+    RSUINavigationController *tab1 = [[RSUINavigationController alloc] initWithRootViewController:[[RSMessageViewController alloc] init]];
+    tab1.title = @"message";
     
     RSUINavigationController *tab2 = [[RSUINavigationController alloc] initWithRootViewController:[[RSFriendListViewController alloc] init]];
     tab2.title = @"friend";

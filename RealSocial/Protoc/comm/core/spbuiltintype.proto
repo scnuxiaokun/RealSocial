@@ -34,6 +34,7 @@ extend google.protobuf.MethodOptions
       optional uint32 CmdID = 1000;
       optional string OptString = 1001;
       optional string Usage = 1002;
+    optional string CgiName = 1003;
 }
 
 extend google.protobuf.ServiceOptions

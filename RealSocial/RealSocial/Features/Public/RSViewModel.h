@@ -8,12 +8,14 @@
 
 #import "RSModel.h"
 #import "RSNetWorkService.h"
+#import "RSLiveData.h"
 @interface RSViewModel : RSModel
+//@property (nonatomic, strong) RSLiveData *liveData;
 @property (nonatomic, retain, readonly) RACSubject *updateSignal;
 @property (nonatomic, retain, readonly) RACSubject *completeSignal;
 @property (nonatomic, retain, readonly) RACSubject *errorSignal;
 -(void)loadData;
--(void)sendUpdateSignal;
+-(void)sendUpdateData:(id)data;
 -(void)sendCompleteSignal;
 -(void)sendErrorSignal:(NSError *)error;
 @end
