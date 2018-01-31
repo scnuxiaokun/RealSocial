@@ -1,14 +1,14 @@
 
 syntax="proto2";
-
+option objc_class_prefix="RS";
 package spcgi;
 
 
-message RSBaseReq
+message BaseReq
 {
 }
 
-message RSBaseResp
+message BaseResp
 {
     optional uint32 ErrCode = 1;
     optional string ErrMsg = 2;

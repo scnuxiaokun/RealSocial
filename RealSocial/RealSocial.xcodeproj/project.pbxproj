@@ -15,7 +15,6 @@
 		AD2F57532020BD5400E0CF83 /* spbuiltintype.proto in Resources */ = {isa = PBXBuildFile; fileRef = AD2F57522020BD5400E0CF83 /* spbuiltintype.proto */; };
 		AD2F575C2020BDA300E0CF83 /* Spcgi.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2F57592020BDA300E0CF83 /* Spcgi.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AD2F57632020C4A200E0CF83 /* spcgicomm.proto in Resources */ = {isa = PBXBuildFile; fileRef = AD2F57622020C4A200E0CF83 /* spcgicomm.proto */; };
-		AD2F57652020C53700E0CF83 /* spcgicomm.proto in Resources */ = {isa = PBXBuildFile; fileRef = AD2F57642020C53700E0CF83 /* spcgicomm.proto */; };
 		AD2F57682020C6D800E0CF83 /* Spcgicomm.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2F57672020C6D800E0CF83 /* Spcgicomm.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AD2F576B2020C6FC00E0CF83 /* LoginInfo.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2F57692020C6FB00E0CF83 /* LoginInfo.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AD3E9114200F97160019138F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3E9113200F97160019138F /* AppDelegate.m */; };
@@ -194,7 +193,6 @@
 		AD2F57542020BDA200E0CF83 /* Spcgi.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spcgi.pbobjc.h; sourceTree = "<group>"; };
 		AD2F57592020BDA300E0CF83 /* Spcgi.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spcgi.pbobjc.m; sourceTree = "<group>"; };
 		AD2F57622020C4A200E0CF83 /* spcgicomm.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = spcgicomm.proto; sourceTree = "<group>"; };
-		AD2F57642020C53700E0CF83 /* spcgicomm.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = spcgicomm.proto; sourceTree = "<group>"; };
 		AD2F57662020C6D800E0CF83 /* Spcgicomm.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spcgicomm.pbobjc.h; sourceTree = "<group>"; };
 		AD2F57672020C6D800E0CF83 /* Spcgicomm.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spcgicomm.pbobjc.m; sourceTree = "<group>"; };
 		AD2F57692020C6FB00E0CF83 /* LoginInfo.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginInfo.pbobjc.m; sourceTree = "<group>"; };
@@ -1261,7 +1259,6 @@
 		ADDC6A9C201352A800439D01 /* Protoc */ = {
 			isa = PBXGroup;
 			children = (
-				AD2F57642020C53700E0CF83 /* spcgicomm.proto */,
 				AD2F57502020BD5400E0CF83 /* comm */,
 				AD2F574D2020BD3000E0CF83 /* spcgi.proto */,
 				AD87FDA5201C626A006C8A96 /* wxproxy.proto */,
@@ -1437,7 +1434,6 @@
 				AD68317E20178E290085DDCD /* FacePointColor.glsl in Resources */,
 				AD3E9499200F99820019138F /* .gitkeep in Resources */,
 				AD3E911A200F97160019138F /* Main.storyboard in Resources */,
-				AD2F57652020C53700E0CF83 /* spcgicomm.proto in Resources */,
 				AD2F57632020C4A200E0CF83 /* spcgicomm.proto in Resources */,
 				AD2F57532020BD5400E0CF83 /* spbuiltintype.proto in Resources */,
 				AD3E9498200F99820019138F /* .gitkeep in Resources */,

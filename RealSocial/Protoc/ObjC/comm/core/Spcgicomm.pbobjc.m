@@ -19,47 +19,48 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
 
-#pragma mark - SpcgicommRoot
+#pragma mark - RSSpcgicommRoot
 
-@implementation SpcgicommRoot
+@implementation RSSpcgicommRoot
 
 // No extensions in the file and no imports, so no need to generate
 // +extensionRegistry.
 
 @end
 
-#pragma mark - SpcgicommRoot_FileDescriptor
+#pragma mark - RSSpcgicommRoot_FileDescriptor
 
-static GPBFileDescriptor *SpcgicommRoot_FileDescriptor(void) {
+static GPBFileDescriptor *RSSpcgicommRoot_FileDescriptor(void) {
   // This is called by +initialize so there is no need to worry
   // about thread safety of the singleton.
   static GPBFileDescriptor *descriptor = NULL;
   if (!descriptor) {
     GPB_DEBUG_CHECK_RUNTIME_VERSIONS();
     descriptor = [[GPBFileDescriptor alloc] initWithPackage:@"spcgi"
+                                                 objcPrefix:@"RS"
                                                      syntax:GPBFileSyntaxProto2];
   }
   return descriptor;
 }
 
-#pragma mark - Enum enSex
+#pragma mark - Enum RSenSex
 
-GPBEnumDescriptor *enSex_EnumDescriptor(void) {
+GPBEnumDescriptor *RSenSex_EnumDescriptor(void) {
   static GPBEnumDescriptor *descriptor = NULL;
   if (!descriptor) {
     static const char *valueNames =
         "SexUnknow\000SexMale\000SexFemale\000";
     static const int32_t values[] = {
-        enSex_SexUnknow,
-        enSex_SexMale,
-        enSex_SexFemale,
+        RSenSex_SexUnknow,
+        RSenSex_SexMale,
+        RSenSex_SexFemale,
     };
     GPBEnumDescriptor *worker =
-        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(enSex)
+        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(RSenSex)
                                        valueNames:valueNames
                                            values:values
                                             count:(uint32_t)(sizeof(values) / sizeof(int32_t))
-                                     enumVerifier:enSex_IsValidValue];
+                                     enumVerifier:RSenSex_IsValidValue];
     if (!OSAtomicCompareAndSwapPtrBarrier(nil, worker, (void * volatile *)&descriptor)) {
       [worker release];
     }
@@ -67,11 +68,11 @@ GPBEnumDescriptor *enSex_EnumDescriptor(void) {
   return descriptor;
 }
 
-BOOL enSex_IsValidValue(int32_t value__) {
+BOOL RSenSex_IsValidValue(int32_t value__) {
   switch (value__) {
-    case enSex_SexUnknow:
-    case enSex_SexMale:
-    case enSex_SexFemale:
+    case RSenSex_SexUnknow:
+    case RSenSex_SexMale:
+    case RSenSex_SexFemale:
       return YES;
     default:
       return NO;
@@ -94,8 +95,8 @@ typedef struct RSBaseReq__storage_ {
   if (!descriptor) {
     GPBDescriptor *localDescriptor =
         [GPBDescriptor allocDescriptorForClass:[RSBaseReq class]
-                                     rootClass:[SpcgicommRoot class]
-                                          file:SpcgicommRoot_FileDescriptor()
+                                     rootClass:[RSSpcgicommRoot class]
+                                          file:RSSpcgicommRoot_FileDescriptor()
                                         fields:NULL
                                     fieldCount:0
                                    storageSize:sizeof(RSBaseReq__storage_)
@@ -148,8 +149,8 @@ typedef struct RSBaseResp__storage_ {
     };
     GPBDescriptor *localDescriptor =
         [GPBDescriptor allocDescriptorForClass:[RSBaseResp class]
-                                     rootClass:[SpcgicommRoot class]
-                                          file:SpcgicommRoot_FileDescriptor()
+                                     rootClass:[RSSpcgicommRoot class]
+                                          file:RSSpcgicommRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
                                    storageSize:sizeof(RSBaseResp__storage_)
@@ -167,20 +168,20 @@ typedef struct RSBaseResp__storage_ {
 
 @end
 
-#pragma mark - Profile
+#pragma mark - RSProfile
 
-@implementation Profile
+@implementation RSProfile
 
 @dynamic hasNickName, nickName;
 @dynamic hasSex, sex;
 @dynamic hasHeadImgURL, headImgURL;
 
-typedef struct Profile__storage_ {
+typedef struct RSProfile__storage_ {
   uint32_t _has_storage_[1];
-  enSex sex;
+  RSenSex sex;
   NSString *nickName;
   NSString *headImgURL;
-} Profile__storage_;
+} RSProfile__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -191,38 +192,38 @@ typedef struct Profile__storage_ {
       {
         .name = "nickName",
         .dataTypeSpecific.className = NULL,
-        .number = Profile_FieldNumber_NickName,
+        .number = RSProfile_FieldNumber_NickName,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(Profile__storage_, nickName),
+        .offset = (uint32_t)offsetof(RSProfile__storage_, nickName),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
       {
         .name = "sex",
-        .dataTypeSpecific.enumDescFunc = enSex_EnumDescriptor,
-        .number = Profile_FieldNumber_Sex,
+        .dataTypeSpecific.enumDescFunc = RSenSex_EnumDescriptor,
+        .number = RSProfile_FieldNumber_Sex,
         .hasIndex = 1,
-        .offset = (uint32_t)offsetof(Profile__storage_, sex),
+        .offset = (uint32_t)offsetof(RSProfile__storage_, sex),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom | GPBFieldHasEnumDescriptor),
         .dataType = GPBDataTypeEnum,
       },
       {
         .name = "headImgURL",
         .dataTypeSpecific.className = NULL,
-        .number = Profile_FieldNumber_HeadImgURL,
+        .number = RSProfile_FieldNumber_HeadImgURL,
         .hasIndex = 2,
-        .offset = (uint32_t)offsetof(Profile__storage_, headImgURL),
+        .offset = (uint32_t)offsetof(RSProfile__storage_, headImgURL),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[Profile class]
-                                     rootClass:[SpcgicommRoot class]
-                                          file:SpcgicommRoot_FileDescriptor()
+        [GPBDescriptor allocDescriptorForClass:[RSProfile class]
+                                     rootClass:[RSSpcgicommRoot class]
+                                          file:RSSpcgicommRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(Profile__storage_)
+                                   storageSize:sizeof(RSProfile__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
@@ -237,20 +238,20 @@ typedef struct Profile__storage_ {
 
 @end
 
-#pragma mark - Msg
+#pragma mark - RSMsg
 
-@implementation Msg
+@implementation RSMsg
 
 @dynamic hasId_p, id_p;
 @dynamic hasType, type;
 @dynamic hasContent, content;
 
-typedef struct Msg__storage_ {
+typedef struct RSMsg__storage_ {
   uint32_t _has_storage_[1];
   uint32_t type;
   NSData *content;
   uint64_t id_p;
-} Msg__storage_;
+} RSMsg__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -261,38 +262,38 @@ typedef struct Msg__storage_ {
       {
         .name = "id_p",
         .dataTypeSpecific.className = NULL,
-        .number = Msg_FieldNumber_Id_p,
+        .number = RSMsg_FieldNumber_Id_p,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(Msg__storage_, id_p),
+        .offset = (uint32_t)offsetof(RSMsg__storage_, id_p),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeUInt64,
       },
       {
         .name = "type",
         .dataTypeSpecific.className = NULL,
-        .number = Msg_FieldNumber_Type,
+        .number = RSMsg_FieldNumber_Type,
         .hasIndex = 1,
-        .offset = (uint32_t)offsetof(Msg__storage_, type),
+        .offset = (uint32_t)offsetof(RSMsg__storage_, type),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeUInt32,
       },
       {
         .name = "content",
         .dataTypeSpecific.className = NULL,
-        .number = Msg_FieldNumber_Content,
+        .number = RSMsg_FieldNumber_Content,
         .hasIndex = 2,
-        .offset = (uint32_t)offsetof(Msg__storage_, content),
+        .offset = (uint32_t)offsetof(RSMsg__storage_, content),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeBytes,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[Msg class]
-                                     rootClass:[SpcgicommRoot class]
-                                          file:SpcgicommRoot_FileDescriptor()
+        [GPBDescriptor allocDescriptorForClass:[RSMsg class]
+                                     rootClass:[RSSpcgicommRoot class]
+                                          file:RSSpcgicommRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(Msg__storage_)
+                                   storageSize:sizeof(RSMsg__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =

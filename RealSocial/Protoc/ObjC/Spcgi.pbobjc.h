@@ -27,14 +27,14 @@
 
 CF_EXTERN_C_BEGIN
 
-@class Msg;
-@class Profile;
 @class RSBaseReq;
 @class RSBaseResp;
+@class RSMsg;
+@class RSProfile;
 
 NS_ASSUME_NONNULL_BEGIN
 
-#pragma mark - SpcgiRoot
+#pragma mark - RSSpcgiRoot
 
 /**
  * Exposes the extension registry for this file.
@@ -46,17 +46,17 @@ NS_ASSUME_NONNULL_BEGIN
  * which is a @c GPBExtensionRegistry that includes all the extensions defined by
  * this file and all files that it depends on.
  **/
-@interface SpcgiRoot : GPBRootObject
+@interface RSSpcgiRoot : GPBRootObject
 @end
 
-#pragma mark - LoginReq
+#pragma mark - RSLoginReq
 
-typedef GPB_ENUM(LoginReq_FieldNumber) {
-  LoginReq_FieldNumber_BaseReq = 1,
-  LoginReq_FieldNumber_Code = 2,
+typedef GPB_ENUM(RSLoginReq_FieldNumber) {
+  RSLoginReq_FieldNumber_BaseReq = 1,
+  RSLoginReq_FieldNumber_Code = 2,
 };
 
-@interface LoginReq : GPBMessage
+@interface RSLoginReq : GPBMessage
 
 @property(nonatomic, readwrite, strong, null_resettable) RSBaseReq *baseReq;
 /** Test to see if @c baseReq has been set. */
@@ -68,17 +68,17 @@ typedef GPB_ENUM(LoginReq_FieldNumber) {
 
 @end
 
-#pragma mark - LoginResp
+#pragma mark - RSLoginResp
 
-typedef GPB_ENUM(LoginResp_FieldNumber) {
-  LoginResp_FieldNumber_BaseResp = 1,
-  LoginResp_FieldNumber_OpCode = 2,
-  LoginResp_FieldNumber_UserName = 3,
-  LoginResp_FieldNumber_SessionKey = 4,
-  LoginResp_FieldNumber_Profile = 5,
+typedef GPB_ENUM(RSLoginResp_FieldNumber) {
+  RSLoginResp_FieldNumber_BaseResp = 1,
+  RSLoginResp_FieldNumber_OpCode = 2,
+  RSLoginResp_FieldNumber_UserName = 3,
+  RSLoginResp_FieldNumber_SessionKey = 4,
+  RSLoginResp_FieldNumber_Profile = 5,
 };
 
-@interface LoginResp : GPBMessage
+@interface RSLoginResp : GPBMessage
 
 @property(nonatomic, readwrite, strong, null_resettable) RSBaseResp *baseResp;
 /** Test to see if @c baseResp has been set. */
@@ -95,23 +95,23 @@ typedef GPB_ENUM(LoginResp_FieldNumber) {
 /** Test to see if @c sessionKey has been set. */
 @property(nonatomic, readwrite) BOOL hasSessionKey;
 
-@property(nonatomic, readwrite, strong, null_resettable) Profile *profile;
+@property(nonatomic, readwrite, strong, null_resettable) RSProfile *profile;
 /** Test to see if @c profile has been set. */
 @property(nonatomic, readwrite) BOOL hasProfile;
 
 @end
 
-#pragma mark - UpLoadImgReq
+#pragma mark - RSUpLoadImgReq
 
-typedef GPB_ENUM(UpLoadImgReq_FieldNumber) {
-  UpLoadImgReq_FieldNumber_BaseReq = 1,
-  UpLoadImgReq_FieldNumber_CliImgId = 2,
-  UpLoadImgReq_FieldNumber_Total = 3,
-  UpLoadImgReq_FieldNumber_OffSet = 4,
-  UpLoadImgReq_FieldNumber_Buff = 5,
+typedef GPB_ENUM(RSUpLoadImgReq_FieldNumber) {
+  RSUpLoadImgReq_FieldNumber_BaseReq = 1,
+  RSUpLoadImgReq_FieldNumber_CliImgId = 2,
+  RSUpLoadImgReq_FieldNumber_Total = 3,
+  RSUpLoadImgReq_FieldNumber_OffSet = 4,
+  RSUpLoadImgReq_FieldNumber_Buff = 5,
 };
 
-@interface UpLoadImgReq : GPBMessage
+@interface RSUpLoadImgReq : GPBMessage
 
 @property(nonatomic, readwrite, strong, null_resettable) RSBaseReq *baseReq;
 /** Test to see if @c baseReq has been set. */
@@ -133,14 +133,14 @@ typedef GPB_ENUM(UpLoadImgReq_FieldNumber) {
 
 @end
 
-#pragma mark - UpLoadImgResp
+#pragma mark - RSUpLoadImgResp
 
-typedef GPB_ENUM(UpLoadImgResp_FieldNumber) {
-  UpLoadImgResp_FieldNumber_BaseResp = 1,
-  UpLoadImgResp_FieldNumber_SvrImgId = 2,
+typedef GPB_ENUM(RSUpLoadImgResp_FieldNumber) {
+  RSUpLoadImgResp_FieldNumber_BaseResp = 1,
+  RSUpLoadImgResp_FieldNumber_SvrImgId = 2,
 };
 
-@interface UpLoadImgResp : GPBMessage
+@interface RSUpLoadImgResp : GPBMessage
 
 @property(nonatomic, readwrite, strong, null_resettable) RSBaseResp *baseResp;
 /** Test to see if @c baseResp has been set. */
@@ -152,14 +152,14 @@ typedef GPB_ENUM(UpLoadImgResp_FieldNumber) {
 
 @end
 
-#pragma mark - SyncReq
+#pragma mark - RSSyncReq
 
-typedef GPB_ENUM(SyncReq_FieldNumber) {
-  SyncReq_FieldNumber_BaseReq = 1,
-  SyncReq_FieldNumber_SyncBuff = 2,
+typedef GPB_ENUM(RSSyncReq_FieldNumber) {
+  RSSyncReq_FieldNumber_BaseReq = 1,
+  RSSyncReq_FieldNumber_SyncBuff = 2,
 };
 
-@interface SyncReq : GPBMessage
+@interface RSSyncReq : GPBMessage
 
 @property(nonatomic, readwrite, strong, null_resettable) RSBaseReq *baseReq;
 /** Test to see if @c baseReq has been set. */
@@ -171,15 +171,15 @@ typedef GPB_ENUM(SyncReq_FieldNumber) {
 
 @end
 
-#pragma mark - SyncResp
+#pragma mark - RSSyncResp
 
-typedef GPB_ENUM(SyncResp_FieldNumber) {
-  SyncResp_FieldNumber_BaseResp = 1,
-  SyncResp_FieldNumber_NextSyncBuff = 2,
-  SyncResp_FieldNumber_MsgArray = 3,
+typedef GPB_ENUM(RSSyncResp_FieldNumber) {
+  RSSyncResp_FieldNumber_BaseResp = 1,
+  RSSyncResp_FieldNumber_NextSyncBuff = 2,
+  RSSyncResp_FieldNumber_MsgArray = 3,
 };
 
-@interface SyncResp : GPBMessage
+@interface RSSyncResp : GPBMessage
 
 @property(nonatomic, readwrite, strong, null_resettable) RSBaseResp *baseResp;
 /** Test to see if @c baseResp has been set. */
@@ -189,7 +189,7 @@ typedef GPB_ENUM(SyncResp_FieldNumber) {
 /** Test to see if @c nextSyncBuff has been set. */
 @property(nonatomic, readwrite) BOOL hasNextSyncBuff;
 
-@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<Msg*> *msgArray;
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<RSMsg*> *msgArray;
 /** The number of items in @c msgArray without causing the array to be created. */
 @property(nonatomic, readonly) NSUInteger msgArray_Count;
 

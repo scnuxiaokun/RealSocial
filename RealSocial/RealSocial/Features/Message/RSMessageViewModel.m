@@ -18,10 +18,10 @@
     request.mokeResponseData = [self mokeResponse];
     RACSignal *signal = [RSNetWorkService sendRequest:request];
     [signal subscribeNext:^(RSResponse *response) {
-        SyncResp *resp = [SyncResp parseFromData:response.data error:nil];
+        RSSyncResp *resp = [RSSyncResp parseFromData:response.data error:nil];
         [self sendUpdateData:resp];
         NSMutableArray *tmp = [[NSMutableArray alloc] init];
-        for (Msg *msg in resp.msgArray) {
+        for (RSMsg *msg in resp.msgArray) {
             RSMessageItemViewModel *item = [RSMessageItemViewModel new];
             item.name = [[NSString alloc] initWithData:msg.content encoding:NSUTF8StringEncoding];
             [tmp addObject:item];
@@ -39,16 +39,16 @@
 }
     
 -(NSData *)mokeResponse {
-    SyncResp *syncResp = [SyncResp new];
+    RSSyncResp *syncResp = [RSSyncResp new];
     RSBaseResp *baseResp = [RSBaseResp new];
     baseResp.errCode = 0;
     syncResp.nextSyncBuff = [@"sjsjsjs" dataUsingEncoding:NSUTF8StringEncoding];
     syncResp.baseResp = baseResp;
-    Msg *msg = [Msg new];
+    RSMsg *msg = [RSMsg new];
     msg.content = [@"sjsjsjs" dataUsingEncoding:NSUTF8StringEncoding];
-    Msg *msg2 = [Msg new];
+    RSMsg *msg2 = [RSMsg new];
     msg2.content = [@"sjsjsjs" dataUsingEncoding:NSUTF8StringEncoding];
-    Msg *msg3 = [Msg new];
+    RSMsg *msg3 = [RSMsg new];
     msg3.content = [@"sjsjsjs" dataUsingEncoding:NSUTF8StringEncoding];
     [syncResp.msgArray addObject:msg];
     [syncResp.msgArray addObject:msg2];

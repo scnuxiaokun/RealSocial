@@ -20,41 +20,42 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
 
-#pragma mark - SpcgiRoot
+#pragma mark - RSSpcgiRoot
 
-@implementation SpcgiRoot
+@implementation RSSpcgiRoot
 
 // No extensions in the file and none of the imports (direct or indirect)
 // defined extensions, so no need to generate +extensionRegistry.
 
 @end
 
-#pragma mark - SpcgiRoot_FileDescriptor
+#pragma mark - RSSpcgiRoot_FileDescriptor
 
-static GPBFileDescriptor *SpcgiRoot_FileDescriptor(void) {
+static GPBFileDescriptor *RSSpcgiRoot_FileDescriptor(void) {
   // This is called by +initialize so there is no need to worry
   // about thread safety of the singleton.
   static GPBFileDescriptor *descriptor = NULL;
   if (!descriptor) {
     GPB_DEBUG_CHECK_RUNTIME_VERSIONS();
     descriptor = [[GPBFileDescriptor alloc] initWithPackage:@"spcgi"
+                                                 objcPrefix:@"RS"
                                                      syntax:GPBFileSyntaxProto2];
   }
   return descriptor;
 }
 
-#pragma mark - LoginReq
+#pragma mark - RSLoginReq
 
-@implementation LoginReq
+@implementation RSLoginReq
 
 @dynamic hasBaseReq, baseReq;
 @dynamic hasCode, code;
 
-typedef struct LoginReq__storage_ {
+typedef struct RSLoginReq__storage_ {
   uint32_t _has_storage_[1];
   RSBaseReq *baseReq;
   NSString *code;
-} LoginReq__storage_;
+} RSLoginReq__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -65,29 +66,29 @@ typedef struct LoginReq__storage_ {
       {
         .name = "baseReq",
         .dataTypeSpecific.className = GPBStringifySymbol(RSBaseReq),
-        .number = LoginReq_FieldNumber_BaseReq,
+        .number = RSLoginReq_FieldNumber_BaseReq,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(LoginReq__storage_, baseReq),
+        .offset = (uint32_t)offsetof(RSLoginReq__storage_, baseReq),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
       },
       {
         .name = "code",
         .dataTypeSpecific.className = NULL,
-        .number = LoginReq_FieldNumber_Code,
+        .number = RSLoginReq_FieldNumber_Code,
         .hasIndex = 1,
-        .offset = (uint32_t)offsetof(LoginReq__storage_, code),
+        .offset = (uint32_t)offsetof(RSLoginReq__storage_, code),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[LoginReq class]
-                                     rootClass:[SpcgiRoot class]
-                                          file:SpcgiRoot_FileDescriptor()
+        [GPBDescriptor allocDescriptorForClass:[RSLoginReq class]
+                                     rootClass:[RSSpcgiRoot class]
+                                          file:RSSpcgiRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(LoginReq__storage_)
+                                   storageSize:sizeof(RSLoginReq__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
@@ -102,9 +103,9 @@ typedef struct LoginReq__storage_ {
 
 @end
 
-#pragma mark - LoginResp
+#pragma mark - RSLoginResp
 
-@implementation LoginResp
+@implementation RSLoginResp
 
 @dynamic hasBaseResp, baseResp;
 @dynamic hasOpCode, opCode;
@@ -112,14 +113,14 @@ typedef struct LoginReq__storage_ {
 @dynamic hasSessionKey, sessionKey;
 @dynamic hasProfile, profile;
 
-typedef struct LoginResp__storage_ {
+typedef struct RSLoginResp__storage_ {
   uint32_t _has_storage_[1];
   uint32_t opCode;
   RSBaseResp *baseResp;
   NSString *userName;
   NSData *sessionKey;
-  Profile *profile;
-} LoginResp__storage_;
+  RSProfile *profile;
+} RSLoginResp__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -130,56 +131,56 @@ typedef struct LoginResp__storage_ {
       {
         .name = "baseResp",
         .dataTypeSpecific.className = GPBStringifySymbol(RSBaseResp),
-        .number = LoginResp_FieldNumber_BaseResp,
+        .number = RSLoginResp_FieldNumber_BaseResp,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(LoginResp__storage_, baseResp),
+        .offset = (uint32_t)offsetof(RSLoginResp__storage_, baseResp),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
       },
       {
         .name = "opCode",
         .dataTypeSpecific.className = NULL,
-        .number = LoginResp_FieldNumber_OpCode,
+        .number = RSLoginResp_FieldNumber_OpCode,
         .hasIndex = 1,
-        .offset = (uint32_t)offsetof(LoginResp__storage_, opCode),
+        .offset = (uint32_t)offsetof(RSLoginResp__storage_, opCode),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeUInt32,
       },
       {
         .name = "userName",
         .dataTypeSpecific.className = NULL,
-        .number = LoginResp_FieldNumber_UserName,
+        .number = RSLoginResp_FieldNumber_UserName,
         .hasIndex = 2,
-        .offset = (uint32_t)offsetof(LoginResp__storage_, userName),
+        .offset = (uint32_t)offsetof(RSLoginResp__storage_, userName),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
       {
         .name = "sessionKey",
         .dataTypeSpecific.className = NULL,
-        .number = LoginResp_FieldNumber_SessionKey,
+        .number = RSLoginResp_FieldNumber_SessionKey,
         .hasIndex = 3,
-        .offset = (uint32_t)offsetof(LoginResp__storage_, sessionKey),
+        .offset = (uint32_t)offsetof(RSLoginResp__storage_, sessionKey),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeBytes,
       },
       {
         .name = "profile",
-        .dataTypeSpecific.className = GPBStringifySymbol(Profile),
-        .number = LoginResp_FieldNumber_Profile,
+        .dataTypeSpecific.className = GPBStringifySymbol(RSProfile),
+        .number = RSLoginResp_FieldNumber_Profile,
         .hasIndex = 4,
-        .offset = (uint32_t)offsetof(LoginResp__storage_, profile),
+        .offset = (uint32_t)offsetof(RSLoginResp__storage_, profile),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[LoginResp class]
-                                     rootClass:[SpcgiRoot class]
-                                          file:SpcgiRoot_FileDescriptor()
+        [GPBDescriptor allocDescriptorForClass:[RSLoginResp class]
+                                     rootClass:[RSSpcgiRoot class]
+                                          file:RSSpcgiRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(LoginResp__storage_)
+                                   storageSize:sizeof(RSLoginResp__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
@@ -194,9 +195,9 @@ typedef struct LoginResp__storage_ {
 
 @end
 
-#pragma mark - UpLoadImgReq
+#pragma mark - RSUpLoadImgReq
 
-@implementation UpLoadImgReq
+@implementation RSUpLoadImgReq
 
 @dynamic hasBaseReq, baseReq;
 @dynamic hasCliImgId, cliImgId;
@@ -204,14 +205,14 @@ typedef struct LoginResp__storage_ {
 @dynamic hasOffSet, offSet;
 @dynamic hasBuff, buff;
 
-typedef struct UpLoadImgReq__storage_ {
+typedef struct RSUpLoadImgReq__storage_ {
   uint32_t _has_storage_[1];
   uint32_t total;
   uint32_t offSet;
   RSBaseReq *baseReq;
   NSData *cliImgId;
   NSData *buff;
-} UpLoadImgReq__storage_;
+} RSUpLoadImgReq__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -222,56 +223,56 @@ typedef struct UpLoadImgReq__storage_ {
       {
         .name = "baseReq",
         .dataTypeSpecific.className = GPBStringifySymbol(RSBaseReq),
-        .number = UpLoadImgReq_FieldNumber_BaseReq,
+        .number = RSUpLoadImgReq_FieldNumber_BaseReq,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(UpLoadImgReq__storage_, baseReq),
+        .offset = (uint32_t)offsetof(RSUpLoadImgReq__storage_, baseReq),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
       },
       {
         .name = "cliImgId",
         .dataTypeSpecific.className = NULL,
-        .number = UpLoadImgReq_FieldNumber_CliImgId,
+        .number = RSUpLoadImgReq_FieldNumber_CliImgId,
         .hasIndex = 1,
-        .offset = (uint32_t)offsetof(UpLoadImgReq__storage_, cliImgId),
+        .offset = (uint32_t)offsetof(RSUpLoadImgReq__storage_, cliImgId),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeBytes,
       },
       {
         .name = "total",
         .dataTypeSpecific.className = NULL,
-        .number = UpLoadImgReq_FieldNumber_Total,
+        .number = RSUpLoadImgReq_FieldNumber_Total,
         .hasIndex = 2,
-        .offset = (uint32_t)offsetof(UpLoadImgReq__storage_, total),
+        .offset = (uint32_t)offsetof(RSUpLoadImgReq__storage_, total),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeUInt32,
       },
       {
         .name = "offSet",
         .dataTypeSpecific.className = NULL,
-        .number = UpLoadImgReq_FieldNumber_OffSet,
+        .number = RSUpLoadImgReq_FieldNumber_OffSet,
         .hasIndex = 3,
-        .offset = (uint32_t)offsetof(UpLoadImgReq__storage_, offSet),
+        .offset = (uint32_t)offsetof(RSUpLoadImgReq__storage_, offSet),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeUInt32,
       },
       {
         .name = "buff",
         .dataTypeSpecific.className = NULL,
-        .number = UpLoadImgReq_FieldNumber_Buff,
+        .number = RSUpLoadImgReq_FieldNumber_Buff,
         .hasIndex = 4,
-        .offset = (uint32_t)offsetof(UpLoadImgReq__storage_, buff),
+        .offset = (uint32_t)offsetof(RSUpLoadImgReq__storage_, buff),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeBytes,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[UpLoadImgReq class]
-                                     rootClass:[SpcgiRoot class]
-                                          file:SpcgiRoot_FileDescriptor()
+        [GPBDescriptor allocDescriptorForClass:[RSUpLoadImgReq class]
+                                     rootClass:[RSSpcgiRoot class]
+                                          file:RSSpcgiRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(UpLoadImgReq__storage_)
+                                   storageSize:sizeof(RSUpLoadImgReq__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
@@ -286,18 +287,18 @@ typedef struct UpLoadImgReq__storage_ {
 
 @end
 
-#pragma mark - UpLoadImgResp
+#pragma mark - RSUpLoadImgResp
 
-@implementation UpLoadImgResp
+@implementation RSUpLoadImgResp
 
 @dynamic hasBaseResp, baseResp;
 @dynamic hasSvrImgId, svrImgId;
 
-typedef struct UpLoadImgResp__storage_ {
+typedef struct RSUpLoadImgResp__storage_ {
   uint32_t _has_storage_[1];
   RSBaseResp *baseResp;
   NSString *svrImgId;
-} UpLoadImgResp__storage_;
+} RSUpLoadImgResp__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -308,29 +309,29 @@ typedef struct UpLoadImgResp__storage_ {
       {
         .name = "baseResp",
         .dataTypeSpecific.className = GPBStringifySymbol(RSBaseResp),
-        .number = UpLoadImgResp_FieldNumber_BaseResp,
+        .number = RSUpLoadImgResp_FieldNumber_BaseResp,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(UpLoadImgResp__storage_, baseResp),
+        .offset = (uint32_t)offsetof(RSUpLoadImgResp__storage_, baseResp),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
       },
       {
         .name = "svrImgId",
         .dataTypeSpecific.className = NULL,
-        .number = UpLoadImgResp_FieldNumber_SvrImgId,
+        .number = RSUpLoadImgResp_FieldNumber_SvrImgId,
         .hasIndex = 1,
-        .offset = (uint32_t)offsetof(UpLoadImgResp__storage_, svrImgId),
+        .offset = (uint32_t)offsetof(RSUpLoadImgResp__storage_, svrImgId),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[UpLoadImgResp class]
-                                     rootClass:[SpcgiRoot class]
-                                          file:SpcgiRoot_FileDescriptor()
+        [GPBDescriptor allocDescriptorForClass:[RSUpLoadImgResp class]
+                                     rootClass:[RSSpcgiRoot class]
+                                          file:RSSpcgiRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(UpLoadImgResp__storage_)
+                                   storageSize:sizeof(RSUpLoadImgResp__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
@@ -345,18 +346,18 @@ typedef struct UpLoadImgResp__storage_ {
 
 @end
 
-#pragma mark - SyncReq
+#pragma mark - RSSyncReq
 
-@implementation SyncReq
+@implementation RSSyncReq
 
 @dynamic hasBaseReq, baseReq;
 @dynamic hasSyncBuff, syncBuff;
 
-typedef struct SyncReq__storage_ {
+typedef struct RSSyncReq__storage_ {
   uint32_t _has_storage_[1];
   RSBaseReq *baseReq;
   NSData *syncBuff;
-} SyncReq__storage_;
+} RSSyncReq__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -367,29 +368,29 @@ typedef struct SyncReq__storage_ {
       {
         .name = "baseReq",
         .dataTypeSpecific.className = GPBStringifySymbol(RSBaseReq),
-        .number = SyncReq_FieldNumber_BaseReq,
+        .number = RSSyncReq_FieldNumber_BaseReq,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(SyncReq__storage_, baseReq),
+        .offset = (uint32_t)offsetof(RSSyncReq__storage_, baseReq),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
       },
       {
         .name = "syncBuff",
         .dataTypeSpecific.className = NULL,
-        .number = SyncReq_FieldNumber_SyncBuff,
+        .number = RSSyncReq_FieldNumber_SyncBuff,
         .hasIndex = 1,
-        .offset = (uint32_t)offsetof(SyncReq__storage_, syncBuff),
+        .offset = (uint32_t)offsetof(RSSyncReq__storage_, syncBuff),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeBytes,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[SyncReq class]
-                                     rootClass:[SpcgiRoot class]
-                                          file:SpcgiRoot_FileDescriptor()
+        [GPBDescriptor allocDescriptorForClass:[RSSyncReq class]
+                                     rootClass:[RSSpcgiRoot class]
+                                          file:RSSpcgiRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(SyncReq__storage_)
+                                   storageSize:sizeof(RSSyncReq__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
@@ -404,20 +405,20 @@ typedef struct SyncReq__storage_ {
 
 @end
 
-#pragma mark - SyncResp
+#pragma mark - RSSyncResp
 
-@implementation SyncResp
+@implementation RSSyncResp
 
 @dynamic hasBaseResp, baseResp;
 @dynamic hasNextSyncBuff, nextSyncBuff;
 @dynamic msgArray, msgArray_Count;
 
-typedef struct SyncResp__storage_ {
+typedef struct RSSyncResp__storage_ {
   uint32_t _has_storage_[1];
   RSBaseResp *baseResp;
   NSData *nextSyncBuff;
   NSMutableArray *msgArray;
-} SyncResp__storage_;
+} RSSyncResp__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -428,38 +429,38 @@ typedef struct SyncResp__storage_ {
       {
         .name = "baseResp",
         .dataTypeSpecific.className = GPBStringifySymbol(RSBaseResp),
-        .number = SyncResp_FieldNumber_BaseResp,
+        .number = RSSyncResp_FieldNumber_BaseResp,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(SyncResp__storage_, baseResp),
+        .offset = (uint32_t)offsetof(RSSyncResp__storage_, baseResp),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
       },
       {
         .name = "nextSyncBuff",
         .dataTypeSpecific.className = NULL,
-        .number = SyncResp_FieldNumber_NextSyncBuff,
+        .number = RSSyncResp_FieldNumber_NextSyncBuff,
         .hasIndex = 1,
-        .offset = (uint32_t)offsetof(SyncResp__storage_, nextSyncBuff),
+        .offset = (uint32_t)offsetof(RSSyncResp__storage_, nextSyncBuff),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeBytes,
       },
       {
         .name = "msgArray",
-        .dataTypeSpecific.className = GPBStringifySymbol(Msg),
-        .number = SyncResp_FieldNumber_MsgArray,
+        .dataTypeSpecific.className = GPBStringifySymbol(RSMsg),
+        .number = RSSyncResp_FieldNumber_MsgArray,
         .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(SyncResp__storage_, msgArray),
+        .offset = (uint32_t)offsetof(RSSyncResp__storage_, msgArray),
         .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[SyncResp class]
-                                     rootClass:[SpcgiRoot class]
-                                          file:SpcgiRoot_FileDescriptor()
+        [GPBDescriptor allocDescriptorForClass:[RSSyncResp class]
+                                     rootClass:[RSSpcgiRoot class]
+                                          file:RSSpcgiRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(SyncResp__storage_)
+                                   storageSize:sizeof(RSSyncResp__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =

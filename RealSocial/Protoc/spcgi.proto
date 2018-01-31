@@ -4,16 +4,17 @@ syntax="proto2";
 package spcgi;
 
 import "comm/core/spcgicomm.proto";
+option objc_class_prefix="RS";
 
 message LoginReq 
 {
-    optional RSBaseReq BaseReq = 1;
+    optional BaseReq BaseReq = 1;
     optional string Code = 2;
 }
 
 message LoginResp 
 {
-    optional RSBaseResp BaseResp = 1;
+    optional BaseResp BaseResp = 1;
     optional uint32 OpCode = 2;
     optional string UserName = 3;
     optional bytes SessionKey = 4;
@@ -22,7 +23,7 @@ message LoginResp
 
 message UpLoadImgReq
 {
-    optional RSBaseReq BaseReq = 1;
+    optional BaseReq BaseReq = 1;
     optional bytes CliImgId = 2;
     optional uint32 Total = 3;
     optional uint32 OffSet = 4;
@@ -31,19 +32,19 @@ message UpLoadImgReq
 
 message UpLoadImgResp
 {
-    optional RSBaseResp BaseResp = 1;
+    optional BaseResp BaseResp = 1;
     optional string SvrImgId = 2; 
 }
 
 message SyncReq
 {
-    optional RSBaseReq BaseReq = 1;
+    optional BaseReq BaseReq = 1;
     optional bytes SyncBuff = 2;
 }
 
 message SyncResp
 {
-    optional RSBaseResp BaseResp = 1;
+    optional BaseResp BaseResp = 1;
     optional bytes NextSyncBuff = 2; 
     repeated Msg Msg = 3;
 }

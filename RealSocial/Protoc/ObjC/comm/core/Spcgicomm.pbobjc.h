@@ -29,23 +29,23 @@ CF_EXTERN_C_BEGIN
 
 NS_ASSUME_NONNULL_BEGIN
 
-#pragma mark - Enum enSex
+#pragma mark - Enum RSenSex
 
-typedef GPB_ENUM(enSex) {
-  enSex_SexUnknow = 0,
-  enSex_SexMale = 1,
-  enSex_SexFemale = 2,
+typedef GPB_ENUM(RSenSex) {
+  RSenSex_SexUnknow = 0,
+  RSenSex_SexMale = 1,
+  RSenSex_SexFemale = 2,
 };
 
-GPBEnumDescriptor *enSex_EnumDescriptor(void);
+GPBEnumDescriptor *RSenSex_EnumDescriptor(void);
 
 /**
  * Checks to see if the given value is defined by the enum or was not known at
  * the time this source was generated.
  **/
-BOOL enSex_IsValidValue(int32_t value);
+BOOL RSenSex_IsValidValue(int32_t value);
 
-#pragma mark - SpcgicommRoot
+#pragma mark - RSSpcgicommRoot
 
 /**
  * Exposes the extension registry for this file.
@@ -57,7 +57,7 @@ BOOL enSex_IsValidValue(int32_t value);
  * which is a @c GPBExtensionRegistry that includes all the extensions defined by
  * this file and all files that it depends on.
  **/
-@interface SpcgicommRoot : GPBRootObject
+@interface RSSpcgicommRoot : GPBRootObject
 @end
 
 #pragma mark - RSBaseReq
@@ -84,21 +84,21 @@ typedef GPB_ENUM(RSBaseResp_FieldNumber) {
 
 @end
 
-#pragma mark - Profile
+#pragma mark - RSProfile
 
-typedef GPB_ENUM(Profile_FieldNumber) {
-  Profile_FieldNumber_NickName = 1,
-  Profile_FieldNumber_Sex = 2,
-  Profile_FieldNumber_HeadImgURL = 3,
+typedef GPB_ENUM(RSProfile_FieldNumber) {
+  RSProfile_FieldNumber_NickName = 1,
+  RSProfile_FieldNumber_Sex = 2,
+  RSProfile_FieldNumber_HeadImgURL = 3,
 };
 
-@interface Profile : GPBMessage
+@interface RSProfile : GPBMessage
 
 @property(nonatomic, readwrite, copy, null_resettable) NSString *nickName;
 /** Test to see if @c nickName has been set. */
 @property(nonatomic, readwrite) BOOL hasNickName;
 
-@property(nonatomic, readwrite) enSex sex;
+@property(nonatomic, readwrite) RSenSex sex;
 
 @property(nonatomic, readwrite) BOOL hasSex;
 @property(nonatomic, readwrite, copy, null_resettable) NSString *headImgURL;
@@ -107,15 +107,15 @@ typedef GPB_ENUM(Profile_FieldNumber) {
 
 @end
 
-#pragma mark - Msg
+#pragma mark - RSMsg
 
-typedef GPB_ENUM(Msg_FieldNumber) {
-  Msg_FieldNumber_Id_p = 1,
-  Msg_FieldNumber_Type = 2,
-  Msg_FieldNumber_Content = 3,
+typedef GPB_ENUM(RSMsg_FieldNumber) {
+  RSMsg_FieldNumber_Id_p = 1,
+  RSMsg_FieldNumber_Type = 2,
+  RSMsg_FieldNumber_Content = 3,
 };
 
-@interface Msg : GPBMessage
+@interface RSMsg : GPBMessage
 
 @property(nonatomic, readwrite) uint64_t id_p;
 
