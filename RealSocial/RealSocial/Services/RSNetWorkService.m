@@ -18,8 +18,9 @@
         return [self sendDebugRequest:request];
     }
     RACReplaySubject *signal = [RACReplaySubject subject];
-    
-    NSString *URLString = @"http://120.79.150.34:20000/WxProxy/AccessToken";
+    NSString *URLString = [@"http://120.79.150.34:20000/" stringByAppendingString:request.cgiName
+                           ];
+//    NSString *URLString = @"http://120.79.150.34:20000/WxProxy/AccessToken";
 //    NSDictionary *parameters = @{@"WxAcct": @"WXACCT_BIZ_TEST"};
     
     // 获得请求管理者
@@ -40,11 +41,11 @@
     
     NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:URLString]];
     [urlRequest setHTTPMethod:@"POST"];
-    AccessTokenReq *req = [AccessTokenReq new];
-    req.wxAcct = enWxAcct_WxacctBizTest;
+//    AccessTokenReq *req = [AccessTokenReq new];
+//    req.wxAcct = enWxAcct_WxacctBizTest;
     [urlRequest setValue:@"application/proto" forHTTPHeaderField:@"Content-Type"];
-    NSData *data = [req data];
-    [urlRequest setHTTPBody:data];
+//    NSData *data = [req data];
+    [urlRequest setHTTPBody:request.data];
     AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
     session.requestSerializer = [AFHTTPRequestSerializer serializer];
     session.responseSerializer = [AFHTTPResponseSerializer serializer];
@@ -55,7 +56,9 @@
             [signal sendError:error];
         } else {
             NSLog(@"%@", responseObject);
-            [signal sendNext:@(YES)];
+            RSResponse *response = [[RSResponse alloc] init];
+            response.data = responseObject;
+            [signal sendNext:response];
             [signal sendCompleted];
         }
     }];

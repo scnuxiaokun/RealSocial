@@ -28,6 +28,7 @@
     
     RSUINavigationController *tab2 = [[RSUINavigationController alloc] initWithRootViewController:[[RSFriendListViewController alloc] init]];
     tab2.title = @"friend";
+    
     RSUINavigationController *tab3 = [[RSUINavigationController alloc] initWithRootViewController:[[RSMineViewController alloc] init]];
     tab3.title = @"me";
     

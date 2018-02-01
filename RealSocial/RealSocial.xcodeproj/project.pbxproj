@@ -8,6 +8,60 @@
 
 /* Begin PBXBuildFile section */
 		123DF128ED7439AB67995CDA /* libPods-RealSocial.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C194DAA8A9C057DA270C97 /* libPods-RealSocial.a */; };
+		AD2DA56220234DD4006BA319 /* Face3DVertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA52E20234DD4006BA319 /* Face3DVertex.glsl */; };
+		AD2DA56320234DD4006BA319 /* VideoFrag.glsl in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA52F20234DD4006BA319 /* VideoFrag.glsl */; };
+		AD2DA56420234DD4006BA319 /* Face3DFragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA53020234DD4006BA319 /* Face3DFragment.glsl */; };
+		AD2DA56520234DD4006BA319 /* VideoVert.glsl in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA53120234DD4006BA319 /* VideoVert.glsl */; };
+		AD2DA56620234DD4006BA319 /* FacePointSize.glsl in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA53220234DD4006BA319 /* FacePointSize.glsl */; };
+		AD2DA56720234DD4006BA319 /* FacePointColor.glsl in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA53320234DD4006BA319 /* FacePointColor.glsl */; };
+		AD2DA56820234DD4006BA319 /* standard_alpha.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA53520234DD4006BA319 /* standard_alpha.png */; };
+		AD2DA56920234DD4006BA319 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA53620234DD4006BA319 /* background.png */; };
+		AD2DA56A20234DD4006BA319 /* skin.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA53720234DD4006BA319 /* skin.png */; };
+		AD2DA56B20234DD4006BA319 /* 81_points_position.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA53820234DD4006BA319 /* 81_points_position.jpg */; };
+		AD2DA56C20234DD4006BA319 /* shader-0.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA53A20234DD4006BA319 /* shader-0.png */; };
+		AD2DA56D20234DD4006BA319 /* area-1.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA53B20234DD4006BA319 /* area-1.png */; };
+		AD2DA56E20234DD4006BA319 /* area-0.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA53C20234DD4006BA319 /* area-0.png */; };
+		AD2DA56F20234DD4006BA319 /* shader-1.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA53D20234DD4006BA319 /* shader-1.png */; };
+		AD2DA57020234DD5006BA319 /* faceinfo-0.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA53E20234DD4006BA319 /* faceinfo-0.png */; };
+		AD2DA57120234DD5006BA319 /* screen-0.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA53F20234DD4006BA319 /* screen-0.png */; };
+		AD2DA57220234DD5006BA319 /* screen-1.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA54020234DD4006BA319 /* screen-1.png */; };
+		AD2DA57320234DD5006BA319 /* faceinfo-1.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA54120234DD4006BA319 /* faceinfo-1.png */; };
+		AD2DA57420234DD5006BA319 /* megviicloud logo.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA54220234DD4006BA319 /* megviicloud logo.png */; };
+		AD2DA57520234DD5006BA319 /* 1280_720@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA54320234DD4006BA319 /* 1280_720@3x.png */; };
+		AD2DA57620234DD5006BA319 /* card_front.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA54420234DD4006BA319 /* card_front.png */; };
+		AD2DA57720234DD5006BA319 /* 960_540@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA54520234DD4006BA319 /* 960_540@3x.png */; };
+		AD2DA57820234DD5006BA319 /* textrec-0.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA54620234DD4006BA319 /* textrec-0.png */; };
+		AD2DA57920234DD5006BA319 /* textrec-1.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA54720234DD4006BA319 /* textrec-1.png */; };
+		AD2DA57A20234DD5006BA319 /* faceLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA54820234DD4006BA319 /* faceLogo.png */; };
+		AD2DA57B20234DD5006BA319 /* record-1.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA54920234DD4006BA319 /* record-1.png */; };
+		AD2DA57C20234DD5006BA319 /* debug-1.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA54A20234DD4006BA319 /* debug-1.png */; };
+		AD2DA57D20234DD5006BA319 /* 1920_1080@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA54B20234DD4006BA319 /* 1920_1080@3x.png */; };
+		AD2DA57E20234DD5006BA319 /* debug-0.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA54C20234DD4006BA319 /* debug-0.png */; };
+		AD2DA57F20234DD5006BA319 /* record-0.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA54D20234DD4006BA319 /* record-0.png */; };
+		AD2DA58020234DD5006BA319 /* 1920_1080.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA54E20234DD4006BA319 /* 1920_1080.png */; };
+		AD2DA58120234DD5006BA319 /* side-1.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA54F20234DD4006BA319 /* side-1.png */; };
+		AD2DA58220234DD5006BA319 /* side-0.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA55020234DD4006BA319 /* side-0.png */; };
+		AD2DA58320234DD5006BA319 /* 1280_720.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA55120234DD4006BA319 /* 1280_720.png */; };
+		AD2DA58420234DD5006BA319 /* pw.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA55220234DD4006BA319 /* pw.png */; };
+		AD2DA58520234DD5006BA319 /* 960_540.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA55320234DD4006BA319 /* 960_540.png */; };
+		AD2DA58620234DD5006BA319 /* regist.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA55520234DD4006BA319 /* regist.png */; };
+		AD2DA58720234DD5006BA319 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA55620234DD4006BA319 /* user.png */; };
+		AD2DA58820234DD5006BA319 /* selected.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA55720234DD4006BA319 /* selected.png */; };
+		AD2DA58920234DD5006BA319 /* faceCompare-1.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA55820234DD4006BA319 /* faceCompare-1.png */; };
+		AD2DA58A20234DD5006BA319 /* faceCompare-0.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA55920234DD4006BA319 /* faceCompare-0.png */; };
+		AD2DA58B20234DD5006BA319 /* unSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA55A20234DD4006BA319 /* unSelected.png */; };
+		AD2DA58C20234DD5006BA319 /* 3D-0.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA55B20234DD4006BA319 /* 3D-0.png */; };
+		AD2DA58D20234DD5006BA319 /* 3D-1.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA55C20234DD4006BA319 /* 3D-1.png */; };
+		AD2DA58E20234DD5006BA319 /* 81-1.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA55D20234DD4006BA319 /* 81-1.png */; };
+		AD2DA58F20234DD5006BA319 /* 81-0.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA55E20234DD4006BA319 /* 81-0.png */; };
+		AD2DA59020234DD5006BA319 /* IMG_2393.JPG in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA55F20234DD4006BA319 /* IMG_2393.JPG */; };
+		AD2DA59120234DD5006BA319 /* 640_480.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA56020234DD4006BA319 /* 640_480.png */; };
+		AD2DA59220234DD5006BA319 /* 640_480@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA56120234DD4006BA319 /* 640_480@3x.png */; };
+		AD2DA5962023500B006BA319 /* RSPictureListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2DA5952023500B006BA319 /* RSPictureListViewController.m */; };
+		AD2DA59920235023006BA319 /* RSPictureListViewModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = AD2DA59820235022006BA319 /* RSPictureListViewModel.mm */; };
+		AD2DA59C20235143006BA319 /* RSPictureListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2DA59B20235143006BA319 /* RSPictureListTableViewCell.m */; };
+		AD2DA59F20235992006BA319 /* RSDBService.mm in Sources */ = {isa = PBXBuildFile; fileRef = AD2DA59E20235992006BA319 /* RSDBService.mm */; };
+		AD2DA5A520235DAA006BA319 /* RSPictureListItemViewModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = AD2DA5A320235DAA006BA319 /* RSPictureListItemViewModel.mm */; };
 		AD2F5744202094D400E0CF83 /* RSLiveData.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2F5743202094D400E0CF83 /* RSLiveData.m */; };
 		AD2F57482020BB3400E0CF83 /* RSMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2F57472020BB3400E0CF83 /* RSMessageViewController.m */; };
 		AD2F574B2020BBED00E0CF83 /* RSMessageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2F574A2020BBED00E0CF83 /* RSMessageViewModel.m */; };
@@ -182,6 +236,66 @@
 		16C194DAA8A9C057DA270C97 /* libPods-RealSocial.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RealSocial.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50CA8B4FC9CDE384A43E0EBE /* Pods-RealSocial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealSocial.release.xcconfig"; path = "Pods/Target Support Files/Pods-RealSocial/Pods-RealSocial.release.xcconfig"; sourceTree = "<group>"; };
 		5FD2F8352C087E2A0B6E42C8 /* Pods-RealSocial.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealSocial.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RealSocial/Pods-RealSocial.debug.xcconfig"; sourceTree = "<group>"; };
+		AD2DA52E20234DD4006BA319 /* Face3DVertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Face3DVertex.glsl; sourceTree = "<group>"; };
+		AD2DA52F20234DD4006BA319 /* VideoFrag.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VideoFrag.glsl; sourceTree = "<group>"; };
+		AD2DA53020234DD4006BA319 /* Face3DFragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Face3DFragment.glsl; sourceTree = "<group>"; };
+		AD2DA53120234DD4006BA319 /* VideoVert.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VideoVert.glsl; sourceTree = "<group>"; };
+		AD2DA53220234DD4006BA319 /* FacePointSize.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FacePointSize.glsl; sourceTree = "<group>"; };
+		AD2DA53320234DD4006BA319 /* FacePointColor.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FacePointColor.glsl; sourceTree = "<group>"; };
+		AD2DA53520234DD4006BA319 /* standard_alpha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = standard_alpha.png; sourceTree = "<group>"; };
+		AD2DA53620234DD4006BA319 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		AD2DA53720234DD4006BA319 /* skin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skin.png; sourceTree = "<group>"; };
+		AD2DA53820234DD4006BA319 /* 81_points_position.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 81_points_position.jpg; sourceTree = "<group>"; };
+		AD2DA53A20234DD4006BA319 /* shader-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shader-0.png"; sourceTree = "<group>"; };
+		AD2DA53B20234DD4006BA319 /* area-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "area-1.png"; sourceTree = "<group>"; };
+		AD2DA53C20234DD4006BA319 /* area-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "area-0.png"; sourceTree = "<group>"; };
+		AD2DA53D20234DD4006BA319 /* shader-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shader-1.png"; sourceTree = "<group>"; };
+		AD2DA53E20234DD4006BA319 /* faceinfo-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "faceinfo-0.png"; sourceTree = "<group>"; };
+		AD2DA53F20234DD4006BA319 /* screen-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen-0.png"; sourceTree = "<group>"; };
+		AD2DA54020234DD4006BA319 /* screen-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen-1.png"; sourceTree = "<group>"; };
+		AD2DA54120234DD4006BA319 /* faceinfo-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "faceinfo-1.png"; sourceTree = "<group>"; };
+		AD2DA54220234DD4006BA319 /* megviicloud logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "megviicloud logo.png"; sourceTree = "<group>"; };
+		AD2DA54320234DD4006BA319 /* 1280_720@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1280_720@3x.png"; sourceTree = "<group>"; };
+		AD2DA54420234DD4006BA319 /* card_front.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card_front.png; sourceTree = "<group>"; };
+		AD2DA54520234DD4006BA319 /* 960_540@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "960_540@3x.png"; sourceTree = "<group>"; };
+		AD2DA54620234DD4006BA319 /* textrec-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "textrec-0.png"; sourceTree = "<group>"; };
+		AD2DA54720234DD4006BA319 /* textrec-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "textrec-1.png"; sourceTree = "<group>"; };
+		AD2DA54820234DD4006BA319 /* faceLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = faceLogo.png; sourceTree = "<group>"; };
+		AD2DA54920234DD4006BA319 /* record-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "record-1.png"; sourceTree = "<group>"; };
+		AD2DA54A20234DD4006BA319 /* debug-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "debug-1.png"; sourceTree = "<group>"; };
+		AD2DA54B20234DD4006BA319 /* 1920_1080@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1920_1080@3x.png"; sourceTree = "<group>"; };
+		AD2DA54C20234DD4006BA319 /* debug-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "debug-0.png"; sourceTree = "<group>"; };
+		AD2DA54D20234DD4006BA319 /* record-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "record-0.png"; sourceTree = "<group>"; };
+		AD2DA54E20234DD4006BA319 /* 1920_1080.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1920_1080.png; sourceTree = "<group>"; };
+		AD2DA54F20234DD4006BA319 /* side-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "side-1.png"; sourceTree = "<group>"; };
+		AD2DA55020234DD4006BA319 /* side-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "side-0.png"; sourceTree = "<group>"; };
+		AD2DA55120234DD4006BA319 /* 1280_720.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1280_720.png; sourceTree = "<group>"; };
+		AD2DA55220234DD4006BA319 /* pw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pw.png; sourceTree = "<group>"; };
+		AD2DA55320234DD4006BA319 /* 960_540.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 960_540.png; sourceTree = "<group>"; };
+		AD2DA55520234DD4006BA319 /* regist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = regist.png; sourceTree = "<group>"; };
+		AD2DA55620234DD4006BA319 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
+		AD2DA55720234DD4006BA319 /* selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selected.png; sourceTree = "<group>"; };
+		AD2DA55820234DD4006BA319 /* faceCompare-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "faceCompare-1.png"; sourceTree = "<group>"; };
+		AD2DA55920234DD4006BA319 /* faceCompare-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "faceCompare-0.png"; sourceTree = "<group>"; };
+		AD2DA55A20234DD4006BA319 /* unSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unSelected.png; sourceTree = "<group>"; };
+		AD2DA55B20234DD4006BA319 /* 3D-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3D-0.png"; sourceTree = "<group>"; };
+		AD2DA55C20234DD4006BA319 /* 3D-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3D-1.png"; sourceTree = "<group>"; };
+		AD2DA55D20234DD4006BA319 /* 81-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "81-1.png"; sourceTree = "<group>"; };
+		AD2DA55E20234DD4006BA319 /* 81-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "81-0.png"; sourceTree = "<group>"; };
+		AD2DA55F20234DD4006BA319 /* IMG_2393.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_2393.JPG; sourceTree = "<group>"; };
+		AD2DA56020234DD4006BA319 /* 640_480.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 640_480.png; sourceTree = "<group>"; };
+		AD2DA56120234DD4006BA319 /* 640_480@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "640_480@3x.png"; sourceTree = "<group>"; };
+		AD2DA5942023500B006BA319 /* RSPictureListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSPictureListViewController.h; sourceTree = "<group>"; };
+		AD2DA5952023500B006BA319 /* RSPictureListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSPictureListViewController.m; sourceTree = "<group>"; };
+		AD2DA59720235022006BA319 /* RSPictureListViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSPictureListViewModel.h; sourceTree = "<group>"; };
+		AD2DA59820235022006BA319 /* RSPictureListViewModel.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RSPictureListViewModel.mm; sourceTree = "<group>"; };
+		AD2DA59A20235143006BA319 /* RSPictureListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSPictureListTableViewCell.h; sourceTree = "<group>"; };
+		AD2DA59B20235143006BA319 /* RSPictureListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSPictureListTableViewCell.m; sourceTree = "<group>"; };
+		AD2DA59D20235992006BA319 /* RSDBService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSDBService.h; sourceTree = "<group>"; };
+		AD2DA59E20235992006BA319 /* RSDBService.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RSDBService.mm; sourceTree = "<group>"; };
+		AD2DA5A020235D18006BA319 /* RSPictureListItemViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSPictureListItemViewModel.h; sourceTree = "<group>"; };
+		AD2DA5A320235DAA006BA319 /* RSPictureListItemViewModel.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RSPictureListItemViewModel.mm; sourceTree = "<group>"; };
+		AD2DA5A420235DAA006BA319 /* RSPictureListItemViewModel+WCTTableCoding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RSPictureListItemViewModel+WCTTableCoding.h"; sourceTree = "<group>"; };
 		AD2F5742202094D400E0CF83 /* RSLiveData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSLiveData.h; sourceTree = "<group>"; };
 		AD2F5743202094D400E0CF83 /* RSLiveData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSLiveData.m; sourceTree = "<group>"; };
 		AD2F57462020BB3400E0CF83 /* RSMessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSMessageViewController.h; sourceTree = "<group>"; };
@@ -526,6 +640,100 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		AD2DA52D20234DD4006BA319 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				AD2DA52E20234DD4006BA319 /* Face3DVertex.glsl */,
+				AD2DA52F20234DD4006BA319 /* VideoFrag.glsl */,
+				AD2DA53020234DD4006BA319 /* Face3DFragment.glsl */,
+				AD2DA53120234DD4006BA319 /* VideoVert.glsl */,
+				AD2DA53220234DD4006BA319 /* FacePointSize.glsl */,
+				AD2DA53320234DD4006BA319 /* FacePointColor.glsl */,
+			);
+			path = Shaders;
+			sourceTree = "<group>";
+		};
+		AD2DA53420234DD4006BA319 /* detectImages */ = {
+			isa = PBXGroup;
+			children = (
+				AD2DA53520234DD4006BA319 /* standard_alpha.png */,
+				AD2DA53620234DD4006BA319 /* background.png */,
+				AD2DA53720234DD4006BA319 /* skin.png */,
+				AD2DA53820234DD4006BA319 /* 81_points_position.jpg */,
+			);
+			path = detectImages;
+			sourceTree = "<group>";
+		};
+		AD2DA53920234DD4006BA319 /* appImages */ = {
+			isa = PBXGroup;
+			children = (
+				AD2DA53A20234DD4006BA319 /* shader-0.png */,
+				AD2DA53B20234DD4006BA319 /* area-1.png */,
+				AD2DA53C20234DD4006BA319 /* area-0.png */,
+				AD2DA53D20234DD4006BA319 /* shader-1.png */,
+				AD2DA53E20234DD4006BA319 /* faceinfo-0.png */,
+				AD2DA53F20234DD4006BA319 /* screen-0.png */,
+				AD2DA54020234DD4006BA319 /* screen-1.png */,
+				AD2DA54120234DD4006BA319 /* faceinfo-1.png */,
+				AD2DA54220234DD4006BA319 /* megviicloud logo.png */,
+				AD2DA54320234DD4006BA319 /* 1280_720@3x.png */,
+				AD2DA54420234DD4006BA319 /* card_front.png */,
+				AD2DA54520234DD4006BA319 /* 960_540@3x.png */,
+				AD2DA54620234DD4006BA319 /* textrec-0.png */,
+				AD2DA54720234DD4006BA319 /* textrec-1.png */,
+				AD2DA54820234DD4006BA319 /* faceLogo.png */,
+				AD2DA54920234DD4006BA319 /* record-1.png */,
+				AD2DA54A20234DD4006BA319 /* debug-1.png */,
+				AD2DA54B20234DD4006BA319 /* 1920_1080@3x.png */,
+				AD2DA54C20234DD4006BA319 /* debug-0.png */,
+				AD2DA54D20234DD4006BA319 /* record-0.png */,
+				AD2DA54E20234DD4006BA319 /* 1920_1080.png */,
+				AD2DA54F20234DD4006BA319 /* side-1.png */,
+				AD2DA55020234DD4006BA319 /* side-0.png */,
+				AD2DA55120234DD4006BA319 /* 1280_720.png */,
+				AD2DA55220234DD4006BA319 /* pw.png */,
+				AD2DA55320234DD4006BA319 /* 960_540.png */,
+				AD2DA55420234DD4006BA319 /* compare */,
+				AD2DA55B20234DD4006BA319 /* 3D-0.png */,
+				AD2DA55C20234DD4006BA319 /* 3D-1.png */,
+				AD2DA55D20234DD4006BA319 /* 81-1.png */,
+				AD2DA55E20234DD4006BA319 /* 81-0.png */,
+				AD2DA55F20234DD4006BA319 /* IMG_2393.JPG */,
+				AD2DA56020234DD4006BA319 /* 640_480.png */,
+				AD2DA56120234DD4006BA319 /* 640_480@3x.png */,
+			);
+			path = appImages;
+			sourceTree = "<group>";
+		};
+		AD2DA55420234DD4006BA319 /* compare */ = {
+			isa = PBXGroup;
+			children = (
+				AD2DA55520234DD4006BA319 /* regist.png */,
+				AD2DA55620234DD4006BA319 /* user.png */,
+				AD2DA55720234DD4006BA319 /* selected.png */,
+				AD2DA55820234DD4006BA319 /* faceCompare-1.png */,
+				AD2DA55920234DD4006BA319 /* faceCompare-0.png */,
+				AD2DA55A20234DD4006BA319 /* unSelected.png */,
+			);
+			path = compare;
+			sourceTree = "<group>";
+		};
+		AD2DA59320234FC7006BA319 /* PictureList */ = {
+			isa = PBXGroup;
+			children = (
+				AD2DA5942023500B006BA319 /* RSPictureListViewController.h */,
+				AD2DA5952023500B006BA319 /* RSPictureListViewController.m */,
+				AD2DA59720235022006BA319 /* RSPictureListViewModel.h */,
+				AD2DA59820235022006BA319 /* RSPictureListViewModel.mm */,
+				AD2DA59A20235143006BA319 /* RSPictureListTableViewCell.h */,
+				AD2DA59B20235143006BA319 /* RSPictureListTableViewCell.m */,
+				AD2DA5A020235D18006BA319 /* RSPictureListItemViewModel.h */,
+				AD2DA5A320235DAA006BA319 /* RSPictureListItemViewModel.mm */,
+				AD2DA5A420235DAA006BA319 /* RSPictureListItemViewModel+WCTTableCoding.h */,
+			);
+			path = PictureList;
+			sourceTree = "<group>";
+		};
 		AD2F57452020BB2400E0CF83 /* Message */ = {
 			isa = PBXGroup;
 			children = (
@@ -663,6 +871,8 @@
 				ADDC6A7320132AA500439D01 /* RSLaunchService.m */,
 				ADDC6A9520134A1600439D01 /* RSResponse.h */,
 				ADDC6A9620134A1600439D01 /* RSResponse.m */,
+				AD2DA59D20235992006BA319 /* RSDBService.h */,
+				AD2DA59E20235992006BA319 /* RSDBService.mm */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -705,6 +915,7 @@
 		AD3E9171200F995F0019138F /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				AD2DA59320234FC7006BA319 /* PictureList */,
 				AD2F57452020BB2400E0CF83 /* Message */,
 				AD683185201795910085DDCD /* Chat */,
 				ADDC6A982013506A00439D01 /* Mine */,
@@ -742,6 +953,9 @@
 		AD3E9173200F99600019138F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AD2DA53920234DD4006BA319 /* appImages */,
+				AD2DA53420234DD4006BA319 /* detectImages */,
+				AD2DA52D20234DD4006BA319 /* Shaders */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1418,26 +1632,75 @@
 				ADDC6AA1201352A800439D01 /* LoginInfo.proto in Resources */,
 				AD3E911F200F97160019138F /* LaunchScreen.storyboard in Resources */,
 				ADAC4EAB2014F18C0020DA91 /* BaseCell.xib in Resources */,
+				AD2DA57620234DD5006BA319 /* card_front.png in Resources */,
+				AD2DA57820234DD5006BA319 /* textrec-0.png in Resources */,
+				AD2DA56520234DD4006BA319 /* VideoVert.glsl in Resources */,
 				AD68318120178E290085DDCD /* VideoVert.glsl in Resources */,
+				AD2DA57220234DD5006BA319 /* screen-1.png in Resources */,
 				AD68317F20178E290085DDCD /* FacePointSize.glsl in Resources */,
+				AD2DA57920234DD5006BA319 /* textrec-1.png in Resources */,
 				AD3E911C200F97160019138F /* Assets.xcassets in Resources */,
+				AD2DA57C20234DD5006BA319 /* debug-1.png in Resources */,
+				AD2DA57120234DD5006BA319 /* screen-0.png in Resources */,
+				AD2DA56B20234DD4006BA319 /* 81_points_position.jpg in Resources */,
+				AD2DA57E20234DD5006BA319 /* debug-0.png in Resources */,
 				ADAC4EAE2014F18C0020DA91 /* MCSetCell.xib in Resources */,
+				AD2DA59120234DD5006BA319 /* 640_480.png in Resources */,
 				ADAC4EB12014F18C0020DA91 /* TextCell.xib in Resources */,
 				AD87FDA6201C626B006C8A96 /* wxproxy.proto in Resources */,
+				AD2DA58F20234DD5006BA319 /* 81-0.png in Resources */,
+				AD2DA56D20234DD4006BA319 /* area-1.png in Resources */,
+				AD2DA56420234DD4006BA319 /* Face3DFragment.glsl in Resources */,
+				AD2DA57520234DD5006BA319 /* 1280_720@3x.png in Resources */,
+				AD2DA59020234DD5006BA319 /* IMG_2393.JPG in Resources */,
+				AD2DA58D20234DD5006BA319 /* 3D-1.png in Resources */,
 				AD2F574F2020BD3000E0CF83 /* spcgi.proto in Resources */,
 				AD68318020178E290085DDCD /* VideoFrag.glsl in Resources */,
 				AD3E956C2010C47D0019138F /* Images.xcassets in Resources */,
+				AD2DA56720234DD4006BA319 /* FacePointColor.glsl in Resources */,
+				AD2DA58920234DD5006BA319 /* faceCompare-1.png in Resources */,
+				AD2DA56920234DD4006BA319 /* background.png in Resources */,
+				AD2DA58720234DD5006BA319 /* user.png in Resources */,
+				AD2DA56A20234DD4006BA319 /* skin.png in Resources */,
+				AD2DA56820234DD4006BA319 /* standard_alpha.png in Resources */,
 				ADAC4E772014F1150020DA91 /* megviifacepp_0_5_2_model in Resources */,
+				AD2DA57B20234DD5006BA319 /* record-1.png in Resources */,
+				AD2DA58420234DD5006BA319 /* pw.png in Resources */,
+				AD2DA58820234DD5006BA319 /* selected.png in Resources */,
 				ADAC4EB82014F18C0020DA91 /* MGFaceListViewController.storyboard in Resources */,
+				AD2DA58220234DD5006BA319 /* side-0.png in Resources */,
+				AD2DA58B20234DD5006BA319 /* unSelected.png in Resources */,
+				AD2DA58320234DD5006BA319 /* 1280_720.png in Resources */,
 				AD68317D20178E290085DDCD /* Face3DVertex.glsl in Resources */,
 				ADAC4ED920178B7F0020DA91 /* Localizable.strings in Resources */,
 				AD68317E20178E290085DDCD /* FacePointColor.glsl in Resources */,
+				AD2DA58E20234DD5006BA319 /* 81-1.png in Resources */,
+				AD2DA57A20234DD5006BA319 /* faceLogo.png in Resources */,
 				AD3E9499200F99820019138F /* .gitkeep in Resources */,
+				AD2DA58620234DD5006BA319 /* regist.png in Resources */,
+				AD2DA56320234DD4006BA319 /* VideoFrag.glsl in Resources */,
+				AD2DA57F20234DD5006BA319 /* record-0.png in Resources */,
+				AD2DA57020234DD5006BA319 /* faceinfo-0.png in Resources */,
+				AD2DA58120234DD5006BA319 /* side-1.png in Resources */,
 				AD3E911A200F97160019138F /* Main.storyboard in Resources */,
 				AD2F57632020C4A200E0CF83 /* spcgicomm.proto in Resources */,
 				AD2F57532020BD5400E0CF83 /* spbuiltintype.proto in Resources */,
+				AD2DA58C20234DD5006BA319 /* 3D-0.png in Resources */,
+				AD2DA59220234DD5006BA319 /* 640_480@3x.png in Resources */,
+				AD2DA56220234DD4006BA319 /* Face3DVertex.glsl in Resources */,
+				AD2DA58520234DD5006BA319 /* 960_540.png in Resources */,
+				AD2DA56F20234DD4006BA319 /* shader-1.png in Resources */,
+				AD2DA57720234DD5006BA319 /* 960_540@3x.png in Resources */,
+				AD2DA56E20234DD4006BA319 /* area-0.png in Resources */,
+				AD2DA58A20234DD5006BA319 /* faceCompare-0.png in Resources */,
 				AD3E9498200F99820019138F /* .gitkeep in Resources */,
+				AD2DA57D20234DD5006BA319 /* 1920_1080@3x.png in Resources */,
+				AD2DA56620234DD4006BA319 /* FacePointSize.glsl in Resources */,
+				AD2DA57420234DD5006BA319 /* megviicloud logo.png in Resources */,
 				AD68317C20178E290085DDCD /* Face3DFragment.glsl in Resources */,
+				AD2DA56C20234DD4006BA319 /* shader-0.png in Resources */,
+				AD2DA58020234DD5006BA319 /* 1920_1080.png in Resources */,
+				AD2DA57320234DD5006BA319 /* faceinfo-1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1540,6 +1803,7 @@
 				ADDC6AD72014E84600439D01 /* RSVideoViewController.m in Sources */,
 				AD2F574B2020BBED00E0CF83 /* RSMessageViewModel.m in Sources */,
 				AD3E94C4200F99820019138F /* LOTNumberInterpolator.m in Sources */,
+				AD2DA5A520235DAA006BA319 /* RSPictureListItemViewModel.mm in Sources */,
 				AD2F576B2020C6FC00E0CF83 /* LoginInfo.pbobjc.m in Sources */,
 				ADDC6A7B20132FCF00439D01 /* RSLanchViewController.m in Sources */,
 				AD3E94E5200F99820019138F /* NSException+SafeKit.m in Sources */,
@@ -1549,6 +1813,7 @@
 				AD3E94C7200F99820019138F /* LOTSizeInterpolator.m in Sources */,
 				AD3E94AF200F99820019138F /* LOTShapePath.m in Sources */,
 				AD3E949B200F99820019138F /* LOTLayerContainer.m in Sources */,
+				AD2DA59F20235992006BA319 /* RSDBService.mm in Sources */,
 				ADDC6A71201325ED00439D01 /* RSRequest.m in Sources */,
 				ADAC4EB32014F18C0020DA91 /* MCSetModel.m in Sources */,
 				AD683188201795A70085DDCD /* RSChatViewController.m in Sources */,
@@ -1583,13 +1848,16 @@
 				AD3E94CD200F99820019138F /* LOTFillRenderer.m in Sources */,
 				ADDC6A65201316BB00439D01 /* NSError+Util.m in Sources */,
 				ADAC4EBA2014F18C0020DA91 /* MGVideoViewController.mm in Sources */,
+				AD2DA59C20235143006BA319 /* RSPictureListTableViewCell.m in Sources */,
 				AD3E94A8200F99820019138F /* LOTLayer.m in Sources */,
+				AD2DA5962023500B006BA319 /* RSPictureListViewController.m in Sources */,
 				AD3E94E8200F99820019138F /* SafeKitLog.m in Sources */,
 				AD3E94B3200F99820019138F /* LOTShapeStroke.m in Sources */,
 				ADDC6A89201337DD00439D01 /* FPSecretKeyUtils.m in Sources */,
 				AD3E94CB200F99820019138F /* LOTRenderNode.m in Sources */,
 				AD3E9561200F9C9E0019138F /* RSHandleOpenUrlHelper.m in Sources */,
 				AD2F57482020BB3400E0CF83 /* RSMessageViewController.m in Sources */,
+				AD2DA59920235023006BA319 /* RSPictureListViewModel.mm in Sources */,
 				ADAC4E782014F1150020DA91 /* GLESUtils.m in Sources */,
 				ADAC4EBB2014F18C0020DA91 /* MGFaceLicenseHandle.m in Sources */,
 				AD3E94A2200F99820019138F /* UIColor+Expanded.m in Sources */,

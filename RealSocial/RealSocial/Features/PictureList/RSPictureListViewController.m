@@ -1,20 +1,20 @@
 //
-//  RSMessageViewController.m
+//  RSPictureListViewController.m
 //  RealSocial
 //
-//  Created by kuncai on 2018/1/30.
+//  Created by kuncai on 2018/2/1.
 //  Copyright © 2018年 scnukuncai. All rights reserved.
 //
 
-#import "RSMessageViewController.h"
-#import "RSMessageViewModel.h"
+#import "RSPictureListViewController.h"
+#import "RSPictureListViewModel.h"
 
-@interface RSMessageViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface RSPictureListViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) RSMessageViewModel *viewModel;
+@property (nonatomic, strong) RSPictureListViewModel *viewModel;
 @end
 
-@implementation RSMessageViewController
+@implementation RSPictureListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -40,11 +40,11 @@
     // Pass the selected object to the new view controller.
 }
 */
--(RSMessageViewModel *)viewModel {
+-(RSPictureListViewModel *)viewModel {
     if (_viewModel) {
         return _viewModel;
     }
-    _viewModel = [[RSMessageViewModel alloc] init];
+    _viewModel = [[RSPictureListViewModel alloc] init];
     return _viewModel;
 }
 -(UITableView *)tableView {
@@ -73,7 +73,7 @@
     }];
     return _tableView;
 }
-    
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -81,21 +81,15 @@
     return [self.viewModel.listData count];
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *indentifier = @"RSFriendListViewCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@""];
+    NSString *indentifier = @"RSPictureListCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:indentifier];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:indentifier];
     }
-    RSMessageItemViewModel *itemViewModel = [self.viewModel.listData objectOrNilAtIndex:indexPath.row];
+    RSPictureListItemViewModel *itemViewModel = [self.viewModel.listData objectOrNilAtIndex:indexPath.row];
     if (itemViewModel) {
-        cell.textLabel.text = itemViewModel.name;
+//        cell.textLabel.text = itemViewModel.name;
     }
     return cell;
-}
-    
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    RSChatViewController *ctr = [[RSChatViewController alloc] init];
-//    ctr.hidesBottomBarWhenPushed = YES;
-//    [self.navigationController pushViewController:ctr animated:YES];
 }
 @end

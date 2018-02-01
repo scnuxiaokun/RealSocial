@@ -10,4 +10,6 @@
 
 @interface RSRequest : NSObject
 @property (nonatomic, strong) NSData *mokeResponseData;
+@property (nonatomic, strong) NSData *data;
+@property (nonatomic, strong) NSString *cgiName;
 @end

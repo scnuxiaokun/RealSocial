@@ -10,15 +10,25 @@
 #import "Spcgi.pbobjc.h"
 #import "Spcgicomm.pbobjc.h"
 
+
 @implementation RSMessageItemViewModel
 @end
 @implementation RSMessageViewModel
+
 -(void)loadData {
     RSRequest *request = [[RSRequest alloc] init];
+    request.cgiName = @"sync";
+    RSSyncReq *req = [RSSyncReq new];
+    request.data = [req data];
     request.mokeResponseData = [self mokeResponse];
     RACSignal *signal = [RSNetWorkService sendRequest:request];
+    @weakify(self);
     [signal subscribeNext:^(RSResponse *response) {
+        @RSStrongify(self);
         RSSyncResp *resp = [RSSyncResp parseFromData:response.data error:nil];
+        if (!resp) {
+            return;
+        }
         [self sendUpdateData:resp];
         NSMutableArray *tmp = [[NSMutableArray alloc] init];
         for (RSMsg *msg in resp.msgArray) {
