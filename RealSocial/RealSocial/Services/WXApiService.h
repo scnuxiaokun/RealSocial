@@ -5,6 +5,10 @@
 //  Created by kuncai on 2018/1/17.
 //  Copyright © 2018年 scnukuncai. All rights reserved.
 //
+#define WEIXIN_GET_ACCESS_TOKEN_API        @"https://api.weixin.qq.com/sns/oauth2/access_token"
+#define WEIXIN_GET_USER_INFO_API           @"https://api.weixin.qq.com/sns/userinfo"
+#define WEIXIN_REFRESH_ACCESS_TOKEN_API    @"https://api.weixin.qq.com/sns/oauth2/refresh_token"
+#define WEIXIN_LOGIN_APP_ID   @"wxd6cd56916c76e3c8"
 
 #import <Foundation/Foundation.h>
 #import "WXApi.h"

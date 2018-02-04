@@ -62,6 +62,7 @@
         [MGFaceLicenseHandle licenseForNetwokrFinish:^(bool License, NSDate *sdkDate) {
             if (!License) {
                 NSLog(@"联网授权失败 ！！！");
+                assert(NO);
             } else {
                 NSLog(@"联网授权成功");
 //                self.videoBtn.userInteractionEnabled = YES;
@@ -176,7 +177,7 @@
         return _takePhotoButton;
     }
     _takePhotoButton = [[UIButton alloc] init];
-    [_takePhotoButton setTitle:@"take photo" forState:UIControlStateNormal];
+    [_takePhotoButton setTitle:@"视频流demo" forState:UIControlStateNormal];
     [_takePhotoButton setBackgroundColor:[UIColor greenColor]];
     @weakify(self);
     [_takePhotoButton addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
@@ -191,7 +192,7 @@
         return _uploadPhotoButton;
     }
     _uploadPhotoButton = [[UIButton alloc] init];
-    [_uploadPhotoButton setTitle:@"upload photo" forState:UIControlStateNormal];
+    [_uploadPhotoButton setTitle:@"上传照片" forState:UIControlStateNormal];
     [_uploadPhotoButton setBackgroundColor:[UIColor greenColor]];
     @weakify(self);
     [_uploadPhotoButton addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {

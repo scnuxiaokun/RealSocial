@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "RSPictureListItemViewModel.h"
 @interface RSPictureListTableViewCell : UITableViewCell
 @property (nonatomic, strong) UIImageView *pictureImageView;
 @property (nonatomic, strong) UILabel *pictureInfoLabel;
+@property (nonatomic, strong) RSPictureListItemViewModel *viewModel;
 @end

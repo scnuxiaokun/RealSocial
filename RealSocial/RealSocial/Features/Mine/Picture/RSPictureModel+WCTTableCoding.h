@@ -6,12 +6,14 @@
 //  Copyright © 2018年 scnukuncai. All rights reserved.
 //
 
-#import "RSPictureListItemViewModel.h"
+#import "RSPictureModel.h"
 #import <WCDB/WCDB.h>
 
-@interface RSPictureListItemViewModel (WCTTableCoding) <WCTTableCoding>
+@interface RSPictureModel (WCTTableCoding) <WCTTableCoding>
 
-WCDB_PROPERTY(filePath)
+WCDB_PROPERTY(pictureId)
 WCDB_PROPERTY(width)
 WCDB_PROPERTY(height)
+WCDB_PROPERTY(info)
+WCDB_PROPERTY(status)
 @end

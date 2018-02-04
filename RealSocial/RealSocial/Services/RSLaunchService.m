@@ -9,6 +9,8 @@
 #import "RSLaunchService.h"
 #import "RSNetWorkService.h"
 #import "RSLoginService.h"
+#import <WXApi.h>
+#import "WXApiService.h"
 @implementation RSLaunchService
 +(RSLaunchService *)shareInstance {
     static dispatch_once_t once;
@@ -33,6 +35,7 @@
 }
 -(void)start {
     self.startBlock();
+    [WXApi registerApp:WEIXIN_LOGIN_APP_ID];
     RSRequest *request = [RSRequest new];
     request.mokeResponseData = [self mokeResponse];
     [[RSNetWorkService sendRequest:request] subscribeNext:^(id  _Nullable x) {

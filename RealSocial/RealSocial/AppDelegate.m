@@ -11,6 +11,7 @@
 #import "RSLaunchService.h"
 #import "RSLoginService.h"
 #import "RSLanchViewController.h"
+#import "RSHandleOpenUrlHelper.h"
 
 @interface AppDelegate ()
 
@@ -114,5 +115,12 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    return [RSHandleOpenUrlHelper application:application openURL:url sourceApplication:nil annotation:nil];
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [RSHandleOpenUrlHelper application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
+}
 
 @end

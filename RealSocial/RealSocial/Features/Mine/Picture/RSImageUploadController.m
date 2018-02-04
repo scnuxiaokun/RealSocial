@@ -10,10 +10,13 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
+#import "RSImageUploadViewModel.h"
+#import "MGFacepp.h"
 
 @interface RSImageUploadController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (nonatomic, strong) UIButton *openAlbumPhotoButton;
 @property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) RSImageUploadViewModel *viewModel;
 @end
 
 @implementation RSImageUploadController {
@@ -49,6 +52,14 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+-(RSImageUploadViewModel *)viewModel {
+    if (_viewModel) {
+        return _viewModel;
+    }
+    _viewModel = [[RSImageUploadViewModel alloc] init];
+    return _viewModel;
+}
 
 -(UIButton *)openAlbumPhotoButton {
     if (_openAlbumPhotoButton) {
@@ -123,7 +134,13 @@
         //如果是图片
         self.imageView.image = info[UIImagePickerControllerEditedImage];
         //压缩图片
-        NSData *fileData = UIImageJPEGRepresentation(self.imageView.image, 1.0);
+        NSString *tips = @"";
+        if ([self.viewModel uploadImage:self.imageView.image] ) {
+            tips = @"upload image success";
+        } else {
+            tips = @"upload image fail";
+        }
+        [RSUtils showTipViewWithMessage:tips];
         //保存图片至相册
 //        UIImageWriteToSavedPhotosAlbum(self.imageView.image, self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);
         //上传图片

@@ -12,6 +12,7 @@
 #import "RSMineViewController.h"
 #import "RSFriendListViewController.h"
 #import "RSMessageViewController.h"
+#import "RSPictureListViewController.h"
 @interface RSUITabBarController ()
 
 @end
@@ -26,8 +27,8 @@
     RSUINavigationController *tab1 = [[RSUINavigationController alloc] initWithRootViewController:[[RSMessageViewController alloc] init]];
     tab1.title = @"message";
     
-    RSUINavigationController *tab2 = [[RSUINavigationController alloc] initWithRootViewController:[[RSFriendListViewController alloc] init]];
-    tab2.title = @"friend";
+    RSUINavigationController *tab2 = [[RSUINavigationController alloc] initWithRootViewController:[[RSPictureListViewController alloc] init]];
+    tab2.title = @"picture";
     
     RSUINavigationController *tab3 = [[RSUINavigationController alloc] initWithRootViewController:[[RSMineViewController alloc] init]];
     tab3.title = @"me";

@@ -25,7 +25,7 @@
             make.edges.equalTo(self.contentView);
         }];
         [self.pictureInfoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.left.equalTo(self.contentView);
+            make.edges.equalTo(self.contentView);
         }];
     }
     return self;
@@ -52,8 +52,15 @@
         return _pictureInfoLabel;
     }
     _pictureInfoLabel = [[UILabel alloc] init];
-    _pictureInfoLabel.font = [UIFont boldSystemFontOfSize:18];
+    _pictureInfoLabel.font = [UIFont boldSystemFontOfSize:12];
     _pictureInfoLabel.textColor = [UIColor redColor];
+    _pictureInfoLabel.numberOfLines = 0;
     return _pictureInfoLabel;
+}
+
+-(void)setViewModel:(RSPictureListItemViewModel *)viewModel {
+    _viewModel = viewModel;
+    self.pictureImageView.image = viewModel.pictureImage;
+    self.pictureInfoLabel.text = viewModel.pictureInfo;
 }
 @end

@@ -10,11 +10,6 @@
 #import "WXApiService.h"
 #import "RSLoginService.h"
 
-#define WEIXIN_GET_ACCESS_TOKEN_API        @"https://api.weixin.qq.com/sns/oauth2/access_token"
-#define WEIXIN_GET_USER_INFO_API           @"https://api.weixin.qq.com/sns/userinfo"
-#define WEIXIN_REFRESH_ACCESS_TOKEN_API    @"https://api.weixin.qq.com/sns/oauth2/refresh_token"
-#define WEIXIN_LOGIN_APP_ID   WXloginScheme
-
 static NSString *kAuthScope = @"snsapi_userinfo";
 static NSString *kAuthState = @"xxx";
 

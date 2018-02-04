@@ -14,7 +14,7 @@
 //    if ([[url scheme] isEqualToString:QQloginScheme]) {
 //        return [[FPQQLoginHelper shareInstance] handleOpenURL:url];
 //    }
-    if ([[url scheme] isEqualToString:WXloginScheme]) {
+    if ([[url scheme] isEqualToString:WEIXIN_LOGIN_APP_ID]) {
         return [WXApi handleOpenURL:url delegate:[WXApiService shareInstance]];
     }
     return NO;

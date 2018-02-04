@@ -8,6 +8,8 @@
 
 #import "RSPictureListViewController.h"
 #import "RSPictureListViewModel.h"
+#import "RSPictureListTableViewCell.h"
+
 
 @interface RSPictureListViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -24,6 +26,11 @@
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.viewModel loadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -80,16 +87,18 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.viewModel.listData count];
 }
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 600;
+//    RSPictureModel *itemViewModel = [self.viewModel.listData objectOrNilAtIndex:indexPath.row];
+//    return itemViewModel.height;
+}
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *indentifier = @"RSPictureListCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:indentifier];
+    NSString *indentifier = @"RSPictureListTableViewCell";
+    RSPictureListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:indentifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:indentifier];
+        cell = [[RSPictureListTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:indentifier];
     }
-    RSPictureListItemViewModel *itemViewModel = [self.viewModel.listData objectOrNilAtIndex:indexPath.row];
-    if (itemViewModel) {
-//        cell.textLabel.text = itemViewModel.name;
-    }
+    cell.viewModel = [self.viewModel.listData objectOrNilAtIndex:indexPath.row];
     return cell;
 }
 @end

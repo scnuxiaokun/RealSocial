@@ -7,8 +7,8 @@
 //
 
 #import "RSViewModel.h"
+#import "RSPictureModel.h"
 #import "RSPictureListItemViewModel.h"
-
 @interface RSPictureListViewModel : RSViewModel
 @property (nonatomic, strong) NSArray<RSPictureListItemViewModel *> *listData;
 @end
