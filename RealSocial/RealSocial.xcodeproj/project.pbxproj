@@ -65,7 +65,7 @@
 		AD2DA5A820256E9C006BA319 /* RSImageUploadViewModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = AD2DA5A720256E9C006BA319 /* RSImageUploadViewModel.mm */; };
 		AD2F5744202094D400E0CF83 /* RSLiveData.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2F5743202094D400E0CF83 /* RSLiveData.m */; };
 		AD2F57482020BB3400E0CF83 /* RSMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2F57472020BB3400E0CF83 /* RSMessageViewController.m */; };
-		AD2F574B2020BBED00E0CF83 /* RSMessageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2F574A2020BBED00E0CF83 /* RSMessageViewModel.m */; };
+		AD2F574B2020BBED00E0CF83 /* RSMessageViewModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = AD2F574A2020BBED00E0CF83 /* RSMessageViewModel.mm */; };
 		AD2F574F2020BD3000E0CF83 /* spcgi.proto in Resources */ = {isa = PBXBuildFile; fileRef = AD2F574D2020BD3000E0CF83 /* spcgi.proto */; };
 		AD2F57532020BD5400E0CF83 /* spbuiltintype.proto in Resources */ = {isa = PBXBuildFile; fileRef = AD2F57522020BD5400E0CF83 /* spbuiltintype.proto */; };
 		AD2F575C2020BDA300E0CF83 /* Spcgi.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2F57592020BDA300E0CF83 /* Spcgi.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -199,6 +199,7 @@
 		ADAC4ED12016422E0020DA91 /* RSViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4ED02016422E0020DA91 /* RSViewModel.m */; };
 		ADAC4ED4201643460020DA91 /* RSFriendListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4ED3201643460020DA91 /* RSFriendListViewModel.m */; };
 		ADAC4ED920178B7F0020DA91 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADAC4ED820178B7D0020DA91 /* Localizable.strings */; };
+		ADCA8E8920274D5000C372B7 /* RSMessageModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = ADCA8E8620274D5000C372B7 /* RSMessageModel.mm */; };
 		ADDC6A5820130E0F00439D01 /* RSUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A5720130E0F00439D01 /* RSUIViewController.m */; };
 		ADDC6A5B20130E2D00439D01 /* RSUINavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A5A20130E2D00439D01 /* RSUINavigationController.m */; };
 		ADDC6A5E20130E5E00439D01 /* RSChatListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A5D20130E5E00439D01 /* RSChatListViewController.m */; };
@@ -304,7 +305,7 @@
 		AD2F57462020BB3400E0CF83 /* RSMessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSMessageViewController.h; sourceTree = "<group>"; };
 		AD2F57472020BB3400E0CF83 /* RSMessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSMessageViewController.m; sourceTree = "<group>"; };
 		AD2F57492020BBED00E0CF83 /* RSMessageViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSMessageViewModel.h; sourceTree = "<group>"; };
-		AD2F574A2020BBED00E0CF83 /* RSMessageViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSMessageViewModel.m; sourceTree = "<group>"; };
+		AD2F574A2020BBED00E0CF83 /* RSMessageViewModel.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RSMessageViewModel.mm; sourceTree = "<group>"; };
 		AD2F574D2020BD3000E0CF83 /* spcgi.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = spcgi.proto; sourceTree = "<group>"; };
 		AD2F57522020BD5400E0CF83 /* spbuiltintype.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = spbuiltintype.proto; sourceTree = "<group>"; };
 		AD2F57542020BDA200E0CF83 /* Spcgi.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spcgi.pbobjc.h; sourceTree = "<group>"; };
@@ -568,6 +569,9 @@
 		ADAC4ED2201643460020DA91 /* RSFriendListViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSFriendListViewModel.h; sourceTree = "<group>"; };
 		ADAC4ED3201643460020DA91 /* RSFriendListViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSFriendListViewModel.m; sourceTree = "<group>"; };
 		ADAC4ED820178B7D0020DA91 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		ADCA8E8620274D5000C372B7 /* RSMessageModel.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RSMessageModel.mm; sourceTree = "<group>"; };
+		ADCA8E8720274D5000C372B7 /* RSMessageModel+WCTTableCoding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RSMessageModel+WCTTableCoding.h"; sourceTree = "<group>"; };
+		ADCA8E8820274D5000C372B7 /* RSMessageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSMessageModel.h; sourceTree = "<group>"; };
 		ADDC6A5620130E0F00439D01 /* RSUIViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSUIViewController.h; sourceTree = "<group>"; };
 		ADDC6A5720130E0F00439D01 /* RSUIViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSUIViewController.m; sourceTree = "<group>"; };
 		ADDC6A5920130E2D00439D01 /* RSUINavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSUINavigationController.h; sourceTree = "<group>"; };
@@ -742,7 +746,10 @@
 				AD2F57462020BB3400E0CF83 /* RSMessageViewController.h */,
 				AD2F57472020BB3400E0CF83 /* RSMessageViewController.m */,
 				AD2F57492020BBED00E0CF83 /* RSMessageViewModel.h */,
-				AD2F574A2020BBED00E0CF83 /* RSMessageViewModel.m */,
+				AD2F574A2020BBED00E0CF83 /* RSMessageViewModel.mm */,
+				ADCA8E8620274D5000C372B7 /* RSMessageModel.mm */,
+				ADCA8E8720274D5000C372B7 /* RSMessageModel+WCTTableCoding.h */,
+				ADCA8E8820274D5000C372B7 /* RSMessageModel.h */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -1786,6 +1793,7 @@
 				ADDC6A5B20130E2D00439D01 /* RSUINavigationController.m in Sources */,
 				AD3E94AD200F99820019138F /* LOTShapeGradientFill.m in Sources */,
 				AD3E956F2011B8310019138F /* RSUITabBarController.m in Sources */,
+				ADCA8E8920274D5000C372B7 /* RSMessageModel.mm in Sources */,
 				ADAC4EB52014F18C0020DA91 /* MGFaceModelArray.m in Sources */,
 				ADDC6A9720134A1600439D01 /* RSResponse.m in Sources */,
 				AD3E94BB200F99820019138F /* LOTCacheProvider.m in Sources */,
@@ -1797,7 +1805,7 @@
 				AD3E9117200F97160019138F /* ViewController.m in Sources */,
 				ADDC6A5820130E0F00439D01 /* RSUIViewController.m in Sources */,
 				AD3E94A3200F99820019138F /* CALayer+Compat.m in Sources */,
-				AD2F574B2020BBED00E0CF83 /* RSMessageViewModel.m in Sources */,
+				AD2F574B2020BBED00E0CF83 /* RSMessageViewModel.mm in Sources */,
 				AD3E94C4200F99820019138F /* LOTNumberInterpolator.m in Sources */,
 				AD2DA5A520235DAA006BA319 /* RSPictureModel.mm in Sources */,
 				AD2F576B2020C6FC00E0CF83 /* LoginInfo.pbobjc.m in Sources */,
