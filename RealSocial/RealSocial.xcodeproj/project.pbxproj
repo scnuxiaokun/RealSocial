@@ -70,7 +70,6 @@
 		AD2F57532020BD5400E0CF83 /* spbuiltintype.proto in Resources */ = {isa = PBXBuildFile; fileRef = AD2F57522020BD5400E0CF83 /* spbuiltintype.proto */; };
 		AD2F575C2020BDA300E0CF83 /* Spcgi.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2F57592020BDA300E0CF83 /* Spcgi.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AD2F57632020C4A200E0CF83 /* spcgicomm.proto in Resources */ = {isa = PBXBuildFile; fileRef = AD2F57622020C4A200E0CF83 /* spcgicomm.proto */; };
-		AD2F57682020C6D800E0CF83 /* Spcgicomm.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2F57672020C6D800E0CF83 /* Spcgicomm.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AD3E9114200F97160019138F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3E9113200F97160019138F /* AppDelegate.m */; };
 		AD3E9117200F97160019138F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3E9116200F97160019138F /* ViewController.m */; };
 		AD3E911A200F97160019138F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD3E9118200F97160019138F /* Main.storyboard */; };
@@ -149,6 +148,7 @@
 		AD3E956A200FA0070019138F /* RSModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3E9569200FA0070019138F /* RSModel.m */; };
 		AD3E956C2010C47D0019138F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD3E956B2010C47D0019138F /* Images.xcassets */; };
 		AD3E956F2011B8310019138F /* RSUITabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3E956E2011B8310019138F /* RSUITabBarController.m */; };
+		AD44C9C72028909F003D16AC /* Spcgicomm.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = AD44C9C62028909F003D16AC /* Spcgicomm.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AD68317C20178E290085DDCD /* Face3DFragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = AD68317620178E290085DDCD /* Face3DFragment.glsl */; };
 		AD68317D20178E290085DDCD /* Face3DVertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = AD68317720178E290085DDCD /* Face3DVertex.glsl */; };
 		AD68317E20178E290085DDCD /* FacePointColor.glsl in Resources */ = {isa = PBXBuildFile; fileRef = AD68317820178E290085DDCD /* FacePointColor.glsl */; };
@@ -320,8 +320,6 @@
 		AD2F57542020BDA200E0CF83 /* Spcgi.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spcgi.pbobjc.h; sourceTree = "<group>"; };
 		AD2F57592020BDA300E0CF83 /* Spcgi.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spcgi.pbobjc.m; sourceTree = "<group>"; };
 		AD2F57622020C4A200E0CF83 /* spcgicomm.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = spcgicomm.proto; sourceTree = "<group>"; };
-		AD2F57662020C6D800E0CF83 /* Spcgicomm.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spcgicomm.pbobjc.h; sourceTree = "<group>"; };
-		AD2F57672020C6D800E0CF83 /* Spcgicomm.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spcgicomm.pbobjc.m; sourceTree = "<group>"; };
 		AD3E910F200F97160019138F /* RealSocial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RealSocial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD3E9112200F97160019138F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AD3E9113200F97160019138F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -485,6 +483,8 @@
 		AD3E956B2010C47D0019138F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		AD3E956D2011B8310019138F /* RSUITabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSUITabBarController.h; sourceTree = "<group>"; };
 		AD3E956E2011B8310019138F /* RSUITabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSUITabBarController.m; sourceTree = "<group>"; };
+		AD44C9C52028909E003D16AC /* Spcgicomm.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spcgicomm.pbobjc.h; sourceTree = "<group>"; };
+		AD44C9C62028909F003D16AC /* Spcgicomm.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spcgicomm.pbobjc.m; sourceTree = "<group>"; };
 		AD68317620178E290085DDCD /* Face3DFragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Face3DFragment.glsl; sourceTree = "<group>"; };
 		AD68317720178E290085DDCD /* Face3DVertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Face3DVertex.glsl; sourceTree = "<group>"; };
 		AD68317820178E290085DDCD /* FacePointColor.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FacePointColor.glsl; sourceTree = "<group>"; };
@@ -819,10 +819,10 @@
 		AD2F575E2020C26800E0CF83 /* core */ = {
 			isa = PBXGroup;
 			children = (
+				AD44C9C52028909E003D16AC /* Spcgicomm.pbobjc.h */,
+				AD44C9C62028909F003D16AC /* Spcgicomm.pbobjc.m */,
 				ADE70E7320285873003B8921 /* Spbuiltintype.pbobjc.h */,
 				ADE70E7420285873003B8921 /* Spbuiltintype.pbobjc.m */,
-				AD2F57662020C6D800E0CF83 /* Spcgicomm.pbobjc.h */,
-				AD2F57672020C6D800E0CF83 /* Spcgicomm.pbobjc.m */,
 			);
 			path = core;
 			sourceTree = "<group>";
@@ -1832,7 +1832,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD2F57682020C6D800E0CF83 /* Spcgicomm.pbobjc.m in Sources */,
 				AD3E94CC200F99820019138F /* LOTTrimPathNode.m in Sources */,
 				AD3E949E200F99820019138F /* LOTKeyframe.m in Sources */,
 				AD3E94C3200F99820019138F /* LOTColorInterpolator.m in Sources */,
@@ -1873,6 +1872,7 @@
 				AD3E94C5200F99820019138F /* LOTPathInterpolator.m in Sources */,
 				AD2F575C2020BDA300E0CF83 /* Spcgi.pbobjc.m in Sources */,
 				AD3E94B4200F99820019138F /* LOTShapeTransform.m in Sources */,
+				AD44C9C72028909F003D16AC /* Spcgicomm.pbobjc.m in Sources */,
 				AD3E9114200F97160019138F /* AppDelegate.m in Sources */,
 				ADAC4ECB201638760020DA91 /* RSImageUploadController.m in Sources */,
 				AD2DA5A820256E9C006BA319 /* RSImageUploadViewModel.mm in Sources */,
@@ -2124,6 +2124,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A3N2LMHK78;
 				ENABLE_BITCODE = NO;
@@ -2143,6 +2144,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kc.faceDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -2154,6 +2156,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A3N2LMHK78;
 				ENABLE_BITCODE = NO;
@@ -2174,6 +2177,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kc.faceDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

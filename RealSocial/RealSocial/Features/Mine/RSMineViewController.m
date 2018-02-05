@@ -147,7 +147,7 @@
     }
     _sessionKeyLabel = [[UILabel alloc] init];
     _sessionKeyLabel.textColor = [UIColor greenColor];
-    RAC(_sessionKeyLabel, text) = RACObserve([RSLoginService shareInstance].loginInfo, sessionKey);
+//    RAC(_sessionKeyLabel, text) = RACObserve([RSLoginService shareInstance].loginInfo, sessionKey);
     return _sessionKeyLabel;
 }
 -(UILabel *)uidLabel {

@@ -45,11 +45,10 @@
             messageModel.content = msg.content;
             messageModel.createTime = [NSDate date];
             messageModel.nextSyncBuff = resp.nextSyncBuff;
-//            if (![[RSDBService db] insertObject:messageModel into:NSStringFromClass([RSMessageModel class])]) {
-//                //save db fail
-//                [[RSDBService db] updateAllRowsInTable:NSStringFromClass([RSMessageModel class]) onProperties:RSMessageModel.AllProperties  withObject:messageModel];
-//                NSLog(@"insert message:%@ fail", messageModel.messageId);
-//            }
+            if (![[RSDBService db] insertObject:messageModel into:NSStringFromClass([RSMessageModel class])]) {
+                //save db fail
+                [[RSDBService db] updateAllRowsInTable:NSStringFromClass([RSMessageModel class]) onProperties:RSMessageModel.AllProperties  withObject:messageModel];
+            }
         }
         [self loadDataFromDB];
     } error:^(NSError * _Nullable error) {

@@ -74,7 +74,7 @@
             pictrueModel.pictureId = pictureId;
             pictrueModel.status = RSPictureStatusUploading;
             [[RSDBService db] updateAllRowsInTable:NSStringFromClass([RSPictureModel class]) onProperty:RSPictureModel.status withObject:pictrueModel];
-            //        [self savePictureNetWork:fileData pictureId:pictureId];
+//            [self savePictureNetWork:fileData pictureId:pictureId];
         });
     }
     return result;
@@ -88,15 +88,19 @@
 }
 
 -(void)sendPicture:(RSUpLoadImgReq *)req data:(NSData *)fileData pictureId:(NSString *)pictureId{
-    NSInteger perBuff = 100;
+    NSInteger perBuff = 100000;
     req.buff = [fileData subdataWithRange:NSMakeRange(req.offSet, perBuff)];
     RSRequest *request = [[RSRequest alloc] init];
+    request.mokeResponseData = [self moke];
     request.cgiName = @"uploadImage";
     request.data = [req data];
     @weakify(self);
     [[RSNetWorkService sendRequest:request] subscribeCompleted:^{
         @RSStrongify(self);
         NSInteger offSet = req.offSet + perBuff;
+        if (offSet + perBuff > req.total) {
+            
+        }
         NSData *buff = [fileData subdataWithRange:NSMakeRange(offSet, perBuff)];
         if (buff) {
             req.offSet = offSet;
@@ -109,6 +113,11 @@
             [[RSDBService db] updateAllRowsInTable:NSStringFromClass([RSPictureModel class]) onProperty:RSPictureModel.status withObject:pictrueModel];
         }
     }];
+}
+
+-(NSData *)moke {
+    RSUpLoadImgResp *resp = [RSUpLoadImgResp new];
+    return [resp data];
 }
 
 -(BOOL)savePictureLocal:(NSData *)fileData pictureId:(NSString *)pictureId {

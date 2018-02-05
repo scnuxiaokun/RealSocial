@@ -26,6 +26,6 @@
 
 -(void)clear {
     self.wxuid = @"";
-    self.sessionKey = @"";
+    self.sessionKey = nil;
 }
 @end

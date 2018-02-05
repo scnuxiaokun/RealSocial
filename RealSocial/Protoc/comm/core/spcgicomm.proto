@@ -1,9 +1,8 @@
 
 syntax="proto2";
-option objc_class_prefix="RS";
+
 package spcgi;
-
-
+option objc_class_prefix="RS";
 message BaseReq
 {
 }
