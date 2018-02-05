@@ -5,35 +5,35 @@ package spcomm;
 
 import "google/protobuf/descriptor.proto";
 
-message SPBuiltinInt32_PB
+message BuiltinInt32_PB
 {
 	optional int32 val = 1;
 }
 
-message SPBuiltinUint32_PB
+message BuiltinUint32_PB
 {
 	optional uint32 val = 1;
 }
 
-message SPBuiltinInt64_PB
+message BuiltinInt64_PB
 {
 	optional int64 val = 1;
 }
 
-message SPBuiltinUint64_PB
+message BuiltinUint64_PB
 {
 	optional uint64 val = 1;
 }
 
-message SPBuiltinEmpty_PB 
+message BuiltinEmpty_PB 
 {
 }
 
 extend google.protobuf.MethodOptions
 { 
-      optional uint32 CmdID = 1000;
-      optional string OptString = 1001;
-      optional string Usage = 1002;
+    optional uint32 CmdID = 1000;
+    optional string OptString = 1001;
+    optional string Usage = 1002;
     optional string CgiName = 1003;
 }
 
@@ -41,3 +41,4 @@ extend google.protobuf.ServiceOptions
 {
     optional int32 Port = 1000;
 }
+

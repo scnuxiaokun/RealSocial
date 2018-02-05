@@ -10,7 +10,7 @@
 #import "RSNetWorkService.h"
 #import "RSKeyChainConstants.h"
 #import "FPKeychainUtils.h"
-
+#import "Spcgi.pbobjc.h"
 
 @implementation RSLoginService
 +(RSLoginService *)shareInstance {
@@ -64,19 +64,24 @@
 }
 
 -(NSData *)mokeResponse {
-//    return nil;
-    LoginInfo *loginInfo = [LoginInfo new];
-    loginInfo.sessionKey = @"kuncai_test_sessionKey";
-    loginInfo.wxuid = @"kuncai_test_wxuid@wx.tencent.com";
-    return [loginInfo data];
+    return nil;
+//    LoginInfo *loginInfo = [LoginInfo new];
+//    loginInfo.sessionKey = @"kuncai_test_sessionKey";
+//    loginInfo.wxuid = @"kuncai_test_wxuid@wx.tencent.com";
+//    return [loginInfo data];
 }
 
 -(RACSignal *)WXLoginWithAppid:(NSString *)appid andCode:(NSString *)code {
     RACSubject *signal = [RACSubject subject];
+    RSLoginReq *req = [RSLoginReq new];
+    req.code = code;
     RSRequest *request = [RSRequest new];
+    request.cgiName = @"/skyplan-bin/base/login";
+    request.data = [req data];
     request.mokeResponseData = [self mokeResponse];
     [[RSNetWorkService sendRequest:request] subscribeNext:^(RSResponse *response) {
-        [self.loginInfo updateWithLoginInfo:[LoginInfo parseFromData:response.data error:nil]];
+        RSLoginResp *resp = [RSLoginResp parseFromData:response.data error:nil];
+        [self.loginInfo updateWithLoginInfo:resp];
         [self saveLoginInfo];
         [self.loginSignal sendNext:@(YES)];
         [signal sendCompleted];

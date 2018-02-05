@@ -11,6 +11,8 @@
 #import "RSLoginService.h"
 #import <WXApi.h>
 #import "WXApiService.h"
+#import <AlicloudMobileAnalitics/ALBBMAN.h>
+
 @implementation RSLaunchService
 +(RSLaunchService *)shareInstance {
     static dispatch_once_t once;
@@ -36,6 +38,10 @@
 -(void)start {
     self.startBlock();
     [WXApi registerApp:WEIXIN_LOGIN_APP_ID];
+    [[ALBBMANAnalytics getInstance] initWithAppKey:@"24797003" secretKey:@"4762b1eb5e601e96b8e838306125f6ab"];
+//    [[ALBBMANAnalytics getInstance] turnOnDebug];
+    
+    
     RSRequest *request = [RSRequest new];
     request.mokeResponseData = [self mokeResponse];
     [[RSNetWorkService sendRequest:request] subscribeNext:^(id  _Nullable x) {

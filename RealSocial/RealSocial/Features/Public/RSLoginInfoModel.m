@@ -19,8 +19,8 @@
     return @"";
 }
 
--(void)updateWithLoginInfo:(LoginInfo *)loginInfo {
-    self.wxuid = loginInfo.wxuid;
+-(void)updateWithLoginInfo:(RSLoginResp *)loginInfo {
+    self.wxuid = loginInfo.userName;
     self.sessionKey = loginInfo.sessionKey;
 }
 

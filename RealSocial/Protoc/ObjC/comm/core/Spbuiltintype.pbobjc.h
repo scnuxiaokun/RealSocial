@@ -52,61 +52,61 @@ NS_ASSUME_NONNULL_BEGIN
 + (GPBExtensionDescriptor *)port;
 @end
 
-#pragma mark - SPBuiltinInt32_PB
+#pragma mark - BuiltinInt32_PB
 
-typedef GPB_ENUM(SPBuiltinInt32_PB_FieldNumber) {
-  SPBuiltinInt32_PB_FieldNumber_Val = 1,
+typedef GPB_ENUM(BuiltinInt32_PB_FieldNumber) {
+  BuiltinInt32_PB_FieldNumber_Val = 1,
 };
 
-@interface SPBuiltinInt32_PB : GPBMessage
+@interface BuiltinInt32_PB : GPBMessage
 
 @property(nonatomic, readwrite) int32_t val;
 
 @property(nonatomic, readwrite) BOOL hasVal;
 @end
 
-#pragma mark - SPBuiltinUint32_PB
+#pragma mark - BuiltinUint32_PB
 
-typedef GPB_ENUM(SPBuiltinUint32_PB_FieldNumber) {
-  SPBuiltinUint32_PB_FieldNumber_Val = 1,
+typedef GPB_ENUM(BuiltinUint32_PB_FieldNumber) {
+  BuiltinUint32_PB_FieldNumber_Val = 1,
 };
 
-@interface SPBuiltinUint32_PB : GPBMessage
+@interface BuiltinUint32_PB : GPBMessage
 
 @property(nonatomic, readwrite) uint32_t val;
 
 @property(nonatomic, readwrite) BOOL hasVal;
 @end
 
-#pragma mark - SPBuiltinInt64_PB
+#pragma mark - BuiltinInt64_PB
 
-typedef GPB_ENUM(SPBuiltinInt64_PB_FieldNumber) {
-  SPBuiltinInt64_PB_FieldNumber_Val = 1,
+typedef GPB_ENUM(BuiltinInt64_PB_FieldNumber) {
+  BuiltinInt64_PB_FieldNumber_Val = 1,
 };
 
-@interface SPBuiltinInt64_PB : GPBMessage
+@interface BuiltinInt64_PB : GPBMessage
 
 @property(nonatomic, readwrite) int64_t val;
 
 @property(nonatomic, readwrite) BOOL hasVal;
 @end
 
-#pragma mark - SPBuiltinUint64_PB
+#pragma mark - BuiltinUint64_PB
 
-typedef GPB_ENUM(SPBuiltinUint64_PB_FieldNumber) {
-  SPBuiltinUint64_PB_FieldNumber_Val = 1,
+typedef GPB_ENUM(BuiltinUint64_PB_FieldNumber) {
+  BuiltinUint64_PB_FieldNumber_Val = 1,
 };
 
-@interface SPBuiltinUint64_PB : GPBMessage
+@interface BuiltinUint64_PB : GPBMessage
 
 @property(nonatomic, readwrite) uint64_t val;
 
 @property(nonatomic, readwrite) BOOL hasVal;
 @end
 
-#pragma mark - SPBuiltinEmpty_PB
+#pragma mark - BuiltinEmpty_PB
 
-@interface SPBuiltinEmpty_PB : GPBMessage
+@interface BuiltinEmpty_PB : GPBMessage
 
 @end
 

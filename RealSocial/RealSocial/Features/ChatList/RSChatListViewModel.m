@@ -7,7 +7,6 @@
 //
 
 #import "RSChatListViewModel.h"
-#import "LoginInfo.pbobjc.h"
 
 @implementation RSChatListViewModel
 //-(void)loadData {

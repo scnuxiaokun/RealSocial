@@ -11,16 +11,18 @@
 #import "RSResponse.h"
 #import <AFNetworking.h>
 //#import "Wxproxy.pbobjc.h"
-#import "LoginInfo.pbobjc.h"
+
 @implementation RSNetWorkService
 +(RACSignal *)sendRequest:(RSRequest *)request {
     if (request.mokeResponseData) {
         return [self sendDebugRequest:request];
     }
     RACReplaySubject *signal = [RACReplaySubject subject];
-    NSString *URLString = [@"http://120.79.150.34:20000/" stringByAppendingString:request.cgiName
+//    NSString *URLString = [@"http://www.skyplan.online" stringByAppendingString:request.cgiName
+//                           ];
+    NSString *URLString = [@"http://120.79.150.34" stringByAppendingString:request.cgiName
                            ];
-//    NSString *URLString = @"http://120.79.150.34:20000/WxProxy/AccessToken";
+//    NSString *URLString = @"http://120.79.150.34:20000/skyplan-bin/base/login";
 //    NSDictionary *parameters = @{@"WxAcct": @"WXACCT_BIZ_TEST"};
     
     // 获得请求管理者
@@ -41,14 +43,19 @@
     
     NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:URLString]];
     [urlRequest setHTTPMethod:@"POST"];
+    [urlRequest setValue:@"application/proto" forHTTPHeaderField:@"Content-Type"];
+    
+//    application/proto
 //    AccessTokenReq *req = [AccessTokenReq new];
 //    req.wxAcct = enWxAcct_WxacctBizTest;
-    [urlRequest setValue:@"application/proto" forHTTPHeaderField:@"Content-Type"];
 //    NSData *data = [req data];
+//    [urlRequest setHTTPBody:[req data]];
     [urlRequest setHTTPBody:request.data];
+    
     AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
     session.requestSerializer = [AFHTTPRequestSerializer serializer];
     session.responseSerializer = [AFHTTPResponseSerializer serializer];
+    session.responseSerializer.acceptableContentTypes = [[NSSet alloc] initWithObjects:@"application/proto",@"text/html", nil];
 
     NSURLSessionTask *task = [session dataTaskWithRequest:urlRequest completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         if (error) {

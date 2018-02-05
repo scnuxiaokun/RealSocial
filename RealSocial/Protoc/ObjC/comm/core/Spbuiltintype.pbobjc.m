@@ -13,8 +13,8 @@
  #import "GPBProtocolBuffers_RuntimeSupport.h"
 #endif
 
- #import "comm/core/Spbuiltintype.pbobjc.h"
- #import "google/protobuf/Descriptor.pbobjc.h"
+ #import "Spbuiltintype.pbobjc.h"
+ #import "GPBDescriptor.h"
 // @@protoc_insertion_point(imports)
 
 #pragma clang diagnostic push
@@ -112,16 +112,16 @@ static GPBFileDescriptor *SpbuiltintypeRoot_FileDescriptor(void) {
   return descriptor;
 }
 
-#pragma mark - SPBuiltinInt32_PB
+#pragma mark - BuiltinInt32_PB
 
-@implementation SPBuiltinInt32_PB
+@implementation BuiltinInt32_PB
 
 @dynamic hasVal, val;
 
-typedef struct SPBuiltinInt32_PB__storage_ {
+typedef struct BuiltinInt32_PB__storage_ {
   uint32_t _has_storage_[1];
   int32_t val;
-} SPBuiltinInt32_PB__storage_;
+} BuiltinInt32_PB__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -132,20 +132,20 @@ typedef struct SPBuiltinInt32_PB__storage_ {
       {
         .name = "val",
         .dataTypeSpecific.className = NULL,
-        .number = SPBuiltinInt32_PB_FieldNumber_Val,
+        .number = BuiltinInt32_PB_FieldNumber_Val,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(SPBuiltinInt32_PB__storage_, val),
+        .offset = (uint32_t)offsetof(BuiltinInt32_PB__storage_, val),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeInt32,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[SPBuiltinInt32_PB class]
+        [GPBDescriptor allocDescriptorForClass:[BuiltinInt32_PB class]
                                      rootClass:[SpbuiltintypeRoot class]
                                           file:SpbuiltintypeRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(SPBuiltinInt32_PB__storage_)
+                                   storageSize:sizeof(BuiltinInt32_PB__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;
@@ -155,16 +155,16 @@ typedef struct SPBuiltinInt32_PB__storage_ {
 
 @end
 
-#pragma mark - SPBuiltinUint32_PB
+#pragma mark - BuiltinUint32_PB
 
-@implementation SPBuiltinUint32_PB
+@implementation BuiltinUint32_PB
 
 @dynamic hasVal, val;
 
-typedef struct SPBuiltinUint32_PB__storage_ {
+typedef struct BuiltinUint32_PB__storage_ {
   uint32_t _has_storage_[1];
   uint32_t val;
-} SPBuiltinUint32_PB__storage_;
+} BuiltinUint32_PB__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -175,20 +175,20 @@ typedef struct SPBuiltinUint32_PB__storage_ {
       {
         .name = "val",
         .dataTypeSpecific.className = NULL,
-        .number = SPBuiltinUint32_PB_FieldNumber_Val,
+        .number = BuiltinUint32_PB_FieldNumber_Val,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(SPBuiltinUint32_PB__storage_, val),
+        .offset = (uint32_t)offsetof(BuiltinUint32_PB__storage_, val),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeUInt32,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[SPBuiltinUint32_PB class]
+        [GPBDescriptor allocDescriptorForClass:[BuiltinUint32_PB class]
                                      rootClass:[SpbuiltintypeRoot class]
                                           file:SpbuiltintypeRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(SPBuiltinUint32_PB__storage_)
+                                   storageSize:sizeof(BuiltinUint32_PB__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;
@@ -198,16 +198,16 @@ typedef struct SPBuiltinUint32_PB__storage_ {
 
 @end
 
-#pragma mark - SPBuiltinInt64_PB
+#pragma mark - BuiltinInt64_PB
 
-@implementation SPBuiltinInt64_PB
+@implementation BuiltinInt64_PB
 
 @dynamic hasVal, val;
 
-typedef struct SPBuiltinInt64_PB__storage_ {
+typedef struct BuiltinInt64_PB__storage_ {
   uint32_t _has_storage_[1];
   int64_t val;
-} SPBuiltinInt64_PB__storage_;
+} BuiltinInt64_PB__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -218,20 +218,20 @@ typedef struct SPBuiltinInt64_PB__storage_ {
       {
         .name = "val",
         .dataTypeSpecific.className = NULL,
-        .number = SPBuiltinInt64_PB_FieldNumber_Val,
+        .number = BuiltinInt64_PB_FieldNumber_Val,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(SPBuiltinInt64_PB__storage_, val),
+        .offset = (uint32_t)offsetof(BuiltinInt64_PB__storage_, val),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeInt64,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[SPBuiltinInt64_PB class]
+        [GPBDescriptor allocDescriptorForClass:[BuiltinInt64_PB class]
                                      rootClass:[SpbuiltintypeRoot class]
                                           file:SpbuiltintypeRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(SPBuiltinInt64_PB__storage_)
+                                   storageSize:sizeof(BuiltinInt64_PB__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;
@@ -241,16 +241,16 @@ typedef struct SPBuiltinInt64_PB__storage_ {
 
 @end
 
-#pragma mark - SPBuiltinUint64_PB
+#pragma mark - BuiltinUint64_PB
 
-@implementation SPBuiltinUint64_PB
+@implementation BuiltinUint64_PB
 
 @dynamic hasVal, val;
 
-typedef struct SPBuiltinUint64_PB__storage_ {
+typedef struct BuiltinUint64_PB__storage_ {
   uint32_t _has_storage_[1];
   uint64_t val;
-} SPBuiltinUint64_PB__storage_;
+} BuiltinUint64_PB__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -261,20 +261,20 @@ typedef struct SPBuiltinUint64_PB__storage_ {
       {
         .name = "val",
         .dataTypeSpecific.className = NULL,
-        .number = SPBuiltinUint64_PB_FieldNumber_Val,
+        .number = BuiltinUint64_PB_FieldNumber_Val,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(SPBuiltinUint64_PB__storage_, val),
+        .offset = (uint32_t)offsetof(BuiltinUint64_PB__storage_, val),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeUInt64,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[SPBuiltinUint64_PB class]
+        [GPBDescriptor allocDescriptorForClass:[BuiltinUint64_PB class]
                                      rootClass:[SpbuiltintypeRoot class]
                                           file:SpbuiltintypeRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(SPBuiltinUint64_PB__storage_)
+                                   storageSize:sizeof(BuiltinUint64_PB__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;
@@ -284,14 +284,14 @@ typedef struct SPBuiltinUint64_PB__storage_ {
 
 @end
 
-#pragma mark - SPBuiltinEmpty_PB
+#pragma mark - BuiltinEmpty_PB
 
-@implementation SPBuiltinEmpty_PB
+@implementation BuiltinEmpty_PB
 
 
-typedef struct SPBuiltinEmpty_PB__storage_ {
+typedef struct BuiltinEmpty_PB__storage_ {
   uint32_t _has_storage_[1];
-} SPBuiltinEmpty_PB__storage_;
+} BuiltinEmpty_PB__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -299,12 +299,12 @@ typedef struct SPBuiltinEmpty_PB__storage_ {
   static GPBDescriptor *descriptor = nil;
   if (!descriptor) {
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[SPBuiltinEmpty_PB class]
+        [GPBDescriptor allocDescriptorForClass:[BuiltinEmpty_PB class]
                                      rootClass:[SpbuiltintypeRoot class]
                                           file:SpbuiltintypeRoot_FileDescriptor()
                                         fields:NULL
                                     fieldCount:0
-                                   storageSize:sizeof(SPBuiltinEmpty_PB__storage_)
+                                   storageSize:sizeof(BuiltinEmpty_PB__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;

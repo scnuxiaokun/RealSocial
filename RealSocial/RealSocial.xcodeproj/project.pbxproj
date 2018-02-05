@@ -71,7 +71,6 @@
 		AD2F575C2020BDA300E0CF83 /* Spcgi.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2F57592020BDA300E0CF83 /* Spcgi.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AD2F57632020C4A200E0CF83 /* spcgicomm.proto in Resources */ = {isa = PBXBuildFile; fileRef = AD2F57622020C4A200E0CF83 /* spcgicomm.proto */; };
 		AD2F57682020C6D800E0CF83 /* Spcgicomm.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2F57672020C6D800E0CF83 /* Spcgicomm.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		AD2F576B2020C6FC00E0CF83 /* LoginInfo.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2F57692020C6FB00E0CF83 /* LoginInfo.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AD3E9114200F97160019138F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3E9113200F97160019138F /* AppDelegate.m */; };
 		AD3E9117200F97160019138F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3E9116200F97160019138F /* ViewController.m */; };
 		AD3E911A200F97160019138F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD3E9118200F97160019138F /* Main.storyboard */; };
@@ -157,10 +156,11 @@
 		AD68318020178E290085DDCD /* VideoFrag.glsl in Resources */ = {isa = PBXBuildFile; fileRef = AD68317A20178E290085DDCD /* VideoFrag.glsl */; };
 		AD68318120178E290085DDCD /* VideoVert.glsl in Resources */ = {isa = PBXBuildFile; fileRef = AD68317B20178E290085DDCD /* VideoVert.glsl */; };
 		AD6831842017952F0085DDCD /* RSChatListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6831832017952F0085DDCD /* RSChatListViewModel.m */; };
-		AD683188201795A70085DDCD /* RSChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD683187201795A70085DDCD /* RSChatViewController.m */; };
-		AD68318B201795C70085DDCD /* RSChatViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD68318A201795C70085DDCD /* RSChatViewModel.m */; };
-		AD68318E2017996E0085DDCD /* RSChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD68318D2017996E0085DDCD /* RSChatTableViewCell.m */; };
 		AD78584A2026C0D700B8261F /* RSPictureListItemViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7858492026C0D700B8261F /* RSPictureListItemViewModel.m */; };
+		AD7F6EC120286B0F00D49966 /* LoginInfo.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F6EBF20286B0F00D49966 /* LoginInfo.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		AD7F6EC920286B1B00D49966 /* RSChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F6EC320286B1B00D49966 /* RSChatViewController.m */; };
+		AD7F6ECA20286B1B00D49966 /* RSChatViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F6EC420286B1B00D49966 /* RSChatViewModel.m */; };
+		AD7F6ECB20286B1B00D49966 /* RSChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F6EC720286B1B00D49966 /* RSChatTableViewCell.m */; };
 		AD87FDA42018D14B006C8A96 /* UIImage+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = AD87FDA32018D14B006C8A96 /* UIImage+Util.m */; };
 		AD87FDA6201C626B006C8A96 /* wxproxy.proto in Resources */ = {isa = PBXBuildFile; fileRef = AD87FDA5201C626A006C8A96 /* wxproxy.proto */; };
 		ADAC4E2B2014F0240020DA91 /* libMGFacepp-0.5.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAC4E2A2014F0240020DA91 /* libMGFacepp-0.5.2.a */; };
@@ -215,6 +215,15 @@
 		ADDC6A9720134A1600439D01 /* RSResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A9620134A1600439D01 /* RSResponse.m */; };
 		ADDC6A9B2013508C00439D01 /* RSMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A9A2013508C00439D01 /* RSMineViewController.m */; };
 		ADDC6AA1201352A800439D01 /* LoginInfo.proto in Resources */ = {isa = PBXBuildFile; fileRef = ADDC6A9D201352A800439D01 /* LoginInfo.proto */; };
+		ADE70E66202851CE003B8921 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE70E0A202846A6003B8921 /* libz.tbd */; };
+		ADE70E67202851D4003B8921 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE70E0820284692003B8921 /* libresolv.tbd */; };
+		ADE70E68202851DA003B8921 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE70DF82028461B003B8921 /* libsqlite3.tbd */; };
+		ADE70E6E20285247003B8921 /* AlicloudMobileAnalitics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE70DFA2028463A003B8921 /* AlicloudMobileAnalitics.framework */; };
+		ADE70E6F20285247003B8921 /* AlicloudUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE70DFF20284659003B8921 /* AlicloudUtils.framework */; };
+		ADE70E7020285247003B8921 /* CrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE70DFC20284659003B8921 /* CrashReporter.framework */; };
+		ADE70E7120285247003B8921 /* UTDID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE70DFE20284659003B8921 /* UTDID.framework */; };
+		ADE70E7220285247003B8921 /* UTMini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE70DFD20284659003B8921 /* UTMini.framework */; };
+		ADE70E7520285873003B8921 /* Spbuiltintype.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE70E7420285873003B8921 /* Spbuiltintype.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -313,8 +322,6 @@
 		AD2F57622020C4A200E0CF83 /* spcgicomm.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = spcgicomm.proto; sourceTree = "<group>"; };
 		AD2F57662020C6D800E0CF83 /* Spcgicomm.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spcgicomm.pbobjc.h; sourceTree = "<group>"; };
 		AD2F57672020C6D800E0CF83 /* Spcgicomm.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spcgicomm.pbobjc.m; sourceTree = "<group>"; };
-		AD2F57692020C6FB00E0CF83 /* LoginInfo.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginInfo.pbobjc.m; sourceTree = "<group>"; };
-		AD2F576A2020C6FC00E0CF83 /* LoginInfo.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginInfo.pbobjc.h; sourceTree = "<group>"; };
 		AD3E910F200F97160019138F /* RealSocial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RealSocial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD3E9112200F97160019138F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AD3E9113200F97160019138F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -486,14 +493,16 @@
 		AD68317B20178E290085DDCD /* VideoVert.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VideoVert.glsl; sourceTree = "<group>"; };
 		AD6831822017952F0085DDCD /* RSChatListViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSChatListViewModel.h; sourceTree = "<group>"; };
 		AD6831832017952F0085DDCD /* RSChatListViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSChatListViewModel.m; sourceTree = "<group>"; };
-		AD683186201795A70085DDCD /* RSChatViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSChatViewController.h; sourceTree = "<group>"; };
-		AD683187201795A70085DDCD /* RSChatViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSChatViewController.m; sourceTree = "<group>"; };
-		AD683189201795C70085DDCD /* RSChatViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSChatViewModel.h; sourceTree = "<group>"; };
-		AD68318A201795C70085DDCD /* RSChatViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSChatViewModel.m; sourceTree = "<group>"; };
-		AD68318C2017996E0085DDCD /* RSChatTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSChatTableViewCell.h; sourceTree = "<group>"; };
-		AD68318D2017996E0085DDCD /* RSChatTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSChatTableViewCell.m; sourceTree = "<group>"; };
 		AD7858482026C0D700B8261F /* RSPictureListItemViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSPictureListItemViewModel.h; sourceTree = "<group>"; };
 		AD7858492026C0D700B8261F /* RSPictureListItemViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSPictureListItemViewModel.m; sourceTree = "<group>"; };
+		AD7F6EBF20286B0F00D49966 /* LoginInfo.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginInfo.pbobjc.m; sourceTree = "<group>"; };
+		AD7F6EC020286B0F00D49966 /* LoginInfo.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginInfo.pbobjc.h; sourceTree = "<group>"; };
+		AD7F6EC320286B1B00D49966 /* RSChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSChatViewController.m; sourceTree = "<group>"; };
+		AD7F6EC420286B1B00D49966 /* RSChatViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSChatViewModel.m; sourceTree = "<group>"; };
+		AD7F6EC520286B1B00D49966 /* RSChatTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSChatTableViewCell.h; sourceTree = "<group>"; };
+		AD7F6EC620286B1B00D49966 /* RSChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSChatViewController.h; sourceTree = "<group>"; };
+		AD7F6EC720286B1B00D49966 /* RSChatTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSChatTableViewCell.m; sourceTree = "<group>"; };
+		AD7F6EC820286B1B00D49966 /* RSChatViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSChatViewModel.h; sourceTree = "<group>"; };
 		AD87FDA22018D14B006C8A96 /* UIImage+Util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Util.h"; sourceTree = "<group>"; };
 		AD87FDA32018D14B006C8A96 /* UIImage+Util.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Util.m"; sourceTree = "<group>"; };
 		AD87FDA5201C626A006C8A96 /* wxproxy.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wxproxy.proto; sourceTree = "<group>"; };
@@ -603,6 +612,26 @@
 		ADDC6A992013508C00439D01 /* RSMineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSMineViewController.h; sourceTree = "<group>"; };
 		ADDC6A9A2013508C00439D01 /* RSMineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSMineViewController.m; sourceTree = "<group>"; };
 		ADDC6A9D201352A800439D01 /* LoginInfo.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LoginInfo.proto; sourceTree = "<group>"; };
+		ADE70DF82028461B003B8921 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		ADE70DFA2028463A003B8921 /* AlicloudMobileAnalitics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlicloudMobileAnalitics.framework; path = RealSocial/Vendors/AliSDK/AlicloudMobileAnalitics.framework; sourceTree = "<group>"; };
+		ADE70DFC20284659003B8921 /* CrashReporter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CrashReporter.framework; path = RealSocial/Vendors/AliSDK/CrashReporter.framework; sourceTree = "<group>"; };
+		ADE70DFD20284659003B8921 /* UTMini.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UTMini.framework; path = RealSocial/Vendors/AliSDK/UTMini.framework; sourceTree = "<group>"; };
+		ADE70DFE20284659003B8921 /* UTDID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UTDID.framework; path = RealSocial/Vendors/AliSDK/UTDID.framework; sourceTree = "<group>"; };
+		ADE70DFF20284659003B8921 /* AlicloudUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlicloudUtils.framework; path = RealSocial/Vendors/AliSDK/AlicloudUtils.framework; sourceTree = "<group>"; };
+		ADE70E042028466E003B8921 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		ADE70E0620284676003B8921 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		ADE70E0820284692003B8921 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		ADE70E0A202846A6003B8921 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		ADE70E1F20284D00003B8921 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = RealSocial/Vendors/AliSDK/CoreTelephony.framework; sourceTree = "<group>"; };
+		ADE70E2020284D00003B8921 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = RealSocial/Vendors/AliSDK/SystemConfiguration.framework; sourceTree = "<group>"; };
+		ADE70E3720284DB0003B8921 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		ADE70E5C2028519D003B8921 /* UTMini.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UTMini.framework; path = dependence/UTMini.framework; sourceTree = "<group>"; };
+		ADE70E5D2028519D003B8921 /* AlicloudMobileAnalitics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlicloudMobileAnalitics.framework; path = dependence/AlicloudMobileAnalitics.framework; sourceTree = "<group>"; };
+		ADE70E5E2028519D003B8921 /* AlicloudUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlicloudUtils.framework; path = dependence/AlicloudUtils.framework; sourceTree = "<group>"; };
+		ADE70E5F2028519D003B8921 /* UTDID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UTDID.framework; path = dependence/UTDID.framework; sourceTree = "<group>"; };
+		ADE70E602028519D003B8921 /* CrashReporter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CrashReporter.framework; path = dependence/CrashReporter.framework; sourceTree = "<group>"; };
+		ADE70E7320285873003B8921 /* Spbuiltintype.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spbuiltintype.pbobjc.h; sourceTree = "<group>"; };
+		ADE70E7420285873003B8921 /* Spbuiltintype.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spbuiltintype.pbobjc.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -610,6 +639,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADE70E6E20285247003B8921 /* AlicloudMobileAnalitics.framework in Frameworks */,
+				ADE70E6F20285247003B8921 /* AlicloudUtils.framework in Frameworks */,
+				ADE70E7020285247003B8921 /* CrashReporter.framework in Frameworks */,
+				ADE70E7120285247003B8921 /* UTDID.framework in Frameworks */,
+				ADE70E7220285247003B8921 /* UTMini.framework in Frameworks */,
+				ADE70E68202851DA003B8921 /* libsqlite3.tbd in Frameworks */,
+				ADE70E67202851D4003B8921 /* libresolv.tbd in Frameworks */,
+				ADE70E66202851CE003B8921 /* libz.tbd in Frameworks */,
 				ADAC4EC62014FBC30020DA91 /* MGBaseKit.framework in Frameworks */,
 				ADAC4EC52014FB090020DA91 /* CoreVideo.framework in Frameworks */,
 				ADAC4EC32014FAF10020DA91 /* OpenGLES.framework in Frameworks */,
@@ -782,6 +819,8 @@
 		AD2F575E2020C26800E0CF83 /* core */ = {
 			isa = PBXGroup;
 			children = (
+				ADE70E7320285873003B8921 /* Spbuiltintype.pbobjc.h */,
+				ADE70E7420285873003B8921 /* Spbuiltintype.pbobjc.m */,
 				AD2F57662020C6D800E0CF83 /* Spcgicomm.pbobjc.h */,
 				AD2F57672020C6D800E0CF83 /* Spcgicomm.pbobjc.m */,
 			);
@@ -924,14 +963,13 @@
 		AD3E9171200F995F0019138F /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				AD7F6EC220286B1B00D49966 /* Chat */,
 				AD2DA59320234FC7006BA319 /* PictureList */,
 				AD2F57452020BB2400E0CF83 /* Message */,
-				AD683185201795910085DDCD /* Chat */,
 				ADDC6A982013506A00439D01 /* Mine */,
 				ADDC6A7820132FAD00439D01 /* Launch */,
 				ADDC6A5F201310BE00439D01 /* Login */,
 				ADDC6A5420130D9E00439D01 /* ChatList */,
-				ADDC6A5320130D9E00439D01 /* FeedList */,
 				ADDC6A5520130D9E00439D01 /* FriendList */,
 				AD3E9172200F995F0019138F /* Public */,
 			);
@@ -1249,15 +1287,15 @@
 			path = Shaders;
 			sourceTree = "<group>";
 		};
-		AD683185201795910085DDCD /* Chat */ = {
+		AD7F6EC220286B1B00D49966 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				AD683186201795A70085DDCD /* RSChatViewController.h */,
-				AD683187201795A70085DDCD /* RSChatViewController.m */,
-				AD683189201795C70085DDCD /* RSChatViewModel.h */,
-				AD68318A201795C70085DDCD /* RSChatViewModel.m */,
-				AD68318C2017996E0085DDCD /* RSChatTableViewCell.h */,
-				AD68318D2017996E0085DDCD /* RSChatTableViewCell.m */,
+				AD7F6EC320286B1B00D49966 /* RSChatViewController.m */,
+				AD7F6EC420286B1B00D49966 /* RSChatViewModel.m */,
+				AD7F6EC520286B1B00D49966 /* RSChatTableViewCell.h */,
+				AD7F6EC620286B1B00D49966 /* RSChatViewController.h */,
+				AD7F6EC720286B1B00D49966 /* RSChatTableViewCell.m */,
+				AD7F6EC820286B1B00D49966 /* RSChatViewModel.h */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -1426,13 +1464,6 @@
 			path = Picture;
 			sourceTree = "<group>";
 		};
-		ADDC6A5320130D9E00439D01 /* FeedList */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = FeedList;
-			sourceTree = "<group>";
-		};
 		ADDC6A5420130D9E00439D01 /* ChatList */ = {
 			isa = PBXGroup;
 			children = (
@@ -1498,8 +1529,8 @@
 		ADDC6A9E201352A800439D01 /* ObjC */ = {
 			isa = PBXGroup;
 			children = (
-				AD2F576A2020C6FC00E0CF83 /* LoginInfo.pbobjc.h */,
-				AD2F57692020C6FB00E0CF83 /* LoginInfo.pbobjc.m */,
+				AD7F6EC020286B0F00D49966 /* LoginInfo.pbobjc.h */,
+				AD7F6EBF20286B0F00D49966 /* LoginInfo.pbobjc.m */,
 				AD2F575D2020C26800E0CF83 /* comm */,
 				AD2F57542020BDA200E0CF83 /* Spcgi.pbobjc.h */,
 				AD2F57592020BDA300E0CF83 /* Spcgi.pbobjc.m */,
@@ -1510,6 +1541,24 @@
 		F3E8C49B86B6F16FA471C826 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ADE70E5D2028519D003B8921 /* AlicloudMobileAnalitics.framework */,
+				ADE70E5E2028519D003B8921 /* AlicloudUtils.framework */,
+				ADE70E602028519D003B8921 /* CrashReporter.framework */,
+				ADE70E5F2028519D003B8921 /* UTDID.framework */,
+				ADE70E5C2028519D003B8921 /* UTMini.framework */,
+				ADE70E3720284DB0003B8921 /* libsqlite3.0.tbd */,
+				ADE70E1F20284D00003B8921 /* CoreTelephony.framework */,
+				ADE70E2020284D00003B8921 /* SystemConfiguration.framework */,
+				ADE70E0A202846A6003B8921 /* libz.tbd */,
+				ADE70E0820284692003B8921 /* libresolv.tbd */,
+				ADE70E0620284676003B8921 /* SystemConfiguration.framework */,
+				ADE70E042028466E003B8921 /* CoreTelephony.framework */,
+				ADE70DFF20284659003B8921 /* AlicloudUtils.framework */,
+				ADE70DFC20284659003B8921 /* CrashReporter.framework */,
+				ADE70DFE20284659003B8921 /* UTDID.framework */,
+				ADE70DFD20284659003B8921 /* UTMini.framework */,
+				ADE70DFA2028463A003B8921 /* AlicloudMobileAnalitics.framework */,
+				ADE70DF82028461B003B8921 /* libsqlite3.tbd */,
 				ADAC4EC72014FBC30020DA91 /* MGBaseKit.framework */,
 				ADAC4EC42014FB090020DA91 /* CoreVideo.framework */,
 				ADAC4EC22014FAF10020DA91 /* OpenGLES.framework */,
@@ -1808,7 +1857,6 @@
 				AD2F574B2020BBED00E0CF83 /* RSMessageViewModel.mm in Sources */,
 				AD3E94C4200F99820019138F /* LOTNumberInterpolator.m in Sources */,
 				AD2DA5A520235DAA006BA319 /* RSPictureModel.mm in Sources */,
-				AD2F576B2020C6FC00E0CF83 /* LoginInfo.pbobjc.m in Sources */,
 				ADDC6A7B20132FCF00439D01 /* RSLanchViewController.m in Sources */,
 				AD3E94E5200F99820019138F /* NSException+SafeKit.m in Sources */,
 				AD3E94D1200F99820019138F /* LOTStrokeRenderer.m in Sources */,
@@ -1820,7 +1868,6 @@
 				AD2DA59F20235992006BA319 /* RSDBService.mm in Sources */,
 				ADDC6A71201325ED00439D01 /* RSRequest.m in Sources */,
 				ADAC4EB32014F18C0020DA91 /* MCSetModel.m in Sources */,
-				AD683188201795A70085DDCD /* RSChatViewController.m in Sources */,
 				AD3E9122200F97160019138F /* main.m in Sources */,
 				AD3E94A9200F99820019138F /* LOTLayerGroup.m in Sources */,
 				AD3E94C5200F99820019138F /* LOTPathInterpolator.m in Sources */,
@@ -1847,9 +1894,11 @@
 				ADAC4EAF2014F18C0020DA91 /* MGFaceCompareCell.m in Sources */,
 				AD3E94C6200F99820019138F /* LOTPointInterpolator.m in Sources */,
 				AD3E94BE200F99820019138F /* LOTPathAnimator.m in Sources */,
+				AD7F6ECB20286B1B00D49966 /* RSChatTableViewCell.m in Sources */,
 				ADAC4E7A2014F1150020DA91 /* MGOpenGLView.m in Sources */,
 				AD3E9174200F99600019138F /* RSLoginService.m in Sources */,
 				AD3E94E4200F99820019138F /* NSArray+safe.m in Sources */,
+				AD7F6ECA20286B1B00D49966 /* RSChatViewModel.m in Sources */,
 				AD3E94CD200F99820019138F /* LOTFillRenderer.m in Sources */,
 				ADDC6A65201316BB00439D01 /* NSError+Util.m in Sources */,
 				ADAC4EBA2014F18C0020DA91 /* MGVideoViewController.mm in Sources */,
@@ -1860,6 +1909,7 @@
 				AD3E94B3200F99820019138F /* LOTShapeStroke.m in Sources */,
 				AD78584A2026C0D700B8261F /* RSPictureListItemViewModel.m in Sources */,
 				ADDC6A89201337DD00439D01 /* FPSecretKeyUtils.m in Sources */,
+				AD7F6EC920286B1B00D49966 /* RSChatViewController.m in Sources */,
 				AD3E94CB200F99820019138F /* LOTRenderNode.m in Sources */,
 				AD3E9561200F9C9E0019138F /* RSHandleOpenUrlHelper.m in Sources */,
 				AD2F57482020BB3400E0CF83 /* RSMessageViewController.m in Sources */,
@@ -1869,11 +1919,13 @@
 				AD3E94A2200F99820019138F /* UIColor+Expanded.m in Sources */,
 				AD3E94B1200F99820019138F /* LOTShapeRepeater.m in Sources */,
 				AD3E94BC200F99820019138F /* LOTComposition.m in Sources */,
+				AD7F6EC120286B0F00D49966 /* LoginInfo.pbobjc.m in Sources */,
 				AD3E94C2200F99820019138F /* LOTArrayInterpolator.m in Sources */,
 				AD3E94AA200F99820019138F /* LOTMask.m in Sources */,
 				AD3E94D0200F99820019138F /* LOTRepeaterRenderer.m in Sources */,
 				ADDC6A7420132AA500439D01 /* RSLaunchService.m in Sources */,
 				AD3E94A6200F99820019138F /* LOTAsset.m in Sources */,
+				ADE70E7520285873003B8921 /* Spbuiltintype.pbobjc.m in Sources */,
 				ADAC4E792014F1150020DA91 /* MGOpenGLRenderer.m in Sources */,
 				AD3E94B7200F99820019138F /* LOTAnimatedSwitch.m in Sources */,
 				ADAC4EAD2014F18C0020DA91 /* MCSetCell.m in Sources */,
@@ -1886,10 +1938,8 @@
 				AD3E94A1200F99820019138F /* LOTRadialGradientLayer.m in Sources */,
 				AD3E94B8200F99820019138F /* LOTAnimationCache.m in Sources */,
 				AD3E94BF200F99820019138F /* LOTPolygonAnimator.m in Sources */,
-				AD68318E2017996E0085DDCD /* RSChatTableViewCell.m in Sources */,
 				AD3E949D200F99820019138F /* LOTBezierData.m in Sources */,
 				ADAC4EA82014F18C0020DA91 /* MGFileManager.m in Sources */,
-				AD68318B201795C70085DDCD /* RSChatViewModel.m in Sources */,
 				AD87FDA42018D14B006C8A96 /* UIImage+Util.m in Sources */,
 				AD3E956A200FA0070019138F /* RSModel.m in Sources */,
 				AD3E9567200F9E6B0019138F /* RSLoginInfoModel.m in Sources */,
@@ -2080,6 +2130,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/RealSocial/Vendors",
+					"$(PROJECT_DIR)/RealSocial/Vendors/AliSDK",
+					"$(PROJECT_DIR)/dependence",
 				);
 				GCC_PREFIX_HEADER = "RealSocial-PrefixHeader.pch";
 				INFOPLIST_FILE = RealSocial/Info.plist;
@@ -2108,6 +2160,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/RealSocial/Vendors",
+					"$(PROJECT_DIR)/RealSocial/Vendors/AliSDK",
+					"$(PROJECT_DIR)/dependence",
 				);
 				GCC_PREFIX_HEADER = "RealSocial-PrefixHeader.pch";
 				INFOPLIST_FILE = RealSocial/Info.plist;

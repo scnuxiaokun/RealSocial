@@ -7,6 +7,7 @@
 //
 
 #import "RSUIViewController.h"
+#import <AlicloudMobileAnalitics/ALBBMAN.h>
 
 @interface RSUIViewController ()
 
@@ -17,6 +18,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [[ALBBMANPageHitHelper getInstance] pageAppear:self];
+}
+
+-(void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [[ALBBMANPageHitHelper getInstance] pageDisAppear:self];
 }
 
 - (void)didReceiveMemoryWarning {
