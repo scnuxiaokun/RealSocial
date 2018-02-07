@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'E51245E44EC3E4DF3A5E4F456F600B1F'
-               BlueprintName = 'SSZipArchive'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libSSZipArchive.a'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8F7C1EABD8A60D6F10AC12E73B0A8A02"
+               BlueprintName = "SSZipArchive"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "libSSZipArchive.a">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

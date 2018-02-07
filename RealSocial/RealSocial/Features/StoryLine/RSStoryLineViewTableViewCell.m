@@ -35,6 +35,7 @@
     if (self) {
         self.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:self.mediaImageView];
+        [self.contentView addSubview:self.avatarBgImageView];
         [self.contentView addSubview:self.avatarImageView];
         [self.contentView addSubview:self.titleLabel];
         [self.contentView addSubview:self.subtitleLabel];
@@ -42,6 +43,9 @@
         [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self.contentView);
             make.left.equalTo(self.contentView).with.offset(0);
+        }];
+        [self.avatarBgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.center.equalTo(self.avatarImageView);
         }];
         [self.mediaImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.bottom.right.equalTo(self.contentView);
@@ -75,6 +79,23 @@
     _avatarImageView.backgroundColor = [UIColor randomColor];
     return _avatarImageView;
 }
+
+-(UIImageView *)avatarBgImageView {
+    if (_avatarBgImageView) {
+        return _avatarBgImageView;
+    }
+    _avatarBgImageView = [[UIImageView alloc] init];
+//    _avatarImageView.contentMode = UIViewContentModeScaleAspectFit;
+    [_avatarBgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.height.mas_equalTo(86);
+    }];
+    _avatarBgImageView.layer.cornerRadius = 86/2;
+//    _avatarImageView.layer.masksToBounds = YES;
+    _avatarBgImageView.backgroundColor = [UIColor whiteColor];
+    return _avatarBgImageView;
+}
+
+
 
 -(UIImageView *)mediaImageView {
     if (_mediaImageView) {

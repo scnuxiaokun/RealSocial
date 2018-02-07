@@ -76,7 +76,7 @@
     RSLoginReq *req = [RSLoginReq new];
     req.code = code;
     RSRequest *request = [RSRequest new];
-    request.cgiName = @"/skyplan-bin/base/login";
+    request.cgiName = @"base/login";
     request.data = [req data];
     request.mokeResponseData = [self mokeResponse];
     [[RSNetWorkService sendRequest:request] subscribeNext:^(RSResponse *response) {

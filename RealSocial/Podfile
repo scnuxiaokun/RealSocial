@@ -55,4 +55,6 @@ pod 'BlocksKit'
 pod 'WechatOpenSDK'
 pod 'Protobuf'
 pod 'WCDB'
+pod 'DBCamera'
+pod 'Qiniu', '~> 7.1'
 end

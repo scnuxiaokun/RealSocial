@@ -10,6 +10,15 @@
 #import "RSMineViewController.h"
 #import "RSStoryLineViewModel.h"
 #import "RSStoryLineViewTableViewCell.h"
+
+//#import "MGVideoViewController.h"
+//#import "MCSetModel.h"
+//#import "MCSetCell.h"
+//#import "MGHeader.h"
+//#import "MGFaceLicenseHandle.h"
+//#import "MGMarkSetViewController.h"
+#import "RSStoryCreateViewController.h"
+
 @interface RSStoryLineViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UIButton *userCenterButton;
 @property (nonatomic, strong) UIButton *createButton;
@@ -48,6 +57,24 @@
         make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideBottom);
     }];
     [self.viewModel loadData];
+    
+//    /** 进行联网授权版本判断，联网授权就需要进行网络授权 */
+//    BOOL needLicense = [MGFaceLicenseHandle getNeedNetLicense];
+//    
+//    if (needLicense) {
+//        //        self.videoBtn.userInteractionEnabled = NO;
+//        [MGFaceLicenseHandle licenseForNetwokrFinish:^(bool License, NSDate *sdkDate) {
+//            if (!License) {
+//                NSLog(@"联网授权失败 ！！！");
+//                assert(NO);
+//            } else {
+//                NSLog(@"联网授权成功");
+//                //                self.videoBtn.userInteractionEnabled = YES;
+//            }
+//        }];
+//    } else {
+//        NSLog(@"SDK 为非联网授权版本！");
+//    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -94,7 +121,7 @@
     @weakify(self);
     [_createButton addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
         @RSStrongify(self);
-        
+        [self showVideoViewController];
     }];
     return _createButton;
 }
@@ -129,7 +156,7 @@
         return _tableView;
     }
     _tableView = [[UITableView alloc] init];
-    _tableView.backgroundColor = [UIColor redColor];
+    _tableView.backgroundColor = [UIColor clearColor];
     _tableView.separatorColor  = [UIColor clearColor];
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -173,5 +200,13 @@
     }
     cell.viewModel = [self.viewModel.listData objectOrNilAtIndex:indexPath.row];
     return cell;
+}
+
+#pragma mark take picture
+-(void)showVideoViewController {
+    RSStoryCreateViewController *ctr = [[RSStoryCreateViewController alloc] init];
+//    MGMarkSetViewController *ctr =  [[MGMarkSetViewController alloc] initWithNibName:nil bundle:nil];
+    ctr.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:ctr animated:YES];
 }
 @end

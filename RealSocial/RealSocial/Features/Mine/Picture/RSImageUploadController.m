@@ -115,7 +115,7 @@
     _imagePickerController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     _imagePickerController.allowsEditing = YES;
     _imagePickerController.delegate = self;
-    _imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    _imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
     [self presentViewController:_imagePickerController animated:YES completion:nil];
 }
 #pragma mark UIImagePickerControllerDelegate

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '965606F270FAB378D96AEECA674E3AB8'
-               BlueprintName = 'YYDispatchQueuePool'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libYYDispatchQueuePool.a'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CB59D03EE4D91E5BB0D85FBD3D35DE49"
+               BlueprintName = "YYDispatchQueuePool"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "libYYDispatchQueuePool.a">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

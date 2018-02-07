@@ -155,6 +155,13 @@
 		AD44C9D9202ADBFE003D16AC /* RSStoryLineViewModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = AD44C9D8202ADBFE003D16AC /* RSStoryLineViewModel.mm */; };
 		AD44C9DC202ADF24003D16AC /* RSStoryLineViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD44C9DB202ADF24003D16AC /* RSStoryLineViewTableViewCell.m */; };
 		AD44C9DF202AE12D003D16AC /* UIColor+random.m in Sources */ = {isa = PBXBuildFile; fileRef = AD44C9DE202AE12D003D16AC /* UIColor+random.m */; };
+		AD44C9E2202B012E003D16AC /* RSStoryCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD44C9E1202B012E003D16AC /* RSStoryCreateViewController.m */; };
+		AD44C9E8202B0226003D16AC /* photograph_Select@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD44C9E4202B0226003D16AC /* photograph_Select@3x.png */; };
+		AD44C9E9202B0226003D16AC /* photograph_Select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD44C9E5202B0226003D16AC /* photograph_Select@2x.png */; };
+		AD44C9EA202B0226003D16AC /* photograph@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD44C9E6202B0226003D16AC /* photograph@3x.png */; };
+		AD44C9EB202B0226003D16AC /* photograph@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD44C9E7202B0226003D16AC /* photograph@2x.png */; };
+		AD44C9EF202B17F4003D16AC /* RSStoryCreateViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD44C9EE202B17F4003D16AC /* RSStoryCreateViewModel.m */; };
+		AD44C9F2202B3F95003D16AC /* RSMediaService.mm in Sources */ = {isa = PBXBuildFile; fileRef = AD44C9F1202B3F95003D16AC /* RSMediaService.mm */; };
 		AD68317C20178E290085DDCD /* Face3DFragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = AD68317620178E290085DDCD /* Face3DFragment.glsl */; };
 		AD68317D20178E290085DDCD /* Face3DVertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = AD68317720178E290085DDCD /* Face3DVertex.glsl */; };
 		AD68317E20178E290085DDCD /* FacePointColor.glsl in Resources */ = {isa = PBXBuildFile; fileRef = AD68317820178E290085DDCD /* FacePointColor.glsl */; };
@@ -502,6 +509,16 @@
 		AD44C9DB202ADF24003D16AC /* RSStoryLineViewTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSStoryLineViewTableViewCell.m; sourceTree = "<group>"; };
 		AD44C9DD202AE12C003D16AC /* UIColor+random.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+random.h"; sourceTree = "<group>"; };
 		AD44C9DE202AE12D003D16AC /* UIColor+random.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+random.m"; sourceTree = "<group>"; };
+		AD44C9E0202B012E003D16AC /* RSStoryCreateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSStoryCreateViewController.h; sourceTree = "<group>"; };
+		AD44C9E1202B012E003D16AC /* RSStoryCreateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSStoryCreateViewController.m; sourceTree = "<group>"; };
+		AD44C9E4202B0226003D16AC /* photograph_Select@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photograph_Select@3x.png"; sourceTree = "<group>"; };
+		AD44C9E5202B0226003D16AC /* photograph_Select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photograph_Select@2x.png"; sourceTree = "<group>"; };
+		AD44C9E6202B0226003D16AC /* photograph@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photograph@3x.png"; sourceTree = "<group>"; };
+		AD44C9E7202B0226003D16AC /* photograph@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photograph@2x.png"; sourceTree = "<group>"; };
+		AD44C9ED202B17F4003D16AC /* RSStoryCreateViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSStoryCreateViewModel.h; sourceTree = "<group>"; };
+		AD44C9EE202B17F4003D16AC /* RSStoryCreateViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSStoryCreateViewModel.m; sourceTree = "<group>"; };
+		AD44C9F0202B3F95003D16AC /* RSMediaService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSMediaService.h; sourceTree = "<group>"; };
+		AD44C9F1202B3F95003D16AC /* RSMediaService.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RSMediaService.mm; sourceTree = "<group>"; };
 		AD68317620178E290085DDCD /* Face3DFragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Face3DFragment.glsl; sourceTree = "<group>"; };
 		AD68317720178E290085DDCD /* Face3DVertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Face3DVertex.glsl; sourceTree = "<group>"; };
 		AD68317820178E290085DDCD /* FacePointColor.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FacePointColor.glsl; sourceTree = "<group>"; };
@@ -935,6 +952,8 @@
 				ADDC6A9620134A1600439D01 /* RSResponse.m */,
 				AD2DA59D20235992006BA319 /* RSDBService.h */,
 				AD2DA59E20235992006BA319 /* RSDBService.mm */,
+				AD44C9F0202B3F95003D16AC /* RSMediaService.h */,
+				AD44C9F1202B3F95003D16AC /* RSMediaService.mm */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1018,6 +1037,7 @@
 		AD3E9173200F99600019138F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AD44C9E3202B0226003D16AC /* StoryCreate */,
 				AD2DA53920234DD4006BA319 /* appImages */,
 				AD2DA53420234DD4006BA319 /* detectImages */,
 				AD2DA52D20234DD4006BA319 /* Shaders */,
@@ -1308,6 +1328,21 @@
 		AD44C9D3202AB68C003D16AC /* StoryCreate */ = {
 			isa = PBXGroup;
 			children = (
+				AD44C9E0202B012E003D16AC /* RSStoryCreateViewController.h */,
+				AD44C9E1202B012E003D16AC /* RSStoryCreateViewController.m */,
+				AD44C9ED202B17F4003D16AC /* RSStoryCreateViewModel.h */,
+				AD44C9EE202B17F4003D16AC /* RSStoryCreateViewModel.m */,
+			);
+			path = StoryCreate;
+			sourceTree = "<group>";
+		};
+		AD44C9E3202B0226003D16AC /* StoryCreate */ = {
+			isa = PBXGroup;
+			children = (
+				AD44C9E4202B0226003D16AC /* photograph_Select@3x.png */,
+				AD44C9E5202B0226003D16AC /* photograph_Select@2x.png */,
+				AD44C9E6202B0226003D16AC /* photograph@3x.png */,
+				AD44C9E7202B0226003D16AC /* photograph@2x.png */,
 			);
 			path = StoryCreate;
 			sourceTree = "<group>";
@@ -1735,10 +1770,12 @@
 				AD68318120178E290085DDCD /* VideoVert.glsl in Resources */,
 				AD2DA57220234DD5006BA319 /* screen-1.png in Resources */,
 				AD68317F20178E290085DDCD /* FacePointSize.glsl in Resources */,
+				AD44C9E9202B0226003D16AC /* photograph_Select@2x.png in Resources */,
 				AD2DA57920234DD5006BA319 /* textrec-1.png in Resources */,
 				AD3E911C200F97160019138F /* Assets.xcassets in Resources */,
 				AD2DA57C20234DD5006BA319 /* debug-1.png in Resources */,
 				AD2DA57120234DD5006BA319 /* screen-0.png in Resources */,
+				AD44C9E8202B0226003D16AC /* photograph_Select@3x.png in Resources */,
 				AD2DA56B20234DD4006BA319 /* 81_points_position.jpg in Resources */,
 				AD2DA57E20234DD5006BA319 /* debug-0.png in Resources */,
 				ADAC4EAE2014F18C0020DA91 /* MCSetCell.xib in Resources */,
@@ -1748,6 +1785,7 @@
 				AD2DA58F20234DD5006BA319 /* 81-0.png in Resources */,
 				AD2DA56D20234DD4006BA319 /* area-1.png in Resources */,
 				AD2DA56420234DD4006BA319 /* Face3DFragment.glsl in Resources */,
+				AD44C9EB202B0226003D16AC /* photograph@2x.png in Resources */,
 				AD2DA57520234DD5006BA319 /* 1280_720@3x.png in Resources */,
 				AD2DA59020234DD5006BA319 /* IMG_2393.JPG in Resources */,
 				AD2DA58D20234DD5006BA319 /* 3D-1.png in Resources */,
@@ -1799,6 +1837,7 @@
 				AD2DA56C20234DD4006BA319 /* shader-0.png in Resources */,
 				AD2DA58020234DD5006BA319 /* 1920_1080.png in Resources */,
 				AD2DA57320234DD5006BA319 /* faceinfo-1.png in Resources */,
+				AD44C9EA202B0226003D16AC /* photograph@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1826,10 +1865,38 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-RealSocial/Pods-RealSocial-resources.sh",
+				"${PODS_ROOT}/DBCamera/DBCamera/Resources/DBCameraImages.xcassets",
+				"${PODS_ROOT}/DBCamera/DBCamera/Localizations/DBCamera.bundle",
+				"${PODS_ROOT}/DBCamera/DBCamera/Filters/1977.acv",
+				"${PODS_ROOT}/DBCamera/DBCamera/Filters/amaro.acv",
+				"${PODS_ROOT}/DBCamera/DBCamera/Filters/Hudson.acv",
+				"${PODS_ROOT}/DBCamera/DBCamera/Filters/mayfair.acv",
+				"${PODS_ROOT}/DBCamera/DBCamera/Filters/Nashville.acv",
+				"${PODS_ROOT}/DBCamera/DBCamera/Filters/Valencia.acv",
+				"${PODS_ROOT}/DBCamera/DBCamera/Filters/Vignette.acv",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_amatorka.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_miss_etikate.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_1.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_2.png",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/DBCameraImages.xcassets",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/DBCamera.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/1977.acv",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/amaro.acv",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Hudson.acv",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mayfair.acv",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Nashville.acv",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Valencia.acv",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Vignette.acv",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_amatorka.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_miss_etikate.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_soft_elegance_1.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_soft_elegance_2.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1884,6 +1951,7 @@
 				AD3E9564200F9D6B0019138F /* WXApiService.m in Sources */,
 				AD2F5744202094D400E0CF83 /* RSLiveData.m in Sources */,
 				ADAC4EAA2014F18C0020DA91 /* BaseCell.m in Sources */,
+				AD44C9EF202B17F4003D16AC /* RSStoryCreateViewModel.m in Sources */,
 				ADDC6A5B20130E2D00439D01 /* RSUINavigationController.m in Sources */,
 				AD44C9D6202AB6C3003D16AC /* RSStoryLineViewController.m in Sources */,
 				AD3E94AD200F99820019138F /* LOTShapeGradientFill.m in Sources */,
@@ -1924,6 +1992,7 @@
 				AD3E9114200F97160019138F /* AppDelegate.m in Sources */,
 				ADAC4ECB201638760020DA91 /* RSImageUploadController.m in Sources */,
 				AD2DA5A820256E9C006BA319 /* RSImageUploadViewModel.mm in Sources */,
+				AD44C9E2202B012E003D16AC /* RSStoryCreateViewController.m in Sources */,
 				AD3E94AB200F99820019138F /* LOTShapeCircle.m in Sources */,
 				AD3E94A7200F99820019138F /* LOTAssetGroup.m in Sources */,
 				AD3E94C0200F99820019138F /* LOTPolystarAnimator.m in Sources */,
@@ -1983,6 +2052,7 @@
 				ADAC4EA92014F18C0020DA91 /* MGDetectPictureVC.m in Sources */,
 				AD3E949A200F99820019138F /* LOTCompositionContainer.m in Sources */,
 				AD3E94C8200F99820019138F /* LOTTransformInterpolator.m in Sources */,
+				AD44C9F2202B3F95003D16AC /* RSMediaService.mm in Sources */,
 				AD3E94A1200F99820019138F /* LOTRadialGradientLayer.m in Sources */,
 				AD44C9D9202ADBFE003D16AC /* RSStoryLineViewModel.mm in Sources */,
 				AD3E94B8200F99820019138F /* LOTAnimationCache.m in Sources */,
