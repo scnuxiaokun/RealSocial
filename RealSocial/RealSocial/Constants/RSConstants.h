@@ -10,3 +10,6 @@
 
 static NSString * const WXloginSuccessTips = @"微信登录成功";
 static NSString * const WXScheme = @"weixin://";
+
+#pragma mark CgiName
+static NSString * const RSGetAllStoryReqCgiName = @"story/getall";

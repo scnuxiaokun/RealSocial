@@ -3,8 +3,7 @@ syntax="proto2";
 
 package spcgi;
 
-import "comm/core/spbuiltintype.proto";
-import "comm/core/spcgicomm.proto";
+import "spcgicomm.proto";
 option objc_class_prefix="RS";
 
 option cc_generic_services = true;
@@ -141,44 +140,3 @@ message AddMyMemoryResp
 {
     optional BaseResp BaseResp = 1;
 }
-
-service SPStoryCGI
-{
-    option( spcomm.Port ) = 20001;
-
-    rpc CreateStory( CreateStoryReq ) returns ( CreateStoryResp )
-    {
-        option( spcomm.CgiName ) = "story/create";
-    }
-
-    rpc AppendStory( AppendStoryReq ) returns ( AppendStoryResp )
-    {
-        option( spcomm.CgiName ) = "story/append";
-    }
-
-    rpc AppendStoryTo( AppendStoryToReq ) returns ( AppendStoryToResp )
-    {
-        option( spcomm.CgiName ) = "story/to/append";
-    }
-
-    rpc GetAllStory( GetAllStoryReq ) returns ( GetAllStoryResp )
-    {
-        option( spcomm.CgiName ) = "story/getall";
-    }
-
-    rpc GetAllMyStory( GetAllMyStoryReq ) returns ( GetAllMyStoryResp )
-    {
-        option( spcomm.CgiName ) = "story/my/getall";
-    }
-
-    rpc GetAllMyMemory( GetAllMyMemoryReq ) returns ( GetAllMyMemoryResp )
-    {
-        option ( spcomm.CgiName ) = "memory/getall";
-    }
-
-    rpc AddMyMemory( AddMyMemoryReq ) returns ( AddMyMemoryResp )
-    {
-        option ( spcomm.CgiName ) = "memory/add";
-    }
-    
-};

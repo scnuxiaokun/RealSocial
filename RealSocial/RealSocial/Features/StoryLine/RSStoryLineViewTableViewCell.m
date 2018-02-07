@@ -1,0 +1,118 @@
+//
+//  RSStoryLineViewTableViewCell.m
+//  RealSocial
+//
+//  Created by kuncai on 2018/2/7.
+//  Copyright © 2018年 scnukuncai. All rights reserved.
+//
+
+#import "RSStoryLineViewTableViewCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+
+@implementation RSStoryLineViewTableViewCell
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    // Initialization code
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+
+    // Configure the view for the selected state
+}
+
+-(void)setFrame:(CGRect)frame
+{
+    frame.origin.x = 12;//这里间距为10，可以根据自己的情况调整
+    frame.size.width -= 2 * frame.origin.x;
+    frame.size.height -= frame.origin.x;
+    [super setFrame:frame];
+}
+
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        self.backgroundColor = [UIColor clearColor];
+        [self.contentView addSubview:self.mediaImageView];
+        [self.contentView addSubview:self.avatarImageView];
+        [self.contentView addSubview:self.titleLabel];
+        [self.contentView addSubview:self.subtitleLabel];
+        
+        [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(self.contentView);
+            make.left.equalTo(self.contentView).with.offset(0);
+        }];
+        [self.mediaImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.bottom.right.equalTo(self.contentView);
+            make.left.equalTo(self.avatarImageView.mas_centerX);
+        }];
+        
+        [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.contentView).with.offset(27);
+            make.left.equalTo(self.avatarImageView.mas_right).with.offset(15);
+        }];
+        [self.subtitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(self.contentView).with.offset(-27);
+            make.left.equalTo(self.titleLabel);
+        }];
+    }
+    return self;
+}
+
+
+-(UIImageView *)avatarImageView {
+    if (_avatarImageView) {
+        return _avatarImageView;
+    }
+    _avatarImageView = [[UIImageView alloc] init];
+    _avatarImageView.contentMode = UIViewContentModeScaleAspectFit;
+    [_avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.height.mas_equalTo(80);
+    }];
+    _avatarImageView.layer.cornerRadius = 80/2;
+    _avatarImageView.layer.masksToBounds = YES;
+    _avatarImageView.backgroundColor = [UIColor randomColor];
+    return _avatarImageView;
+}
+
+-(UIImageView *)mediaImageView {
+    if (_mediaImageView) {
+        return _mediaImageView;
+    }
+    _mediaImageView = [[UIImageView alloc] init];
+    _mediaImageView.contentMode = UIViewContentModeScaleAspectFill;
+    _mediaImageView.layer.cornerRadius = 10.f;
+    _mediaImageView.layer.masksToBounds = YES;
+    _mediaImageView.backgroundColor = [UIColor clearColor];
+    return _mediaImageView;
+}
+
+-(UILabel *)titleLabel {
+    if (_titleLabel) {
+        return _titleLabel;
+    }
+    _titleLabel = [[UILabel alloc] init];
+    _titleLabel.font = [UIFont boldSystemFontOfSize:17];
+    _titleLabel.textColor = [UIColor randomColor];
+    return _titleLabel;
+}
+
+-(UILabel *)subtitleLabel {
+    if (_subtitleLabel) {
+        return _subtitleLabel;
+    }
+    _subtitleLabel = [[UILabel alloc] init];
+    _subtitleLabel.font = [UIFont systemFontOfSize:14];
+    _subtitleLabel.textColor = [UIColor randomColor];
+    return _subtitleLabel;
+}
+
+-(void)setViewModel:(RSStoryLineItemViewModel *)viewModel {
+    _viewModel = viewModel;
+    [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:viewModel.avatarUrl] placeholderImage:[UIImage imageWithColor:[UIColor randomColor]]];
+    [self.mediaImageView sd_setImageWithURL:[NSURL URLWithString:viewModel.mediaUrl] placeholderImage:[UIImage imageWithColor:[UIColor randomColor]]];
+    self.titleLabel.text = viewModel.titleString;
+    self.subtitleLabel.text = viewModel.subTitleString;
+}
+@end

@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "RSUITabBarController.h"
+#import "RSStoryLineViewController.h"
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) RSUITabBarController *tabBarController;
+@property (strong, nonatomic) UIViewController *mainViewController;
+
 + (AppDelegate*)shareInstance;
 @end
 

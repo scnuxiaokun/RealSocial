@@ -14,8 +14,7 @@
 #endif
 
  #import "Spstorycgi.pbobjc.h"
- #import "comm/core/Spbuiltintype.pbobjc.h"
- #import "comm/core/Spcgicomm.pbobjc.h"
+ #import "Spcgicomm.pbobjc.h"
 // @@protoc_insertion_point(imports)
 
 #pragma clang diagnostic push
@@ -25,18 +24,8 @@
 
 @implementation RSSpstorycgiRoot
 
-+ (GPBExtensionRegistry*)extensionRegistry {
-  // This is called by +initialize so there is no need to worry
-  // about thread safety and initialization of registry.
-  static GPBExtensionRegistry* registry = nil;
-  if (!registry) {
-    GPB_DEBUG_CHECK_RUNTIME_VERSIONS();
-    registry = [[GPBExtensionRegistry alloc] init];
-    // Merge in the imports (direct or indirect) that defined extensions.
-    [registry addExtensions:[SpbuiltintypeRoot extensionRegistry]];
-  }
-  return registry;
-}
+// No extensions in the file and none of the imports (direct or indirect)
+// defined extensions, so no need to generate +extensionRegistry.
 
 @end
 

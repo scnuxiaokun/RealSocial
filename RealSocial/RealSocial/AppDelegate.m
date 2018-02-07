@@ -27,6 +27,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+//    [[UINavigationBar appearance] setShadowImage:[UIImage new]];
+//    [[UINavigationBar appearance] setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+//    [[UINavigationBar appearance] setTranslucent:YES];
     @weakify(self);
     [[RSLaunchService shareInstance] setStartBlock:^{
         @RSStrongify(self);
@@ -56,7 +60,7 @@
 - (void)showMainView {
     dispatch_sync_on_main_queue(^{
         if ([RSLoginService shareInstance].isLogined) {
-            self.window.rootViewController = self.tabBarController;
+            self.window.rootViewController = self.mainViewController;
             [self.window makeKeyWindow];
         } else {
             [self showLoginView];
@@ -88,6 +92,15 @@
     }
     _tabBarController = [[RSUITabBarController alloc] init];
     return _tabBarController;
+}
+
+-(UIViewController *)mainViewController {
+    if (_mainViewController) {
+        return _mainViewController;
+    }
+    RSStoryLineViewController *storyLineCtr = [[RSStoryLineViewController alloc] init];
+    _mainViewController = [[RSUINavigationController alloc] initWithRootViewController:storyLineCtr];
+    return _mainViewController;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

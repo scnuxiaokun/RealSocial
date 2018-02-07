@@ -18,9 +18,9 @@
         return [self sendDebugRequest:request];
     }
     RACReplaySubject *signal = [RACReplaySubject subject];
-//    NSString *URLString = [@"http://www.skyplan.online" stringByAppendingString:request.cgiName
+//    NSString *URLString = [@"http://www.skyplan.online" stringByAppendingPathComponent:request.cgiName
 //                           ];
-    NSString *URLString = [@"http://120.79.150.34" stringByAppendingString:request.cgiName
+    NSString *URLString = [@"http://120.79.150.34:20000" stringByAppendingPathComponent:request.cgiName
                            ];
 //    NSString *URLString = @"http://120.79.150.34:20000/skyplan-bin/base/login";
 //    NSDictionary *parameters = @{@"WxAcct": @"WXACCT_BIZ_TEST"};

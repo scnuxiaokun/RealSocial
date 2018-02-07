@@ -15,8 +15,10 @@
 #import "RSImageUploadController.h"
 #import "MGFaceLicenseHandle.h"
 #import "MGMarkSetViewController.h"
+#import "UIImageView+WebCache.h"
 
 @interface RSMineViewController ()
+@property (nonatomic, strong) UIImageView *avatarImageView;
 @property (nonatomic, strong) UIButton *logoutButton;
 @property (nonatomic, strong) UILabel *sessionKeyLabel;
 @property (nonatomic, strong) UILabel *uidLabel;
@@ -34,6 +36,8 @@
     [self.view addSubview:self.logoutButton];
     [self.view addSubview:self.takePhotoButton];
     [self.view addSubview:self.uploadPhotoButton];
+    [self.view addSubview:self.avatarImageView];
+    
     [self.uidLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view).with.offset(20);
         make.top.equalTo(self.view).with.offset(kNaviBarHeightAndStatusBarHeight);
@@ -52,6 +56,10 @@
     }];
     [self.logoutButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(self.view);
+    }];
+    
+    [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.centerX.equalTo(self.view);
     }];
     
     /** 进行联网授权版本判断，联网授权就需要进行网络授权 */
@@ -201,5 +209,17 @@
         [self.navigationController pushViewController:ctr animated:YES];
     }];
     return _uploadPhotoButton;
+}
+
+-(UIImageView *)avatarImageView {
+    if (_avatarImageView) {
+        return _avatarImageView;
+    }
+    _avatarImageView = [[UIImageView alloc] init];
+    [_avatarImageView sd_setImageWithURL:[NSURL URLWithString:@"http://blog.chinaunix.net/image/default/1.png"]];
+    [_avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.height.mas_equalTo(100);
+    }];
+    return _avatarImageView;
 }
 @end
