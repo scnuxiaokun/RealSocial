@@ -1,0 +1,184 @@
+
+syntax="proto2";
+
+package spcgi;
+
+import "comm/core/spbuiltintype.proto";
+import "comm/core/spcgicomm.proto";
+option objc_class_prefix="RS";
+
+option cc_generic_services = true;
+
+enum enStoryType
+{
+    STORY_TYPE_PRIVATE = 1;
+    STORY_TYPE_PUBLIC = 2;
+}
+
+enum enStoryItemType
+{
+    STORY_ITEM_TYPE_IMG = 1;
+    STORY_ITEM_TYPE_VIDEO = 2;
+}
+
+enum enStoryToType
+{
+    STORY_TO_TYPE_USER = 1;
+    STORY_TO_TYPE_GROUP = 2;
+}
+
+message StoryImg
+{
+    optional string ThumbURL = 1;
+    optional string ImgRL = 2;
+}
+
+message StoryVideo
+{
+    optional string ThumbURL = 1;
+    optional string VideoURL = 2;
+}
+
+message StoryItem
+{
+    optional uint32 Type = 1;// enStoryItemType
+    optional string FromUserName = 2;
+    optional StoryImg Img = 3;
+    optional StoryVideo Video = 4;
+}
+
+message StoryToItem
+{
+    optional uint32 Type = 1;// enStoryToType
+    repeated string ToUserName = 2;
+    optional uint32 GroupId = 3;
+}
+
+message Story
+{
+    optional uint32 Type = 2;// enStoryType
+    optional string ClientId = 3;
+    optional StoryToItem To = 4;
+    repeated StoryItem Item = 5;
+    optional uint64 SvrId = 6;
+}
+
+message CreateStoryReq
+{
+    optional BaseReq BaseReq = 1;
+    optional Story Story = 2;
+}
+
+message CreateStoryResp
+{
+    optional BaseResp BaseResp = 1;
+    optional uint64 SvrId = 2;
+}
+
+message AppendStoryReq
+{
+    optional BaseReq BaseReq = 1;
+    optional Story Story = 2;// sub content to append
+}
+
+message AppendStoryResp
+{
+    optional BaseResp BaseResp = 1;
+}
+
+message AppendStoryToReq
+{
+    optional BaseReq BaseReq = 1;
+    optional uint64 SvrId = 2;
+    optional StoryToItem To = 3;
+}
+
+message AppendStoryToResp
+{
+    optional BaseResp BaseResp = 1;
+}
+
+message GetAllStoryReq
+{
+    optional BaseReq BaseReq = 1;
+}
+
+message GetAllStoryResp 
+{
+    optional BaseResp BaseResp = 1;
+    repeated Story List = 2;
+}
+
+message GetAllMyStoryReq
+{
+    optional BaseReq BaseReq = 1;
+}
+
+message GetAllMyStoryResp
+{
+    optional BaseResp BaseResp = 1;
+    repeated Story List = 2;
+}
+
+message GetAllMyMemoryReq
+{
+    optional BaseReq BaseReq = 1;
+}
+
+message GetAllMyMemoryResp
+{
+    optional BaseResp BaseResp = 1;
+    repeated Story List = 2;
+}
+
+message AddMyMemoryReq
+{
+    optional BaseReq BaseReq = 1;
+    optional string SvrId = 2;
+}
+
+message AddMyMemoryResp
+{
+    optional BaseResp BaseResp = 1;
+}
+
+service SPStoryCGI
+{
+    option( spcomm.Port ) = 20001;
+
+    rpc CreateStory( CreateStoryReq ) returns ( CreateStoryResp )
+    {
+        option( spcomm.CgiName ) = "story/create";
+    }
+
+    rpc AppendStory( AppendStoryReq ) returns ( AppendStoryResp )
+    {
+        option( spcomm.CgiName ) = "story/append";
+    }
+
+    rpc AppendStoryTo( AppendStoryToReq ) returns ( AppendStoryToResp )
+    {
+        option( spcomm.CgiName ) = "story/to/append";
+    }
+
+    rpc GetAllStory( GetAllStoryReq ) returns ( GetAllStoryResp )
+    {
+        option( spcomm.CgiName ) = "story/getall";
+    }
+
+    rpc GetAllMyStory( GetAllMyStoryReq ) returns ( GetAllMyStoryResp )
+    {
+        option( spcomm.CgiName ) = "story/my/getall";
+    }
+
+    rpc GetAllMyMemory( GetAllMyMemoryReq ) returns ( GetAllMyMemoryResp )
+    {
+        option ( spcomm.CgiName ) = "memory/getall";
+    }
+
+    rpc AddMyMemory( AddMyMemoryReq ) returns ( AddMyMemoryResp )
+    {
+        option ( spcomm.CgiName ) = "memory/add";
+    }
+    
+};

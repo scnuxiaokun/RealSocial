@@ -69,7 +69,6 @@
 		AD2F574F2020BD3000E0CF83 /* spcgi.proto in Resources */ = {isa = PBXBuildFile; fileRef = AD2F574D2020BD3000E0CF83 /* spcgi.proto */; };
 		AD2F57532020BD5400E0CF83 /* spbuiltintype.proto in Resources */ = {isa = PBXBuildFile; fileRef = AD2F57522020BD5400E0CF83 /* spbuiltintype.proto */; };
 		AD2F575C2020BDA300E0CF83 /* Spcgi.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2F57592020BDA300E0CF83 /* Spcgi.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		AD2F57632020C4A200E0CF83 /* spcgicomm.proto in Resources */ = {isa = PBXBuildFile; fileRef = AD2F57622020C4A200E0CF83 /* spcgicomm.proto */; };
 		AD3E9114200F97160019138F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3E9113200F97160019138F /* AppDelegate.m */; };
 		AD3E9117200F97160019138F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3E9116200F97160019138F /* ViewController.m */; };
 		AD3E911A200F97160019138F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD3E9118200F97160019138F /* Main.storyboard */; };
@@ -148,7 +147,10 @@
 		AD3E956A200FA0070019138F /* RSModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3E9569200FA0070019138F /* RSModel.m */; };
 		AD3E956C2010C47D0019138F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD3E956B2010C47D0019138F /* Images.xcassets */; };
 		AD3E956F2011B8310019138F /* RSUITabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3E956E2011B8310019138F /* RSUITabBarController.m */; };
-		AD44C9C72028909F003D16AC /* Spcgicomm.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = AD44C9C62028909F003D16AC /* Spcgicomm.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		AD44C9C9202AB15B003D16AC /* spstorycgi.proto in Resources */ = {isa = PBXBuildFile; fileRef = AD44C9C8202AB15A003D16AC /* spstorycgi.proto */; };
+		AD44C9CC202AB476003D16AC /* Spstorycgi.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = AD44C9CA202AB475003D16AC /* Spstorycgi.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		AD44C9CE202AB4F0003D16AC /* spcgicomm.proto in Resources */ = {isa = PBXBuildFile; fileRef = AD44C9CD202AB4EF003D16AC /* spcgicomm.proto */; };
+		AD44C9D1202AB4F6003D16AC /* Spcgicomm.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = AD44C9D0202AB4F6003D16AC /* Spcgicomm.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AD68317C20178E290085DDCD /* Face3DFragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = AD68317620178E290085DDCD /* Face3DFragment.glsl */; };
 		AD68317D20178E290085DDCD /* Face3DVertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = AD68317720178E290085DDCD /* Face3DVertex.glsl */; };
 		AD68317E20178E290085DDCD /* FacePointColor.glsl in Resources */ = {isa = PBXBuildFile; fileRef = AD68317820178E290085DDCD /* FacePointColor.glsl */; };
@@ -319,7 +321,6 @@
 		AD2F57522020BD5400E0CF83 /* spbuiltintype.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = spbuiltintype.proto; sourceTree = "<group>"; };
 		AD2F57542020BDA200E0CF83 /* Spcgi.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spcgi.pbobjc.h; sourceTree = "<group>"; };
 		AD2F57592020BDA300E0CF83 /* Spcgi.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spcgi.pbobjc.m; sourceTree = "<group>"; };
-		AD2F57622020C4A200E0CF83 /* spcgicomm.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = spcgicomm.proto; sourceTree = "<group>"; };
 		AD3E910F200F97160019138F /* RealSocial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RealSocial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD3E9112200F97160019138F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AD3E9113200F97160019138F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -483,8 +484,12 @@
 		AD3E956B2010C47D0019138F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		AD3E956D2011B8310019138F /* RSUITabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSUITabBarController.h; sourceTree = "<group>"; };
 		AD3E956E2011B8310019138F /* RSUITabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSUITabBarController.m; sourceTree = "<group>"; };
-		AD44C9C52028909E003D16AC /* Spcgicomm.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spcgicomm.pbobjc.h; sourceTree = "<group>"; };
-		AD44C9C62028909F003D16AC /* Spcgicomm.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spcgicomm.pbobjc.m; sourceTree = "<group>"; };
+		AD44C9C8202AB15A003D16AC /* spstorycgi.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = spstorycgi.proto; sourceTree = "<group>"; };
+		AD44C9CA202AB475003D16AC /* Spstorycgi.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spstorycgi.pbobjc.m; sourceTree = "<group>"; };
+		AD44C9CB202AB475003D16AC /* Spstorycgi.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spstorycgi.pbobjc.h; sourceTree = "<group>"; };
+		AD44C9CD202AB4EF003D16AC /* spcgicomm.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = spcgicomm.proto; sourceTree = "<group>"; };
+		AD44C9CF202AB4F6003D16AC /* Spcgicomm.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spcgicomm.pbobjc.h; sourceTree = "<group>"; };
+		AD44C9D0202AB4F6003D16AC /* Spcgicomm.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spcgicomm.pbobjc.m; sourceTree = "<group>"; };
 		AD68317620178E290085DDCD /* Face3DFragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Face3DFragment.glsl; sourceTree = "<group>"; };
 		AD68317720178E290085DDCD /* Face3DVertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Face3DVertex.glsl; sourceTree = "<group>"; };
 		AD68317820178E290085DDCD /* FacePointColor.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FacePointColor.glsl; sourceTree = "<group>"; };
@@ -802,7 +807,6 @@
 		AD2F57512020BD5400E0CF83 /* core */ = {
 			isa = PBXGroup;
 			children = (
-				AD2F57622020C4A200E0CF83 /* spcgicomm.proto */,
 				AD2F57522020BD5400E0CF83 /* spbuiltintype.proto */,
 			);
 			path = core;
@@ -819,8 +823,6 @@
 		AD2F575E2020C26800E0CF83 /* core */ = {
 			isa = PBXGroup;
 			children = (
-				AD44C9C52028909E003D16AC /* Spcgicomm.pbobjc.h */,
-				AD44C9C62028909F003D16AC /* Spcgicomm.pbobjc.m */,
 				ADE70E7320285873003B8921 /* Spbuiltintype.pbobjc.h */,
 				ADE70E7420285873003B8921 /* Spbuiltintype.pbobjc.m */,
 			);
@@ -1517,6 +1519,8 @@
 		ADDC6A9C201352A800439D01 /* Protoc */ = {
 			isa = PBXGroup;
 			children = (
+				AD44C9CD202AB4EF003D16AC /* spcgicomm.proto */,
+				AD44C9C8202AB15A003D16AC /* spstorycgi.proto */,
 				AD2F57502020BD5400E0CF83 /* comm */,
 				AD2F574D2020BD3000E0CF83 /* spcgi.proto */,
 				AD87FDA5201C626A006C8A96 /* wxproxy.proto */,
@@ -1529,6 +1533,10 @@
 		ADDC6A9E201352A800439D01 /* ObjC */ = {
 			isa = PBXGroup;
 			children = (
+				AD44C9CF202AB4F6003D16AC /* Spcgicomm.pbobjc.h */,
+				AD44C9D0202AB4F6003D16AC /* Spcgicomm.pbobjc.m */,
+				AD44C9CB202AB475003D16AC /* Spstorycgi.pbobjc.h */,
+				AD44C9CA202AB475003D16AC /* Spstorycgi.pbobjc.m */,
 				AD7F6EC020286B0F00D49966 /* LoginInfo.pbobjc.h */,
 				AD7F6EBF20286B0F00D49966 /* LoginInfo.pbobjc.m */,
 				AD2F575D2020C26800E0CF83 /* comm */,
@@ -1726,17 +1734,18 @@
 				AD2DA58320234DD5006BA319 /* 1280_720.png in Resources */,
 				AD68317D20178E290085DDCD /* Face3DVertex.glsl in Resources */,
 				ADAC4ED920178B7F0020DA91 /* Localizable.strings in Resources */,
+				AD44C9C9202AB15B003D16AC /* spstorycgi.proto in Resources */,
 				AD68317E20178E290085DDCD /* FacePointColor.glsl in Resources */,
 				AD2DA58E20234DD5006BA319 /* 81-1.png in Resources */,
 				AD2DA57A20234DD5006BA319 /* faceLogo.png in Resources */,
 				AD3E9499200F99820019138F /* .gitkeep in Resources */,
 				AD2DA58620234DD5006BA319 /* regist.png in Resources */,
+				AD44C9CE202AB4F0003D16AC /* spcgicomm.proto in Resources */,
 				AD2DA56320234DD4006BA319 /* VideoFrag.glsl in Resources */,
 				AD2DA57F20234DD5006BA319 /* record-0.png in Resources */,
 				AD2DA57020234DD5006BA319 /* faceinfo-0.png in Resources */,
 				AD2DA58120234DD5006BA319 /* side-1.png in Resources */,
 				AD3E911A200F97160019138F /* Main.storyboard in Resources */,
-				AD2F57632020C4A200E0CF83 /* spcgicomm.proto in Resources */,
 				AD2F57532020BD5400E0CF83 /* spbuiltintype.proto in Resources */,
 				AD2DA58C20234DD5006BA319 /* 3D-0.png in Resources */,
 				AD2DA59220234DD5006BA319 /* 640_480@3x.png in Resources */,
@@ -1835,6 +1844,7 @@
 				AD3E94CC200F99820019138F /* LOTTrimPathNode.m in Sources */,
 				AD3E949E200F99820019138F /* LOTKeyframe.m in Sources */,
 				AD3E94C3200F99820019138F /* LOTColorInterpolator.m in Sources */,
+				AD44C9CC202AB476003D16AC /* Spstorycgi.pbobjc.m in Sources */,
 				AD3E9564200F9D6B0019138F /* WXApiService.m in Sources */,
 				AD2F5744202094D400E0CF83 /* RSLiveData.m in Sources */,
 				ADAC4EAA2014F18C0020DA91 /* BaseCell.m in Sources */,
@@ -1872,7 +1882,6 @@
 				AD3E94C5200F99820019138F /* LOTPathInterpolator.m in Sources */,
 				AD2F575C2020BDA300E0CF83 /* Spcgi.pbobjc.m in Sources */,
 				AD3E94B4200F99820019138F /* LOTShapeTransform.m in Sources */,
-				AD44C9C72028909F003D16AC /* Spcgicomm.pbobjc.m in Sources */,
 				AD3E9114200F97160019138F /* AppDelegate.m in Sources */,
 				ADAC4ECB201638760020DA91 /* RSImageUploadController.m in Sources */,
 				AD2DA5A820256E9C006BA319 /* RSImageUploadViewModel.mm in Sources */,
@@ -1941,6 +1950,7 @@
 				AD3E949D200F99820019138F /* LOTBezierData.m in Sources */,
 				ADAC4EA82014F18C0020DA91 /* MGFileManager.m in Sources */,
 				AD87FDA42018D14B006C8A96 /* UIImage+Util.m in Sources */,
+				AD44C9D1202AB4F6003D16AC /* Spcgicomm.pbobjc.m in Sources */,
 				AD3E956A200FA0070019138F /* RSModel.m in Sources */,
 				AD3E9567200F9E6B0019138F /* RSLoginInfoModel.m in Sources */,
 				AD3E949C200F99820019138F /* LOTMaskContainer.m in Sources */,
