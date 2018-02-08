@@ -3,33 +3,57 @@ syntax="proto2";
 
 package spcgi;
 option objc_class_prefix="RS";
+message PKG
+{
+    optional bytes  Str = 1;
+    optional bytes  Data = 2;
+}
+
 message BaseReq
 {
+    optional string SessionKey = 1;
+    optional uint32 Uin = 2;
+    optional string DeviceID = 3;
+    optional uint32 DeviceType = 4;//enDeviceType
+    optional uint32 ClientVersion = 5;
 }
 
 message BaseResp
 {
-optional uint32 ErrCode = 1;
-optional string ErrMsg = 2;//hhh
+    optional uint32 ErrCode = 1;
+    optional string ErrMsg = 2;
 }
 
 enum enSex
 {
-SEX_UNKNOW = 0;
-SEX_MALE = 1;
-SEX_FEMALE = 2;
+    SEX_UNKNOW = 0;
+    SEX_MALE = 1;
+    SEX_FEMALE = 2;
+}
+
+enum enDeviceType
+{
+    DEVICETYPE_IPHONE = 1;
+    DEVICETYPE_ANDRIOD = 2;
 }
 
 message Profile
 {
-optional string NickName = 1;
-optional uint32 Sex = 2;//enSex
-optional string HeadImgUrl = 3;
+    optional string NickName = 1;
+    optional uint32 Sex = 2;//enSex
+    optional string HeadImgUrl = 3;
 }
 
 message Msg
 {
-optional uint64 Id = 1;
-optional uint32 Type = 2;
-optional bytes  Content = 3;
+    optional uint64 Id = 1;
+    optional uint32 Type = 2;
+    optional bytes  Content = 3;
+}
+
+message Contact
+{
+    optional string UserName = 1;
+    optional string NickName = 2;
+    optional string HeadImgUrl = 3;
 }

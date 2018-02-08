@@ -84,8 +84,10 @@ GPBEnumDescriptor *RSenStoryItemType_EnumDescriptor(void) {
   static GPBEnumDescriptor *descriptor = NULL;
   if (!descriptor) {
     static const char *valueNames =
-        "StoryItemTypeImg\000StoryItemTypeVideo\000";
+        "StoryItemTypeText\000StoryItemTypeImg\000Story"
+        "ItemTypeVideo\000";
     static const int32_t values[] = {
+        RSenStoryItemType_StoryItemTypeText,
         RSenStoryItemType_StoryItemTypeImg,
         RSenStoryItemType_StoryItemTypeVideo,
     };
@@ -104,6 +106,7 @@ GPBEnumDescriptor *RSenStoryItemType_EnumDescriptor(void) {
 
 BOOL RSenStoryItemType_IsValidValue(int32_t value__) {
   switch (value__) {
+    case RSenStoryItemType_StoryItemTypeText:
     case RSenStoryItemType_StoryItemTypeImg:
     case RSenStoryItemType_StoryItemTypeVideo:
       return YES;
@@ -152,11 +155,13 @@ BOOL RSenStoryToType_IsValidValue(int32_t value__) {
 
 @dynamic hasThumbURL, thumbURL;
 @dynamic hasImgRl, imgRl;
+@dynamic textArray, textArray_Count;
 
 typedef struct RSStoryImg__storage_ {
   uint32_t _has_storage_[1];
   NSString *thumbURL;
   NSString *imgRl;
+  NSMutableArray *textArray;
 } RSStoryImg__storage_;
 
 // This method is threadsafe because it is initially called
@@ -183,6 +188,15 @@ typedef struct RSStoryImg__storage_ {
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
+      {
+        .name = "textArray",
+        .dataTypeSpecific.className = NULL,
+        .number = RSStoryImg_FieldNumber_TextArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(RSStoryImg__storage_, textArray),
+        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
     };
     GPBDescriptor *localDescriptor =
         [GPBDescriptor allocDescriptorForClass:[RSStoryImg class]
@@ -194,7 +208,7 @@ typedef struct RSStoryImg__storage_ {
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
-        "\002\001H\000\002DA\000";
+        "\003\001H\000\002DA\000\003\000Text\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     NSAssert(descriptor == nil, @"Startup recursed!");
@@ -211,11 +225,13 @@ typedef struct RSStoryImg__storage_ {
 
 @dynamic hasThumbURL, thumbURL;
 @dynamic hasVideoURL, videoURL;
+@dynamic textArray, textArray_Count;
 
 typedef struct RSStoryVideo__storage_ {
   uint32_t _has_storage_[1];
   NSString *thumbURL;
   NSString *videoURL;
+  NSMutableArray *textArray;
 } RSStoryVideo__storage_;
 
 // This method is threadsafe because it is initially called
@@ -242,6 +258,15 @@ typedef struct RSStoryVideo__storage_ {
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
+      {
+        .name = "textArray",
+        .dataTypeSpecific.className = NULL,
+        .number = RSStoryVideo_FieldNumber_TextArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(RSStoryVideo__storage_, textArray),
+        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
     };
     GPBDescriptor *localDescriptor =
         [GPBDescriptor allocDescriptorForClass:[RSStoryVideo class]
@@ -253,7 +278,7 @@ typedef struct RSStoryVideo__storage_ {
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
-        "\002\001H\000\002H\000";
+        "\003\001H\000\002H\000\003\000Text\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     NSAssert(descriptor == nil, @"Startup recursed!");
@@ -270,13 +295,17 @@ typedef struct RSStoryVideo__storage_ {
 
 @dynamic hasType, type;
 @dynamic hasFromUserName, fromUserName;
+@dynamic hasCreateTime, createTime;
+@dynamic hasText, text;
 @dynamic hasImg, img;
 @dynamic hasVideo, video;
 
 typedef struct RSStoryItem__storage_ {
   uint32_t _has_storage_[1];
   uint32_t type;
+  uint32_t createTime;
   NSString *fromUserName;
+  NSString *text;
   RSStoryImg *img;
   RSStoryVideo *video;
 } RSStoryItem__storage_;
@@ -306,10 +335,28 @@ typedef struct RSStoryItem__storage_ {
         .dataType = GPBDataTypeString,
       },
       {
+        .name = "createTime",
+        .dataTypeSpecific.className = NULL,
+        .number = RSStoryItem_FieldNumber_CreateTime,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(RSStoryItem__storage_, createTime),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "text",
+        .dataTypeSpecific.className = NULL,
+        .number = RSStoryItem_FieldNumber_Text,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(RSStoryItem__storage_, text),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
         .name = "img",
         .dataTypeSpecific.className = GPBStringifySymbol(RSStoryImg),
         .number = RSStoryItem_FieldNumber_Img,
-        .hasIndex = 2,
+        .hasIndex = 4,
         .offset = (uint32_t)offsetof(RSStoryItem__storage_, img),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
@@ -318,7 +365,7 @@ typedef struct RSStoryItem__storage_ {
         .name = "video",
         .dataTypeSpecific.className = GPBStringifySymbol(RSStoryVideo),
         .number = RSStoryItem_FieldNumber_Video,
-        .hasIndex = 3,
+        .hasIndex = 5,
         .offset = (uint32_t)offsetof(RSStoryItem__storage_, video),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
@@ -334,7 +381,7 @@ typedef struct RSStoryItem__storage_ {
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
-        "\004\001D\000\002L\000\003C\000\004E\000";
+        "\006\001D\000\002L\000\003J\000\004D\000\005C\000\006E\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     NSAssert(descriptor == nil, @"Startup recursed!");
@@ -421,13 +468,19 @@ typedef struct RSStoryToItem__storage_ {
 
 @dynamic hasType, type;
 @dynamic hasClientId, clientId;
+@dynamic hasSvrId, svrId;
+@dynamic hasCreateTime, createTime;
+@dynamic hasUpdateTime, updateTime;
+@dynamic hasMemberNum, memberNum;
 @dynamic hasTo, to;
 @dynamic itemArray, itemArray_Count;
-@dynamic hasSvrId, svrId;
 
 typedef struct RSStory__storage_ {
   uint32_t _has_storage_[1];
   uint32_t type;
+  uint32_t createTime;
+  uint32_t updateTime;
+  uint32_t memberNum;
   NSString *clientId;
   RSStoryToItem *to;
   NSMutableArray *itemArray;
@@ -459,10 +512,46 @@ typedef struct RSStory__storage_ {
         .dataType = GPBDataTypeString,
       },
       {
+        .name = "svrId",
+        .dataTypeSpecific.className = NULL,
+        .number = RSStory_FieldNumber_SvrId,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(RSStory__storage_, svrId),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt64,
+      },
+      {
+        .name = "createTime",
+        .dataTypeSpecific.className = NULL,
+        .number = RSStory_FieldNumber_CreateTime,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(RSStory__storage_, createTime),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "updateTime",
+        .dataTypeSpecific.className = NULL,
+        .number = RSStory_FieldNumber_UpdateTime,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(RSStory__storage_, updateTime),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "memberNum",
+        .dataTypeSpecific.className = NULL,
+        .number = RSStory_FieldNumber_MemberNum,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(RSStory__storage_, memberNum),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
         .name = "to",
         .dataTypeSpecific.className = GPBStringifySymbol(RSStoryToItem),
         .number = RSStory_FieldNumber_To,
-        .hasIndex = 2,
+        .hasIndex = 6,
         .offset = (uint32_t)offsetof(RSStory__storage_, to),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
@@ -476,15 +565,6 @@ typedef struct RSStory__storage_ {
         .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
       },
-      {
-        .name = "svrId",
-        .dataTypeSpecific.className = NULL,
-        .number = RSStory_FieldNumber_SvrId,
-        .hasIndex = 3,
-        .offset = (uint32_t)offsetof(RSStory__storage_, svrId),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
-        .dataType = GPBDataTypeUInt64,
-      },
     };
     GPBDescriptor *localDescriptor =
         [GPBDescriptor allocDescriptorForClass:[RSStory class]
@@ -496,7 +576,7 @@ typedef struct RSStory__storage_ {
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
-        "\005\002D\000\003H\000\004B\000\005\000Item\000\006E\000";
+        "\010\001D\000\002H\000\003E\000\004J\000\005J\000\006I\000\007B\000\010\000Item\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     NSAssert(descriptor == nil, @"Startup recursed!");

@@ -528,12 +528,12 @@ typedef struct RSGetAllContactReq__storage_ {
 @implementation RSGetAllContactResp
 
 @dynamic hasBaseResp, baseResp;
-@dynamic userNameArray, userNameArray_Count;
+@dynamic contactArray, contactArray_Count;
 
 typedef struct RSGetAllContactResp__storage_ {
   uint32_t _has_storage_[1];
   RSBaseResp *baseResp;
-  NSMutableArray *userNameArray;
+  NSMutableArray *contactArray;
 } RSGetAllContactResp__storage_;
 
 // This method is threadsafe because it is initially called
@@ -552,13 +552,13 @@ typedef struct RSGetAllContactResp__storage_ {
         .dataType = GPBDataTypeMessage,
       },
       {
-        .name = "userNameArray",
-        .dataTypeSpecific.className = NULL,
-        .number = RSGetAllContactResp_FieldNumber_UserNameArray,
+        .name = "contactArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(RSContact),
+        .number = RSGetAllContactResp_FieldNumber_ContactArray,
         .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(RSGetAllContactResp__storage_, userNameArray),
+        .offset = (uint32_t)offsetof(RSGetAllContactResp__storage_, contactArray),
         .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldTextFormatNameCustom),
-        .dataType = GPBDataTypeString,
+        .dataType = GPBDataTypeMessage,
       },
     };
     GPBDescriptor *localDescriptor =
@@ -571,7 +571,7 @@ typedef struct RSGetAllContactResp__storage_ {
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
-        "\002\001H\000\002\000UserName\000";
+        "\002\001H\000\002\000Contact\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     NSAssert(descriptor == nil, @"Startup recursed!");

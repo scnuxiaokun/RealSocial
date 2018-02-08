@@ -55,8 +55,9 @@ BOOL RSenStoryType_IsValidValue(int32_t value);
 #pragma mark - Enum RSenStoryItemType
 
 typedef GPB_ENUM(RSenStoryItemType) {
-  RSenStoryItemType_StoryItemTypeImg = 1,
-  RSenStoryItemType_StoryItemTypeVideo = 2,
+  RSenStoryItemType_StoryItemTypeText = 1,
+  RSenStoryItemType_StoryItemTypeImg = 2,
+  RSenStoryItemType_StoryItemTypeVideo = 3,
 };
 
 GPBEnumDescriptor *RSenStoryItemType_EnumDescriptor(void);
@@ -102,6 +103,7 @@ BOOL RSenStoryToType_IsValidValue(int32_t value);
 typedef GPB_ENUM(RSStoryImg_FieldNumber) {
   RSStoryImg_FieldNumber_ThumbURL = 1,
   RSStoryImg_FieldNumber_ImgRl = 2,
+  RSStoryImg_FieldNumber_TextArray = 3,
 };
 
 @interface RSStoryImg : GPBMessage
@@ -114,6 +116,10 @@ typedef GPB_ENUM(RSStoryImg_FieldNumber) {
 /** Test to see if @c imgRl has been set. */
 @property(nonatomic, readwrite) BOOL hasImgRl;
 
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<NSString*> *textArray;
+/** The number of items in @c textArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger textArray_Count;
+
 @end
 
 #pragma mark - RSStoryVideo
@@ -121,6 +127,7 @@ typedef GPB_ENUM(RSStoryImg_FieldNumber) {
 typedef GPB_ENUM(RSStoryVideo_FieldNumber) {
   RSStoryVideo_FieldNumber_ThumbURL = 1,
   RSStoryVideo_FieldNumber_VideoURL = 2,
+  RSStoryVideo_FieldNumber_TextArray = 3,
 };
 
 @interface RSStoryVideo : GPBMessage
@@ -133,6 +140,10 @@ typedef GPB_ENUM(RSStoryVideo_FieldNumber) {
 /** Test to see if @c videoURL has been set. */
 @property(nonatomic, readwrite) BOOL hasVideoURL;
 
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<NSString*> *textArray;
+/** The number of items in @c textArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger textArray_Count;
+
 @end
 
 #pragma mark - RSStoryItem
@@ -140,8 +151,10 @@ typedef GPB_ENUM(RSStoryVideo_FieldNumber) {
 typedef GPB_ENUM(RSStoryItem_FieldNumber) {
   RSStoryItem_FieldNumber_Type = 1,
   RSStoryItem_FieldNumber_FromUserName = 2,
-  RSStoryItem_FieldNumber_Img = 3,
-  RSStoryItem_FieldNumber_Video = 4,
+  RSStoryItem_FieldNumber_CreateTime = 3,
+  RSStoryItem_FieldNumber_Text = 4,
+  RSStoryItem_FieldNumber_Img = 5,
+  RSStoryItem_FieldNumber_Video = 6,
 };
 
 @interface RSStoryItem : GPBMessage
@@ -153,6 +166,13 @@ typedef GPB_ENUM(RSStoryItem_FieldNumber) {
 @property(nonatomic, readwrite, copy, null_resettable) NSString *fromUserName;
 /** Test to see if @c fromUserName has been set. */
 @property(nonatomic, readwrite) BOOL hasFromUserName;
+
+@property(nonatomic, readwrite) uint32_t createTime;
+
+@property(nonatomic, readwrite) BOOL hasCreateTime;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *text;
+/** Test to see if @c text has been set. */
+@property(nonatomic, readwrite) BOOL hasText;
 
 @property(nonatomic, readwrite, strong, null_resettable) RSStoryImg *img;
 /** Test to see if @c img has been set. */
@@ -190,11 +210,14 @@ typedef GPB_ENUM(RSStoryToItem_FieldNumber) {
 #pragma mark - RSStory
 
 typedef GPB_ENUM(RSStory_FieldNumber) {
-  RSStory_FieldNumber_Type = 2,
-  RSStory_FieldNumber_ClientId = 3,
-  RSStory_FieldNumber_To = 4,
-  RSStory_FieldNumber_ItemArray = 5,
-  RSStory_FieldNumber_SvrId = 6,
+  RSStory_FieldNumber_Type = 1,
+  RSStory_FieldNumber_ClientId = 2,
+  RSStory_FieldNumber_SvrId = 3,
+  RSStory_FieldNumber_CreateTime = 4,
+  RSStory_FieldNumber_UpdateTime = 5,
+  RSStory_FieldNumber_MemberNum = 6,
+  RSStory_FieldNumber_To = 7,
+  RSStory_FieldNumber_ItemArray = 8,
 };
 
 @interface RSStory : GPBMessage
@@ -207,6 +230,18 @@ typedef GPB_ENUM(RSStory_FieldNumber) {
 /** Test to see if @c clientId has been set. */
 @property(nonatomic, readwrite) BOOL hasClientId;
 
+@property(nonatomic, readwrite) uint64_t svrId;
+
+@property(nonatomic, readwrite) BOOL hasSvrId;
+@property(nonatomic, readwrite) uint32_t createTime;
+
+@property(nonatomic, readwrite) BOOL hasCreateTime;
+@property(nonatomic, readwrite) uint32_t updateTime;
+
+@property(nonatomic, readwrite) BOOL hasUpdateTime;
+@property(nonatomic, readwrite) uint32_t memberNum;
+
+@property(nonatomic, readwrite) BOOL hasMemberNum;
 @property(nonatomic, readwrite, strong, null_resettable) RSStoryToItem *to;
 /** Test to see if @c to has been set. */
 @property(nonatomic, readwrite) BOOL hasTo;
@@ -215,9 +250,6 @@ typedef GPB_ENUM(RSStory_FieldNumber) {
 /** The number of items in @c itemArray without causing the array to be created. */
 @property(nonatomic, readonly) NSUInteger itemArray_Count;
 
-@property(nonatomic, readwrite) uint64_t svrId;
-
-@property(nonatomic, readwrite) BOOL hasSvrId;
 @end
 
 #pragma mark - RSCreateStoryReq

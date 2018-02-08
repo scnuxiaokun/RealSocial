@@ -9,8 +9,9 @@
 #import "RSNetWorkService.h"
 #import <YYDispatchQueuePool/YYDispatchQueuePool.h>
 #import "RSResponse.h"
+#import "RSPKGResponse.h"
 #import <AFNetworking.h>
-//#import "Wxproxy.pbobjc.h"
+#import "Spcgicomm.pbobjc.h"
 
 @implementation RSNetWorkService
 +(RACSignal *)sendRequest:(RSRequest *)request {
@@ -63,7 +64,12 @@
             [signal sendError:error];
         } else {
             NSLog(@"%@", responseObject);
-            RSResponse *response = [[RSResponse alloc] init];
+            RSResponse *response;
+            if ([request isKindOfClass:[RSPKGResponse class]]) {
+                response = [[RSPKGResponse alloc] init];
+            } else {
+                response = [[RSResponse alloc] init];
+            }
             response.data = responseObject;
             [signal sendNext:response];
             [signal sendCompleted];

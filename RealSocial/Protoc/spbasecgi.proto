@@ -58,6 +58,5 @@ message GetAllContactReq
 message GetAllContactResp 
 {
     optional BaseResp BaseResp = 1;
-    repeated string UserName = 2; 
+    repeated Contact Contact = 2; 
 }
-

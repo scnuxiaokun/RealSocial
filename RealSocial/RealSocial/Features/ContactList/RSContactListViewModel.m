@@ -9,6 +9,7 @@
 #import "RSContactListViewModel.h"
 //#import "LoginInfo.pbobjc.h"
 #import "Spbasecgi.pbobjc.h"
+#import "Spcgicomm.pbobjc.h"
 @implementation RSContactListItemViewModel
 @end
 @implementation RSContactListViewModel
@@ -21,7 +22,7 @@
 }
 -(void)loadData {
     RSGetAllContactReq *req = [RSGetAllContactReq new];
-    RSRequest *request = [[RSRequest alloc] init];
+    RSPKGRequest *request = [[RSPKGRequest alloc] init];
     request.cgiName = @"contact/getall";
     request.data = [req data];
     request.mokeResponseData = [self mokeResponse];
@@ -32,10 +33,10 @@
 //        [self.liveData setData:list];
         [self sendUpdateData:resp];
         NSMutableArray *tmp = [[NSMutableArray alloc] init];
-        for (NSString *userName in resp.userNameArray) {
+        for (RSContact *contact in resp.contactArray) {
             RSContactListItemViewModel *item = [RSContactListItemViewModel new];
-            item.name = userName;
-            if ([self.selectedData objectForKey:userName]) {
+            item.name = contact.userName;
+            if ([self.selectedData objectForKey:contact.userName]) {
                 item.isSelected = YES;
             } else {
                 item.isSelected = NO;
@@ -55,12 +56,14 @@
 }
 
 -(NSData *)mokeResponse {
+    return nil;
     RSGetAllContactResp *resp = [RSGetAllContactResp new];
-    [resp.userNameArray addObject:@"kuncai1"];
-    [resp.userNameArray addObject:@"kuncai2"];
-    [resp.userNameArray addObject:@"kuncai3"];
-    [resp.userNameArray addObject:@"kuncai4"];
-    [resp.userNameArray addObject:@"kuncai5"];
+    RSContact *contact1 = [RSContact new];
+    contact1.userName = @"kuncai1";
+    RSContact *contact2 = [RSContact new];
+    contact2.userName = @"kuncai2";
+    [resp.contactArray addObject:contact1];
+    [resp.contactArray addObject:contact2];
     return [resp data];
 }
 

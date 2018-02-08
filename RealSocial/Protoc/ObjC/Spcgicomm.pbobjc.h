@@ -45,6 +45,21 @@ GPBEnumDescriptor *RSenSex_EnumDescriptor(void);
  **/
 BOOL RSenSex_IsValidValue(int32_t value);
 
+#pragma mark - Enum RSenDeviceType
+
+typedef GPB_ENUM(RSenDeviceType) {
+  RSenDeviceType_DevicetypeIphone = 1,
+  RSenDeviceType_DevicetypeAndriod = 2,
+};
+
+GPBEnumDescriptor *RSenDeviceType_EnumDescriptor(void);
+
+/**
+ * Checks to see if the given value is defined by the enum or was not known at
+ * the time this source was generated.
+ **/
+BOOL RSenDeviceType_IsValidValue(int32_t value);
+
 #pragma mark - RSSpcgicommRoot
 
 /**
@@ -60,10 +75,55 @@ BOOL RSenSex_IsValidValue(int32_t value);
 @interface RSSpcgicommRoot : GPBRootObject
 @end
 
+#pragma mark - RSPKG
+
+typedef GPB_ENUM(RSPKG_FieldNumber) {
+  RSPKG_FieldNumber_Str = 1,
+  RSPKG_FieldNumber_Data_p = 2,
+};
+
+@interface RSPKG : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *str;
+/** Test to see if @c str has been set. */
+@property(nonatomic, readwrite) BOOL hasStr;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *data_p;
+/** Test to see if @c data_p has been set. */
+@property(nonatomic, readwrite) BOOL hasData_p;
+
+@end
+
 #pragma mark - RSBaseReq
+
+typedef GPB_ENUM(RSBaseReq_FieldNumber) {
+  RSBaseReq_FieldNumber_SessionKey = 1,
+  RSBaseReq_FieldNumber_Uin = 2,
+  RSBaseReq_FieldNumber_DeviceId = 3,
+  RSBaseReq_FieldNumber_DeviceType = 4,
+  RSBaseReq_FieldNumber_ClientVersion = 5,
+};
 
 @interface RSBaseReq : GPBMessage
 
+@property(nonatomic, readwrite, copy, null_resettable) NSString *sessionKey;
+/** Test to see if @c sessionKey has been set. */
+@property(nonatomic, readwrite) BOOL hasSessionKey;
+
+@property(nonatomic, readwrite) uint32_t uin;
+
+@property(nonatomic, readwrite) BOOL hasUin;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *deviceId;
+/** Test to see if @c deviceId has been set. */
+@property(nonatomic, readwrite) BOOL hasDeviceId;
+
+/** enDeviceType */
+@property(nonatomic, readwrite) uint32_t deviceType;
+
+@property(nonatomic, readwrite) BOOL hasDeviceType;
+@property(nonatomic, readwrite) uint32_t clientVersion;
+
+@property(nonatomic, readwrite) BOOL hasClientVersion;
 @end
 
 #pragma mark - RSBaseResp
@@ -78,7 +138,6 @@ typedef GPB_ENUM(RSBaseResp_FieldNumber) {
 @property(nonatomic, readwrite) uint32_t errCode;
 
 @property(nonatomic, readwrite) BOOL hasErrCode;
-/** hhh */
 @property(nonatomic, readwrite, copy, null_resettable) NSString *errMsg;
 /** Test to see if @c errMsg has been set. */
 @property(nonatomic, readwrite) BOOL hasErrMsg;
@@ -128,6 +187,30 @@ typedef GPB_ENUM(RSMsg_FieldNumber) {
 @property(nonatomic, readwrite, copy, null_resettable) NSData *content;
 /** Test to see if @c content has been set. */
 @property(nonatomic, readwrite) BOOL hasContent;
+
+@end
+
+#pragma mark - RSContact
+
+typedef GPB_ENUM(RSContact_FieldNumber) {
+  RSContact_FieldNumber_UserName = 1,
+  RSContact_FieldNumber_NickName = 2,
+  RSContact_FieldNumber_HeadImgURL = 3,
+};
+
+@interface RSContact : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *userName;
+/** Test to see if @c userName has been set. */
+@property(nonatomic, readwrite) BOOL hasUserName;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *nickName;
+/** Test to see if @c nickName has been set. */
+@property(nonatomic, readwrite) BOOL hasNickName;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *headImgURL;
+/** Test to see if @c headImgURL has been set. */
+@property(nonatomic, readwrite) BOOL hasHeadImgURL;
 
 @end
 

@@ -5,7 +5,6 @@ package spcgi;
 
 import "spcgicomm.proto";
 option objc_class_prefix="RS";
-
 option cc_generic_services = true;
 
 enum enStoryType
@@ -16,8 +15,9 @@ enum enStoryType
 
 enum enStoryItemType
 {
-    STORY_ITEM_TYPE_IMG = 1;
-    STORY_ITEM_TYPE_VIDEO = 2;
+    STORY_ITEM_TYPE_TEXT = 1;
+    STORY_ITEM_TYPE_IMG = 2;
+    STORY_ITEM_TYPE_VIDEO = 3;
 }
 
 enum enStoryToType
@@ -30,20 +30,24 @@ message StoryImg
 {
     optional string ThumbURL = 1;
     optional string ImgRL = 2;
+    repeated string Text = 3;
 }
 
 message StoryVideo
 {
     optional string ThumbURL = 1;
     optional string VideoURL = 2;
+    repeated string Text = 3;
 }
 
 message StoryItem
 {
     optional uint32 Type = 1;// enStoryItemType
     optional string FromUserName = 2;
-    optional StoryImg Img = 3;
-    optional StoryVideo Video = 4;
+    optional uint32 CreateTime = 3;
+    optional string Text = 4;
+    optional StoryImg Img = 5;
+    optional StoryVideo Video = 6;
 }
 
 message StoryToItem
@@ -55,11 +59,14 @@ message StoryToItem
 
 message Story
 {
-    optional uint32 Type = 2;// enStoryType
-    optional string ClientId = 3;
-    optional StoryToItem To = 4;
-    repeated StoryItem Item = 5;
-    optional uint64 SvrId = 6;
+    optional uint32 Type = 1;// enStoryType
+    optional string ClientId =2;
+    optional uint64 SvrId = 3;
+    optional uint32 CreateTime = 4;
+    optional uint32 UpdateTime = 5;
+    optional uint32 MemberNum = 6;
+    optional StoryToItem To = 7;
+    repeated StoryItem Item = 8;
 }
 
 message CreateStoryReq
@@ -140,3 +147,4 @@ message AddMyMemoryResp
 {
     optional BaseResp BaseResp = 1;
 }
+

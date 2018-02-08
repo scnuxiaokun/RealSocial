@@ -29,6 +29,7 @@ CF_EXTERN_C_BEGIN
 
 @class RSBaseReq;
 @class RSBaseResp;
+@class RSContact;
 @class RSMsg;
 @class RSProfile;
 
@@ -213,7 +214,7 @@ typedef GPB_ENUM(RSGetAllContactReq_FieldNumber) {
 
 typedef GPB_ENUM(RSGetAllContactResp_FieldNumber) {
   RSGetAllContactResp_FieldNumber_BaseResp = 1,
-  RSGetAllContactResp_FieldNumber_UserNameArray = 2,
+  RSGetAllContactResp_FieldNumber_ContactArray = 2,
 };
 
 @interface RSGetAllContactResp : GPBMessage
@@ -222,9 +223,9 @@ typedef GPB_ENUM(RSGetAllContactResp_FieldNumber) {
 /** Test to see if @c baseResp has been set. */
 @property(nonatomic, readwrite) BOOL hasBaseResp;
 
-@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<NSString*> *userNameArray;
-/** The number of items in @c userNameArray without causing the array to be created. */
-@property(nonatomic, readonly) NSUInteger userNameArray_Count;
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<RSContact*> *contactArray;
+/** The number of items in @c contactArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger contactArray_Count;
 
 @end
 
