@@ -7,7 +7,7 @@
 //
 
 #import "RSMessageViewModel.h"
-#import "Spcgi.pbobjc.h"
+#import "Spbasecgi.pbobjc.h"
 #import "Spcgicomm.pbobjc.h"
 #import "RSMessageModel+WCTTableCoding.h"
 #import "RSDBService.h"

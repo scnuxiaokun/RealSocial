@@ -11,7 +11,7 @@
 #import "RSDBService.h"
 #import <YYModel.h>
 #import "RSNetWorkService.h"
-#import "Spcgi.pbobjc.h"
+#import "Spbasecgi.pbobjc.h"
 #import "RSLoginService.h"
 
 @interface RSImageUploadViewModel ()

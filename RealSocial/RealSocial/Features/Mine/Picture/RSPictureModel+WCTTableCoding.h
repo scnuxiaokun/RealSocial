@@ -16,4 +16,5 @@ WCDB_PROPERTY(width)
 WCDB_PROPERTY(height)
 WCDB_PROPERTY(info)
 WCDB_PROPERTY(status)
+WCDB_PROPERTY(createTime)
 @end

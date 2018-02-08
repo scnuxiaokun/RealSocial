@@ -14,4 +14,5 @@ typedef void (^RSUploadCompletionHandler)(BOOL isOK, NSError *error);
 +(NSString *)pictureIdWithData:(NSData *)data;
 +(BOOL)savePictureLocal:(NSData *)fileData pictureId:(NSString *)pictureId;
 +(void)uploadPictureCDN:(NSData *)fileData pictureId:(NSString *)pictureId complete:(RSUploadCompletionHandler)completionHandler;
++(NSString *)urlWithPictureId:(NSString *)pictureId;
 @end

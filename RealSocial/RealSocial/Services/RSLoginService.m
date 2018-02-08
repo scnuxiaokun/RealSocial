@@ -10,7 +10,7 @@
 #import "RSNetWorkService.h"
 #import "RSKeyChainConstants.h"
 #import "FPKeychainUtils.h"
-#import "Spcgi.pbobjc.h"
+#import "Spbasecgi.pbobjc.h"
 
 @implementation RSLoginService
 +(RSLoginService *)shareInstance {

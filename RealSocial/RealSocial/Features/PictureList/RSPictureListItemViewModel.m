@@ -25,6 +25,9 @@
     }
     _pictureInfo = @"";
     switch (self.pictureModel.status) {
+        case RSPictureStatusUploadFail:
+            _pictureInfo = @"上传失败\n";
+            break;
         case RSPictureStatusUploadFinish:
             _pictureInfo = @"已上传\n";
             break;

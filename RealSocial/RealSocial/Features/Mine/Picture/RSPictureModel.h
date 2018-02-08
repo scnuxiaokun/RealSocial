@@ -10,7 +10,8 @@
 typedef NS_ENUM(NSUInteger ,RSPictureStatus) {
     RSPictureStatusInit = 0,
     RSPictureStatusUploading = 1,
-    RSPictureStatusUploadFinish = 2
+    RSPictureStatusUploadFinish = 2,
+    RSPictureStatusUploadFail = 3,
 };
 @interface RSPictureModel : RSViewModel
 @property (nonatomic, strong) NSString *pictureId;
@@ -18,4 +19,5 @@ typedef NS_ENUM(NSUInteger ,RSPictureStatus) {
 @property (nonatomic, assign) CGFloat height;
 @property (nonatomic, strong) NSString *info;
 @property (nonatomic, assign) RSPictureStatus status;
+@property (nonatomic, strong) NSDate *createTime;
 @end

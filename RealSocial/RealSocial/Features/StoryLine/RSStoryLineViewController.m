@@ -18,7 +18,7 @@
 //#import "MGFaceLicenseHandle.h"
 //#import "MGMarkSetViewController.h"
 #import "RSStoryCreateViewController.h"
-
+#import "RSSubUIViewController.h"
 @interface RSStoryLineViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UIButton *userCenterButton;
 @property (nonatomic, strong) UIButton *createButton;
@@ -41,11 +41,6 @@
     [self.navigationItem setRightBarButtonItems:@[commentButtonItem, searchButtonItem] animated:YES];
     
     
-//    [self.userCenterButton mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(self.view).offset(0);
-//        make.right.equalTo(self.view).offset(0);
-//        make.width.height.mas_equalTo(100);
-//    }];
     
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.createButton];
@@ -56,6 +51,12 @@
         make.centerX.equalTo(self.view);
         make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideBottom);
     }];
+//    [self.view addSubview:self.userCenterButton];
+//    [self.userCenterButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(self.view).offset(100);
+//        make.right.equalTo(self.view).offset(0);
+//        make.width.height.mas_equalTo(100);
+//    }];
     [self.viewModel loadData];
     
 //    /** 进行联网授权版本判断，联网授权就需要进行网络授权 */
@@ -205,8 +206,9 @@
 #pragma mark take picture
 -(void)showVideoViewController {
     RSStoryCreateViewController *ctr = [[RSStoryCreateViewController alloc] init];
-//    MGMarkSetViewController *ctr =  [[MGMarkSetViewController alloc] initWithNibName:nil bundle:nil];
-    ctr.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:ctr animated:YES];
+//    MGMarkSetViewController *ctr =  [[MGMarkSetViewController alloc] initWithNibName:nil bundle:nil];
+//    ctr.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:ctr animated:YES];
 }
 @end

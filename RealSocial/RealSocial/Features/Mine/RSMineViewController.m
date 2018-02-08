@@ -16,6 +16,7 @@
 #import "MGFaceLicenseHandle.h"
 #import "MGMarkSetViewController.h"
 #import "UIImageView+WebCache.h"
+#import "RSPictureListViewController.h"
 
 @interface RSMineViewController ()
 @property (nonatomic, strong) UIImageView *avatarImageView;
@@ -24,6 +25,7 @@
 @property (nonatomic, strong) UILabel *uidLabel;
 @property (nonatomic, strong) UIButton *takePhotoButton;
 @property (nonatomic, strong) UIButton *uploadPhotoButton;
+@property (nonatomic, strong) UIButton *pictureListButton;
 @end
 
 @implementation RSMineViewController
@@ -31,35 +33,40 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self.view addSubview:self.uidLabel];
-    [self.view addSubview:self.sessionKeyLabel];
-    [self.view addSubview:self.logoutButton];
-    [self.view addSubview:self.takePhotoButton];
-    [self.view addSubview:self.uploadPhotoButton];
-    [self.view addSubview:self.avatarImageView];
+    [self.contentView addSubview:self.uidLabel];
+    [self.contentView addSubview:self.sessionKeyLabel];
+    [self.contentView addSubview:self.logoutButton];
+    [self.contentView addSubview:self.takePhotoButton];
+    [self.contentView addSubview:self.uploadPhotoButton];
+    [self.contentView addSubview:self.avatarImageView];
+    [self.contentView addSubview:self.pictureListButton];
     
     [self.uidLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view).with.offset(20);
-        make.top.equalTo(self.view).with.offset(kNaviBarHeightAndStatusBarHeight);
+        make.left.equalTo(self.contentView).with.offset(20);
+        make.top.equalTo(self.contentView).with.offset(kNaviBarHeightAndStatusBarHeight);
     }];
     [self.sessionKeyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view).with.offset(20);
+        make.left.equalTo(self.contentView).with.offset(20);
         make.top.equalTo(self.uidLabel.mas_bottom).with.offset(0);
     }];
     [self.takePhotoButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.sessionKeyLabel.mas_bottom).with.offset(50);
-        make.centerX.equalTo(self.view);
+        make.centerX.equalTo(self.contentView);
     }];
     [self.uploadPhotoButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.takePhotoButton.mas_bottom).with.offset(50);
-        make.centerX.equalTo(self.view);
+        make.centerX.equalTo(self.contentView);
     }];
     [self.logoutButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(self.view);
+        make.center.equalTo(self.contentView);
+    }];
+    [self.pictureListButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.logoutButton.mas_bottom).with.offset(20);
+        make.centerX.equalTo(self.contentView);
     }];
     
     [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.centerX.equalTo(self.view);
+        make.bottom.centerX.equalTo(self.contentView);
     }];
     
     /** 进行联网授权版本判断，联网授权就需要进行网络授权 */
@@ -221,5 +228,21 @@
         make.width.height.mas_equalTo(100);
     }];
     return _avatarImageView;
+}
+
+-(UIButton *)pictureListButton {
+    if (_pictureListButton) {
+        return _pictureListButton;
+    }
+    _pictureListButton = [[UIButton alloc] init];
+    [_pictureListButton setTitle:@"本地照片列表" forState:UIControlStateNormal];
+    [_pictureListButton setBackgroundColor:[UIColor greenColor]];
+    @weakify(self);
+    [_pictureListButton addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
+        @RSStrongify(self);
+        RSPictureListViewController *ctr = [[RSPictureListViewController alloc] init];
+        [self.navigationController pushViewController:ctr animated:YES];
+    }];
+    return _pictureListButton;
 }
 @end

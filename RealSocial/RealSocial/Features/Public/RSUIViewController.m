@@ -8,9 +8,15 @@
 
 #import "RSUIViewController.h"
 #import <AlicloudMobileAnalitics/ALBBMAN.h>
-
+#import "BouncePresentAnimation.h"
+#import "NormalDismissAnimation.h"
+#import "RSSwipeDownInteractiveTransition.h"
 @interface RSUIViewController ()
-
+//@property (nonatomic, strong) BouncePresentAnimation *presentAnimation;
+//@property (nonatomic, strong) NormalDismissAnimation *dismissAnimation;
+@property(nonatomic,strong)UIPercentDrivenInteractiveTransition *interactiveTransition;
+@property (nonatomic, assign) BOOL interacting;
+@property (nonatomic, assign) BOOL shouldComplete;
 @end
 
 @implementation RSUIViewController
@@ -18,6 +24,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+//    _presentAnimation = [BouncePresentAnimation new];
+//    _dismissAnimation = [NormalDismissAnimation new];
+//    if ([self.navigationController.viewControllers count] > 1) {
+//        [self.transitionController prepareGestureRecognizerInViewController:self];
+//    }
+//    if ([self.navigationController.viewControllers count] > 1) {
+//        self.interactiveTransition=[UIPercentDrivenInteractiveTransition new];
+//        [self.interactiveTransition prepareGestureRecognizerInViewController:self];
+//    }
+    if ([self.navigationController.viewControllers count] > 1) {
+        [self prepareGestureRecognizerInView:self.view];
+    }
+}
+
+- (void)prepareGestureRecognizerInView:(UIView*)view {
+    UIPanGestureRecognizer *gesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+    [view addGestureRecognizer:gesture];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -28,6 +51,18 @@
 -(void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     [[ALBBMANPageHitHelper getInstance] pageDisAppear:self];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    // 必须在viewDidAppear或者viewWillAppear中写，因为每次都需要将delegate设为当前界面
+    self.navigationController.delegate=self;
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.navigationController.view.backgroundColor = [UIColor colorWithPatternImage:[self.navigationController.view snapshotImage]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,4 +80,129 @@
 }
 */
 
+//- (void)pushViewControllerSwipeDown:(UIViewController *)viewController animated:(BOOL)animated {
+////    [self.transitionController prepareGestureRecognizerInViewController:viewController];
+//    return [self.navigationController pushViewController:viewController animated:YES];
+//}
+
+- (void)snapshotScreenInView:(UIView *)contentView {
+    
+    CGSize size = contentView.bounds.size;
+    
+    UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
+    
+    CGRect rect = contentView.frame;
+    
+    //  自iOS7开始，UIView类提供了一个方法-drawViewHierarchyInRect:afterScreenUpdates: 它允许你截取一个UIView或者其子类中的内容，并且以位图的形式（bitmap）保存到UIImage中
+    
+    [contentView drawViewHierarchyInRect:rect afterScreenUpdates:YES];
+    
+    
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    
+    
+    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+    
+    
+    
+}
+
+- (void)presentViewControllerSwipeDown:(UIViewController *)viewControllerToPresent animated: (BOOL)flag completion:(void (^ __nullable)(void))completion {
+    viewControllerToPresent.transitioningDelegate = self;
+    [self.transitionController prepareGestureRecognizerInViewController:viewControllerToPresent];
+//    self.modalPresentationStyle = UIModalPresentationCurrentContext;
+    return [super presentViewController:viewControllerToPresent animated:flag completion:completion];
+}
+
+- (UIPercentDrivenInteractiveTransition *)transitionController
+{
+    if (!_transitionController) {
+        _transitionController = [RSSwipeDownInteractiveTransition new];
+    }
+    return _transitionController;
+}
+
+//-(id<UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id<UIViewControllerAnimatedTransitioning>)animator {
+//    return self.transitionController.interacting ? self.transitionController : nil;
+//}
+//- (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source
+//{
+//    return self.presentAnimation;
+//}
+
+//-(id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed
+//{
+//    return self.dismissAnimation;
+//}
+
+
+#pragma mark push AnimatedTransitioning
+//用来自定义转场动画
+-(id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC
+{
+    
+    if(operation==UINavigationControllerOperationPush)
+    {
+        BouncePresentAnimation *animateTransitionPush=[BouncePresentAnimation new];
+        return animateTransitionPush;
+    }
+    if (operation == UINavigationControllerOperationPop) {
+        NormalDismissAnimation *pingInvert = [NormalDismissAnimation new];
+        return pingInvert;
+    }
+    return nil;
+}
+
+
+//为这个动画添加用户交互
+- (id <UIViewControllerInteractiveTransitioning>)navigationController:(UINavigationController *)navigationController
+                          interactionControllerForAnimationController:(id <UIViewControllerAnimatedTransitioning>) animationController {
+    
+    return self.interactiveTransition;
+}
+
+-(CGFloat)completionSpeed
+{
+    return 1 - self.interactiveTransition.percentComplete;
+}
+
+- (void)handleGesture:(UIPanGestureRecognizer *)gestureRecognizer {
+    CGPoint translation = [gestureRecognizer translationInView:gestureRecognizer.view.superview];
+    switch (gestureRecognizer.state) {
+        case UIGestureRecognizerStateBegan:
+            // 1. Mark the interacting flag. Used when supplying it in delegate.
+            self.interacting = YES;
+            self.interactiveTransition=[UIPercentDrivenInteractiveTransition new];
+            [self.navigationController popViewControllerAnimated:YES];
+            break;
+        case UIGestureRecognizerStateChanged: {
+            // 2. Calculate the percentage of guesture
+            CGFloat fraction = translation.y / 400.0;
+            //Limit it between 0 and 1
+            fraction = fminf(fmaxf(fraction, 0.0), 1.0);
+            self.shouldComplete = (fraction > 0.5);
+            NSLog(@"updateInteractiveTransition:%f",fraction);
+            [self.interactiveTransition updateInteractiveTransition:fraction];
+            break;
+        }
+        case UIGestureRecognizerStateEnded:
+        case UIGestureRecognizerStateCancelled: {
+            // 3. Gesture over. Check if the transition should happen or not
+            self.interacting = NO;
+            if (!self.shouldComplete || gestureRecognizer.state == UIGestureRecognizerStateCancelled) {
+                [self.interactiveTransition cancelInteractiveTransition];
+            } else {
+                [self.interactiveTransition finishInteractiveTransition];
+            }
+            self.interactiveTransition = nil;
+            break;
+        }
+        default:
+            break;
+    }
+}
 @end

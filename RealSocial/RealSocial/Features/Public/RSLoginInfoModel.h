@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "RSModel.h"
-#import "Spcgi.pbobjc.h"
+#import "Spbasecgi.pbobjc.h"
 @interface RSLoginInfoModel : RSModel
 @property (nonatomic, retain) NSString *uid;
 //@property (nonatomic, retain) NSString *qquid;

@@ -6,22 +6,24 @@
 //  Copyright © 2018年 scnukuncai. All rights reserved.
 //
 
-#import "RSFriendListViewController.h"
-#import "RSFriendListViewModel.h"
+#import "RSContactListViewController.h"
+#import "RSContactListViewModel.h"
 #import <MJRefresh/MJRefresh.h>
 #import <BlocksKit/BlocksKit.h>
 #import "RSChatViewController.h"
 
-@interface RSFriendListViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface RSContactListViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) RSFriendListViewModel *viewModel;
+@property (nonatomic, strong) RSContactListViewModel *viewModel;
+@property (nonatomic, strong) UIBarButtonItem *finishButtonItem;
 @end
 
-@implementation RSFriendListViewController
+@implementation RSContactListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self.navigationItem setRightBarButtonItems:@[self.finishButtonItem] animated:YES];
     [self.viewModel loadData];
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -43,12 +45,32 @@
     // Pass the selected object to the new view controller.
 }
 */
--(RSFriendListViewModel *)viewModel {
+-(RSContactListViewModel *)viewModel {
     if (_viewModel) {
         return _viewModel;
     }
-    _viewModel = [[RSFriendListViewModel alloc] init];
+    _viewModel = [[RSContactListViewModel alloc] init];
+    [_viewModel setDefaultToUsers:self.defaultToUsers];
     return _viewModel;
+}
+
+-(UIBarButtonItem *)finishButtonItem {
+    if (_finishButtonItem) {
+        return _finishButtonItem;
+    }
+    UIButton *button = [[UIButton alloc] init];
+    [button setBackgroundColor:[UIColor blueColor]];
+    [button setTitle:@"完成" forState:UIControlStateNormal];
+    @weakify(self);
+    [button addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
+        @RSStrongify(self);
+//        if (self.completionHandler) {
+            self.completionHandler(self, [self.viewModel getSelectedUsers]);
+//        }
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+    _finishButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    return _finishButtonItem;
 }
 
 -(UITableView *)tableView {
@@ -90,16 +112,22 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:indentifier];
     }
-    RSFriendListItemViewModel *itemViewModel = [self.viewModel.listData objectOrNilAtIndex:indexPath.row];
-    if (itemViewModel) {
-        cell.textLabel.text = itemViewModel.name;
+    RSContactListItemViewModel *itemViewModel = [self.viewModel.listData objectOrNilAtIndex:indexPath.row];
+    cell.textLabel.text = itemViewModel.name;
+    if (itemViewModel.isSelected) {
+        cell.backgroundColor = [UIColor blueColor];
+    } else {
+        cell.backgroundColor = [UIColor whiteColor];
     }
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    RSChatViewController *ctr = [[RSChatViewController alloc] init];
-    ctr.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:ctr animated:YES];
+    RSContactListItemViewModel *itemViewModel = [self.viewModel.listData objectOrNilAtIndex:indexPath.row];
+    itemViewModel.isSelected = YES;
+    [tableView reloadRowAtIndexPath:indexPath withRowAnimation:UITableViewRowAnimationNone];
+//    RSChatViewController *ctr = [[RSChatViewController alloc] init];
+//    ctr.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:ctr animated:YES];
 }
 @end

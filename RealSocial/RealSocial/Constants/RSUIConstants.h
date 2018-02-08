@@ -14,7 +14,6 @@ static CGFloat  const fUIMargin = 15;
 static CGFloat  const fUIMargin20 = 20;
 
 static CGFloat  const fUISeperatorLineWidth = 0.5;
-
 /* navigationBar和tabBar等控件的高度
  *
  */

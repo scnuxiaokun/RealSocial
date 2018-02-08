@@ -1,0 +1,63 @@
+
+syntax="proto2";
+
+package spcgi;
+
+import "spcgicomm.proto";
+option objc_class_prefix="RS";
+option cc_generic_services = true;
+
+message LoginReq 
+{
+    optional BaseReq BaseReq = 1;
+    optional string Code = 2;
+}
+
+message LoginResp 
+{
+    optional BaseResp BaseResp = 1;
+    optional uint32 OpCode = 2;
+    optional string UserName = 3;
+    optional bytes SessionKey = 4;
+    optional Profile Profile = 5;
+}
+
+message UpLoadImgReq
+{
+    optional BaseReq BaseReq = 1;
+    optional bytes CliImgId = 2;
+    optional uint32 Total = 3;
+    optional uint32 OffSet = 4;
+    optional bytes Buff = 5;
+}
+
+message UpLoadImgResp
+{
+    optional BaseResp BaseResp = 1;
+    optional string SvrImgId = 2; 
+}
+
+message SyncReq
+{
+    optional BaseReq BaseReq = 1;
+    optional bytes SyncBuff = 2;
+}
+
+message SyncResp
+{
+    optional BaseResp BaseResp = 1;
+    optional bytes NextSyncBuff = 2; 
+    repeated Msg Msg = 3;
+}
+
+message GetAllContactReq
+{
+    optional BaseReq BaseReq = 1;
+}
+
+message GetAllContactResp 
+{
+    optional BaseResp BaseResp = 1;
+    repeated string UserName = 2; 
+}
+

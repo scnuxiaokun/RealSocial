@@ -10,7 +10,7 @@
 #import "RSChatListViewController.h"
 #import "RSUINavigationController.h"
 #import "RSMineViewController.h"
-#import "RSFriendListViewController.h"
+#import "RSContactListViewController.h"
 #import "RSMessageViewController.h"
 #import "RSPictureListViewController.h"
 @interface RSUITabBarController ()

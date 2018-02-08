@@ -19,6 +19,7 @@ WCDB_SYNTHESIZE(RSPictureModel, width)
 WCDB_SYNTHESIZE(RSPictureModel, height)
 WCDB_SYNTHESIZE(RSPictureModel, info)
 WCDB_SYNTHESIZE(RSPictureModel, status)
+WCDB_SYNTHESIZE(RSPictureModel, createTime)
 WCDB_NOT_NULL(RSPictureModel, pictureId)
 
 -(instancetype)init {

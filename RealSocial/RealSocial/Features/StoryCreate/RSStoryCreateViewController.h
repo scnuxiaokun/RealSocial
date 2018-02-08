@@ -6,8 +6,8 @@
 //  Copyright © 2018年 scnukuncai. All rights reserved.
 //
 
-#import "RSUIViewController.h"
+#import "RSSubUIViewController.h"
 
-@interface RSStoryCreateViewController : RSUIViewController
+@interface RSStoryCreateViewController : RSSubUIViewController
 
 @end

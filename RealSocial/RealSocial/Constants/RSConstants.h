@@ -13,3 +13,4 @@ static NSString * const WXScheme = @"weixin://";
 
 #pragma mark CgiName
 static NSString * const RSGetAllStoryReqCgiName = @"story/getall";
+

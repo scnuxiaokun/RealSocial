@@ -10,6 +10,7 @@
 #import "RSDBService.h"
 #import <YYModel.h>
 #import "MGFacepp.h"
+#import "RSPictureModel+WCTTableCoding.h"
 @implementation RSPictureListViewModel
 -(instancetype)init {
     self = [super init];
@@ -20,7 +21,8 @@
 }
 
 -(void)loadData {
-    NSArray<RSPictureModel *> * items =[[RSDBService db] getObjectsOfClass:[RSPictureModel class] fromTable:NSStringFromClass([RSPictureModel class]) limit:10];
+    
+    NSArray<RSPictureModel *> * items =[[RSDBService db] getObjectsOfClass:[RSPictureModel class] fromTable:NSStringFromClass([RSPictureModel class]) orderBy:RSPictureModel.createTime.order(WCTOrderedDescending) limit:10];
     NSMutableArray<RSPictureListItemViewModel*> *tmp = [[NSMutableArray alloc] init];
     for (RSPictureModel *model in items) {
         RSPictureListItemViewModel *itemViewModel = [[RSPictureListItemViewModel alloc] init];

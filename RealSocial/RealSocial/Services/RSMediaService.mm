@@ -116,10 +116,18 @@
 //            NSString *hash = [resp objectForKey:@"hash"];
         }else{
             NSLog(@"失败");
+            RSPictureModel *pictrueModel = [[RSPictureModel alloc] init];
+            pictrueModel.pictureId = pictureId;
+            pictrueModel.status = RSPictureStatusUploadFail;
+            [[RSDBService db] updateAllRowsInTable:NSStringFromClass([RSPictureModel class]) onProperty:RSPictureModel.status withObject:pictrueModel];
             if (completionHandler) {
                 completionHandler(YES, info.error);
             }
         }
     } option:nil];
+}
+
++(NSString *)urlWithPictureId:(NSString *)pictureId {
+    return [@"http://p3rtyrrga.bkt.clouddn.com" stringByAppendingPathComponent:pictureId];
 }
 @end
