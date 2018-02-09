@@ -15,8 +15,8 @@
     if (story.itemArray_Count > 0) {
         RSStoryItem *firstItem = [story.itemArray firstObject];
         self.titleString = firstItem.fromUserName;
-        self.subTitleString = @"kuncai test";
-        self.avatarUrl = @"http://thirdqq.qlogo.cn/g?b=sdk&k=PaYPrgDZTo9tiaB5ib7Jzzfw&s=100&t=1483314024";;
+        self.subTitleString = @"kkk sub title test";
+        self.avatarUrl = @"http://www.ladysh.com/d/file/2016080410/2306_160803134243_1.jpg";
         self.mediaUrl = (firstItem.type == RSenStoryItemType_StoryItemTypeImg) ? firstItem.img.imgRl :firstItem.video.videoURL;
     }
 }
@@ -59,7 +59,7 @@
     RSGetAllStoryResp *resp = [RSGetAllStoryResp new];
     RSStory *story1 = [RSStory new];
     RSStoryItem *storyItem = [RSStoryItem new];
-    storyItem.fromUserName = @"kuncai test";
+    storyItem.fromUserName = @"kkkk test";
     storyItem.type = RSenStoryItemType_StoryItemTypeImg;
     RSStoryImg *img = [RSStoryImg new];
     img.imgRl = @"https://imgcache.cjmx.com/star/201511/20151121185842938.jpg";

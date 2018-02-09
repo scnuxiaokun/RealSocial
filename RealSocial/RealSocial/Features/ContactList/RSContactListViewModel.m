@@ -10,6 +10,7 @@
 //#import "LoginInfo.pbobjc.h"
 #import "Spbasecgi.pbobjc.h"
 #import "Spcgicomm.pbobjc.h"
+#import "RSRequestFactory.h"
 @implementation RSContactListItemViewModel
 @end
 @implementation RSContactListViewModel
@@ -22,10 +23,12 @@
 }
 -(void)loadData {
     RSGetAllContactReq *req = [RSGetAllContactReq new];
-    RSPKGRequest *request = [[RSPKGRequest alloc] init];
-    request.cgiName = @"contact/getall";
-    request.data = [req data];
-    request.mokeResponseData = [self mokeResponse];
+//    RSPKGRequest *request = [[RSPKGRequest alloc] init];
+//    request.cgiName = @"contact/getall";
+//    request.data = [req data];
+//    request.mokeResponseData = [self mokeResponse];
+    
+    RSRequest *request = [RSRequestFactory requestWithReq:req moke:[self mokeResponse]];
     RACSignal *signal = [RSNetWorkService sendRequest:request];
     [signal subscribeNext:^(RSResponse *response) {
         RSGetAllContactResp *resp = [RSGetAllContactResp parseFromData:response.data error:nil];
@@ -55,7 +58,7 @@
     }];
 }
 
--(NSData *)mokeResponse {
+-(id)mokeResponse {
     return nil;
     RSGetAllContactResp *resp = [RSGetAllContactResp new];
     RSContact *contact1 = [RSContact new];
@@ -64,7 +67,7 @@
     contact2.userName = @"kuncai2";
     [resp.contactArray addObject:contact1];
     [resp.contactArray addObject:contact2];
-    return [resp data];
+    return resp;
 }
 
 -(void)setDefaultToUsers:(NSArray *)users {

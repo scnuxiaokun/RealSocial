@@ -39,7 +39,46 @@
 }
 
 - (void)prepareGestureRecognizerInView:(UIView*)view {
-    UIPanGestureRecognizer *gesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+//    UIPanGestureRecognizer *gesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+//    [view addGestureRecognizer:gesture];
+    
+    @weakify(self);
+    UIPanGestureRecognizer *gesture = [[UIPanGestureRecognizer alloc] initWithActionBlock:^(UIPanGestureRecognizer *gestureRecognizer) {
+        @RSStrongify(self);
+        CGPoint translation = [gestureRecognizer translationInView:gestureRecognizer.view.superview];
+        switch (gestureRecognizer.state) {
+            case UIGestureRecognizerStateBegan:
+                // 1. Mark the interacting flag. Used when supplying it in delegate.
+                self.interacting = YES;
+                self.interactiveTransition=[UIPercentDrivenInteractiveTransition new];
+                [self.navigationController popViewControllerAnimated:YES];
+                break;
+            case UIGestureRecognizerStateChanged: {
+                // 2. Calculate the percentage of guesture
+                CGFloat fraction = translation.y / 400.0;
+                //Limit it between 0 and 1
+                fraction = fminf(fmaxf(fraction, 0.0), 1.0);
+                self.shouldComplete = (fraction > 0.5);
+                NSLog(@"updateInteractiveTransition:%f",fraction);
+                [self.interactiveTransition updateInteractiveTransition:fraction];
+                break;
+            }
+            case UIGestureRecognizerStateEnded:
+            case UIGestureRecognizerStateCancelled: {
+                // 3. Gesture over. Check if the transition should happen or not
+                self.interacting = NO;
+                if (!self.shouldComplete || gestureRecognizer.state == UIGestureRecognizerStateCancelled) {
+                    [self.interactiveTransition cancelInteractiveTransition];
+                } else {
+                    [self.interactiveTransition finishInteractiveTransition];
+                }
+                self.interactiveTransition = nil;
+                break;
+            }
+            default:
+                break;
+        }
+    }];
     [view addGestureRecognizer:gesture];
 }
 
@@ -58,6 +97,11 @@
     [super viewWillAppear:animated];
     // 必须在viewDidAppear或者viewWillAppear中写，因为每次都需要将delegate设为当前界面
     self.navigationController.delegate=self;
+    
+    [self.navigationController.navigationItem setHidesBackButton:NO];
+    self.navigationController.navigationBar.translucent = YES;
+    [self.navigationController.navigationBar setShadowImage:nil];
+    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
 }
 
 -(void)viewWillDisappear:(BOOL)animated {

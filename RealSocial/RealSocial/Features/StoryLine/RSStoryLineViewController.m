@@ -18,7 +18,7 @@
 //#import "MGFaceLicenseHandle.h"
 //#import "MGMarkSetViewController.h"
 #import "RSStoryCreateViewController.h"
-#import "RSSubUIViewController.h"
+#import "RSStoryDetailViewController.h"
 @interface RSStoryLineViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UIButton *userCenterButton;
 @property (nonatomic, strong) UIButton *createButton;
@@ -33,14 +33,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor yellowColor];
+    self.view.backgroundColor = [UIColor whiteColor];
     UIBarButtonItem *leftButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.userCenterButton];
     UIBarButtonItem *commentButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.commentButton];
     UIBarButtonItem *searchButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.searchButton];
     [self.navigationItem setLeftBarButtonItems:@[leftButtonItem] animated:YES];
-    [self.navigationItem setRightBarButtonItems:@[commentButtonItem, searchButtonItem] animated:YES];
-    
-    
+    [self.navigationItem setRightBarButtonItems:@[commentButtonItem, searchButtonItem] animated:YES];    
     
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.createButton];
@@ -203,6 +201,11 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    RSStoryDetailViewController *ctr = [[RSStoryDetailViewController alloc] init];
+    [self.navigationController pushViewController:ctr animated:YES];
+}
+
 #pragma mark take picture
 -(void)showVideoViewController {
     RSStoryCreateViewController *ctr = [[RSStoryCreateViewController alloc] init];
@@ -211,4 +214,5 @@
 //    ctr.hidesBottomBarWhenPushed = YES;
 //    [self.navigationController pushViewController:ctr animated:YES];
 }
+
 @end

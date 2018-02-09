@@ -11,6 +11,7 @@
 #import "RSKeyChainConstants.h"
 #import "FPKeychainUtils.h"
 #import "Spbasecgi.pbobjc.h"
+#import "RSRequestFactory.h"
 
 @implementation RSLoginService
 +(RSLoginService *)shareInstance {
@@ -63,7 +64,7 @@
     return YES;
 }
 
--(NSData *)mokeResponse {
+-(id)mokeResponse {
     return nil;
 //    LoginInfo *loginInfo = [LoginInfo new];
 //    loginInfo.sessionKey = @"kuncai_test_sessionKey";
@@ -75,10 +76,11 @@
     RACSubject *signal = [RACSubject subject];
     RSLoginReq *req = [RSLoginReq new];
     req.code = code;
-    RSRequest *request = [RSRequest new];
-    request.cgiName = @"base/login";
-    request.data = [req data];
-    request.mokeResponseData = [self mokeResponse];
+    RSRequest *request = [RSRequestFactory requestWithReq:req moke:[self mokeResponse]];
+//    RSRequest *request = [RSRequest new];
+//    request.cgiName = @"base/login";
+//    request.data = [req data];
+//    request.mokeResponseData = [self mokeResponse];
     [[RSNetWorkService sendRequest:request] subscribeNext:^(RSResponse *response) {
         RSLoginResp *resp = [RSLoginResp parseFromData:response.data error:nil];
         [self.loginInfo updateWithLoginInfo:resp];

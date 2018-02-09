@@ -115,7 +115,7 @@
     }
     _titleLabel = [[UILabel alloc] init];
     _titleLabel.font = [UIFont boldSystemFontOfSize:17];
-    _titleLabel.textColor = [UIColor randomColor];
+    _titleLabel.textColor = [UIColor whiteColor];
     return _titleLabel;
 }
 
@@ -125,7 +125,7 @@
     }
     _subtitleLabel = [[UILabel alloc] init];
     _subtitleLabel.font = [UIFont systemFontOfSize:14];
-    _subtitleLabel.textColor = [UIColor randomColor];
+    _subtitleLabel.textColor = [UIColor whiteColor];
     return _subtitleLabel;
 }
 

@@ -243,6 +243,7 @@
 		ADF1E075202C9AFE00B85B20 /* RSStoryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF1E074202C9AFE00B85B20 /* RSStoryDetailViewController.m */; };
 		ADF1E078202C9E5700B85B20 /* RSPKGRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF1E077202C9E5700B85B20 /* RSPKGRequest.m */; };
 		ADF1E07B202CA3A000B85B20 /* RSPKGResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF1E07A202CA3A000B85B20 /* RSPKGResponse.m */; };
+		ADF1E07E202D546A00B85B20 /* RSRequestFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF1E07D202D546A00B85B20 /* RSRequestFactory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -685,6 +686,8 @@
 		ADF1E077202C9E5700B85B20 /* RSPKGRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSPKGRequest.m; sourceTree = "<group>"; };
 		ADF1E079202CA3A000B85B20 /* RSPKGResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSPKGResponse.h; sourceTree = "<group>"; };
 		ADF1E07A202CA3A000B85B20 /* RSPKGResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSPKGResponse.m; sourceTree = "<group>"; };
+		ADF1E07C202D546A00B85B20 /* RSRequestFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSRequestFactory.h; sourceTree = "<group>"; };
+		ADF1E07D202D546A00B85B20 /* RSRequestFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSRequestFactory.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -977,6 +980,8 @@
 				ADF1E077202C9E5700B85B20 /* RSPKGRequest.m */,
 				ADF1E079202CA3A000B85B20 /* RSPKGResponse.h */,
 				ADF1E07A202CA3A000B85B20 /* RSPKGResponse.m */,
+				ADF1E07C202D546A00B85B20 /* RSRequestFactory.h */,
+				ADF1E07D202D546A00B85B20 /* RSRequestFactory.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -2056,6 +2061,7 @@
 				ADAC4E7A2014F1150020DA91 /* MGOpenGLView.m in Sources */,
 				AD3E9174200F99600019138F /* RSLoginService.m in Sources */,
 				AD3E94E4200F99820019138F /* NSArray+safe.m in Sources */,
+				ADF1E07E202D546A00B85B20 /* RSRequestFactory.m in Sources */,
 				AD7F6ECA20286B1B00D49966 /* RSChatViewModel.m in Sources */,
 				AD3E94CD200F99820019138F /* LOTFillRenderer.m in Sources */,
 				ADDC6A65201316BB00439D01 /* NSError+Util.m in Sources */,

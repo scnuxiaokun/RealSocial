@@ -13,6 +13,6 @@
 -(void)setData:(NSData *)data {
     RSPKG *pkg = [RSPKG new];
     pkg.data_p = data;
-    [super setData:[pkg data]];
+    pkg.str = [@"kuncaitest" dataUsingEncoding:NSUTF8StringEncoding];
 }
 @end
