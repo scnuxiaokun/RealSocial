@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSString *subTitleString;
 @property (nonatomic, strong) NSString *avatarUrl;
 @property (nonatomic, strong) NSString *mediaUrl;
+@property (nonatomic, strong) RSStory *story;
 -(void)updateWithStory:(RSStory *)story;
 @end
 @interface RSStoryLineViewModel : RSViewModel

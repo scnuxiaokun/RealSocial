@@ -202,7 +202,9 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    RSStoryLineItemViewModel *itemViewModel = [self.viewModel.listData objectOrNilAtIndex:indexPath.row];
     RSStoryDetailViewController *ctr = [[RSStoryDetailViewController alloc] init];
+    [ctr.viewModel updateWithStory:itemViewModel.story];
     [self.navigationController pushViewController:ctr animated:YES];
 }
 

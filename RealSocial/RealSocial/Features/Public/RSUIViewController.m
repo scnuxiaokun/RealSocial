@@ -102,11 +102,13 @@
     self.navigationController.navigationBar.translucent = YES;
     [self.navigationController.navigationBar setShadowImage:nil];
     [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     self.navigationController.view.backgroundColor = [UIColor colorWithPatternImage:[self.navigationController.view snapshotImage]];
+
 }
 
 - (void)didReceiveMemoryWarning {

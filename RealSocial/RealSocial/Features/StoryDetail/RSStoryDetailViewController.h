@@ -7,7 +7,8 @@
 //
 
 #import "RSSubUIViewController.h"
+#import "RSStoryDetailViewModel.h"
 
 @interface RSStoryDetailViewController : RSSubUIViewController
-
+@property (nonatomic, strong) RSStoryDetailViewModel *viewModel;
 @end

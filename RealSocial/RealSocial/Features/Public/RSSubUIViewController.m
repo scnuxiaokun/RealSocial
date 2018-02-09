@@ -18,7 +18,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 //    [self.transitionController prepareGestureRecognizerInViewController:self];
-    self.view.backgroundColor = [UIColor clearColor];
+    self.view.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.8];
     [self.view addSubview:self.contentView];
     [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(self.view);

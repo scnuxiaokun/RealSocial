@@ -12,6 +12,7 @@
 
 @implementation RSStoryLineItemViewModel
 -(void)updateWithStory:(RSStory *)story {
+    _story = story;
     if (story.itemArray_Count > 0) {
         RSStoryItem *firstItem = [story.itemArray firstObject];
         self.titleString = firstItem.fromUserName;
@@ -65,6 +66,7 @@
     img.imgRl = @"https://imgcache.cjmx.com/star/201511/20151121185842938.jpg";
     storyItem.img = img;
     [story1.itemArray addObject:storyItem];
+    [story1.itemArray addObject:[storyItem copy]];
     [resp.listArray addObject:story1];
     [resp.listArray addObject:[story1 copy]];
     [resp.listArray addObject:[story1 copy]];

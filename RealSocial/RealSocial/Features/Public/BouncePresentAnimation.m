@@ -11,7 +11,7 @@
 @implementation BouncePresentAnimation
 - (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext
 {
-    return 0.8f;
+    return 0.1f;
 }
 
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext
@@ -32,7 +32,7 @@
     NSTimeInterval duration = [self transitionDuration:transitionContext];
     [UIView animateWithDuration:duration
                           delay:0.0
-         usingSpringWithDamping:0.6
+         usingSpringWithDamping:1
           initialSpringVelocity:0.0
                         options:UIViewAnimationOptionCurveLinear
                      animations:^{

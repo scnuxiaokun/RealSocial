@@ -7,8 +7,11 @@
 //
 
 #import "RSStoryDetailViewController.h"
+#import <UIImageView+WebCache.h>
 
 @interface RSStoryDetailViewController () <UIScrollViewDelegate>
+
+//photo brower
 @property (nonatomic, strong) UIScrollView *mediaScrollView;
 @property (nonatomic, assign) NSInteger imageViewArrayCount;
 @property (nonatomic, strong) NSMutableArray *imageViewArray;
@@ -20,6 +23,8 @@
 @property (nonatomic, strong) UIImageView *freeImageView;
 @property (nonatomic, assign) NSInteger currentImageViewIndex;
 @property (nonatomic, assign) NSInteger currentImageIndex;
+
+//
 @end
 
 @implementation RSStoryDetailViewController
@@ -28,17 +33,18 @@
     self = [super init];
     if (self) {
         self.imageViewArrayCount = 5;
-        self.imageCount = 100;
+        
         self.freeImageViewArray = [[NSMutableArray alloc] init];
     }
     return self;
 }
 -(void)dealloc {
-    NSLog(@"dealloc:%@", self);
+    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.imageCount = [self.viewModel.photoUrlArray count];
     [self.contentView addSubview:self.mediaScrollView];
 //    self.mediaScrollView.frame = self.contentView.bounds;
     [self.mediaScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -46,6 +52,7 @@
     }];
     for (int i=0; i<self.imageViewArrayCount; i++) {
         UIImageView *imageView = [self.imageViewArray objectAtIndex:i];
+        [imageView sd_setImageWithURL:[self.viewModel.photoUrlArray objectOrNilAtIndex:i]];
         if (i > 1) {
             [self.freeImageViewArray addObject:imageView];
         } else {
@@ -82,6 +89,14 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+-(RSStoryDetailViewModel *)viewModel {
+    if (_viewModel) {
+        return _viewModel;
+    }
+    _viewModel = [[RSStoryDetailViewModel alloc] init];
+    return _viewModel;
+}
 -(UIScrollView *)mediaScrollView {
     if (_mediaScrollView) {
         return _mediaScrollView;
@@ -105,6 +120,7 @@
     NSMutableArray *tmp = [[NSMutableArray alloc] init];
     for (int i=0; i< self.imageViewArrayCount; i++) {
         UIImageView *imageView = [[UIImageView alloc] init];
+        imageView.contentMode = UIViewContentModeScaleAspectFit;
         if (i==0) {
             imageView.backgroundColor = [UIColor redColor];
             imageView.tag = 0;

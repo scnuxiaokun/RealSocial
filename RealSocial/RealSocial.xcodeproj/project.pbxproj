@@ -244,6 +244,7 @@
 		ADF1E078202C9E5700B85B20 /* RSPKGRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF1E077202C9E5700B85B20 /* RSPKGRequest.m */; };
 		ADF1E07B202CA3A000B85B20 /* RSPKGResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF1E07A202CA3A000B85B20 /* RSPKGResponse.m */; };
 		ADF1E07E202D546A00B85B20 /* RSRequestFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF1E07D202D546A00B85B20 /* RSRequestFactory.m */; };
+		ADF1E081202DE3BD00B85B20 /* RSStoryDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF1E080202DE3BD00B85B20 /* RSStoryDetailViewModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -688,6 +689,8 @@
 		ADF1E07A202CA3A000B85B20 /* RSPKGResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSPKGResponse.m; sourceTree = "<group>"; };
 		ADF1E07C202D546A00B85B20 /* RSRequestFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSRequestFactory.h; sourceTree = "<group>"; };
 		ADF1E07D202D546A00B85B20 /* RSRequestFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSRequestFactory.m; sourceTree = "<group>"; };
+		ADF1E07F202DE3BD00B85B20 /* RSStoryDetailViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSStoryDetailViewModel.h; sourceTree = "<group>"; };
+		ADF1E080202DE3BD00B85B20 /* RSStoryDetailViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSStoryDetailViewModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1658,6 +1661,8 @@
 			children = (
 				ADF1E073202C9AFE00B85B20 /* RSStoryDetailViewController.h */,
 				ADF1E074202C9AFE00B85B20 /* RSStoryDetailViewController.m */,
+				ADF1E07F202DE3BD00B85B20 /* RSStoryDetailViewModel.h */,
+				ADF1E080202DE3BD00B85B20 /* RSStoryDetailViewModel.m */,
 			);
 			path = StoryDetail;
 			sourceTree = "<group>";
@@ -2060,6 +2065,7 @@
 				AD7F6ECB20286B1B00D49966 /* RSChatTableViewCell.m in Sources */,
 				ADAC4E7A2014F1150020DA91 /* MGOpenGLView.m in Sources */,
 				AD3E9174200F99600019138F /* RSLoginService.m in Sources */,
+				ADF1E081202DE3BD00B85B20 /* RSStoryDetailViewModel.m in Sources */,
 				AD3E94E4200F99820019138F /* NSArray+safe.m in Sources */,
 				ADF1E07E202D546A00B85B20 /* RSRequestFactory.m in Sources */,
 				AD7F6ECA20286B1B00D49966 /* RSChatViewModel.m in Sources */,
