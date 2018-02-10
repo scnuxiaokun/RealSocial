@@ -78,7 +78,7 @@
         return _contentView;
     }
     _contentView = [[UIView alloc] init];
-    _contentView.backgroundColor = [UIColor whiteColor];
+    _contentView.backgroundColor = [UIColor clearColor];
     return _contentView;
 }
 @end

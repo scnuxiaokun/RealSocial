@@ -6,9 +6,9 @@
 //  Copyright © 2018年 scnukuncai. All rights reserved.
 //
 
-#import "RSStoryLineNavigationBar.h"
+#import "RSSpaceLineNavigationBar.h"
 
-@implementation RSStoryLineNavigationBar
+@implementation RSSpaceLineNavigationBar
 
 /*
 // Only override drawRect: if you perform custom drawing.

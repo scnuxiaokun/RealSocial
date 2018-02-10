@@ -6,23 +6,23 @@
 //  Copyright © 2018年 scnukuncai. All rights reserved.
 //
 
-#import "RSStoryCreateViewController.h"
+#import "RSSpaceCreateViewController.h"
 #import "DBCameraViewController.h"
 #import "DBCameraContainerViewController.h"
-#import "RSStoryCreateViewModel.h"
+#import "RSSpaceCreateViewModel.h"
 #import "RSContactListViewController.h"
 
-@interface RSStoryCreateViewController () <DBCameraViewControllerDelegate>
+@interface RSSpaceCreateViewController () <DBCameraViewControllerDelegate>
 @property (nonatomic, strong) UIImageView *pictureImageView;
 @property (nonatomic, strong) UIButton *createButton;
-@property (nonatomic, strong) RSStoryCreateViewModel *viewModel;
+@property (nonatomic, strong) RSSpaceCreateViewModel *viewModel;
 @property (nonatomic, strong) MBProgressHUD *HUD;
 @property (nonatomic, strong) UIButton *toUserButtom;
 @property (nonatomic, strong) UILabel *toUserLabel;
 @property (nonatomic, strong) NSArray *toUsersArray;
 @end
 
-@implementation RSStoryCreateViewController
+@implementation RSSpaceCreateViewController
 
 -(void)viewDidLoad {
     [super viewDidLoad];
@@ -59,11 +59,11 @@
     [self.HUD hideAnimated:NO];
 }
 
--(RSStoryCreateViewModel *)viewModel {
+-(RSSpaceCreateViewModel *)viewModel {
     if (_viewModel) {
         return _viewModel;
     }
-    _viewModel = [[RSStoryCreateViewModel alloc] init];
+    _viewModel = [[RSSpaceCreateViewModel alloc] init];
     return _viewModel;
 }
 

@@ -6,10 +6,10 @@
 //  Copyright © 2018年 scnukuncai. All rights reserved.
 //
 
-#import "RSStoryLineViewController.h"
+#import "RSSpaceLineViewController.h"
 #import "RSMineViewController.h"
-#import "RSStoryLineViewModel.h"
-#import "RSStoryLineViewTableViewCell.h"
+#import "RSSpaceLineViewModel.h"
+#import "RSSpaceLineViewTableViewCell.h"
 
 //#import "MGVideoViewController.h"
 //#import "MCSetModel.h"
@@ -17,22 +17,22 @@
 //#import "MGHeader.h"
 //#import "MGFaceLicenseHandle.h"
 //#import "MGMarkSetViewController.h"
-#import "RSStoryCreateViewController.h"
-#import "RSStoryDetailViewController.h"
-#import "RSStoryLineNavigationBar.h"
+#import "RSSpaceCreateViewController.h"
+#import "RSSpaceDetailViewController.h"
+#import "RSSpaceLineNavigationBar.h"
 #import <UIImageView+WebCache.h>
-@interface RSStoryLineViewController ()<UITableViewDelegate, UITableViewDataSource>
-@property (nonatomic, strong) RSStoryLineNavigationBar *bar;
+@interface RSSpaceLineViewController ()<UITableViewDelegate, UITableViewDataSource>
+@property (nonatomic, strong) RSSpaceLineNavigationBar *bar;
 @property (nonatomic, strong) UIImageView *avatarImageView;
 @property (nonatomic, strong) UIButton *userCenterButton;
 @property (nonatomic, strong) UIButton *createButton;
 @property (nonatomic, strong) UIButton *commentButton;
 @property (nonatomic, strong) UIButton *searchButton;
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) RSStoryLineViewModel *viewModel;
+@property (nonatomic, strong) RSSpaceLineViewModel *viewModel;
 @end
 
-@implementation RSStoryLineViewController
+@implementation RSSpaceLineViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -104,11 +104,11 @@
 }
 */
 
--(RSStoryLineNavigationBar *)bar {
+-(RSSpaceLineNavigationBar *)bar {
     if (_bar) {
         return _bar;
     }
-    _bar = [[RSStoryLineNavigationBar alloc] init];
+    _bar = [[RSSpaceLineNavigationBar alloc] init];
     [_bar addSubview:self.avatarImageView];
     [_bar addSubview:self.commentButton];
     [_bar addSubview:self.searchButton];
@@ -197,11 +197,11 @@
     return _commentButton;
 }
 
--(RSStoryLineViewModel *)viewModel {
+-(RSSpaceLineViewModel *)viewModel {
     if (_viewModel) {
         return _viewModel;
     }
-    _viewModel = [[RSStoryLineViewModel alloc] init];
+    _viewModel = [[RSSpaceLineViewModel alloc] init];
     return _viewModel;
 }
 
@@ -248,24 +248,24 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *indentifier = @"RSStoryLineViewTableViewCell";
-    RSStoryLineViewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:indentifier];
+    RSSpaceLineViewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:indentifier];
     if (!cell) {
-        cell = [[RSStoryLineViewTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:indentifier];
+        cell = [[RSSpaceLineViewTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:indentifier];
     }
     cell.viewModel = [self.viewModel.listData objectOrNilAtIndex:indexPath.row];
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    RSStoryLineItemViewModel *itemViewModel = [self.viewModel.listData objectOrNilAtIndex:indexPath.row];
-    RSStoryDetailViewController *ctr = [[RSStoryDetailViewController alloc] init];
+    RSSpaceLineItemViewModel *itemViewModel = [self.viewModel.listData objectOrNilAtIndex:indexPath.row];
+    RSSpaceDetailViewController *ctr = [[RSSpaceDetailViewController alloc] init];
     [ctr.viewModel updateWithStory:itemViewModel.story];
     [self.navigationController pushViewController:ctr animated:YES];
 }
 
 #pragma mark take picture
 -(void)showVideoViewController {
-    RSStoryCreateViewController *ctr = [[RSStoryCreateViewController alloc] init];
+    RSSpaceCreateViewController *ctr = [[RSSpaceCreateViewController alloc] init];
     [self.navigationController pushViewController:ctr animated:YES];
 //    MGMarkSetViewController *ctr =  [[MGMarkSetViewController alloc] initWithNibName:nil bundle:nil];
 //    ctr.hidesBottomBarWhenPushed = YES;

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RSStoryLineNavigationBar : UIView
+@interface RSSpaceLineNavigationBar : UIView
 
 @end

@@ -6,9 +6,9 @@
 //  Copyright © 2018年 scnukuncai. All rights reserved.
 //
 
-#import "RSStoryDetailViewModel.h"
+#import "RSSpaceDetailViewModel.h"
 
-@implementation RSStoryDetailViewModel
+@implementation RSSpaceDetailViewModel
 -(void)updateWithStory:(RSStory *)story {
     NSMutableArray *tmp = [[NSMutableArray alloc] init];
     for (RSStoryItem *storyItem in story.itemArray) {

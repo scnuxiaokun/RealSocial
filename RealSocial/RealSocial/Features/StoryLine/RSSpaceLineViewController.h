@@ -8,6 +8,6 @@
 
 #import "RSUIViewController.h"
 
-@interface RSStoryLineViewController : RSUIViewController
+@interface RSSpaceLineViewController : RSUIViewController
 
 @end

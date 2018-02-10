@@ -98,7 +98,7 @@
     if (_mainViewController) {
         return _mainViewController;
     }
-    RSStoryLineViewController *storyLineCtr = [[RSStoryLineViewController alloc] init];
+    RSSpaceLineViewController *storyLineCtr = [[RSSpaceLineViewController alloc] init];
     _mainViewController = [[RSUINavigationController alloc] initWithRootViewController:storyLineCtr];
     return _mainViewController;
 }

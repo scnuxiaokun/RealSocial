@@ -8,6 +8,6 @@
 
 #import "RSSubUIViewController.h"
 
-@interface RSStoryCreateViewController : RSSubUIViewController
+@interface RSSpaceCreateViewController : RSSubUIViewController
 
 @end

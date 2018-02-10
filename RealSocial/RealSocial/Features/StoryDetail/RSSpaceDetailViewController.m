@@ -6,10 +6,11 @@
 //  Copyright © 2018年 scnukuncai. All rights reserved.
 //
 
-#import "RSStoryDetailViewController.h"
+#import "RSSpaceDetailViewController.h"
 #import <UIImageView+WebCache.h>
 #import "RSPhotoBrower.h"
-@interface RSStoryDetailViewController () <UIScrollViewDelegate>
+#import "RSMineViewController.h"
+@interface RSSpaceDetailViewController () <UIScrollViewDelegate>
 
 //photo brower
 @property (nonatomic, strong) UIScrollView *mediaScrollView;
@@ -24,10 +25,12 @@
 @property (nonatomic, assign) NSInteger currentImageViewIndex;
 @property (nonatomic, assign) NSInteger currentImageIndex;
 
-//
+//RSPhotoBrower
+@property (nonatomic, strong) RSPhotoBrower *photoBrower;
+@property (nonatomic, strong) UIImageView *avatarImageView;
 @end
 
-@implementation RSStoryDetailViewController
+@implementation RSSpaceDetailViewController
 
 -(instancetype)init {
     self = [super init];
@@ -75,11 +78,14 @@
     
     */
 //    self.automaticallyAdjustsScrollViewInsets = NO;
+    [self.contentView addSubview:self.photoBrower];
+    [self.contentView addSubview:self.avatarImageView];
     
-    RSPhotoBrower *view1 = [[RSPhotoBrower alloc] initWithFrame:self.contentView.bounds];
-    view1.backgroundColor = [UIColor randomColor];
-    view1.dataSources = self.viewModel.photoUrlArray;
-    [self.contentView addSubview:view1];
+    [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.contentView).with.offset(12);
+        make.height.width.mas_equalTo(self.avatarImageView.height);
+        make.centerY.equalTo(self.photoBrower.mas_top);
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -99,11 +105,40 @@
 }
 */
 
--(RSStoryDetailViewModel *)viewModel {
+-(RSPhotoBrower *)photoBrower {
+    if (_photoBrower) {
+        return _photoBrower;
+    }
+    _photoBrower = [[RSPhotoBrower alloc] initWithFrame:self.contentView.bounds];
+    _photoBrower.backgroundColor = [UIColor randomColor];
+    _photoBrower.dataSources = self.viewModel.photoUrlArray;
+    _photoBrower.layer.cornerRadius = 10;
+    _photoBrower.layer.masksToBounds = YES;
+    return _photoBrower;
+}
+
+-(UIImageView *)avatarImageView {
+    if (_avatarImageView) {
+        return _avatarImageView;
+    }
+    _avatarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 48, 48)];
+    _avatarImageView.layer.cornerRadius = _avatarImageView.height/2;
+    _avatarImageView.layer.masksToBounds = YES;
+    [_avatarImageView sd_setImageWithURL:[NSURL URLWithString:@"http://www.ladysh.com/d/file/2016080410/2306_160803134243_1.jpg"]];
+    @weakify(self);
+    [_avatarImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
+        @RSStrongify(self);
+        RSMineViewController *mineCtr = [[RSMineViewController alloc] init];
+        [self.navigationController pushViewController:mineCtr animated:YES];
+    }]];
+    return _avatarImageView;
+}
+
+-(RSSpaceDetailViewModel *)viewModel {
     if (_viewModel) {
         return _viewModel;
     }
-    _viewModel = [[RSStoryDetailViewModel alloc] init];
+    _viewModel = [[RSSpaceDetailViewModel alloc] init];
     return _viewModel;
 }
 -(UIScrollView *)mediaScrollView {

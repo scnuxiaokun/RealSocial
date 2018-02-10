@@ -9,7 +9,7 @@
 #import "RSViewModel.h"
 #import "Spstorycgi.pbobjc.h"
 
-@interface RSStoryLineItemViewModel : RSViewModel
+@interface RSSpaceLineItemViewModel : RSViewModel
 @property (nonatomic, strong) NSString *titleString;
 @property (nonatomic, strong) NSString *subTitleString;
 @property (nonatomic, strong) NSString *avatarUrl;
@@ -17,6 +17,6 @@
 @property (nonatomic, strong) RSStory *story;
 -(void)updateWithStory:(RSStory *)story;
 @end
-@interface RSStoryLineViewModel : RSViewModel
+@interface RSSpaceLineViewModel : RSViewModel
 @property (nonatomic, strong) NSArray *listData;
 @end

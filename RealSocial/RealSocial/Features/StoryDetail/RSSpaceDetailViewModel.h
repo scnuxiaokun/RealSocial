@@ -8,7 +8,7 @@
 
 #import "RSViewModel.h"
 #import "Spstorycgi.pbobjc.h"
-@interface RSStoryDetailViewModel : RSViewModel
+@interface RSSpaceDetailViewModel : RSViewModel
 @property (nonatomic, strong) NSArray *photoUrlArray;
 -(void)updateWithStory:(RSStory *)story;
 @end

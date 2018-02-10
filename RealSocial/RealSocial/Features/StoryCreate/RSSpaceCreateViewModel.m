@@ -6,12 +6,12 @@
 //  Copyright © 2018年 scnukuncai. All rights reserved.
 //
 
-#import "RSStoryCreateViewModel.h"
+#import "RSSpaceCreateViewModel.h"
 #import "RSMediaService.h"
 #import "RSNetWorkService.h"
 #import "Spstorycgi.pbobjc.h"
 
-@implementation RSStoryCreateViewModel
+@implementation RSSpaceCreateViewModel
 -(RACSignal *)create:(UIImage *)picture toUsers:(NSArray *)users {
     @weakify(self);
     return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {

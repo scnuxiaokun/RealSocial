@@ -6,10 +6,10 @@
 //  Copyright © 2018年 scnukuncai. All rights reserved.
 //
 
-#import "RSStoryLineViewTableViewCell.h"
+#import "RSSpaceLineViewTableViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
-@implementation RSStoryLineViewTableViewCell
+@implementation RSSpaceLineViewTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -129,7 +129,7 @@
     return _subtitleLabel;
 }
 
--(void)setViewModel:(RSStoryLineItemViewModel *)viewModel {
+-(void)setViewModel:(RSSpaceLineItemViewModel *)viewModel {
     _viewModel = viewModel;
     [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:viewModel.avatarUrl] placeholderImage:[UIImage imageWithColor:[UIColor randomColor]]];
     [self.mediaImageView sd_setImageWithURL:[NSURL URLWithString:viewModel.mediaUrl] placeholderImage:[UIImage imageWithColor:[UIColor randomColor]]];

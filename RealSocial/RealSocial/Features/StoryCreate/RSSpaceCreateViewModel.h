@@ -8,7 +8,7 @@
 
 #import "RSViewModel.h"
 
-@interface RSStoryCreateViewModel : RSViewModel
+@interface RSSpaceCreateViewModel : RSViewModel
 
 -(RACSignal *)create:(UIImage *)picture toUsers:(NSArray *)users;
 @end

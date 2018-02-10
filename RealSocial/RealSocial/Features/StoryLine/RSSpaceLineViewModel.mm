@@ -6,11 +6,11 @@
 //  Copyright © 2018年 scnukuncai. All rights reserved.
 //
 
-#import "RSStoryLineViewModel.h"
+#import "RSSpaceLineViewModel.h"
 #import "RSNetWorkService.h"
 #import "RSLoginService.h"
 
-@implementation RSStoryLineItemViewModel
+@implementation RSSpaceLineItemViewModel
 -(void)updateWithStory:(RSStory *)story {
     _story = story;
     if (story.itemArray_Count > 0) {
@@ -22,7 +22,7 @@
     }
 }
 @end
-@implementation RSStoryLineViewModel
+@implementation RSSpaceLineViewModel
 -(void)loadData {
     RSGetAllStoryReq *req = [RSGetAllStoryReq new];
     RSRequest *request = [[RSRequest alloc] init];
@@ -40,7 +40,7 @@
         [self sendUpdateData:resp];
         NSMutableArray *tmp = [[NSMutableArray alloc] init];
         for (RSStory *story in resp.listArray) {
-            RSStoryLineItemViewModel *itemVM = [[RSStoryLineItemViewModel alloc] init];
+            RSSpaceLineItemViewModel *itemVM = [[RSSpaceLineItemViewModel alloc] init];
             [itemVM updateWithStory:story];
             [tmp addObject:itemVM];
         }

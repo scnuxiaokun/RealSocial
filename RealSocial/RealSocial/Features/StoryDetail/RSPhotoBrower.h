@@ -12,7 +12,6 @@
 
 //点击事件
 -(void)clickedAtIndex:(NSInteger)index;
-
 @end
 
 @interface RSPhotoBrower : UIView

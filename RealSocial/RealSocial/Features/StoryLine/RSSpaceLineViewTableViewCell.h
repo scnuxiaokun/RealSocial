@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RSStoryLineViewModel.h"
-@interface RSStoryLineViewTableViewCell : UITableViewCell
+#import "RSSpaceLineViewModel.h"
+@interface RSSpaceLineViewTableViewCell : UITableViewCell
 @property (nonatomic, strong) UIImageView *avatarImageView;
 @property (nonatomic, strong) UIImageView *avatarBgImageView;
 @property (nonatomic, strong) UIImageView *mediaImageView;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *subtitleLabel;
-@property (nonatomic, strong) RSStoryLineItemViewModel *viewModel;
+@property (nonatomic, strong) RSSpaceLineItemViewModel *viewModel;
 @end
