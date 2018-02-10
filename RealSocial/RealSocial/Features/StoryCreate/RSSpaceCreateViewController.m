@@ -27,6 +27,7 @@
 -(void)viewDidLoad {
     [super viewDidLoad];
 //    self.view.backgroundColor = [UIColor randomColor];
+    self.contentView.backgroundColor = [UIColor whiteColor];
     [self.contentView addSubview:self.pictureImageView];
     [self.pictureImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.equalTo(self.contentView);
@@ -92,7 +93,7 @@
         @RSStrongify(self);
         [self.HUD showAnimated:YES];
         @weakify(self);
-        [[[self.viewModel create:self.pictureImageView.image toUsers:@[@"kuncai"]] deliverOnMainThread] subscribeNext:^(id  _Nullable x) {
+        [[[self.viewModel create:self.pictureImageView.image toUsers:self.toUsersArray] deliverOnMainThread] subscribeNext:^(id  _Nullable x) {
             
         } error:^(NSError * _Nullable error) {
             @RSStrongify(self);

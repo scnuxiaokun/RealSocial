@@ -12,7 +12,7 @@
 -(void)updateWithStory:(RSSpace *)story {
     NSMutableArray *tmp = [[NSMutableArray alloc] init];
     for (RSStar *storyItem in story.starListArray) {
-        if (storyItem.type == RSenStarType_StoryItemTypeImg) {
+        if (storyItem.type == RSenStarType_StarTypeImg) {
             RSStarImg *img = storyItem.img;
             if (img.imgURL) {
                 [tmp addObject:img.imgURL];

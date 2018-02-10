@@ -28,6 +28,44 @@
 
 @end
 
+#pragma mark - Enum RSenCgiErrorCode
+
+GPBEnumDescriptor *RSenCgiErrorCode_EnumDescriptor(void) {
+  static GPBEnumDescriptor *descriptor = NULL;
+  if (!descriptor) {
+    static const char *valueNames =
+        "KOk\000KErrArgs\000KErrSys\000";
+    static const int32_t values[] = {
+        RSenCgiErrorCode_KOk,
+        RSenCgiErrorCode_KErrArgs,
+        RSenCgiErrorCode_KErrSys,
+    };
+    static const char *extraTextFormatInfo = "\003\000\"A\000\001(\000\002\'\000";
+    GPBEnumDescriptor *worker =
+        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(RSenCgiErrorCode)
+                                       valueNames:valueNames
+                                           values:values
+                                            count:(uint32_t)(sizeof(values) / sizeof(int32_t))
+                                     enumVerifier:RSenCgiErrorCode_IsValidValue
+                              extraTextFormatInfo:extraTextFormatInfo];
+    if (!OSAtomicCompareAndSwapPtrBarrier(nil, worker, (void * volatile *)&descriptor)) {
+      [worker release];
+    }
+  }
+  return descriptor;
+}
+
+BOOL RSenCgiErrorCode_IsValidValue(int32_t value__) {
+  switch (value__) {
+    case RSenCgiErrorCode_KOk:
+    case RSenCgiErrorCode_KErrArgs:
+    case RSenCgiErrorCode_KErrSys:
+      return YES;
+    default:
+      return NO;
+  }
+}
+
 #pragma mark - Enum RSenSex
 
 GPBEnumDescriptor *RSenSex_EnumDescriptor(void) {
@@ -104,10 +142,10 @@ GPBEnumDescriptor *RSenSpaceType_EnumDescriptor(void) {
   static GPBEnumDescriptor *descriptor = NULL;
   if (!descriptor) {
     static const char *valueNames =
-        "StoryTypePrivate\000StoryTypePublic\000";
+        "SpaceTypeSingle\000SpaceTypeGroup\000";
     static const int32_t values[] = {
-        RSenSpaceType_StoryTypePrivate,
-        RSenSpaceType_StoryTypePublic,
+        RSenSpaceType_SpaceTypeSingle,
+        RSenSpaceType_SpaceTypeGroup,
     };
     GPBEnumDescriptor *worker =
         [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(RSenSpaceType)
@@ -124,8 +162,8 @@ GPBEnumDescriptor *RSenSpaceType_EnumDescriptor(void) {
 
 BOOL RSenSpaceType_IsValidValue(int32_t value__) {
   switch (value__) {
-    case RSenSpaceType_StoryTypePrivate:
-    case RSenSpaceType_StoryTypePublic:
+    case RSenSpaceType_SpaceTypeSingle:
+    case RSenSpaceType_SpaceTypeGroup:
       return YES;
     default:
       return NO;
@@ -138,10 +176,10 @@ GPBEnumDescriptor *RSenStarType_EnumDescriptor(void) {
   static GPBEnumDescriptor *descriptor = NULL;
   if (!descriptor) {
     static const char *valueNames =
-        "StoryItemTypeImg\000StoryItemTypeVideo\000";
+        "StarTypeImg\000StarTypeVideo\000";
     static const int32_t values[] = {
-        RSenStarType_StoryItemTypeImg,
-        RSenStarType_StoryItemTypeVideo,
+        RSenStarType_StarTypeImg,
+        RSenStarType_StarTypeVideo,
     };
     GPBEnumDescriptor *worker =
         [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(RSenStarType)
@@ -158,8 +196,8 @@ GPBEnumDescriptor *RSenStarType_EnumDescriptor(void) {
 
 BOOL RSenStarType_IsValidValue(int32_t value__) {
   switch (value__) {
-    case RSenStarType_StoryItemTypeImg:
-    case RSenStarType_StoryItemTypeVideo:
+    case RSenStarType_StarTypeImg:
+    case RSenStarType_StarTypeVideo:
       return YES;
     default:
       return NO;

@@ -14,5 +14,6 @@
     RSPKG *pkg = [RSPKG new];
     pkg.data_p = data;
     pkg.str = [@"kuncaitest" dataUsingEncoding:NSUTF8StringEncoding];
+    [super setData:[pkg data]];
 }
 @end

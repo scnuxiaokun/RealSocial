@@ -29,6 +29,27 @@ CF_EXTERN_C_BEGIN
 
 NS_ASSUME_NONNULL_BEGIN
 
+#pragma mark - Enum RSenCgiErrorCode
+
+typedef GPB_ENUM(RSenCgiErrorCode) {
+  /** Comm::kOK */
+  RSenCgiErrorCode_KOk = 0,
+
+  /** Comm::kErrArgs */
+  RSenCgiErrorCode_KErrArgs = -2,
+
+  /** Comm::kErrSys */
+  RSenCgiErrorCode_KErrSys = -3,
+};
+
+GPBEnumDescriptor *RSenCgiErrorCode_EnumDescriptor(void);
+
+/**
+ * Checks to see if the given value is defined by the enum or was not known at
+ * the time this source was generated.
+ **/
+BOOL RSenCgiErrorCode_IsValidValue(int32_t value);
+
 #pragma mark - Enum RSenSex
 
 typedef GPB_ENUM(RSenSex) {
@@ -63,8 +84,8 @@ BOOL RSenDeviceType_IsValidValue(int32_t value);
 #pragma mark - Enum RSenSpaceType
 
 typedef GPB_ENUM(RSenSpaceType) {
-  RSenSpaceType_StoryTypePrivate = 1,
-  RSenSpaceType_StoryTypePublic = 2,
+  RSenSpaceType_SpaceTypeSingle = 1,
+  RSenSpaceType_SpaceTypeGroup = 2,
 };
 
 GPBEnumDescriptor *RSenSpaceType_EnumDescriptor(void);
@@ -78,8 +99,8 @@ BOOL RSenSpaceType_IsValidValue(int32_t value);
 #pragma mark - Enum RSenStarType
 
 typedef GPB_ENUM(RSenStarType) {
-  RSenStarType_StoryItemTypeImg = 1,
-  RSenStarType_StoryItemTypeVideo = 2,
+  RSenStarType_StarTypeImg = 1,
+  RSenStarType_StarTypeVideo = 2,
 };
 
 GPBEnumDescriptor *RSenStarType_EnumDescriptor(void);

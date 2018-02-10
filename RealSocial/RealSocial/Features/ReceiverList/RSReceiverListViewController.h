@@ -6,11 +6,11 @@
 //  Copyright © 2018年 scnukuncai. All rights reserved.
 //
 
-#import "RSUIViewController.h"
+#import "RSSubUIViewController.h"
 @class RSReceiverListViewController;
 typedef void (^RSReceiverListCompletionHandler)(RSReceiverListViewController *ctr, NSArray *toUsers);
 
-@interface RSReceiverListViewController : RSUIViewController
+@interface RSReceiverListViewController : RSSubUIViewController
 @property (nonatomic, strong) NSArray *defaultToUsers;
 @property (nonatomic, copy) RSReceiverListCompletionHandler completionHandler;
 @end

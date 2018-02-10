@@ -11,11 +11,16 @@
 #import <MJRefresh/MJRefresh.h>
 #import <BlocksKit/BlocksKit.h>
 #import "RSChatViewController.h"
+#import "RSReceiverSpaceView.h"
+#import "RSReceiverHeaderView.h"
 
 @interface RSReceiverListViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) RSReceiverListViewModel *viewModel;
-@property (nonatomic, strong) UIBarButtonItem *finishButtonItem;
+@property (nonatomic, strong) UIButton *finishButtonItem;
+@property (nonatomic, strong) RSReceiverSpaceView *spaceView;
+@property (nonatomic, strong) RSReceiverHeaderView *headerView;
+
 @end
 
 @implementation RSReceiverListViewController
@@ -23,12 +28,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self.navigationItem setRightBarButtonItems:@[self.finishButtonItem] animated:YES];
-    [self.viewModel loadData];
-    [self.view addSubview:self.tableView];
-    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
+//    [self.navigationItem setRightBarButtonItems:@[self.finishButtonItem] animated:YES];
+    
+    [self.contentView addSubview:self.headerView];
+    [self.contentView addSubview:self.finishButtonItem];
+    [self.contentView addSubview:self.tableView];
+    
+    [self.headerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.top.equalTo(self.contentView);
+        make.height.mas_equalTo(160);
     }];
+    
+    [self.finishButtonItem mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.top.equalTo(self.headerView);
+        make.height.mas_equalTo(100);
+    }];
+    
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.equalTo(self.contentView);
+        make.top.equalTo(self.headerView.mas_bottom);
+    }];
+    [self.viewModel loadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,7 +74,7 @@
     return _viewModel;
 }
 
--(UIBarButtonItem *)finishButtonItem {
+-(UIButton *)finishButtonItem {
     if (_finishButtonItem) {
         return _finishButtonItem;
     }
@@ -69,8 +89,25 @@
 //        }
         [self.navigationController popViewControllerAnimated:YES];
     }];
-    _finishButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    _finishButtonItem = button;
+//    _finishButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
     return _finishButtonItem;
+}
+
+-(RSReceiverHeaderView *)headerView {
+    if (_headerView) {
+        return _headerView;
+    }
+    _headerView = [[RSReceiverHeaderView alloc] init];
+    return _headerView;
+}
+
+-(RSReceiverSpaceView *)spaceView {
+    if (_spaceView) {
+        return _spaceView;
+    }
+    _spaceView = [[RSReceiverSpaceView alloc] initWithFrame:CGRectMake(0, 0, self.contentView.width, 100)];
+    return _spaceView;
 }
 
 -(UITableView *)tableView {
@@ -80,6 +117,7 @@
     _tableView = [[UITableView alloc] init];
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    _tableView.tableHeaderView = self.spaceView;
     @weakify(self);
     _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         @strongify(self);

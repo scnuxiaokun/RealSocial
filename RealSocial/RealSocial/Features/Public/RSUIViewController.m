@@ -23,6 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
     // Do any additional setup after loading the view.
 //    _presentAnimation = [BouncePresentAnimation new];
 //    _dismissAnimation = [NormalDismissAnimation new];

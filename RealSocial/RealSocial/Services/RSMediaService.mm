@@ -80,7 +80,7 @@
 //        builder.recorder =  [QNFileRecorder fileRecorderWithFolder:@"保存目录" error:&error];
     }];
     //重用uploadManager。一般地，只需要创建一个uploadManager对象
-    NSString * token = @"hf-tV28lhKn3V7DQGssjEJubR6lTN9fn4bH47k_K:lOSt8aGqQgYaPwg8Qd_BJX9-maA=:eyJzY29wZSI6InNreXBsYW4iLCJkZWFkbGluZSI6MTUxODAzODkwMH0=";
+    NSString * token = @"hf-tV28lhKn3V7DQGssjEJubR6lTN9fn4bH47k_K:D9g1XpuN4kBMJuSnGt_OI2i5hmk=:eyJzY29wZSI6InNreXBsYW4iLCJkZWFkbGluZSI6MTUxODI2MjQ3NX0=";
     NSString * key = pictureId;
     
     QNUploadManager *uploadManage = [QNUploadManager  sharedInstanceWithConfiguration:config];

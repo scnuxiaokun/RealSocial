@@ -18,7 +18,7 @@
         self.titleString = firstItem.author;
         self.subTitleString = @"kkk sub title test";
         self.avatarUrl = @"http://www.ladysh.com/d/file/2016080410/2306_160803134243_1.jpg";
-        self.mediaUrl = (firstItem.type == RSenStarType_StoryItemTypeImg) ? firstItem.img.imgURL :firstItem.video.videoURL;
+        self.mediaUrl = (firstItem.type == RSenStarType_StarTypeImg) ? firstItem.img.imgURL :firstItem.video.videoURL;
     }
 }
 @end
@@ -61,7 +61,7 @@
     RSSpace *story1 = [RSSpace new];
     RSStar *storyItem = [RSStar new];
     storyItem.author = @"kkkk test";
-    storyItem.type = RSenStarType_StoryItemTypeImg;
+    storyItem.type = RSenStarType_StarTypeImg;
     RSStarImg *img = [RSStarImg new];
     img.imgURL = @"https://imgcache.cjmx.com/star/201511/20151121185842938.jpg";
     storyItem.img = img;

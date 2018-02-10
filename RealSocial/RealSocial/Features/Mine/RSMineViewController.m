@@ -33,6 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor whiteColor];
     [self.contentView addSubview:self.uidLabel];
     [self.contentView addSubview:self.sessionKeyLabel];
     [self.contentView addSubview:self.logoutButton];

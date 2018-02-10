@@ -32,8 +32,8 @@
     NSDictionary *dic = @{
                           @"GetAllContactReq" : @"contact/getall",
                           @"LoginReq" : @"base/login",
-                          @"CreateStoryReq" : @"story/create",
-                          @"GetAllStoryReq" : @"story/getall",
+                          @"CreateSpaceReq" : @"space/create",
+                          @"GetAllMySpaceReq" : @"myspace/getall",
                           };
     NSString *key = [classString substringWithRange:NSMakeRange(2, [classString length] - 2)];
     return [dic objectForKey:key];

@@ -116,12 +116,17 @@ typedef GPB_ENUM(RSBaseResp_FieldNumber) {
 #pragma mark - RSProfile
 
 typedef GPB_ENUM(RSProfile_FieldNumber) {
-  RSProfile_FieldNumber_NickName = 1,
-  RSProfile_FieldNumber_Sex = 2,
-  RSProfile_FieldNumber_HeadImgURL = 3,
+  RSProfile_FieldNumber_UserName = 1,
+  RSProfile_FieldNumber_NickName = 2,
+  RSProfile_FieldNumber_Sex = 3,
+  RSProfile_FieldNumber_HeadImgURL = 4,
 };
 
 @interface RSProfile : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *userName;
+/** Test to see if @c userName has been set. */
+@property(nonatomic, readwrite) BOOL hasUserName;
 
 @property(nonatomic, readwrite, copy, null_resettable) NSString *nickName;
 /** Test to see if @c nickName has been set. */
@@ -164,7 +169,8 @@ typedef GPB_ENUM(RSMsg_FieldNumber) {
 typedef GPB_ENUM(RSContact_FieldNumber) {
   RSContact_FieldNumber_UserName = 1,
   RSContact_FieldNumber_NickName = 2,
-  RSContact_FieldNumber_HeadImgURL = 3,
+  RSContact_FieldNumber_Sex = 3,
+  RSContact_FieldNumber_HeadImgURL = 4,
 };
 
 @interface RSContact : GPBMessage
@@ -177,6 +183,10 @@ typedef GPB_ENUM(RSContact_FieldNumber) {
 /** Test to see if @c nickName has been set. */
 @property(nonatomic, readwrite) BOOL hasNickName;
 
+/** enSex */
+@property(nonatomic, readwrite) uint32_t sex;
+
+@property(nonatomic, readwrite) BOOL hasSex;
 @property(nonatomic, readwrite, copy, null_resettable) NSString *headImgURL;
 /** Test to see if @c headImgURL has been set. */
 @property(nonatomic, readwrite) BOOL hasHeadImgURL;

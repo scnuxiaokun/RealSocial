@@ -257,6 +257,7 @@ typedef struct RSBaseResp__storage_ {
 
 @implementation RSProfile
 
+@dynamic hasUserName, userName;
 @dynamic hasNickName, nickName;
 @dynamic hasSex, sex;
 @dynamic hasHeadImgURL, headImgURL;
@@ -264,6 +265,7 @@ typedef struct RSBaseResp__storage_ {
 typedef struct RSProfile__storage_ {
   uint32_t _has_storage_[1];
   uint32_t sex;
+  NSString *userName;
   NSString *nickName;
   NSString *headImgURL;
 } RSProfile__storage_;
@@ -275,10 +277,19 @@ typedef struct RSProfile__storage_ {
   if (!descriptor) {
     static GPBMessageFieldDescription fields[] = {
       {
+        .name = "userName",
+        .dataTypeSpecific.className = NULL,
+        .number = RSProfile_FieldNumber_UserName,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(RSProfile__storage_, userName),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
         .name = "nickName",
         .dataTypeSpecific.className = NULL,
         .number = RSProfile_FieldNumber_NickName,
-        .hasIndex = 0,
+        .hasIndex = 1,
         .offset = (uint32_t)offsetof(RSProfile__storage_, nickName),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
@@ -287,7 +298,7 @@ typedef struct RSProfile__storage_ {
         .name = "sex",
         .dataTypeSpecific.className = NULL,
         .number = RSProfile_FieldNumber_Sex,
-        .hasIndex = 1,
+        .hasIndex = 2,
         .offset = (uint32_t)offsetof(RSProfile__storage_, sex),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeUInt32,
@@ -296,7 +307,7 @@ typedef struct RSProfile__storage_ {
         .name = "headImgURL",
         .dataTypeSpecific.className = NULL,
         .number = RSProfile_FieldNumber_HeadImgURL,
-        .hasIndex = 2,
+        .hasIndex = 3,
         .offset = (uint32_t)offsetof(RSProfile__storage_, headImgURL),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
@@ -312,7 +323,7 @@ typedef struct RSProfile__storage_ {
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
-        "\003\001H\000\002C\000\003H!!\000";
+        "\004\001H\000\002H\000\003C\000\004H!!\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     NSAssert(descriptor == nil, @"Startup recursed!");
@@ -399,10 +410,12 @@ typedef struct RSMsg__storage_ {
 
 @dynamic hasUserName, userName;
 @dynamic hasNickName, nickName;
+@dynamic hasSex, sex;
 @dynamic hasHeadImgURL, headImgURL;
 
 typedef struct RSContact__storage_ {
   uint32_t _has_storage_[1];
+  uint32_t sex;
   NSString *userName;
   NSString *nickName;
   NSString *headImgURL;
@@ -433,10 +446,19 @@ typedef struct RSContact__storage_ {
         .dataType = GPBDataTypeString,
       },
       {
+        .name = "sex",
+        .dataTypeSpecific.className = NULL,
+        .number = RSContact_FieldNumber_Sex,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(RSContact__storage_, sex),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
         .name = "headImgURL",
         .dataTypeSpecific.className = NULL,
         .number = RSContact_FieldNumber_HeadImgURL,
-        .hasIndex = 2,
+        .hasIndex = 3,
         .offset = (uint32_t)offsetof(RSContact__storage_, headImgURL),
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
@@ -452,7 +474,7 @@ typedef struct RSContact__storage_ {
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
-        "\003\001H\000\002H\000\003H!!\000";
+        "\004\001H\000\002H\000\003C\000\004H!!\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     NSAssert(descriptor == nil, @"Startup recursed!");

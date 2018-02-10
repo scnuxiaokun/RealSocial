@@ -207,6 +207,7 @@
 		ADAC4ED12016422E0020DA91 /* RSViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4ED02016422E0020DA91 /* RSViewModel.m */; };
 		ADAC4ED4201643460020DA91 /* RSReceiverListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4ED3201643460020DA91 /* RSReceiverListViewModel.m */; };
 		ADAC4ED920178B7F0020DA91 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADAC4ED820178B7D0020DA91 /* Localizable.strings */; };
+		ADB1F6FE202EFE6A00F3AE0A /* RSReceiverSpaceCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB1F6FD202EFE6A00F3AE0A /* RSReceiverSpaceCollectionViewCell.m */; };
 		ADCA8E8920274D5000C372B7 /* RSMessageModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = ADCA8E8620274D5000C372B7 /* RSMessageModel.mm */; };
 		ADDC6A5820130E0F00439D01 /* RSUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A5720130E0F00439D01 /* RSUIViewController.m */; };
 		ADDC6A5B20130E2D00439D01 /* RSUINavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A5A20130E2D00439D01 /* RSUINavigationController.m */; };
@@ -248,6 +249,9 @@
 		ADF1E09D202EECCA00B85B20 /* Spspacecgi.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF1E09A202EECC900B85B20 /* Spspacecgi.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		ADF1E0A1202EEDA400B85B20 /* spspacecgi.proto in Resources */ = {isa = PBXBuildFile; fileRef = ADF1E09F202EEDA300B85B20 /* spspacecgi.proto */; };
 		ADF1E0A2202EEDA400B85B20 /* spcgicommdef.proto in Resources */ = {isa = PBXBuildFile; fileRef = ADF1E0A0202EEDA300B85B20 /* spcgicommdef.proto */; };
+		ADF1E0A5202EF32400B85B20 /* RSReceiverSpaceView.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF1E0A4202EF32400B85B20 /* RSReceiverSpaceView.m */; };
+		ADF1E0A8202EF41E00B85B20 /* RSReceiverHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF1E0A7202EF41E00B85B20 /* RSReceiverHeaderView.m */; };
+		ADF1E0AB202EFABE00B85B20 /* RSReceiverTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF1E0AA202EFABE00B85B20 /* RSReceiverTitleView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -614,6 +618,8 @@
 		ADAC4ED02016422E0020DA91 /* RSViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSViewModel.m; sourceTree = "<group>"; };
 		ADAC4ED3201643460020DA91 /* RSReceiverListViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSReceiverListViewModel.m; sourceTree = "<group>"; };
 		ADAC4ED820178B7D0020DA91 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		ADB1F6FC202EFE6A00F3AE0A /* RSReceiverSpaceCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSReceiverSpaceCollectionViewCell.h; sourceTree = "<group>"; };
+		ADB1F6FD202EFE6A00F3AE0A /* RSReceiverSpaceCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSReceiverSpaceCollectionViewCell.m; sourceTree = "<group>"; };
 		ADCA8E8620274D5000C372B7 /* RSMessageModel.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RSMessageModel.mm; sourceTree = "<group>"; };
 		ADCA8E8720274D5000C372B7 /* RSMessageModel+WCTTableCoding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RSMessageModel+WCTTableCoding.h"; sourceTree = "<group>"; };
 		ADCA8E8820274D5000C372B7 /* RSMessageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSMessageModel.h; sourceTree = "<group>"; };
@@ -700,6 +706,12 @@
 		ADF1E09A202EECC900B85B20 /* Spspacecgi.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spspacecgi.pbobjc.m; sourceTree = "<group>"; };
 		ADF1E09F202EEDA300B85B20 /* spspacecgi.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = spspacecgi.proto; sourceTree = "<group>"; };
 		ADF1E0A0202EEDA300B85B20 /* spcgicommdef.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = spcgicommdef.proto; sourceTree = "<group>"; };
+		ADF1E0A3202EF32400B85B20 /* RSReceiverSpaceView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSReceiverSpaceView.h; sourceTree = "<group>"; };
+		ADF1E0A4202EF32400B85B20 /* RSReceiverSpaceView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSReceiverSpaceView.m; sourceTree = "<group>"; };
+		ADF1E0A6202EF41E00B85B20 /* RSReceiverHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSReceiverHeaderView.h; sourceTree = "<group>"; };
+		ADF1E0A7202EF41E00B85B20 /* RSReceiverHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSReceiverHeaderView.m; sourceTree = "<group>"; };
+		ADF1E0A9202EFABE00B85B20 /* RSReceiverTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSReceiverTitleView.h; sourceTree = "<group>"; };
+		ADF1E0AA202EFABE00B85B20 /* RSReceiverTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSReceiverTitleView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1588,6 +1600,17 @@
 			path = Picture;
 			sourceTree = "<group>";
 		};
+		ADB1F6FA202EFE2100F3AE0A /* RSReceiverSpaceView */ = {
+			isa = PBXGroup;
+			children = (
+				ADF1E0A3202EF32400B85B20 /* RSReceiverSpaceView.h */,
+				ADF1E0A4202EF32400B85B20 /* RSReceiverSpaceView.m */,
+				ADB1F6FC202EFE6A00F3AE0A /* RSReceiverSpaceCollectionViewCell.h */,
+				ADB1F6FD202EFE6A00F3AE0A /* RSReceiverSpaceCollectionViewCell.m */,
+			);
+			path = RSReceiverSpaceView;
+			sourceTree = "<group>";
+		};
 		ADDC6A5420130D9E00439D01 /* ChatList */ = {
 			isa = PBXGroup;
 			children = (
@@ -1602,10 +1625,15 @@
 		ADDC6A5520130D9E00439D01 /* ReceiverList */ = {
 			isa = PBXGroup;
 			children = (
+				ADB1F6FA202EFE2100F3AE0A /* RSReceiverSpaceView */,
 				ADAC4ECC20163E590020DA91 /* RSReceiverListViewController.h */,
 				ADAC4ECD20163E590020DA91 /* RSReceiverListViewController.m */,
 				ADF1E092202EEB3200B85B20 /* RSReceiverListViewModel.h */,
 				ADAC4ED3201643460020DA91 /* RSReceiverListViewModel.m */,
+				ADF1E0A6202EF41E00B85B20 /* RSReceiverHeaderView.h */,
+				ADF1E0A7202EF41E00B85B20 /* RSReceiverHeaderView.m */,
+				ADF1E0A9202EFABE00B85B20 /* RSReceiverTitleView.h */,
+				ADF1E0AA202EFABE00B85B20 /* RSReceiverTitleView.m */,
 			);
 			path = ReceiverList;
 			sourceTree = "<group>";
@@ -2043,6 +2071,7 @@
 				AD3E94AE200F99820019138F /* LOTShapeGroup.m in Sources */,
 				AD44C9DF202AE12D003D16AC /* UIColor+random.m in Sources */,
 				AD3E94C7200F99820019138F /* LOTSizeInterpolator.m in Sources */,
+				ADB1F6FE202EFE6A00F3AE0A /* RSReceiverSpaceCollectionViewCell.m in Sources */,
 				AD3E94AF200F99820019138F /* LOTShapePath.m in Sources */,
 				AD3E949B200F99820019138F /* LOTLayerContainer.m in Sources */,
 				AD2DA59F20235992006BA319 /* RSDBService.mm in Sources */,
@@ -2115,6 +2144,7 @@
 				AD3E94D0200F99820019138F /* LOTRepeaterRenderer.m in Sources */,
 				ADDC6A7420132AA500439D01 /* RSLaunchService.m in Sources */,
 				ADF1E08A202ECD7300B85B20 /* RSSpaceLineNavigationBar.m in Sources */,
+				ADF1E0A8202EF41E00B85B20 /* RSReceiverHeaderView.m in Sources */,
 				AD3E94A6200F99820019138F /* LOTAsset.m in Sources */,
 				ADE70E7520285873003B8921 /* Spbuiltintype.pbobjc.m in Sources */,
 				ADAC4E792014F1150020DA91 /* MGOpenGLRenderer.m in Sources */,
@@ -2134,6 +2164,7 @@
 				AD3E949D200F99820019138F /* LOTBezierData.m in Sources */,
 				ADAC4EA82014F18C0020DA91 /* MGFileManager.m in Sources */,
 				AD87FDA42018D14B006C8A96 /* UIImage+Util.m in Sources */,
+				ADF1E0AB202EFABE00B85B20 /* RSReceiverTitleView.m in Sources */,
 				AD44C9D1202AB4F6003D16AC /* Spcgicomm.pbobjc.m in Sources */,
 				AD3E956A200FA0070019138F /* RSModel.m in Sources */,
 				AD3E9567200F9E6B0019138F /* RSLoginInfoModel.m in Sources */,
@@ -2141,6 +2172,7 @@
 				ADDC6A6B20131AB600439D01 /* RSUtils.m in Sources */,
 				ADAC4ECE20163E590020DA91 /* RSReceiverListViewController.m in Sources */,
 				AD3E94E6200F99820019138F /* NSMutableArray+SafeKit.m in Sources */,
+				ADF1E0A5202EF32400B85B20 /* RSReceiverSpaceView.m in Sources */,
 				ADAC4EB22014F18C0020DA91 /* BaseModel.m in Sources */,
 				ADAC4ED4201643460020DA91 /* RSReceiverListViewModel.m in Sources */,
 				ADF1E07B202CA3A000B85B20 /* RSPKGResponse.m in Sources */,
