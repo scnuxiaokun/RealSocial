@@ -67,6 +67,10 @@
     storyItem.img = img;
     [story1.itemArray addObject:storyItem];
     [story1.itemArray addObject:[storyItem copy]];
+    [story1.itemArray addObject:[storyItem copy]];
+    [story1.itemArray addObject:[storyItem copy]];
+    [story1.itemArray addObject:[storyItem copy]];
+    [story1.itemArray addObject:[storyItem copy]];
     [resp.listArray addObject:story1];
     [resp.listArray addObject:[story1 copy]];
     [resp.listArray addObject:[story1 copy]];

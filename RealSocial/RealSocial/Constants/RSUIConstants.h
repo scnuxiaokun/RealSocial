@@ -22,6 +22,6 @@ static CGFloat kNaviBarBottom = 64.0;
 static CGFloat kTabBarHeight = 49.0;
 static CGFloat kStatusBarHeight = 20.0;
 
-#define kNaviBarHeightAndStatusBarHeight kNaviBarHeight+[[UIApplication sharedApplication] statusBarFrame].size.height
+#define kNaviBarHeightAndStatusBarHeight (kNaviBarHeight+[[UIApplication sharedApplication] statusBarFrame].size.height)
 
 

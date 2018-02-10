@@ -8,7 +8,7 @@
 
 #import "RSStoryDetailViewController.h"
 #import <UIImageView+WebCache.h>
-
+#import "RSPhotoBrower.h"
 @interface RSStoryDetailViewController () <UIScrollViewDelegate>
 
 //photo brower
@@ -44,6 +44,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    /*
     self.imageCount = [self.viewModel.photoUrlArray count];
     [self.contentView addSubview:self.mediaScrollView];
 //    self.mediaScrollView.frame = self.contentView.bounds;
@@ -71,6 +72,14 @@
     self.preImageView = nil;
     self.currentImageViewIndex = 0;
     self.currentImageIndex = 0;
+    
+    */
+//    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    RSPhotoBrower *view1 = [[RSPhotoBrower alloc] initWithFrame:self.contentView.bounds];
+    view1.backgroundColor = [UIColor randomColor];
+    view1.dataSources = self.viewModel.photoUrlArray;
+    [self.contentView addSubview:view1];
 }
 
 - (void)didReceiveMemoryWarning {

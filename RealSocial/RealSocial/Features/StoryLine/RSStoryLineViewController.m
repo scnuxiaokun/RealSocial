@@ -19,7 +19,11 @@
 //#import "MGMarkSetViewController.h"
 #import "RSStoryCreateViewController.h"
 #import "RSStoryDetailViewController.h"
+#import "RSStoryLineNavigationBar.h"
+#import <UIImageView+WebCache.h>
 @interface RSStoryLineViewController ()<UITableViewDelegate, UITableViewDataSource>
+@property (nonatomic, strong) RSStoryLineNavigationBar *bar;
+@property (nonatomic, strong) UIImageView *avatarImageView;
 @property (nonatomic, strong) UIButton *userCenterButton;
 @property (nonatomic, strong) UIButton *createButton;
 @property (nonatomic, strong) UIButton *commentButton;
@@ -34,16 +38,25 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
-    UIBarButtonItem *leftButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.userCenterButton];
-    UIBarButtonItem *commentButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.commentButton];
-    UIBarButtonItem *searchButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.searchButton];
-    [self.navigationItem setLeftBarButtonItems:@[leftButtonItem] animated:YES];
-    [self.navigationItem setRightBarButtonItems:@[commentButtonItem, searchButtonItem] animated:YES];    
-    
+    [self.view addSubview:self.bar];
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.createButton];
+    
+    
+//    UIBarButtonItem *leftButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.userCenterButton];
+//    UIBarButtonItem *commentButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.commentButton];
+//    UIBarButtonItem *searchButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.searchButton];
+//    [self.navigationItem setLeftBarButtonItems:@[leftButtonItem] animated:YES];
+//    [self.navigationItem setRightBarButtonItems:@[commentButtonItem, searchButtonItem] animated:YES];
+    [self.bar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(68);
+        make.left.right.equalTo(self.view);
+        make.top.equalTo(self.view).with.offset([[UIApplication sharedApplication] statusBarFrame].size.height);
+    }];
+    
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
+        make.left.right.bottom.equalTo(self.view);
+        make.top.equalTo(self.bar.mas_bottom);
     }];
     [self.createButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view);
@@ -90,6 +103,48 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+-(RSStoryLineNavigationBar *)bar {
+    if (_bar) {
+        return _bar;
+    }
+    _bar = [[RSStoryLineNavigationBar alloc] init];
+    [_bar addSubview:self.avatarImageView];
+    [_bar addSubview:self.commentButton];
+    [_bar addSubview:self.searchButton];
+    [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.height.mas_equalTo(self.avatarImageView.height);
+        make.centerY.equalTo(_bar);
+        make.left.equalTo(_bar).with.offset(12);
+    }];
+    [self.searchButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(_bar).with.offset(-12);
+        make.centerY.equalTo(_bar);
+    }];
+    [self.commentButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.searchButton.mas_left).with.offset(-12);
+        make.centerY.equalTo(_bar);
+    }];
+    return _bar;
+}
+
+-(UIImageView *)avatarImageView {
+    if (_avatarImageView) {
+        return _avatarImageView;
+    }
+    _avatarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 48, 48)];
+    _avatarImageView.layer.cornerRadius = _avatarImageView.height/2;
+    _avatarImageView.layer.masksToBounds = YES;
+    [_avatarImageView sd_setImageWithURL:[NSURL URLWithString:@"http://www.ladysh.com/d/file/2016080410/2306_160803134243_1.jpg"]];
+    @weakify(self);
+    [_avatarImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
+        @RSStrongify(self);
+        RSMineViewController *mineCtr = [[RSMineViewController alloc] init];
+        [self.navigationController pushViewController:mineCtr animated:YES];
+    }]];
+    return _avatarImageView;
+}
+
 -(UIButton *)userCenterButton {
     if (_userCenterButton) {
         return _userCenterButton;
@@ -139,7 +194,7 @@
     }_commentButton = [[UIButton alloc] init];
     [_commentButton setBackgroundColor:[UIColor grayColor]];
     [_commentButton setTitle:@"搜索" forState:UIControlStateNormal];
-    return _createButton;
+    return _commentButton;
 }
 
 -(RSStoryLineViewModel *)viewModel {

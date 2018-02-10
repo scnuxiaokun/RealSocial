@@ -24,7 +24,7 @@
         make.left.right.bottom.equalTo(self.view);
         make.top.equalTo(self.view).with.offset(kNaviBarHeightAndStatusBarHeight);
     }];
-    self.contentView.frame = CGRectMake(kNaviBarHeightAndStatusBarHeight, 0, self.view.width, self.view.height);
+    self.contentView.frame = CGRectMake(kNaviBarHeightAndStatusBarHeight, 0, self.view.width, self.view.height-kNaviBarHeightAndStatusBarHeight);
     
 //    UIButton *button = [[UIButton alloc] init];
 //    [self.contentView addSubview:button];
@@ -45,26 +45,18 @@
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     //导航透明
-    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationItem setHidesBackButton:YES];
+//    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+//    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+//    [self.navigationController.navigationItem setHidesBackButton:YES];
     
     //隐藏返回
-    [self.navigationController.navigationItem setHidesBackButton:YES];
-    [self.navigationItem setHidesBackButton:YES];
-    [self.navigationController.navigationBar.backItem setHidesBackButton:YES];
+//    [self.navigationController.navigationItem setHidesBackButton:YES];
+//    [self.navigationItem setHidesBackButton:YES];
+//    [self.navigationController.navigationBar.backItem setHidesBackButton:YES];
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-//    [self.navigationController.navigationItem setHidesBackButton:NO];
-//    self.navigationController.navigationBar.translucent = YES;
-//    [self.navigationController.navigationBar setShadowImage:nil];
-//    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-//
-//    [self.navigationController.navigationItem setHidesBackButton:NO];
-//    [self.navigationItem setHidesBackButton:NO];
-//    [self.navigationController.navigationBar.backItem setHidesBackButton:NO];
 }
 
 - (void)didReceiveMemoryWarning {

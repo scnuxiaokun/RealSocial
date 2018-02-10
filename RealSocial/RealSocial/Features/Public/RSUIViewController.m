@@ -11,7 +11,7 @@
 #import "BouncePresentAnimation.h"
 #import "NormalDismissAnimation.h"
 #import "RSSwipeDownInteractiveTransition.h"
-@interface RSUIViewController ()
+@interface RSUIViewController () <UINavigationControllerDelegate>
 //@property (nonatomic, strong) BouncePresentAnimation *presentAnimation;
 //@property (nonatomic, strong) NormalDismissAnimation *dismissAnimation;
 @property(nonatomic,strong)UIPercentDrivenInteractiveTransition *interactiveTransition;
@@ -36,6 +36,8 @@
     if ([self.navigationController.viewControllers count] > 1) {
         [self prepareGestureRecognizerInView:self.view];
     }
+    // 设置导航控制器的代理为self
+    self.navigationController.delegate = self;
 }
 
 - (void)prepareGestureRecognizerInView:(UIView*)view {
@@ -98,10 +100,11 @@
     // 必须在viewDidAppear或者viewWillAppear中写，因为每次都需要将delegate设为当前界面
     self.navigationController.delegate=self;
     
-    [self.navigationController.navigationItem setHidesBackButton:NO];
-    self.navigationController.navigationBar.translucent = YES;
-    [self.navigationController.navigationBar setShadowImage:nil];
-    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+    //显示导航栏
+//    [self.navigationController.navigationItem setHidesBackButton:NO];
+//    self.navigationController.navigationBar.translucent = YES;
+//    [self.navigationController.navigationBar setShadowImage:nil];
+//    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
     
 }
 
@@ -216,39 +219,12 @@
     return 1 - self.interactiveTransition.percentComplete;
 }
 
-- (void)handleGesture:(UIPanGestureRecognizer *)gestureRecognizer {
-    CGPoint translation = [gestureRecognizer translationInView:gestureRecognizer.view.superview];
-    switch (gestureRecognizer.state) {
-        case UIGestureRecognizerStateBegan:
-            // 1. Mark the interacting flag. Used when supplying it in delegate.
-            self.interacting = YES;
-            self.interactiveTransition=[UIPercentDrivenInteractiveTransition new];
-            [self.navigationController popViewControllerAnimated:YES];
-            break;
-        case UIGestureRecognizerStateChanged: {
-            // 2. Calculate the percentage of guesture
-            CGFloat fraction = translation.y / 400.0;
-            //Limit it between 0 and 1
-            fraction = fminf(fmaxf(fraction, 0.0), 1.0);
-            self.shouldComplete = (fraction > 0.5);
-            NSLog(@"updateInteractiveTransition:%f",fraction);
-            [self.interactiveTransition updateInteractiveTransition:fraction];
-            break;
-        }
-        case UIGestureRecognizerStateEnded:
-        case UIGestureRecognizerStateCancelled: {
-            // 3. Gesture over. Check if the transition should happen or not
-            self.interacting = NO;
-            if (!self.shouldComplete || gestureRecognizer.state == UIGestureRecognizerStateCancelled) {
-                [self.interactiveTransition cancelInteractiveTransition];
-            } else {
-                [self.interactiveTransition finishInteractiveTransition];
-            }
-            self.interactiveTransition = nil;
-            break;
-        }
-        default:
-            break;
-    }
+#pragma mark - UINavigationControllerDelegate
+// 将要显示控制器
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    // 判断要显示的控制器是否是自己
+//    BOOL isShowHomePage = [viewController isKindOfClass:[self class]];
+    
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 @end
