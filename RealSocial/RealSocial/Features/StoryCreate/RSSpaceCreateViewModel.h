@@ -10,5 +10,5 @@
 
 @interface RSSpaceCreateViewModel : RSViewModel
 
--(RACSignal *)create:(UIImage *)picture toUsers:(NSArray *)users;
+-(RACSignal *)create:(UIImage *)picture toUsers:(NSArray *)users toSpaces:(NSArray *)spaces;
 @end

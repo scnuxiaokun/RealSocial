@@ -15,7 +15,7 @@
 #import "RSLoginService.h"
 
 @implementation RSSpaceCreateViewModel
--(RACSignal *)create:(UIImage *)picture toUsers:(NSArray *)users {
+-(RACSignal *)create:(UIImage *)picture toUsers:(NSArray *)users toSpaces:(NSArray *)spaces {
     @weakify(self);
     return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
         @strongify(self);
@@ -27,16 +27,33 @@
             [RSMediaService uploadPictureCDN:fileData pictureId:pictureId complete:^(BOOL isOK, NSError *error) {
                 @RSStrongify(self);
                 if (isOK) {
-                    RSRequest *request = [self buildRequestWithPictureId:pictureId toUsers:users];
-                    [[RSNetWorkService sendRequest:request] subscribeNext:^(RSResponse *response) {
-                        RSCreateSpaceResp *resp = [RSCreateSpaceResp parseFromData:response.data error:nil];
-                        [self sendUpdateData:resp];
-                        NSLog(@"创建Space成功,svrId:%llu",resp.spaceId.svrId);
-                    } error:^(NSError * _Nullable error) {
-                        NSLog(@"创建Space失败:%@",error);
-                    } completed:^{
-                        
-                    }];
+                    for (NSString *user in users) {
+                        //创建多个单人Space
+                        RSRequest *request = [self buildRequestWithPictureId:pictureId toUsers:@[user]];
+                        [[RSNetWorkService sendRequest:request] subscribeNext:^(RSResponse *response) {
+                            RSCreateSpaceResp *resp = [RSCreateSpaceResp parseFromData:response.data error:nil];
+                            [self sendUpdateData:resp];
+                            NSLog(@"创建Space成功,svrId:%llu",resp.spaceId.svrId);
+                        } error:^(NSError * _Nullable error) {
+                            NSLog(@"创建Space失败:%@",error);
+                        } completed:^{
+                            
+                        }];
+                    }
+                    for (NSNumber *spaceIds in spaces) {
+                        //往多个space添加star
+                        RSRequest *request = [self buildRequestWithPictureId:pictureId toSpaces:@[spaceIds]];
+                        [[RSNetWorkService sendRequest:request] subscribeNext:^(RSResponse *response) {
+                            RSAddStarResp *resp = [RSAddStarResp parseFromData:response.data error:nil];
+                            [self sendUpdateData:resp];
+//                            NSLog(@"添加start成功,svrId:%llu",resp.spaceId.svrId);
+                        } error:^(NSError * _Nullable error) {
+                            NSLog(@"添加start失败:%@",error);
+                        } completed:^{
+                            
+                        }];
+                    }
+                    
                 } else {
                 }
             }];
@@ -53,17 +70,12 @@
 }
 
 -(RSRequest *)buildRequestWithPictureId:(NSString *)pictureId toUsers:(NSArray *)users {
-    
     RSCreateSpaceReq *req = [RSCreateSpaceReq new];
     RSSpace *space = [RSSpace new];
     space.type = RSenSpaceType_SpaceTypeSingle;
     RSIdPair *idpair = [RSIdPair new];
     idpair.clientId = pictureId;
     space.spaceId = idpair;
-//    RSStar *toItem = [RSStar new];
-//    toItem.type = RSenStarType_StoryItemTypeImg;
-//    toItem.toUserNameArray = [[NSMutableArray alloc] initWithArray:users];
-//    story.to = toItem;
     RSStar *star = [RSStar new];
     star.type = RSenStarType_StarTypeImg;
     star.starId = idpair;
@@ -76,10 +88,25 @@
     space.authorArray = [[NSMutableArray alloc] initWithArray:users];
     req.space = space;
     RSRequest *request = [RSRequestFactory requestWithReq:req moke:nil];
-//    RSRequest *request = [[RSRequest alloc] init];
-//    request.cgiName = @"story/create";
-//    request.data = [req data];
-//    request.mokeResponseData = [self moke];
+    return request;
+}
+
+-(RSRequest *)buildRequestWithPictureId:(NSString *)pictureId toSpaces:(NSArray *)spaces {
+    RSAddStarReq *req = [RSAddStarReq new];
+    RSIdPair *idpair = [RSIdPair new];
+    idpair.svrId = [(NSNumber *)[spaces firstObject] longLongValue];
+    idpair.clientId = pictureId;
+    req.spaceId = idpair;
+    RSStar *star = [RSStar new];
+    star.type = RSenStarType_StarTypeImg;
+    star.starId = idpair;
+    star.author = [RSLoginService shareInstance].loginInfo.uid;
+    RSStarImg *img = [RSStarImg new];
+    img.imgURL = [RSMediaService urlWithPictureId:pictureId];
+    img.thumbURL = [RSMediaService urlWithPictureId:pictureId];
+    star.img = img;
+    [req.starListArray addObject:star];
+    RSRequest *request = [RSRequestFactory requestWithReq:req moke:nil];
     return request;
 }
 

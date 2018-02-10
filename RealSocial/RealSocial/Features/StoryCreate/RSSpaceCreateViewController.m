@@ -20,6 +20,7 @@
 @property (nonatomic, strong) UIButton *toUserButtom;
 @property (nonatomic, strong) UILabel *toUserLabel;
 @property (nonatomic, strong) NSArray *toUsersArray;
+@property (nonatomic, strong) NSArray *toSpaceIdsArray;
 @end
 
 @implementation RSSpaceCreateViewController
@@ -93,7 +94,7 @@
         @RSStrongify(self);
         [self.HUD showAnimated:YES];
         @weakify(self);
-        [[[self.viewModel create:self.pictureImageView.image toUsers:self.toUsersArray] deliverOnMainThread] subscribeNext:^(id  _Nullable x) {
+        [[[self.viewModel create:self.pictureImageView.image toUsers:self.toUsersArray toSpaces:self.toSpaceIdsArray] deliverOnMainThread] subscribeNext:^(id  _Nullable x) {
             
         } error:^(NSError * _Nullable error) {
             @RSStrongify(self);
@@ -121,10 +122,13 @@
         RSReceiverListViewController *ctr = [[RSReceiverListViewController alloc] init];
         ctr.defaultToUsers = self.toUsersArray;
         @weakify(self);
-        [ctr setCompletionHandler:^(RSReceiverListViewController *ctr, NSArray *toUsers) {
+        [ctr setCompletionHandler:^(RSReceiverListViewController *ctr, NSArray *toUsers, NSArray *spaceIds) {
             @RSStrongify(self);
-            self.toUserLabel.text = [toUsers componentsJoinedByString:@";"];
-            self.toUsersArray = toUsers;
+            if ([spaceIds count] > 0) {
+                self.toSpaceIdsArray = spaceIds;
+            }
+//            self.toUserLabel.text = [toUsers componentsJoinedByString:@";"];
+//            self.toUsersArray = toUsers;
         }];
         [self.navigationController pushViewController:ctr animated:YES];
     }];

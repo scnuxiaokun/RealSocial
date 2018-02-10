@@ -13,6 +13,7 @@
 #import "RSChatViewController.h"
 #import "RSReceiverSpaceView.h"
 #import "RSReceiverHeaderView.h"
+#import "RSReceiverSpaceViewModel.h"
 
 @interface RSReceiverListViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -20,7 +21,6 @@
 @property (nonatomic, strong) UIButton *finishButtonItem;
 @property (nonatomic, strong) RSReceiverSpaceView *spaceView;
 @property (nonatomic, strong) RSReceiverHeaderView *headerView;
-
 @end
 
 @implementation RSReceiverListViewController
@@ -48,7 +48,12 @@
         make.left.right.bottom.equalTo(self.contentView);
         make.top.equalTo(self.headerView.mas_bottom);
     }];
+    [self loadData];
+}
+
+-(void)loadData {
     [self.viewModel loadData];
+    [self.spaceView.viewModel loadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -73,7 +78,6 @@
     [_viewModel setDefaultToUsers:self.defaultToUsers];
     return _viewModel;
 }
-
 -(UIButton *)finishButtonItem {
     if (_finishButtonItem) {
         return _finishButtonItem;
@@ -84,9 +88,9 @@
     @weakify(self);
     [button addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
         @RSStrongify(self);
-//        if (self.completionHandler) {
-            self.completionHandler(self, [self.viewModel getSelectedUsers]);
-//        }
+        if (self.completionHandler) {
+            self.completionHandler(self, [self.viewModel getSelectedUsers], [self.spaceView.viewModel getSelectedSpaces]);
+        }
         [self.navigationController popViewControllerAnimated:YES];
     }];
     _finishButtonItem = button;
@@ -106,7 +110,7 @@
     if (_spaceView) {
         return _spaceView;
     }
-    _spaceView = [[RSReceiverSpaceView alloc] initWithFrame:CGRectMake(0, 0, self.contentView.width, 100)];
+    _spaceView = [[RSReceiverSpaceView alloc] initWithFrame:CGRectMake(0, 0, self.contentView.width, 138+40)];
     return _spaceView;
 }
 
@@ -121,7 +125,7 @@
     @weakify(self);
     _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         @strongify(self);
-        [self.viewModel loadData];
+        [self loadData];
     }];
     [[RACObserve(self.viewModel, listData) deliverOnMainThread] subscribeNext:^(id  _Nullable x) {
         @RSStrongify(self);

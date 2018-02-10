@@ -8,7 +8,7 @@
 
 #import "RSSubUIViewController.h"
 @class RSReceiverListViewController;
-typedef void (^RSReceiverListCompletionHandler)(RSReceiverListViewController *ctr, NSArray *toUsers);
+typedef void (^RSReceiverListCompletionHandler)(RSReceiverListViewController *ctr, NSArray *toUsers, NSArray *spaceIds);
 
 @interface RSReceiverListViewController : RSSubUIViewController
 @property (nonatomic, strong) NSArray *defaultToUsers;

@@ -34,6 +34,8 @@
                           @"LoginReq" : @"base/login",
                           @"CreateSpaceReq" : @"space/create",
                           @"GetAllMySpaceReq" : @"myspace/getall",
+                          @"AddStarReq" : @"space/star/add",
+                          @"GetAllSpaceReq" : @"space/getall",
                           };
     NSString *key = [classString substringWithRange:NSMakeRange(2, [classString length] - 2)];
     return [dic objectForKey:key];

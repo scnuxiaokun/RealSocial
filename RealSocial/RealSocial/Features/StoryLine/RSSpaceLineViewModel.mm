@@ -9,7 +9,7 @@
 #import "RSSpaceLineViewModel.h"
 #import "RSNetWorkService.h"
 #import "RSLoginService.h"
-
+#import "RSRequestFactory.h"
 @implementation RSSpaceLineItemViewModel
 -(void)updateWithStory:(RSSpace *)space {
     _space = space;
@@ -25,10 +25,7 @@
 @implementation RSSpaceLineViewModel
 -(void)loadData {
     RSGetAllSpaceReq *req = [RSGetAllSpaceReq new];
-    RSRequest *request = [[RSRequest alloc] init];
-    request.data = [req data];
-    request.cgiName = RSGetAllStoryReqCgiName;
-    request.mokeResponseData = [self moke];
+    RSRequest *request = [RSRequestFactory requestWithReq:req moke:[self moke]];
     RACSignal *signal = [RSNetWorkService sendRequest:request];
     @weakify(self);
     [signal subscribeNext:^(RSResponse *response) {
@@ -56,7 +53,8 @@
     }];
 }
 
--(NSData *)moke {
+-(RSGetAllSpaceResp *)moke {
+    return nil;
     RSGetAllSpaceResp *resp = [RSGetAllSpaceResp new];
     RSSpace *story1 = [RSSpace new];
     RSStar *storyItem = [RSStar new];
@@ -89,6 +87,6 @@
     [resp.listArray addObject:[story1 copy]];
     [resp.listArray addObject:[story1 copy]];
     [resp.listArray addObject:[story1 copy]];
-    return [resp data];
+    return resp;
 }
 @end

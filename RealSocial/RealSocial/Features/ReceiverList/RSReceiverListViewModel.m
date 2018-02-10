@@ -30,7 +30,9 @@
     
     RSRequest *request = [RSRequestFactory requestWithReq:req moke:[self mokeResponse]];
     RACSignal *signal = [RSNetWorkService sendRequest:request];
+    @weakify(self);
     [signal subscribeNext:^(RSResponse *response) {
+        @RSStrongify(self);
         RSGetAllContactResp *resp = [RSGetAllContactResp parseFromData:response.data error:nil];
 //        FriendList *list = [FriendList parseFromData:response.data error:nil];
 //        [self.liveData setData:list];
@@ -52,8 +54,10 @@
             self.listData = tmp;
         });
     } error:^(NSError * _Nullable error) {
+        @RSStrongify(self);
         [self sendErrorSignal:error];
     } completed:^{
+        @RSStrongify(self);
         [self sendCompleteSignal];
     }];
 }
