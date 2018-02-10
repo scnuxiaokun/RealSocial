@@ -1,0 +1,30 @@
+
+syntax="proto2";
+
+package spcgi;
+option objc_class_prefix="RS";
+
+enum enSex
+{
+    SEX_UNKNOW = 0;
+    SEX_MALE = 1;
+    SEX_FEMALE = 2;
+}
+
+enum enDeviceType
+{
+    DEVICETYPE_IPHONE = 1;
+    DEVICETYPE_ANDRIOD = 2;
+}
+
+enum enSpaceType
+{
+    STORY_TYPE_PRIVATE = 1;
+    STORY_TYPE_PUBLIC = 2;
+}
+
+enum enStarType
+{
+    STORY_ITEM_TYPE_IMG = 1;
+    STORY_ITEM_TYPE_VIDEO = 2;
+}

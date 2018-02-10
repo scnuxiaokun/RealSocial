@@ -24,19 +24,6 @@ message BaseResp
     optional string ErrMsg = 2;
 }
 
-enum enSex
-{
-    SEX_UNKNOW = 0;
-    SEX_MALE = 1;
-    SEX_FEMALE = 2;
-}
-
-enum enDeviceType
-{
-    DEVICETYPE_IPHONE = 1;
-    DEVICETYPE_ANDRIOD = 2;
-}
-
 message Profile
 {
     optional string NickName = 1;
@@ -57,3 +44,4 @@ message Contact
     optional string NickName = 2;
     optional string HeadImgUrl = 3;
 }
+

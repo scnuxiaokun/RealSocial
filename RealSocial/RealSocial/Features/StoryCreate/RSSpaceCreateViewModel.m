@@ -9,7 +9,8 @@
 #import "RSSpaceCreateViewModel.h"
 #import "RSMediaService.h"
 #import "RSNetWorkService.h"
-#import "Spstorycgi.pbobjc.h"
+#import "Spspacecgi.pbobjc.h"
+#import "Spcgicommdef.pbobjc.h"
 
 @implementation RSSpaceCreateViewModel
 -(RACSignal *)create:(UIImage *)picture toUsers:(NSArray *)users {
@@ -44,21 +45,26 @@
 }
 
 -(RSRequest *)buildRequestWithPictureId:(NSString *)pictureId toUsers:(NSArray *)users {
-    RSCreateStoryReq *req = [RSCreateStoryReq new];
-    RSStory *story = [RSStory new];
-    story.type = RSenStoryType_StoryTypePrivate;
-    story.clientId = pictureId;
-    RSStoryToItem *toItem = [RSStoryToItem new];
-    toItem.type = RSenStoryToType_StoryToTypeUser;
-    toItem.toUserNameArray = [[NSMutableArray alloc] initWithArray:users];
-    story.to = toItem;
-    RSStoryItem *item = [RSStoryItem new];
-    item.type = RSenStoryItemType_StoryItemTypeImg;
-    RSStoryImg *img = [RSStoryImg new];
-    img.imgRl = [RSMediaService urlWithPictureId:pictureId];
-    item.img = img;
-    [story.itemArray addObject:item];
-    req.story = story;
+    
+    RSCreateSpaceReq *req = [RSCreateSpaceReq new];
+    RSSpace *space = [RSSpace new];
+    space.type = RSenSpaceType_StoryTypePrivate;
+    RSIdPair *idpair = [RSIdPair new];
+    idpair.clientId = pictureId;
+    space.spaceId = idpair;
+//    RSStar *toItem = [RSStar new];
+//    toItem.type = RSenStarType_StoryItemTypeImg;
+//    toItem.toUserNameArray = [[NSMutableArray alloc] initWithArray:users];
+//    story.to = toItem;
+    RSStar *star = [RSStar new];
+    star.type = RSenStarType_StoryItemTypeImg;
+    RSStarImg *img = [RSStarImg new];
+    img.imgURL = [RSMediaService urlWithPictureId:pictureId];
+    star.img = img;
+    [space.starListArray addObject:star];
+    
+    space.authorArray = [[NSMutableArray alloc] initWithArray:users];
+    req.space = space;
     
     RSRequest *request = [[RSRequest alloc] init];
     request.cgiName = @"story/create";
@@ -68,8 +74,9 @@
 }
 
 -(NSData *)moke {
-    RSCreateStoryResp *resp = [RSCreateStoryResp new];
-    resp.svrId =123;
+    RSCreateSpaceReq *resp = [RSCreateSpaceReq new];
+    RSIdPair *idpair = [RSIdPair new];
+    idpair.svrId = 123;
     return [resp data];
 }
 @end

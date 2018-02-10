@@ -10,7 +10,7 @@
 #import "DBCameraViewController.h"
 #import "DBCameraContainerViewController.h"
 #import "RSSpaceCreateViewModel.h"
-#import "RSContactListViewController.h"
+#import "RSReceiverListViewController.h"
 
 @interface RSSpaceCreateViewController () <DBCameraViewControllerDelegate>
 @property (nonatomic, strong) UIImageView *pictureImageView;
@@ -117,10 +117,10 @@
     @weakify(self);
     [_toUserButtom addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
         @RSStrongify(self);
-        RSContactListViewController *ctr = [[RSContactListViewController alloc] init];
+        RSReceiverListViewController *ctr = [[RSReceiverListViewController alloc] init];
         ctr.defaultToUsers = self.toUsersArray;
         @weakify(self);
-        [ctr setCompletionHandler:^(RSContactListViewController *ctr, NSArray *toUsers) {
+        [ctr setCompletionHandler:^(RSReceiverListViewController *ctr, NSArray *toUsers) {
             @RSStrongify(self);
             self.toUserLabel.text = [toUsers componentsJoinedByString:@";"];
             self.toUsersArray = toUsers;

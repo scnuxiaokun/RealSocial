@@ -9,7 +9,8 @@
 #import "RSRequestFactory.h"
 #import "Spcgicomm.pbobjc.h"
 #import "Spbasecgi.pbobjc.h"
-#import "Spstorycgi.pbobjc.h"
+#import "Spspacecgi.pbobjc.h"
+#import "Spcgicommdef.pbobjc.h"
 #import "RSPKGRequest.h"
 
 @implementation RSRequestFactory

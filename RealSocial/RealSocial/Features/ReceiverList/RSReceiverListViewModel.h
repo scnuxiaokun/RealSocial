@@ -7,11 +7,11 @@
 //
 
 #import "RSViewModel.h"
-@interface RSContactListItemViewModel : RSViewModel
+@interface RSReceiverListItemViewModel : RSViewModel
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, assign) BOOL isSelected;
 @end
-@interface RSContactListViewModel : RSViewModel
+@interface RSReceiverListViewModel : RSViewModel
 @property (nonatomic, strong) NSArray *listData;
 @property (nonatomic, strong) NSDictionary *selectedData;
 -(void)setDefaultToUsers:(NSArray *)users;

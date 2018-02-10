@@ -7,15 +7,16 @@
 //
 
 #import "RSViewModel.h"
-#import "Spstorycgi.pbobjc.h"
+#import "Spspacecgi.pbobjc.h"
+#import "Spcgicommdef.pbobjc.h"
 
 @interface RSSpaceLineItemViewModel : RSViewModel
 @property (nonatomic, strong) NSString *titleString;
 @property (nonatomic, strong) NSString *subTitleString;
 @property (nonatomic, strong) NSString *avatarUrl;
 @property (nonatomic, strong) NSString *mediaUrl;
-@property (nonatomic, strong) RSStory *story;
--(void)updateWithStory:(RSStory *)story;
+@property (nonatomic, strong) RSSpace *space;
+-(void)updateWithStory:(RSSpace *)space;
 @end
 @interface RSSpaceLineViewModel : RSViewModel
 @property (nonatomic, strong) NSArray *listData;

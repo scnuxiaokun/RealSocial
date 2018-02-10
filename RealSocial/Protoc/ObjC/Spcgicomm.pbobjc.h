@@ -29,37 +29,6 @@ CF_EXTERN_C_BEGIN
 
 NS_ASSUME_NONNULL_BEGIN
 
-#pragma mark - Enum RSenSex
-
-typedef GPB_ENUM(RSenSex) {
-  RSenSex_SexUnknow = 0,
-  RSenSex_SexMale = 1,
-  RSenSex_SexFemale = 2,
-};
-
-GPBEnumDescriptor *RSenSex_EnumDescriptor(void);
-
-/**
- * Checks to see if the given value is defined by the enum or was not known at
- * the time this source was generated.
- **/
-BOOL RSenSex_IsValidValue(int32_t value);
-
-#pragma mark - Enum RSenDeviceType
-
-typedef GPB_ENUM(RSenDeviceType) {
-  RSenDeviceType_DevicetypeIphone = 1,
-  RSenDeviceType_DevicetypeAndriod = 2,
-};
-
-GPBEnumDescriptor *RSenDeviceType_EnumDescriptor(void);
-
-/**
- * Checks to see if the given value is defined by the enum or was not known at
- * the time this source was generated.
- **/
-BOOL RSenDeviceType_IsValidValue(int32_t value);
-
 #pragma mark - RSSpcgicommRoot
 
 /**

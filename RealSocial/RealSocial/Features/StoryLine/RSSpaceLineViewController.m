@@ -259,7 +259,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     RSSpaceLineItemViewModel *itemViewModel = [self.viewModel.listData objectOrNilAtIndex:indexPath.row];
     RSSpaceDetailViewController *ctr = [[RSSpaceDetailViewController alloc] init];
-    [ctr.viewModel updateWithStory:itemViewModel.story];
+    [ctr.viewModel updateWithStory:itemViewModel.space];
     [self.navigationController pushViewController:ctr animated:YES];
 }
 

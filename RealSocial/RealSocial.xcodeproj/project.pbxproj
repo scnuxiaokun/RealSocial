@@ -145,8 +145,6 @@
 		AD3E956A200FA0070019138F /* RSModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3E9569200FA0070019138F /* RSModel.m */; };
 		AD3E956C2010C47D0019138F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD3E956B2010C47D0019138F /* Images.xcassets */; };
 		AD3E956F2011B8310019138F /* RSUITabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3E956E2011B8310019138F /* RSUITabBarController.m */; };
-		AD44C9C9202AB15B003D16AC /* spstorycgi.proto in Resources */ = {isa = PBXBuildFile; fileRef = AD44C9C8202AB15A003D16AC /* spstorycgi.proto */; };
-		AD44C9CC202AB476003D16AC /* Spstorycgi.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = AD44C9CA202AB475003D16AC /* Spstorycgi.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AD44C9CE202AB4F0003D16AC /* spcgicomm.proto in Resources */ = {isa = PBXBuildFile; fileRef = AD44C9CD202AB4EF003D16AC /* spcgicomm.proto */; };
 		AD44C9D1202AB4F6003D16AC /* Spcgicomm.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = AD44C9D0202AB4F6003D16AC /* Spcgicomm.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AD44C9D6202AB6C3003D16AC /* RSSpaceLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD44C9D5202AB6C3003D16AC /* RSSpaceLineViewController.m */; };
@@ -205,9 +203,9 @@
 		ADAC4EC52014FB090020DA91 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAC4EC42014FB090020DA91 /* CoreVideo.framework */; };
 		ADAC4EC62014FBC30020DA91 /* MGBaseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAC4EC72014FBC30020DA91 /* MGBaseKit.framework */; };
 		ADAC4ECB201638760020DA91 /* RSImageUploadController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4ECA201638760020DA91 /* RSImageUploadController.m */; };
-		ADAC4ECE20163E590020DA91 /* RSContactListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4ECD20163E590020DA91 /* RSContactListViewController.m */; };
+		ADAC4ECE20163E590020DA91 /* RSReceiverListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4ECD20163E590020DA91 /* RSReceiverListViewController.m */; };
 		ADAC4ED12016422E0020DA91 /* RSViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4ED02016422E0020DA91 /* RSViewModel.m */; };
-		ADAC4ED4201643460020DA91 /* RSContactListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4ED3201643460020DA91 /* RSContactListViewModel.m */; };
+		ADAC4ED4201643460020DA91 /* RSReceiverListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC4ED3201643460020DA91 /* RSReceiverListViewModel.m */; };
 		ADAC4ED920178B7F0020DA91 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADAC4ED820178B7D0020DA91 /* Localizable.strings */; };
 		ADCA8E8920274D5000C372B7 /* RSMessageModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = ADCA8E8620274D5000C372B7 /* RSMessageModel.mm */; };
 		ADDC6A5820130E0F00439D01 /* RSUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A5720130E0F00439D01 /* RSUIViewController.m */; };
@@ -224,7 +222,6 @@
 		ADDC6A8A201337DD00439D01 /* FPKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A88201337DD00439D01 /* FPKeychainUtils.m */; };
 		ADDC6A9720134A1600439D01 /* RSResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A9620134A1600439D01 /* RSResponse.m */; };
 		ADDC6A9B2013508C00439D01 /* RSMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A9A2013508C00439D01 /* RSMineViewController.m */; };
-		ADDC6AA1201352A800439D01 /* LoginInfo.proto in Resources */ = {isa = PBXBuildFile; fileRef = ADDC6A9D201352A800439D01 /* LoginInfo.proto */; };
 		ADE70E66202851CE003B8921 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE70E0A202846A6003B8921 /* libz.tbd */; };
 		ADE70E67202851D4003B8921 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE70E0820284692003B8921 /* libresolv.tbd */; };
 		ADE70E68202851DA003B8921 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE70DF82028461B003B8921 /* libsqlite3.tbd */; };
@@ -247,6 +244,10 @@
 		ADF1E081202DE3BD00B85B20 /* RSSpaceDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF1E080202DE3BD00B85B20 /* RSSpaceDetailViewModel.m */; };
 		ADF1E084202EC06E00B85B20 /* RSPhotoBrower.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF1E083202EC06E00B85B20 /* RSPhotoBrower.m */; };
 		ADF1E08A202ECD7300B85B20 /* RSSpaceLineNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF1E089202ECD7300B85B20 /* RSSpaceLineNavigationBar.m */; };
+		ADF1E09C202EECCA00B85B20 /* Spcgicommdef.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF1E096202EECC800B85B20 /* Spcgicommdef.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		ADF1E09D202EECCA00B85B20 /* Spspacecgi.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF1E09A202EECC900B85B20 /* Spspacecgi.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		ADF1E0A1202EEDA400B85B20 /* spspacecgi.proto in Resources */ = {isa = PBXBuildFile; fileRef = ADF1E09F202EEDA300B85B20 /* spspacecgi.proto */; };
+		ADF1E0A2202EEDA400B85B20 /* spcgicommdef.proto in Resources */ = {isa = PBXBuildFile; fileRef = ADF1E0A0202EEDA300B85B20 /* spcgicommdef.proto */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -502,9 +503,6 @@
 		AD3E956B2010C47D0019138F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		AD3E956D2011B8310019138F /* RSUITabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSUITabBarController.h; sourceTree = "<group>"; };
 		AD3E956E2011B8310019138F /* RSUITabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSUITabBarController.m; sourceTree = "<group>"; };
-		AD44C9C8202AB15A003D16AC /* spstorycgi.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = spstorycgi.proto; sourceTree = "<group>"; };
-		AD44C9CA202AB475003D16AC /* Spstorycgi.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spstorycgi.pbobjc.m; sourceTree = "<group>"; };
-		AD44C9CB202AB475003D16AC /* Spstorycgi.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spstorycgi.pbobjc.h; sourceTree = "<group>"; };
 		AD44C9CD202AB4EF003D16AC /* spcgicomm.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = spcgicomm.proto; sourceTree = "<group>"; };
 		AD44C9CF202AB4F6003D16AC /* Spcgicomm.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spcgicomm.pbobjc.h; sourceTree = "<group>"; };
 		AD44C9D0202AB4F6003D16AC /* Spcgicomm.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spcgicomm.pbobjc.m; sourceTree = "<group>"; };
@@ -610,12 +608,11 @@
 		ADAC4EC72014FBC30020DA91 /* MGBaseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MGBaseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADAC4EC9201638760020DA91 /* RSImageUploadController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSImageUploadController.h; sourceTree = "<group>"; };
 		ADAC4ECA201638760020DA91 /* RSImageUploadController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSImageUploadController.m; sourceTree = "<group>"; };
-		ADAC4ECC20163E590020DA91 /* RSContactListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSContactListViewController.h; sourceTree = "<group>"; };
-		ADAC4ECD20163E590020DA91 /* RSContactListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSContactListViewController.m; sourceTree = "<group>"; };
+		ADAC4ECC20163E590020DA91 /* RSReceiverListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSReceiverListViewController.h; sourceTree = "<group>"; };
+		ADAC4ECD20163E590020DA91 /* RSReceiverListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSReceiverListViewController.m; sourceTree = "<group>"; };
 		ADAC4ECF2016422E0020DA91 /* RSViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSViewModel.h; sourceTree = "<group>"; };
 		ADAC4ED02016422E0020DA91 /* RSViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSViewModel.m; sourceTree = "<group>"; };
-		ADAC4ED2201643460020DA91 /* RSContactListViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSContactListViewModel.h; sourceTree = "<group>"; };
-		ADAC4ED3201643460020DA91 /* RSContactListViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSContactListViewModel.m; sourceTree = "<group>"; };
+		ADAC4ED3201643460020DA91 /* RSReceiverListViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSReceiverListViewModel.m; sourceTree = "<group>"; };
 		ADAC4ED820178B7D0020DA91 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		ADCA8E8620274D5000C372B7 /* RSMessageModel.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RSMessageModel.mm; sourceTree = "<group>"; };
 		ADCA8E8720274D5000C372B7 /* RSMessageModel+WCTTableCoding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RSMessageModel+WCTTableCoding.h"; sourceTree = "<group>"; };
@@ -650,7 +647,6 @@
 		ADDC6A9620134A1600439D01 /* RSResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSResponse.m; sourceTree = "<group>"; };
 		ADDC6A992013508C00439D01 /* RSMineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSMineViewController.h; sourceTree = "<group>"; };
 		ADDC6A9A2013508C00439D01 /* RSMineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSMineViewController.m; sourceTree = "<group>"; };
-		ADDC6A9D201352A800439D01 /* LoginInfo.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LoginInfo.proto; sourceTree = "<group>"; };
 		ADE70DF82028461B003B8921 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		ADE70DFA2028463A003B8921 /* AlicloudMobileAnalitics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlicloudMobileAnalitics.framework; path = RealSocial/Vendors/AliSDK/AlicloudMobileAnalitics.framework; sourceTree = "<group>"; };
 		ADE70DFC20284659003B8921 /* CrashReporter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CrashReporter.framework; path = RealSocial/Vendors/AliSDK/CrashReporter.framework; sourceTree = "<group>"; };
@@ -697,6 +693,13 @@
 		ADF1E089202ECD7300B85B20 /* RSSpaceLineNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSSpaceLineNavigationBar.m; sourceTree = "<group>"; };
 		ADF1E08B202EDC2500B85B20 /* RSSpaceDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSpaceDetailViewController.h; sourceTree = "<group>"; };
 		ADF1E08C202EDDEF00B85B20 /* RSSpaceCreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSpaceCreateViewController.h; sourceTree = "<group>"; };
+		ADF1E092202EEB3200B85B20 /* RSReceiverListViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSReceiverListViewModel.h; sourceTree = "<group>"; };
+		ADF1E096202EECC800B85B20 /* Spcgicommdef.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spcgicommdef.pbobjc.m; sourceTree = "<group>"; };
+		ADF1E098202EECC800B85B20 /* Spcgicommdef.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spcgicommdef.pbobjc.h; sourceTree = "<group>"; };
+		ADF1E099202EECC900B85B20 /* Spspacecgi.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spspacecgi.pbobjc.h; sourceTree = "<group>"; };
+		ADF1E09A202EECC900B85B20 /* Spspacecgi.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spspacecgi.pbobjc.m; sourceTree = "<group>"; };
+		ADF1E09F202EEDA300B85B20 /* spspacecgi.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = spspacecgi.proto; sourceTree = "<group>"; };
+		ADF1E0A0202EEDA300B85B20 /* spcgicommdef.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = spcgicommdef.proto; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1045,7 +1048,7 @@
 				ADDC6A7820132FAD00439D01 /* Launch */,
 				ADDC6A5F201310BE00439D01 /* Login */,
 				ADDC6A5420130D9E00439D01 /* ChatList */,
-				ADDC6A5520130D9E00439D01 /* ContactList */,
+				ADDC6A5520130D9E00439D01 /* ReceiverList */,
 				AD3E9172200F995F0019138F /* Public */,
 			);
 			path = Features;
@@ -1596,15 +1599,15 @@
 			path = ChatList;
 			sourceTree = "<group>";
 		};
-		ADDC6A5520130D9E00439D01 /* ContactList */ = {
+		ADDC6A5520130D9E00439D01 /* ReceiverList */ = {
 			isa = PBXGroup;
 			children = (
-				ADAC4ECC20163E590020DA91 /* RSContactListViewController.h */,
-				ADAC4ECD20163E590020DA91 /* RSContactListViewController.m */,
-				ADAC4ED2201643460020DA91 /* RSContactListViewModel.h */,
-				ADAC4ED3201643460020DA91 /* RSContactListViewModel.m */,
+				ADAC4ECC20163E590020DA91 /* RSReceiverListViewController.h */,
+				ADAC4ECD20163E590020DA91 /* RSReceiverListViewController.m */,
+				ADF1E092202EEB3200B85B20 /* RSReceiverListViewModel.h */,
+				ADAC4ED3201643460020DA91 /* RSReceiverListViewModel.m */,
 			);
-			path = ContactList;
+			path = ReceiverList;
 			sourceTree = "<group>";
 		};
 		ADDC6A5F201310BE00439D01 /* Login */ = {
@@ -1638,11 +1641,11 @@
 		ADDC6A9C201352A800439D01 /* Protoc */ = {
 			isa = PBXGroup;
 			children = (
+				ADF1E0A0202EEDA300B85B20 /* spcgicommdef.proto */,
+				ADF1E09F202EEDA300B85B20 /* spspacecgi.proto */,
 				ADF1E057202C303900B85B20 /* spbasecgi.proto */,
 				AD44C9CD202AB4EF003D16AC /* spcgicomm.proto */,
-				AD44C9C8202AB15A003D16AC /* spstorycgi.proto */,
 				AD2F57502020BD5400E0CF83 /* comm */,
-				ADDC6A9D201352A800439D01 /* LoginInfo.proto */,
 				ADDC6A9E201352A800439D01 /* ObjC */,
 			);
 			path = Protoc;
@@ -1651,12 +1654,14 @@
 		ADDC6A9E201352A800439D01 /* ObjC */ = {
 			isa = PBXGroup;
 			children = (
+				ADF1E098202EECC800B85B20 /* Spcgicommdef.pbobjc.h */,
+				ADF1E096202EECC800B85B20 /* Spcgicommdef.pbobjc.m */,
+				ADF1E099202EECC900B85B20 /* Spspacecgi.pbobjc.h */,
+				ADF1E09A202EECC900B85B20 /* Spspacecgi.pbobjc.m */,
 				ADF1E059202C309500B85B20 /* Spbasecgi.pbobjc.h */,
 				ADF1E05A202C309500B85B20 /* Spbasecgi.pbobjc.m */,
 				AD44C9CF202AB4F6003D16AC /* Spcgicomm.pbobjc.h */,
 				AD44C9D0202AB4F6003D16AC /* Spcgicomm.pbobjc.m */,
-				AD44C9CB202AB475003D16AC /* Spstorycgi.pbobjc.h */,
-				AD44C9CA202AB475003D16AC /* Spstorycgi.pbobjc.m */,
 				AD7F6EC020286B0F00D49966 /* LoginInfo.pbobjc.h */,
 				AD7F6EBF20286B0F00D49966 /* LoginInfo.pbobjc.m */,
 				AD2F575D2020C26800E0CF83 /* comm */,
@@ -1821,7 +1826,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADDC6AA1201352A800439D01 /* LoginInfo.proto in Resources */,
 				AD3E911F200F97160019138F /* LaunchScreen.storyboard in Resources */,
 				ADAC4EAB2014F18C0020DA91 /* BaseCell.xib in Resources */,
 				AD2DA57620234DD5006BA319 /* card_front.png in Resources */,
@@ -1861,12 +1865,12 @@
 				AD2DA58420234DD5006BA319 /* pw.png in Resources */,
 				AD2DA58820234DD5006BA319 /* selected.png in Resources */,
 				ADAC4EB82014F18C0020DA91 /* MGFaceListViewController.storyboard in Resources */,
+				ADF1E0A1202EEDA400B85B20 /* spspacecgi.proto in Resources */,
 				AD2DA58220234DD5006BA319 /* side-0.png in Resources */,
 				AD2DA58B20234DD5006BA319 /* unSelected.png in Resources */,
 				AD2DA58320234DD5006BA319 /* 1280_720.png in Resources */,
 				AD68317D20178E290085DDCD /* Face3DVertex.glsl in Resources */,
 				ADAC4ED920178B7F0020DA91 /* Localizable.strings in Resources */,
-				AD44C9C9202AB15B003D16AC /* spstorycgi.proto in Resources */,
 				AD68317E20178E290085DDCD /* FacePointColor.glsl in Resources */,
 				AD2DA58E20234DD5006BA319 /* 81-1.png in Resources */,
 				AD2DA57A20234DD5006BA319 /* faceLogo.png in Resources */,
@@ -1883,6 +1887,7 @@
 				AD2DA59220234DD5006BA319 /* 640_480@3x.png in Resources */,
 				AD2DA56220234DD4006BA319 /* Face3DVertex.glsl in Resources */,
 				AD2DA58520234DD5006BA319 /* 960_540.png in Resources */,
+				ADF1E0A2202EEDA400B85B20 /* spcgicommdef.proto in Resources */,
 				AD2DA56F20234DD4006BA319 /* shader-1.png in Resources */,
 				AD2DA57720234DD5006BA319 /* 960_540@3x.png in Resources */,
 				AD2DA56E20234DD4006BA319 /* area-0.png in Resources */,
@@ -2006,7 +2011,6 @@
 				AD3E94CC200F99820019138F /* LOTTrimPathNode.m in Sources */,
 				AD3E949E200F99820019138F /* LOTKeyframe.m in Sources */,
 				AD3E94C3200F99820019138F /* LOTColorInterpolator.m in Sources */,
-				AD44C9CC202AB476003D16AC /* Spstorycgi.pbobjc.m in Sources */,
 				AD3E9564200F9D6B0019138F /* WXApiService.m in Sources */,
 				AD2F5744202094D400E0CF83 /* RSLiveData.m in Sources */,
 				ADAC4EAA2014F18C0020DA91 /* BaseCell.m in Sources */,
@@ -2017,6 +2021,7 @@
 				AD3E956F2011B8310019138F /* RSUITabBarController.m in Sources */,
 				ADCA8E8920274D5000C372B7 /* RSMessageModel.mm in Sources */,
 				AD44C9DC202ADF24003D16AC /* RSSpaceLineViewTableViewCell.m in Sources */,
+				ADF1E09D202EECCA00B85B20 /* Spspacecgi.pbobjc.m in Sources */,
 				ADAC4EB52014F18C0020DA91 /* MGFaceModelArray.m in Sources */,
 				ADDC6A9720134A1600439D01 /* RSResponse.m in Sources */,
 				AD3E94BB200F99820019138F /* LOTCacheProvider.m in Sources */,
@@ -2088,6 +2093,7 @@
 				AD3E94E8200F99820019138F /* SafeKitLog.m in Sources */,
 				ADF1E063202C5F0900B85B20 /* NormalDismissAnimation.m in Sources */,
 				AD3E94B3200F99820019138F /* LOTShapeStroke.m in Sources */,
+				ADF1E09C202EECCA00B85B20 /* Spcgicommdef.pbobjc.m in Sources */,
 				AD78584A2026C0D700B8261F /* RSPictureListItemViewModel.m in Sources */,
 				ADDC6A89201337DD00439D01 /* FPSecretKeyUtils.m in Sources */,
 				AD7F6EC920286B1B00D49966 /* RSChatViewController.m in Sources */,
@@ -2133,10 +2139,10 @@
 				AD3E9567200F9E6B0019138F /* RSLoginInfoModel.m in Sources */,
 				AD3E949C200F99820019138F /* LOTMaskContainer.m in Sources */,
 				ADDC6A6B20131AB600439D01 /* RSUtils.m in Sources */,
-				ADAC4ECE20163E590020DA91 /* RSContactListViewController.m in Sources */,
+				ADAC4ECE20163E590020DA91 /* RSReceiverListViewController.m in Sources */,
 				AD3E94E6200F99820019138F /* NSMutableArray+SafeKit.m in Sources */,
 				ADAC4EB22014F18C0020DA91 /* BaseModel.m in Sources */,
-				ADAC4ED4201643460020DA91 /* RSContactListViewModel.m in Sources */,
+				ADAC4ED4201643460020DA91 /* RSReceiverListViewModel.m in Sources */,
 				ADF1E07B202CA3A000B85B20 /* RSPKGResponse.m in Sources */,
 				AD3E94AC200F99820019138F /* LOTShapeFill.m in Sources */,
 				AD3E949F200F99820019138F /* CGGeometry+LOTAdditions.m in Sources */,

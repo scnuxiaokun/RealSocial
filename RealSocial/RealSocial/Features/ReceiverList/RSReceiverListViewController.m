@@ -6,19 +6,19 @@
 //  Copyright © 2018年 scnukuncai. All rights reserved.
 //
 
-#import "RSContactListViewController.h"
-#import "RSContactListViewModel.h"
+#import "RSReceiverListViewController.h"
+#import "RSReceiverListViewModel.h"
 #import <MJRefresh/MJRefresh.h>
 #import <BlocksKit/BlocksKit.h>
 #import "RSChatViewController.h"
 
-@interface RSContactListViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface RSReceiverListViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) RSContactListViewModel *viewModel;
+@property (nonatomic, strong) RSReceiverListViewModel *viewModel;
 @property (nonatomic, strong) UIBarButtonItem *finishButtonItem;
 @end
 
-@implementation RSContactListViewController
+@implementation RSReceiverListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -45,11 +45,11 @@
     // Pass the selected object to the new view controller.
 }
 */
--(RSContactListViewModel *)viewModel {
+-(RSReceiverListViewModel *)viewModel {
     if (_viewModel) {
         return _viewModel;
     }
-    _viewModel = [[RSContactListViewModel alloc] init];
+    _viewModel = [[RSReceiverListViewModel alloc] init];
     [_viewModel setDefaultToUsers:self.defaultToUsers];
     return _viewModel;
 }
@@ -112,7 +112,7 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:indentifier];
     }
-    RSContactListItemViewModel *itemViewModel = [self.viewModel.listData objectOrNilAtIndex:indexPath.row];
+    RSReceiverListItemViewModel *itemViewModel = [self.viewModel.listData objectOrNilAtIndex:indexPath.row];
     cell.textLabel.text = itemViewModel.name;
     if (itemViewModel.isSelected) {
         cell.backgroundColor = [UIColor blueColor];
@@ -123,7 +123,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    RSContactListItemViewModel *itemViewModel = [self.viewModel.listData objectOrNilAtIndex:indexPath.row];
+    RSReceiverListItemViewModel *itemViewModel = [self.viewModel.listData objectOrNilAtIndex:indexPath.row];
     itemViewModel.isSelected = YES;
     [tableView reloadRowAtIndexPath:indexPath withRowAnimation:UITableViewRowAnimationNone];
 //    RSChatViewController *ctr = [[RSChatViewController alloc] init];

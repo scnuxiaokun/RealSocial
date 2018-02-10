@@ -6,14 +6,14 @@
 //  Copyright © 2018年 scnukuncai. All rights reserved.
 //
 
-#import "RSContactListViewModel.h"
+#import "RSReceiverListViewModel.h"
 //#import "LoginInfo.pbobjc.h"
 #import "Spbasecgi.pbobjc.h"
 #import "Spcgicomm.pbobjc.h"
 #import "RSRequestFactory.h"
-@implementation RSContactListItemViewModel
+@implementation RSReceiverListItemViewModel
 @end
-@implementation RSContactListViewModel
+@implementation RSReceiverListViewModel
 
 -(instancetype)init {
     self = [super init];
@@ -37,7 +37,7 @@
         [self sendUpdateData:resp];
         NSMutableArray *tmp = [[NSMutableArray alloc] init];
         for (RSContact *contact in resp.contactArray) {
-            RSContactListItemViewModel *item = [RSContactListItemViewModel new];
+            RSReceiverListItemViewModel *item = [RSReceiverListItemViewModel new];
             item.name = contact.userName;
             if ([self.selectedData objectForKey:contact.userName]) {
                 item.isSelected = YES;
@@ -80,7 +80,7 @@
 
 -(NSArray *)getSelectedUsers {
     NSMutableArray *tmp = [[NSMutableArray alloc] init];
-    for (RSContactListItemViewModel *item in self.listData) {
+    for (RSReceiverListItemViewModel *item in self.listData) {
         if (item.isSelected) {
             [tmp addObject:item.name];
         }
