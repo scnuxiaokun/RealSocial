@@ -7,8 +7,8 @@
 //
 
 #import "RSViewModel.h"
+#import "RSSpaceCreateModel.h"
 
 @interface RSSpaceCreateViewModel : RSViewModel
-
--(RACSignal *)create:(UIImage *)picture toUsers:(NSArray *)users toSpaces:(NSArray *)spaces;
+-(RACSignal *)create:(UIImage *)picture toUsers:(NSArray *)users toSpaces:(NSArray *)spaces type:(RSSpaceCreateModelType)type;
 @end

@@ -16,7 +16,7 @@
 @property (nonatomic, strong) NSString *avatarUrl;
 @property (nonatomic, strong) NSString *mediaUrl;
 @property (nonatomic, strong) RSSpace *space;
--(void)updateWithStory:(RSSpace *)space;
+-(void)updateWithSpace:(RSSpace *)space;
 @end
 @interface RSSpaceLineViewModel : RSViewModel
 @property (nonatomic, strong) NSArray *listData;

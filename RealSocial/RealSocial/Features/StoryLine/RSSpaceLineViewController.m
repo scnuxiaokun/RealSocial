@@ -169,7 +169,7 @@
     [_createButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.mas_equalTo(80);
     }];
-    [_createButton setBackgroundColor:[UIColor whiteColor]];
+    [_createButton setBackgroundColor:[UIColor randomColor]];
     _createButton.layer.cornerRadius = 80/2;
 //    [_createButton setTitle:@"+" forState:UIControlStateNormal];
 //    _createButton.titleLabel.font = [UIFont boldSystemFontOfSize:36];

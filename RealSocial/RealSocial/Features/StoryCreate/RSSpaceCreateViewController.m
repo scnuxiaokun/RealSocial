@@ -11,6 +11,7 @@
 #import "DBCameraContainerViewController.h"
 #import "RSSpaceCreateViewModel.h"
 #import "RSReceiverListViewController.h"
+#import "RSReceiverListWithSpaceViewController.h"
 
 @interface RSSpaceCreateViewController () <DBCameraViewControllerDelegate>
 @property (nonatomic, strong) UIImageView *pictureImageView;
@@ -18,9 +19,11 @@
 @property (nonatomic, strong) RSSpaceCreateViewModel *viewModel;
 @property (nonatomic, strong) MBProgressHUD *HUD;
 @property (nonatomic, strong) UIButton *toUserButtom;
+@property (nonatomic, strong) UIButton *chooseAuthorButtom;
 @property (nonatomic, strong) UILabel *toUserLabel;
 @property (nonatomic, strong) NSArray *toUsersArray;
 @property (nonatomic, strong) NSArray *toSpaceIdsArray;
+@property (nonatomic, assign) RSSpaceCreateModelType createType;
 @end
 
 @implementation RSSpaceCreateViewController
@@ -48,6 +51,11 @@
     [self.toUserLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView);
         make.top.equalTo(self.toUserButtom.mas_bottom).with.offset(20);
+    }];
+    [self.contentView addSubview:self.chooseAuthorButtom];
+    [self.chooseAuthorButtom mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.toUserLabel.mas_bottom).with.offset(20);
+        make.centerX.equalTo(self.contentView);
     }];
     [self openCameraWithoutSegue];
 }
@@ -94,7 +102,7 @@
         @RSStrongify(self);
         [self.HUD showAnimated:YES];
         @weakify(self);
-        [[[self.viewModel create:self.pictureImageView.image toUsers:self.toUsersArray toSpaces:self.toSpaceIdsArray] deliverOnMainThread] subscribeNext:^(id  _Nullable x) {
+        [[[self.viewModel create:self.pictureImageView.image toUsers:self.toUsersArray toSpaces:self.toSpaceIdsArray type:self.createType] deliverOnMainThread] subscribeNext:^(id  _Nullable x) {
             
         } error:^(NSError * _Nullable error) {
             @RSStrongify(self);
@@ -114,25 +122,47 @@
         return _toUserButtom;
     }
     _toUserButtom = [[UIButton alloc] init];
-    [_toUserButtom setTitle:@"选择发送对象" forState:UIControlStateNormal];
+    [_toUserButtom setTitle:@"添加到Space或创建单人Space" forState:UIControlStateNormal];
     [_toUserButtom setBackgroundColor:[UIColor randomColor]];
     @weakify(self);
     [_toUserButtom addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
         @RSStrongify(self);
-        RSReceiverListViewController *ctr = [[RSReceiverListViewController alloc] init];
+        RSReceiverListWithSpaceViewController *ctr = [[RSReceiverListWithSpaceViewController alloc] init];
         ctr.defaultToUsers = self.toUsersArray;
         @weakify(self);
-        [ctr setCompletionHandler:^(RSReceiverListViewController *ctr, NSArray *toUsers, NSArray *spaceIds) {
-            @RSStrongify(self);
-            if ([spaceIds count] > 0) {
-                self.toSpaceIdsArray = spaceIds;
-            }
-//            self.toUserLabel.text = [toUsers componentsJoinedByString:@";"];
-//            self.toUsersArray = toUsers;
+        [ctr setSpaceCompletionHandler:^(RSReceiverListWithSpaceViewController *ctr, NSArray *toUsers, NSArray *spaceIds) {
+            self.toSpaceIdsArray = spaceIds;
+            self.toUserLabel.text = [toUsers componentsJoinedByString:@";"];
+            self.toUsersArray = toUsers;
+            self.createType = RSSpaceCreateModelTypeGruop;
         }];
         [self.navigationController pushViewController:ctr animated:YES];
     }];
     return _toUserButtom;
+}
+
+-(UIButton *)chooseAuthorButtom {
+    if (_chooseAuthorButtom) {
+        return _chooseAuthorButtom;
+    }
+    _chooseAuthorButtom = [[UIButton alloc] init];
+    [_chooseAuthorButtom setTitle:@"创建多人Space" forState:UIControlStateNormal];
+    [_chooseAuthorButtom setBackgroundColor:[UIColor randomColor]];
+    @weakify(self);
+    [_chooseAuthorButtom addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
+        @RSStrongify(self);
+        RSReceiverListViewController *ctr = [[RSReceiverListViewController alloc] init];
+        ctr.defaultToUsers = self.toUsersArray;
+        @weakify(self);
+        [ctr setCompletionHandler:^(RSReceiverListViewController *ctr, NSArray *toUsers) {
+            @RSStrongify(self);
+            self.createType = RSSpaceCreateModelTypeGruop;
+            self.toUserLabel.text = [toUsers componentsJoinedByString:@";"];
+            self.toUsersArray = toUsers;
+        }];
+        [self.navigationController pushViewController:ctr animated:YES];
+    }];
+    return _chooseAuthorButtom;
 }
 
 -(UILabel *)toUserLabel {

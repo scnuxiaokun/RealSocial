@@ -31,6 +31,7 @@
 //    [[UINavigationBar appearance] setShadowImage:[UIImage new]];
 //    [[UINavigationBar appearance] setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
 //    [[UINavigationBar appearance] setTranslucent:YES];
+    
     @weakify(self);
     [[RSLaunchService shareInstance] setStartBlock:^{
         @RSStrongify(self);

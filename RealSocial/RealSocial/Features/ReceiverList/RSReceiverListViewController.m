@@ -7,20 +7,10 @@
 //
 
 #import "RSReceiverListViewController.h"
-#import "RSReceiverListViewModel.h"
 #import <MJRefresh/MJRefresh.h>
 #import <BlocksKit/BlocksKit.h>
-#import "RSChatViewController.h"
-#import "RSReceiverSpaceView.h"
-#import "RSReceiverHeaderView.h"
-#import "RSReceiverSpaceViewModel.h"
 
-@interface RSReceiverListViewController ()<UITableViewDelegate, UITableViewDataSource>
-@property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) RSReceiverListViewModel *viewModel;
-@property (nonatomic, strong) UIButton *finishButtonItem;
-@property (nonatomic, strong) RSReceiverSpaceView *spaceView;
-@property (nonatomic, strong) RSReceiverHeaderView *headerView;
+@interface RSReceiverListViewController ()
 @end
 
 @implementation RSReceiverListViewController
@@ -53,7 +43,7 @@
 
 -(void)loadData {
     [self.viewModel loadData];
-    [self.spaceView.viewModel loadData];
+//    [self.spaceView.viewModel loadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -88,14 +78,24 @@
     @weakify(self);
     [button addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
         @RSStrongify(self);
-        if (self.completionHandler) {
-            self.completionHandler(self, [self.viewModel getSelectedUsers], [self.spaceView.viewModel getSelectedSpaces]);
-        }
-        [self.navigationController popViewControllerAnimated:YES];
+//        if (self.completionHandler) {
+////            self.completionHandler(self, [self.viewModel getSelectedUsers], [self.spaceView.viewModel getSelectedSpaces]);
+//            self.completionHandler(self, [self.viewModel getSelectedUsers]);
+//        }
+//        [self.navigationController popViewControllerAnimated:YES];
+        [self finishButton:sender];
     }];
     _finishButtonItem = button;
 //    _finishButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
     return _finishButtonItem;
+}
+
+-(void)finishButton:(id)sender {
+    if (self.completionHandler) {
+        //            self.completionHandler(self, [self.viewModel getSelectedUsers], [self.spaceView.viewModel getSelectedSpaces]);
+        self.completionHandler(self, [self.viewModel getSelectedUsers]);
+    }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(RSReceiverHeaderView *)headerView {
@@ -106,14 +106,6 @@
     return _headerView;
 }
 
--(RSReceiverSpaceView *)spaceView {
-    if (_spaceView) {
-        return _spaceView;
-    }
-    _spaceView = [[RSReceiverSpaceView alloc] initWithFrame:CGRectMake(0, 0, self.contentView.width, 138+40)];
-    return _spaceView;
-}
-
 -(UITableView *)tableView {
     if (_tableView) {
         return _tableView;
@@ -121,7 +113,6 @@
     _tableView = [[UITableView alloc] init];
     _tableView.delegate = self;
     _tableView.dataSource = self;
-    _tableView.tableHeaderView = self.spaceView;
     @weakify(self);
     _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         @strongify(self);

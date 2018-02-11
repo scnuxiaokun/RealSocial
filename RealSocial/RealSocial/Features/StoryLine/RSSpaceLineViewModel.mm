@@ -11,7 +11,7 @@
 #import "RSLoginService.h"
 #import "RSRequestFactory.h"
 @implementation RSSpaceLineItemViewModel
--(void)updateWithStory:(RSSpace *)space {
+-(void)updateWithSpace:(RSSpace *)space {
     _space = space;
     if (space.starListArray_Count > 0) {
         RSStar *firstItem = [space.starListArray firstObject];
@@ -36,9 +36,9 @@
         }
         [self sendUpdateData:resp];
         NSMutableArray *tmp = [[NSMutableArray alloc] init];
-        for (RSSpace *story in resp.listArray) {
+        for (RSSpace *space in resp.listArray) {
             RSSpaceLineItemViewModel *itemVM = [[RSSpaceLineItemViewModel alloc] init];
-            [itemVM updateWithStory:story];
+            [itemVM updateWithSpace:space];
             [tmp addObject:itemVM];
         }
         @weakify(self);

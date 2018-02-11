@@ -7,10 +7,24 @@
 //
 
 #import "RSSubUIViewController.h"
-@class RSReceiverListViewController;
-typedef void (^RSReceiverListCompletionHandler)(RSReceiverListViewController *ctr, NSArray *toUsers, NSArray *spaceIds);
+#import "RSChatViewController.h"
 
-@interface RSReceiverListViewController : RSSubUIViewController
+#import "RSReceiverHeaderView.h"
+
+#import "RSReceiverListViewModel.h"
+
+@class RSReceiverListViewController;
+typedef void (^RSReceiverListCompletionHandler)(RSReceiverListViewController *ctr, NSArray *toUsers);
+
+@interface RSReceiverListViewController : RSSubUIViewController<UITableViewDelegate, UITableViewDataSource>
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) RSReceiverListViewModel *viewModel;
+@property (nonatomic, strong) UIButton *finishButtonItem;
+
+@property (nonatomic, strong) RSReceiverHeaderView *headerView;
 @property (nonatomic, strong) NSArray *defaultToUsers;
 @property (nonatomic, copy) RSReceiverListCompletionHandler completionHandler;
+
+-(void)finishButton:(id)sender;
+-(void)loadData;
 @end

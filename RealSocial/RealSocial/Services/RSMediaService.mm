@@ -30,7 +30,8 @@
 }
 
 +(NSString *)pictureIdWithData:(NSData *)data {
-    NSString *pictureId = [NSString stringWithFormat:@"%@_%@",[RSLoginService shareInstance].loginInfo.uid, [data md5String]];
+    NSTimeInterval time = [[NSDate date] timeIntervalSince1970];
+    NSString *pictureId = [NSString stringWithFormat:@"%@_%@_%f",[RSLoginService shareInstance].loginInfo.uid, [data md5String], time];
     return pictureId;
 }
 
@@ -84,30 +85,11 @@
     NSString * key = pictureId;
     
     QNUploadManager *uploadManage = [QNUploadManager  sharedInstanceWithConfiguration:config];
-//    NSString *filePath = [RSMediaService localPicturePathWithPictureId:pictureId];
-//    [uploadManage putFile:filePath key:key token:token complete:^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
-//        if(info.ok){
-//            NSLog(@"请求成功");
-//            RSPictureModel *pictrueModel = [[RSPictureModel alloc] init];
-//            pictrueModel.pictureId = pictureId;
-//            pictrueModel.status = RSPictureStatusUploadFinish;
-//            [[RSDBService db] updateAllRowsInTable:NSStringFromClass([RSPictureModel class]) onProperty:RSPictureModel.status withObject:pictrueModel];
-//            if (completionHandler) {
-//                completionHandler(YES, nil);
-//            }
-//            //            NSString *hash = [resp objectForKey:@"hash"];
-//        }else{
-//            NSLog(@"失败");
-//            if (completionHandler) {
-//                completionHandler(YES, info.error);
-//            }
-//        }
-//    } option:nil];
     [uploadManage putData:fileData key:key token:token complete:^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
+        RSPictureModel *pictrueModel = [[RSPictureModel alloc] init];
+        pictrueModel.pictureId = pictureId;
         if(info.ok){
             NSLog(@"请求成功");
-            RSPictureModel *pictrueModel = [[RSPictureModel alloc] init];
-            pictrueModel.pictureId = pictureId;
             pictrueModel.status = RSPictureStatusUploadFinish;
             [[RSDBService db] updateAllRowsInTable:NSStringFromClass([RSPictureModel class]) onProperty:RSPictureModel.status withObject:pictrueModel];
             if (completionHandler) {
@@ -116,12 +98,10 @@
 //            NSString *hash = [resp objectForKey:@"hash"];
         }else{
             NSLog(@"失败");
-            RSPictureModel *pictrueModel = [[RSPictureModel alloc] init];
-            pictrueModel.pictureId = pictureId;
             pictrueModel.status = RSPictureStatusUploadFail;
             [[RSDBService db] updateAllRowsInTable:NSStringFromClass([RSPictureModel class]) onProperty:RSPictureModel.status withObject:pictrueModel];
             if (completionHandler) {
-                completionHandler(YES, info.error);
+                completionHandler(NO, info.error);
             }
         }
     } option:nil];

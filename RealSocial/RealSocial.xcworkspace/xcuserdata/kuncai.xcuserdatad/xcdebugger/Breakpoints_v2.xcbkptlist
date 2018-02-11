@@ -164,140 +164,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RealSocial/Features/StoryCreate/RSSpaceCreateViewModel.m"
-            timestampString = "539970239.183315"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "-create:toUsers:toSpaces:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__50-[RSSpaceCreateViewModel create:toUsers:toSpaces:]_block_invoke_2"
-                  moduleName = "RealSocial"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kuncai/workspace/RealSocial/RealSocial/RealSocial/Features/StoryCreate/RSSpaceCreateViewModel.m"
-                  timestampString = "539970239.984726"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33"
-                  offsetFromSymbolStart = "504">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__50-[RSSpaceCreateViewModel create:toUsers:toSpaces:]_block_invoke_3"
-                  moduleName = "RealSocial"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kuncai/workspace/RealSocial/RealSocial/RealSocial/Features/StoryCreate/RSSpaceCreateViewModel.m"
-                  timestampString = "539970239.987942"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33"
-                  offsetFromSymbolStart = "24">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RealSocial/Features/StoryCreate/RSSpaceCreateViewModel.m"
-            timestampString = "539970239.183414"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "-create:toUsers:toSpaces:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__50-[RSSpaceCreateViewModel create:toUsers:toSpaces:]_block_invoke_2"
-                  moduleName = "RealSocial"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kuncai/workspace/RealSocial/RealSocial/RealSocial/Features/StoryCreate/RSSpaceCreateViewModel.m"
-                  timestampString = "539970239.9949681"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "46"
-                  endingLineNumber = "46"
-                  offsetFromSymbolStart = "1172">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__50-[RSSpaceCreateViewModel create:toUsers:toSpaces:]_block_invoke_3.45"
-                  moduleName = "RealSocial"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kuncai/workspace/RealSocial/RealSocial/RealSocial/Features/StoryCreate/RSSpaceCreateViewModel.m"
-                  timestampString = "539970239.998953"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "46"
-                  endingLineNumber = "46"
-                  offsetFromSymbolStart = "24">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RealSocial/Features/StoryCreate/RSSpaceCreateViewModel.m"
-            timestampString = "539970239.183485"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "-create:toUsers:toSpaces:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RealSocial/Features/StoryCreate/RSSpaceCreateViewModel.m"
-            timestampString = "539970239.183552"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "-create:toUsers:toSpaces:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RealSocial/Features/StoryCreate/RSSpaceCreateViewModel.m"
-            timestampString = "539970239.183636"
+            timestampString = "540018381.6289051"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "110"
             endingLineNumber = "110"
-            landmarkName = "-buildRequestWithPictureId:toSpaces:"
+            landmarkName = "-buildRequestWithPictureId:toUsers:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RealSocial/Features/ReceiverList/RSReceiverSpaceView/RSReceiverSpaceViewModel.m"
+            timestampString = "540031731.452682"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "-loadData"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
