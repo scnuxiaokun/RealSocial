@@ -11,6 +11,7 @@
 #import "Spbasecgi.pbobjc.h"
 #import "Spcgicomm.pbobjc.h"
 #import "RSRequestFactory.h"
+#import "RSContactService.h"
 @implementation RSReceiverListItemViewModel
 @end
 @implementation RSReceiverListViewModel
@@ -22,6 +23,8 @@
     return self;
 }
 -(void)loadData {
+    NSArray<RSContactModel *> *contactList = [[RSContactService shareInstance] getAllContact];
+    [self updateListData:contactList];
     RSGetAllContactReq *req = [RSGetAllContactReq new];
 //    RSPKGRequest *request = [[RSPKGRequest alloc] init];
 //    request.cgiName = @"contact/getall";
@@ -37,24 +40,9 @@
 //        FriendList *list = [FriendList parseFromData:response.data error:nil];
 //        [self.liveData setData:list];
         [self sendUpdateData:resp];
-        NSMutableArray *tmp = [[NSMutableArray alloc] init];
-        for (RSContact *contact in resp.contactArray) {
-            RSReceiverListItemViewModel *item = [RSReceiverListItemViewModel new];
-            item.name = contact.nickName;
-            item.uid = contact.userName;
-            item.avatarUrl = contact.headImgURL;
-            if ([self.selectedData objectForKey:contact.userName]) {
-                item.isSelected = YES;
-            } else {
-                item.isSelected = NO;
-            }
-            [tmp addObject:item];
-        }
-        @weakify(self);
-        dispatch_async_on_main_queue(^{
-            @RSStrongify(self);
-            self.listData = tmp;
-        });
+        [[RSContactService shareInstance] saveAllContactResp:resp];
+        NSArray<RSContactModel *> *contactList = [[RSContactService shareInstance] getAllContact];
+        [self updateListData:contactList];
     } error:^(NSError * _Nullable error) {
         @RSStrongify(self);
         [self sendErrorSignal:error];
@@ -62,6 +50,27 @@
         @RSStrongify(self);
         [self sendCompleteSignal];
     }];
+}
+
+-(void)updateListData:(NSArray<RSContactModel *> *)contactList {
+    NSMutableArray *tmp = [[NSMutableArray alloc] init];
+    for (RSContactModel *model in contactList) {
+        RSReceiverListItemViewModel *item = [RSReceiverListItemViewModel new];
+        item.name = model.nickName;
+        item.uid = model.uid;
+        item.avatarUrl = model.avatarUrl;
+        if ([self.selectedData objectForKey:item.uid]) {
+            item.isSelected = YES;
+        } else {
+            item.isSelected = NO;
+        }
+        [tmp addObject:item];
+    }
+    @weakify(self);
+    dispatch_async_on_main_queue(^{
+        @RSStrongify(self);
+        self.listData = tmp;
+    });
 }
 
 -(id)mokeResponse {
@@ -88,7 +97,7 @@
     NSMutableArray *tmp = [[NSMutableArray alloc] init];
     for (RSReceiverListItemViewModel *item in self.listData) {
         if (item.isSelected) {
-            [tmp addObject:item.name];
+            [tmp addObject:item.uid];
         }
     }
     return tmp;

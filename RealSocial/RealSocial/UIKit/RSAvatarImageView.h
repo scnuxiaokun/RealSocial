@@ -11,7 +11,9 @@ typedef NS_ENUM(NSInteger, RSAvatarImageViewType) {
     RSAvatarImageViewType48,
     RSAvatarImageViewType80,
 };
-@interface RSAvatarImageView : UIImageView
+@interface RSAvatarImageView : UIView
+@property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) NSString *url;
+@property (nonatomic, strong) NSArray *urls;//多头像
 @property (nonatomic, assign) RSAvatarImageViewType type;
 @end

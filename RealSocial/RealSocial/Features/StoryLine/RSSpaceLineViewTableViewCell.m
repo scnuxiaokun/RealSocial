@@ -35,7 +35,7 @@
     if (self) {
         self.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:self.mediaImageView];
-        [self.contentView addSubview:self.avatarBgImageView];
+//        [self.contentView addSubview:self.avatarBgImageView];
         [self.contentView addSubview:self.avatarImageView];
         [self.contentView addSubview:self.titleLabel];
         [self.contentView addSubview:self.subtitleLabel];
@@ -44,9 +44,9 @@
             make.centerY.equalTo(self.contentView);
             make.left.equalTo(self.contentView).with.offset(0);
         }];
-        [self.avatarBgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.center.equalTo(self.avatarImageView);
-        }];
+//        [self.avatarBgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.center.equalTo(self.avatarImageView);
+//        }];
         [self.mediaImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.bottom.right.equalTo(self.contentView);
             make.left.equalTo(self.avatarImageView.mas_centerX);
@@ -65,35 +65,29 @@
 }
 
 
--(UIImageView *)avatarImageView {
+-(RSAvatarImageView *)avatarImageView {
     if (_avatarImageView) {
         return _avatarImageView;
     }
-    _avatarImageView = [[UIImageView alloc] init];
-    _avatarImageView.contentMode = UIViewContentModeScaleAspectFit;
-    [_avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.height.mas_equalTo(80);
-    }];
-    _avatarImageView.layer.cornerRadius = 80/2;
-    _avatarImageView.layer.masksToBounds = YES;
-    _avatarImageView.backgroundColor = [UIColor randomColor];
+    _avatarImageView = [[RSAvatarImageView alloc] init];
+    [_avatarImageView setType:RSAvatarImageViewType80];
     return _avatarImageView;
 }
 
--(UIImageView *)avatarBgImageView {
-    if (_avatarBgImageView) {
-        return _avatarBgImageView;
-    }
-    _avatarBgImageView = [[UIImageView alloc] init];
-//    _avatarImageView.contentMode = UIViewContentModeScaleAspectFit;
-    [_avatarBgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.height.mas_equalTo(86);
-    }];
-    _avatarBgImageView.layer.cornerRadius = 86/2;
-//    _avatarImageView.layer.masksToBounds = YES;
-    _avatarBgImageView.backgroundColor = [UIColor whiteColor];
-    return _avatarBgImageView;
-}
+//-(UIImageView *)avatarBgImageView {
+//    if (_avatarBgImageView) {
+//        return _avatarBgImageView;
+//    }
+//    _avatarBgImageView = [[UIImageView alloc] init];
+////    _avatarImageView.contentMode = UIViewContentModeScaleAspectFit;
+//    [_avatarBgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.width.height.mas_equalTo(86);
+//    }];
+//    _avatarBgImageView.layer.cornerRadius = 86/2;
+////    _avatarImageView.layer.masksToBounds = YES;
+//    _avatarBgImageView.backgroundColor = [UIColor whiteColor];
+//    return _avatarBgImageView;
+//}
 
 
 
@@ -131,7 +125,8 @@
 
 -(void)setViewModel:(RSSpaceLineItemViewModel *)viewModel {
     _viewModel = viewModel;
-    [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:viewModel.avatarUrl] placeholderImage:[UIImage imageNamed:@"defaultAvatar"]];
+//    [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:viewModel.avatarUrl] placeholderImage:[UIImage imageNamed:@"defaultAvatar"]];
+    [self.avatarImageView setUrls:viewModel.avatarUrls];
     [self.mediaImageView sd_setImageWithURL:[NSURL URLWithString:viewModel.mediaUrl] placeholderImage:[UIImage imageNamed:@"defaultSpaceBg"]];
     self.titleLabel.text = viewModel.titleString;
     self.subtitleLabel.text = viewModel.subTitleString;

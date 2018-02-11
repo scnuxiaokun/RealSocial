@@ -22,10 +22,11 @@
 #import "RSSpaceLineNavigationBar.h"
 #import <UIImageView+WebCache.h>
 #import "DBCameraViewController.h"
+#import "RSAvatarImageView.h"
 
 @interface RSSpaceLineViewController ()<UITableViewDelegate, UITableViewDataSource, DBCameraViewControllerDelegate>
 @property (nonatomic, strong) RSSpaceLineNavigationBar *bar;
-@property (nonatomic, strong) UIImageView *avatarImageView;
+@property (nonatomic, strong) RSAvatarImageView *avatarImageView;
 @property (nonatomic, strong) UIButton *userCenterButton;
 @property (nonatomic, strong) UIButton *createButton;
 @property (nonatomic, strong) UIButton *commentButton;
@@ -115,7 +116,6 @@
     [_bar addSubview:self.commentButton];
     [_bar addSubview:self.searchButton];
     [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.height.mas_equalTo(self.avatarImageView.height);
         make.centerY.equalTo(_bar);
         make.left.equalTo(_bar).with.offset(12);
     }];
@@ -130,14 +130,16 @@
     return _bar;
 }
 
--(UIImageView *)avatarImageView {
+-(RSAvatarImageView *)avatarImageView {
     if (_avatarImageView) {
         return _avatarImageView;
     }
-    _avatarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 48, 48)];
-    _avatarImageView.layer.cornerRadius = _avatarImageView.height/2;
-    _avatarImageView.layer.masksToBounds = YES;
-    [_avatarImageView sd_setImageWithURL:[NSURL URLWithString:@"http://www.ladysh.com/d/file/2016080410/2306_160803134243_1.jpg"]];
+    _avatarImageView = [[RSAvatarImageView alloc] init];
+    _avatarImageView.url = @"http://www.ladysh.com/d/file/2016080410/2306_160803134243_1.jpg";
+    _avatarImageView.type = RSAvatarImageViewType48;
+//    _avatarImageView.layer.cornerRadius = _avatarImageView.height/2;
+//    _avatarImageView.layer.masksToBounds = YES;
+//    [_avatarImageView sd_setImageWithURL:[NSURL URLWithString:@"http://www.ladysh.com/d/file/2016080410/2306_160803134243_1.jpg"]];
     _avatarImageView.userInteractionEnabled = YES;
     @weakify(self);
     [_avatarImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {

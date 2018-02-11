@@ -37,7 +37,7 @@
         spaceCreateModel.type = type;
         spaceCreateModel.users = users;
         spaceCreateModel.spaces = spaces;
-        BOOL dbResult = [[RSDBService db] insertObject:spaceCreateModel into:NSStringFromClass([RSSpaceCreateModel class])];
+        BOOL dbResult = [[RSDBService db] insertOrReplaceObject:spaceCreateModel into:NSStringFromClass([RSSpaceCreateModel class])];
         if (dbResult == NO) {
             return nil;
         }

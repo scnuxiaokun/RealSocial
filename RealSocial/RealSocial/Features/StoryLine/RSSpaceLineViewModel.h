@@ -13,7 +13,7 @@
 @interface RSSpaceLineItemViewModel : RSViewModel
 @property (nonatomic, strong) NSString *titleString;
 @property (nonatomic, strong) NSString *subTitleString;
-@property (nonatomic, strong) NSString *avatarUrl;
+@property (nonatomic, strong) NSArray *avatarUrls;
 @property (nonatomic, strong) NSString *mediaUrl;
 @property (nonatomic, strong) RSSpace *space;
 -(void)updateWithSpace:(RSSpace *)space;

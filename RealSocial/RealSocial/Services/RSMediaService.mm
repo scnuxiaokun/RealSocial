@@ -54,7 +54,7 @@
         pictrueModel.height = image.size.height;
         pictrueModel.pictureId = pictureId;
 //        pictrueModel.info = [faceInfos yy_modelToJSONString];
-        if (![[RSDBService db] insertObject:pictrueModel into:NSStringFromClass([RSPictureModel class])]) {
+        if (![[RSDBService db] insertOrReplaceObject:pictrueModel into:NSStringFromClass([RSPictureModel class])]) {
             //save db fail
             [[NSFileManager defaultManager] removeItemAtPath:picturePath error:nil];
             return NO;

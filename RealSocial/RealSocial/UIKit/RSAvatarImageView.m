@@ -9,7 +9,11 @@
 #import "RSAvatarImageView.h"
 #import <UIImageView+WebCache.h>
 
-@implementation RSAvatarImageView
+@implementation RSAvatarImageView {
+    RSAvatarImageView *_oneAvatar;
+    RSAvatarImageView *_twoAvatar;
+    CAShapeLayer *_maskLayer;
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.
@@ -22,6 +26,25 @@
 -(instancetype)init {
     self = [super init];
     if (self) {
+        self.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"defaultAvatar"]];
+        self.backgroundColor = [UIColor whiteColor];
+        self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        [self addSubview:self.imageView];
+        [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.center.equalTo(self);
+            make.width.equalTo(self).with.offset(-2);
+            make.height.equalTo(self).with.offset(-2);
+        }];
+//        self.image = [UIImage imageNamed:@"defaultAvatar"];
+//        _bgView = [[UIView alloc] init];
+//        _bgView.backgroundColor = [UIColor whiteColor];
+//        [self addSubview:_bgView];
+//        [_bgView mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.center.equalTo(self);
+//            make.width.equalTo(self).with.offset(5);
+//            make.height.equalTo(self).with.offset(5);
+//        }];
+//        [self sendSubviewToBack:_bgView];
         
     }
     return self;
@@ -29,7 +52,68 @@
 
 -(void)setUrl:(NSString *)url {
     _url = url;
-    [self sd_setImageWithURL:[NSURL URLWithString:url]];
+    [_oneAvatar removeFromSuperview];
+    [_twoAvatar removeFromSuperview];
+    self.imageView.hidden = NO;
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:url]];
+}
+
+-(void)layoutSubviews {
+    [super layoutSubviews];
+//    if (_maskLayer) {
+//        _maskLayer = [CAShapeLayer new];
+////        [self.layer addSublayer:_maskLayer];
+//        self.layer.mask = _maskLayer;
+//
+//        _maskLayer.fillColor = [UIColor redColor].CGColor;
+//        _maskLayer.strokeColor = [UIColor redColor].CGColor;
+//    }
+//    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds
+//                                                   byRoundingCorners:UIRectCornerAllCorners
+//                                                         cornerRadii:CGSizeMake(10, 10)];
+//
+//    _maskLayer.path= maskPath.CGPath;
+//    _maskLayer.frame=self.bounds;
+}
+
+-(void)setUrls:(NSArray *)urls {
+    if ([urls count] > 1 ) {
+        NSString *oneUrl = [urls firstObject];
+        NSString *twoUrl = [urls lastObject];
+        if (oneUrl) {
+            if (!_oneAvatar) {
+                _oneAvatar = [[RSAvatarImageView alloc] init];
+                [_oneAvatar setType:RSAvatarImageViewType48];
+            }
+            [_oneAvatar setUrl:oneUrl];
+            [self addSubview:_oneAvatar];
+            [_oneAvatar mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.left.equalTo(self);
+            }];
+        }
+        if (twoUrl) {
+            if (!_twoAvatar) {
+                _twoAvatar = [[RSAvatarImageView alloc] init];
+                [_twoAvatar setType:RSAvatarImageViewType48];
+            }
+            [_twoAvatar setUrl:twoUrl];
+            [self addSubview:_twoAvatar];
+            [_twoAvatar mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.bottom.right.equalTo(self);
+            }];
+        }
+        self.imageView.hidden = YES;
+//        self.layer.cornerRadius = 0;
+//        self.layer.masksToBounds = NO;
+//        self.image = nil;
+//        [_maskLayer setHidden:YES];
+        return;
+    }
+    NSString *oneUrl = [urls firstObject];
+    if (oneUrl) {
+        [self setUrl:oneUrl];
+    }
+    
 }
 
 -(void)setType:(RSAvatarImageViewType)type {
@@ -48,10 +132,10 @@
             break;
     }
     self.width = self.height = width;
+    self.imageView.layer.cornerRadius = (self.width-2)/2;
+    self.imageView.layer.masksToBounds = YES;
     [self mas_updateConstraints:^(MASConstraintMaker *make) {
         make.width.height.mas_equalTo(width);
     }];
-    self.layer.cornerRadius = width/2;
-    self.layer.masksToBounds = YES;
 }
 @end

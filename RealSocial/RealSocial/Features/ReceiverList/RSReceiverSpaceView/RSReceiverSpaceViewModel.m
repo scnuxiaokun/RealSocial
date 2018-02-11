@@ -64,7 +64,6 @@
         if (item.isSeleted && item.type == RSReceiverSpaceItemViewModelTypeNormal) {
             [tmp addObject:@(item.spaceId)];
         }
-        
     }
     return tmp;
     
@@ -102,14 +101,14 @@
     RSIdPair *idpair = [RSIdPair new];
     idpair.clientId = clientId;
     space.spaceId = idpair;
-    RSStar *star = [RSStar new];
-    star.type = RSenStarType_StarTypeImg;
-    star.starId = idpair;
-    RSStarImg *img = [RSStarImg new];
-//    img.imgURL = [RSMediaService urlWithPictureId:pictureId];
-//    img.thumbURL = [RSMediaService urlWithPictureId:pictureId];
-    star.img = img;
-    [space.starListArray addObject:star];
+//    RSStar *star = [RSStar new];
+//    star.type = RSenStarType_StarTypeImg;
+//    star.starId = idpair;
+//    RSStarImg *img = [RSStarImg new];
+//    img.imgURL = [RSMediaService urlWithPictureId:clientId];
+//    img.thumbURL = [RSMediaService urlWithPictureId:clientId];
+//    star.img = img;
+//    [space.starListArray addObject:star];
     space.creator = [RSLoginService shareInstance].loginInfo.uid;
     space.authorArray = [[NSMutableArray alloc] initWithArray:authors];
     [space.authorArray addObject:space.creator];

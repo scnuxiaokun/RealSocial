@@ -10,14 +10,31 @@
 #import "RSNetWorkService.h"
 #import "RSLoginService.h"
 #import "RSRequestFactory.h"
+#import "RSContactService.h"
 @implementation RSSpaceLineItemViewModel
 -(void)updateWithSpace:(RSSpace *)space {
     _space = space;
+    if (space.type == RSenSpaceType_SpaceTypeSingle) {
+        RSContactModel *creatorModel = [[RSContactService shareInstance] getContactByUid:space.creator];
+        self.titleString = creatorModel.nickName;
+        self.avatarUrls = @[creatorModel.avatarUrl];
+        self.subTitleString = @"Single sub title test";
+    }
+    if (space.type == RSenSpaceType_SpaceTypeGroup) {
+        NSArray<RSContactModel *> *contacts = [[RSContactService shareInstance] getContactsByUids:space.authorArray];
+        self.titleString = @"group name";
+        NSMutableArray *tmp = [[NSMutableArray alloc] init];
+        for (RSContactModel *model in contacts) {
+            [tmp addObject:model.avatarUrl];
+        }
+        self.avatarUrls = tmp;
+        self.subTitleString = @"group sub title test";
+    }
+    
     if (space.starListArray_Count > 0) {
         RSStar *firstItem = [space.starListArray firstObject];
-        self.titleString = firstItem.author;
-        self.subTitleString = @"kkk sub title test";
-        self.avatarUrl = @"http://www.ladysh.com/d/file/2016080410/2306_160803134243_1.jpg";
+//        self.titleString = firstItem.author;
+//        self.avatarUrl = @"http://www.ladysh.com/d/file/2016080410/2306_160803134243_1.jpg";
         self.mediaUrl = (firstItem.type == RSenStarType_StarTypeImg) ? firstItem.img.imgURL :firstItem.video.videoURL;
     }
 }

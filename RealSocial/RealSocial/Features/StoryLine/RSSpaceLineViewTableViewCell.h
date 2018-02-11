@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "RSSpaceLineViewModel.h"
+#import "RSAvatarImageView.h"
 @interface RSSpaceLineViewTableViewCell : UITableViewCell
-@property (nonatomic, strong) UIImageView *avatarImageView;
-@property (nonatomic, strong) UIImageView *avatarBgImageView;
+@property (nonatomic, strong) RSAvatarImageView *avatarImageView;
+//@property (nonatomic, strong) UIImageView *avatarBgImageView;
 @property (nonatomic, strong) UIImageView *mediaImageView;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *subtitleLabel;

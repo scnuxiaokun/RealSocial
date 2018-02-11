@@ -11,6 +11,7 @@
 #import <BlocksKit/BlocksKit.h>
 #import <UIImageView+WebCache.h>
 #import "RSReceiverTitleView.h"
+#import "RSReceiverListTableViewCell.h"
 @interface RSReceiverListViewController ()
 @end
 
@@ -151,13 +152,10 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *indentifier = @"RSFriendListViewCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@""];
+    NSString *indentifier = @"RSReceiverListTableViewCell";
+    RSReceiverListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:indentifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:indentifier];
-//        UIImage *image = [UIImage imageWithColor:[UIColor randomColor] size:CGSizeMake(48, 48)];
-//        UIImage *image = [UIImage imageNamed:@"defaultAvatar"];
-//        cell.imageView.image = image;
+        cell = [[RSReceiverListTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:indentifier];
     }
     RSReceiverListItemViewModel *itemViewModel = [self.viewModel.listData objectOrNilAtIndex:indexPath.row];
     cell.textLabel.text = itemViewModel.name;
