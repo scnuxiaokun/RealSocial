@@ -131,8 +131,8 @@
 
 -(void)setViewModel:(RSSpaceLineItemViewModel *)viewModel {
     _viewModel = viewModel;
-    [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:viewModel.avatarUrl] placeholderImage:[UIImage imageWithColor:[UIColor randomColor]]];
-    [self.mediaImageView sd_setImageWithURL:[NSURL URLWithString:viewModel.mediaUrl] placeholderImage:[UIImage imageWithColor:[UIColor randomColor]]];
+    [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:viewModel.avatarUrl] placeholderImage:[UIImage imageNamed:@"defaultAvatar"]];
+    [self.mediaImageView sd_setImageWithURL:[NSURL URLWithString:viewModel.mediaUrl] placeholderImage:[UIImage imageNamed:@"defaultSpaceBg"]];
     self.titleLabel.text = viewModel.titleString;
     self.subtitleLabel.text = viewModel.subTitleString;
 }

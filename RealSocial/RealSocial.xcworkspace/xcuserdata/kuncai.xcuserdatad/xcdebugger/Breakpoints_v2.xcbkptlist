@@ -176,16 +176,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RealSocial/Features/ReceiverList/RSReceiverSpaceView/RSReceiverSpaceViewModel.m"
-            timestampString = "540031731.452682"
+            filePath = "RealSocial/Services/RSNetWorkService.m"
+            timestampString = "540039734.867203"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
-            landmarkName = "-loadData"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "+sendRequest:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

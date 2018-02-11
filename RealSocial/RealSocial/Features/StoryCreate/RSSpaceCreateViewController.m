@@ -7,19 +7,17 @@
 //
 
 #import "RSSpaceCreateViewController.h"
-#import "DBCameraViewController.h"
-#import "DBCameraContainerViewController.h"
+//#import "DBCameraViewController.h"
+//#import "DBCameraContainerViewController.h"
 #import "RSSpaceCreateViewModel.h"
 #import "RSReceiverListViewController.h"
 #import "RSReceiverListWithSpaceViewController.h"
 
-@interface RSSpaceCreateViewController () <DBCameraViewControllerDelegate>
-@property (nonatomic, strong) UIImageView *pictureImageView;
+@interface RSSpaceCreateViewController ()
 @property (nonatomic, strong) UIButton *createButton;
 @property (nonatomic, strong) RSSpaceCreateViewModel *viewModel;
 @property (nonatomic, strong) MBProgressHUD *HUD;
 @property (nonatomic, strong) UIButton *toUserButtom;
-@property (nonatomic, strong) UIButton *chooseAuthorButtom;
 @property (nonatomic, strong) UILabel *toUserLabel;
 @property (nonatomic, strong) NSArray *toUsersArray;
 @property (nonatomic, strong) NSArray *toSpaceIdsArray;
@@ -52,12 +50,14 @@
         make.left.equalTo(self.contentView);
         make.top.equalTo(self.toUserButtom.mas_bottom).with.offset(20);
     }];
-    [self.contentView addSubview:self.chooseAuthorButtom];
-    [self.chooseAuthorButtom mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.toUserLabel.mas_bottom).with.offset(20);
-        make.centerX.equalTo(self.contentView);
-    }];
-    [self openCameraWithoutSegue];
+//    [self.contentView addSubview:self.chooseAuthorButtom];
+//    [self.chooseAuthorButtom mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(self.toUserLabel.mas_bottom).with.offset(20);
+//        make.centerX.equalTo(self.contentView);
+//    }];
+//    DBCameraViewController *cameraController = [DBCameraViewController initWithDelegate:self];
+//    [cameraController setUseCameraSegue:NO];
+//    [self.navigationController pushViewController:cameraController animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -134,36 +134,36 @@
             self.toSpaceIdsArray = spaceIds;
             self.toUserLabel.text = [toUsers componentsJoinedByString:@";"];
             self.toUsersArray = toUsers;
-            self.createType = RSSpaceCreateModelTypeGruop;
+            self.createType = RSSpaceCreateModelTypeSignal;
         }];
         [self.navigationController pushViewController:ctr animated:YES];
     }];
     return _toUserButtom;
 }
 
--(UIButton *)chooseAuthorButtom {
-    if (_chooseAuthorButtom) {
-        return _chooseAuthorButtom;
-    }
-    _chooseAuthorButtom = [[UIButton alloc] init];
-    [_chooseAuthorButtom setTitle:@"创建多人Space" forState:UIControlStateNormal];
-    [_chooseAuthorButtom setBackgroundColor:[UIColor randomColor]];
-    @weakify(self);
-    [_chooseAuthorButtom addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
-        @RSStrongify(self);
-        RSReceiverListViewController *ctr = [[RSReceiverListViewController alloc] init];
-        ctr.defaultToUsers = self.toUsersArray;
-        @weakify(self);
-        [ctr setCompletionHandler:^(RSReceiverListViewController *ctr, NSArray *toUsers) {
-            @RSStrongify(self);
-            self.createType = RSSpaceCreateModelTypeGruop;
-            self.toUserLabel.text = [toUsers componentsJoinedByString:@";"];
-            self.toUsersArray = toUsers;
-        }];
-        [self.navigationController pushViewController:ctr animated:YES];
-    }];
-    return _chooseAuthorButtom;
-}
+//-(UIButton *)chooseAuthorButtom {
+//    if (_chooseAuthorButtom) {
+//        return _chooseAuthorButtom;
+//    }
+//    _chooseAuthorButtom = [[UIButton alloc] init];
+//    [_chooseAuthorButtom setTitle:@"创建多人Space" forState:UIControlStateNormal];
+//    [_chooseAuthorButtom setBackgroundColor:[UIColor randomColor]];
+//    @weakify(self);
+//    [_chooseAuthorButtom addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
+//        @RSStrongify(self);
+//        RSReceiverListViewController *ctr = [[RSReceiverListViewController alloc] init];
+//        ctr.defaultToUsers = self.toUsersArray;
+//        @weakify(self);
+//        [ctr setCompletionHandler:^(RSReceiverListViewController *ctr, NSArray *toUsers) {
+//            @RSStrongify(self);
+//            self.createType = RSSpaceCreateModelTypeGruop;
+//            self.toUserLabel.text = [toUsers componentsJoinedByString:@";"];
+//            self.toUsersArray = toUsers;
+//        }];
+//        [self.navigationController pushViewController:ctr animated:YES];
+//    }];
+//    return _chooseAuthorButtom;
+//}
 
 -(UILabel *)toUserLabel {
     if (_toUserLabel) {
@@ -183,56 +183,59 @@
     return _HUD;
 }
 
-- (void) openCamera
-{
-    DBCameraContainerViewController *cameraContainer = [[DBCameraContainerViewController alloc] initWithDelegate:self];
-    [cameraContainer setFullScreenMode];
-    
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:cameraContainer];
-    [nav setNavigationBarHidden:YES];
-    [self presentViewController:nav animated:YES completion:nil];
-}
-
-- (void) openCameraWithoutSegue
-{
-    DBCameraViewController *cameraController = [DBCameraViewController initWithDelegate:self];
-    [cameraController setUseCameraSegue:NO];
-    
-    DBCameraContainerViewController *container = [[DBCameraContainerViewController alloc] initWithDelegate:self];
-    [container setCameraViewController:cameraController];
-    [container setFullScreenMode];
-    
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:container];
-    [nav setNavigationBarHidden:YES];
-    [self presentViewController:nav animated:YES completion:nil];
-}
-
-- (void) openCameraWithoutContainer
-{
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[DBCameraViewController initWithDelegate:self]];
-    [nav setNavigationBarHidden:YES];
-    [self presentViewController:nav animated:YES completion:nil];
-}
+//- (void) openCamera
+//{
+//    DBCameraContainerViewController *cameraContainer = [[DBCameraContainerViewController alloc] initWithDelegate:self];
+//    [cameraContainer setFullScreenMode];
+//
+//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:cameraContainer];
+//    [nav setNavigationBarHidden:YES];
+//    [self presentViewController:nav animated:YES completion:nil];
+//}
+//
+//- (void) openCameraWithoutSegue
+//{
+//    DBCameraViewController *cameraController = [DBCameraViewController initWithDelegate:self];
+//    [cameraController setUseCameraSegue:NO];
+//
+//    DBCameraContainerViewController *container = [[DBCameraContainerViewController alloc] initWithDelegate:self];
+//    [container setCameraViewController:cameraController];
+//    [container setFullScreenMode];
+//
+//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:container];
+//    [nav setNavigationBarHidden:YES];
+//    [self presentViewController:nav animated:YES completion:nil];
+//}
+//
+//- (void) openCameraWithoutContainer
+//{
+//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[DBCameraViewController initWithDelegate:self]];
+//    [nav setNavigationBarHidden:YES];
+//    [self presentViewController:nav animated:YES completion:nil];
+//}
 
 //Use your captured image
 #pragma mark - DBCameraViewControllerDelegate
-
-- (void) camera:(id)cameraViewController didFinishWithImage:(UIImage *)image withMetadata:(NSDictionary *)metadata
-{
-//    DetailViewController *detail = [[DetailViewController alloc] init];
-//    [detail setDetailImage:image];
-//    [self.navigationController pushViewController:detail animated:NO];
-    [cameraViewController restoreFullScreenMode];
-    @weakify(self);
-    [self.presentedViewController dismissViewControllerAnimated:YES completion:^{
-        @RSStrongify(self);
-        [self.pictureImageView setImage:image];
-    }];
-}
-
-- (void) dismissCamera:(id)cameraViewController{
-    [self dismissViewControllerAnimated:YES completion:nil];
-    [cameraViewController restoreFullScreenMode];
-}
+//
+//- (void) camera:(id)cameraViewController didFinishWithImage:(UIImage *)image withMetadata:(NSDictionary *)metadata
+//{
+////    DetailViewController *detail = [[DetailViewController alloc] init];
+////    [detail setDetailImage:image];
+////    [self.navigationController pushViewController:detail animated:NO];
+//    [cameraViewController restoreFullScreenMode];
+////    @weakify(self);
+////    [self.presentedViewController dismissViewControllerAnimated:YES completion:^{
+////        @RSStrongify(self);
+////        [self.pictureImageView setImage:image];
+////    }];
+//    [self.pictureImageView setImage:image];
+//    [self.navigationController popViewControllerAnimated:cameraViewController];
+//}
+//
+//- (void) dismissCamera:(id)cameraViewController{
+////    [self dismissViewControllerAnimated:YES completion:nil];
+//    [self.navigationController popViewControllerAnimated:cameraViewController];
+//    [cameraViewController restoreFullScreenMode];
+//}
 
 @end

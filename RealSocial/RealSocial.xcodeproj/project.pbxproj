@@ -212,6 +212,8 @@
 		ADB1F704202F3A0200F3AE0A /* RSAvatarImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB1F703202F3A0200F3AE0A /* RSAvatarImageView.m */; };
 		ADB1F7072030053A00F3AE0A /* RSReceiverListWithSpaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB1F7062030053900F3AE0A /* RSReceiverListWithSpaceViewController.m */; };
 		ADB1F70D2030126600F3AE0A /* RSSpaceCreateModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = ADB1F70B2030126600F3AE0A /* RSSpaceCreateModel.mm */; };
+		ADB1F711203049EF00F3AE0A /* defaultSpaceBg.png in Resources */ = {isa = PBXBuildFile; fileRef = ADB1F70F203049EE00F3AE0A /* defaultSpaceBg.png */; };
+		ADB1F712203049EF00F3AE0A /* defaultAvatar.png in Resources */ = {isa = PBXBuildFile; fileRef = ADB1F710203049EF00F3AE0A /* defaultAvatar.png */; };
 		ADCA8E8920274D5000C372B7 /* RSMessageModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = ADCA8E8620274D5000C372B7 /* RSMessageModel.mm */; };
 		ADDC6A5820130E0F00439D01 /* RSUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A5720130E0F00439D01 /* RSUIViewController.m */; };
 		ADDC6A5B20130E2D00439D01 /* RSUINavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A5A20130E2D00439D01 /* RSUINavigationController.m */; };
@@ -633,6 +635,8 @@
 		ADB1F708203010AA00F3AE0A /* RSSpaceCreateModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSSpaceCreateModel.h; sourceTree = "<group>"; };
 		ADB1F70B2030126600F3AE0A /* RSSpaceCreateModel.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RSSpaceCreateModel.mm; sourceTree = "<group>"; };
 		ADB1F70C2030126600F3AE0A /* RSSpaceCreateModel+WCTTableCoding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RSSpaceCreateModel+WCTTableCoding.h"; sourceTree = "<group>"; };
+		ADB1F70F203049EE00F3AE0A /* defaultSpaceBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultSpaceBg.png; sourceTree = "<group>"; };
+		ADB1F710203049EF00F3AE0A /* defaultAvatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultAvatar.png; sourceTree = "<group>"; };
 		ADCA8E8620274D5000C372B7 /* RSMessageModel.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RSMessageModel.mm; sourceTree = "<group>"; };
 		ADCA8E8720274D5000C372B7 /* RSMessageModel+WCTTableCoding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RSMessageModel+WCTTableCoding.h"; sourceTree = "<group>"; };
 		ADCA8E8820274D5000C372B7 /* RSMessageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSMessageModel.h; sourceTree = "<group>"; };
@@ -1113,6 +1117,7 @@
 		AD3E9173200F99600019138F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				ADB1F70E2030499B00F3AE0A /* Public */,
 				AD44C9E3202B0226003D16AC /* StoryCreate */,
 				AD2DA53920234DD4006BA319 /* appImages */,
 				AD2DA53420234DD4006BA319 /* detectImages */,
@@ -1631,6 +1636,15 @@
 			path = RSReceiverSpaceView;
 			sourceTree = "<group>";
 		};
+		ADB1F70E2030499B00F3AE0A /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				ADB1F710203049EF00F3AE0A /* defaultAvatar.png */,
+				ADB1F70F203049EE00F3AE0A /* defaultSpaceBg.png */,
+			);
+			path = Public;
+			sourceTree = "<group>";
+		};
 		ADDC6A5420130D9E00439D01 /* ChatList */ = {
 			isa = PBXGroup;
 			children = (
@@ -1902,6 +1916,7 @@
 				AD2DA57520234DD5006BA319 /* 1280_720@3x.png in Resources */,
 				AD2DA59020234DD5006BA319 /* IMG_2393.JPG in Resources */,
 				AD2DA58D20234DD5006BA319 /* 3D-1.png in Resources */,
+				ADB1F712203049EF00F3AE0A /* defaultAvatar.png in Resources */,
 				AD68318020178E290085DDCD /* VideoFrag.glsl in Resources */,
 				AD3E956C2010C47D0019138F /* Images.xcassets in Resources */,
 				AD2DA56720234DD4006BA319 /* FacePointColor.glsl in Resources */,
@@ -1948,6 +1963,7 @@
 				AD2DA56620234DD4006BA319 /* FacePointSize.glsl in Resources */,
 				AD2DA57420234DD5006BA319 /* megviicloud logo.png in Resources */,
 				AD68317C20178E290085DDCD /* Face3DFragment.glsl in Resources */,
+				ADB1F711203049EF00F3AE0A /* defaultSpaceBg.png in Resources */,
 				AD2DA56C20234DD4006BA319 /* shader-0.png in Resources */,
 				AD2DA58020234DD5006BA319 /* 1920_1080.png in Resources */,
 				AD2DA57320234DD5006BA319 /* faceinfo-1.png in Resources */,

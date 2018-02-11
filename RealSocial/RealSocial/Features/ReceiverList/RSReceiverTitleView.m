@@ -23,7 +23,8 @@
         self.backgroundColor = [UIColor whiteColor];
         [self addSubview:self.label];
         [self.label mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.centerY.equalTo(self);
+            make.centerY.equalTo(self);
+            make.left.equalTo(self).with.offset(20);
         }];
     }
     return self;
@@ -34,7 +35,7 @@
         return _label;
     }
     _label = [[UILabel alloc] init];
-    _label.font = [UIFont systemFontOfSize:18];
+    _label.font = [UIFont systemFontOfSize:12];
     _label.textColor = [UIColor blackColor];
     return _label;
 }

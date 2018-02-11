@@ -8,6 +8,8 @@
 
 #import "RSReceiverSpaceView.h"
 #import "RSReceiverSpaceCollectionViewCell.h"
+#import "RSReceiverListViewController.h"
+static const CGFloat RSReceiverSpaceViewCollectionViewHeight = 138;
 @implementation RSReceiverSpaceView
 
 /*
@@ -37,7 +39,8 @@
         }];
         [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.titleView.mas_bottom);
-            make.left.right.bottom.equalTo(self);
+            make.left.right.equalTo(self);
+            make.height.mas_equalTo(RSReceiverSpaceViewCollectionViewHeight);
         }];
     }
     return self;
@@ -56,7 +59,7 @@
         return _titleView;
     }
     _titleView = [[RSReceiverTitleView alloc] init];
-    _titleView.label.text = @"My Space";
+    _titleView.label.text = @"我的圈子";
     return _titleView;
 }
 -(UICollectionView *)collectionView {
@@ -64,12 +67,12 @@
         return _collectionView;
     }
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
-    layout.itemSize = CGSizeMake(130, 130);
+    layout.itemSize = CGSizeMake(110, RSReceiverSpaceViewCollectionViewHeight);
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     layout.minimumLineSpacing = 2;
     
-    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 244, self.frame.size.width,130) collectionViewLayout:layout];
-    _collectionView.backgroundColor = [UIColor randomColor];
+    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+    _collectionView.backgroundColor = [UIColor whiteColor];
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
     _collectionView.scrollsToTop = NO;
@@ -99,6 +102,23 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     RSReceiverSpaceItemViewModel *itemViewMdoel = [self.viewModel.listData objectOrNilAtIndex:indexPath.row];
+    if (itemViewMdoel.type == RSReceiverSpaceItemViewModelTypeAdd) {
+        RSReceiverListViewController *receiverListViewController = [[RSReceiverListViewController alloc] init];
+//        ctr.defaultToUsers = self.toUsersArray;
+        @weakify(self);
+        [receiverListViewController setCompletionHandler:^(RSReceiverListViewController *ctr, NSArray *toUsers) {
+            @RSStrongify(self);
+            [[[self.viewModel createGroupSpaceWithAuthors:toUsers] deliverOnMainThread] subscribeError:^(NSError * _Nullable error) {
+                [RSUtils showTipViewWithMessage:@"创建多人Space失败"];
+            } completed:^{
+                [RSUtils showTipViewWithMessage:@"创建多人Space成功"];
+                [self.viewModel loadData];
+            }];
+        }];
+        UIViewController *ctr = [RSUtils getViewControllerFrom:self];
+        [ctr.navigationController pushViewController:receiverListViewController animated:YES];
+        return;
+    }
     itemViewMdoel.isSeleted = !itemViewMdoel.isSeleted;
     [collectionView reloadItemsAtIndexPaths:@[indexPath]];
 }

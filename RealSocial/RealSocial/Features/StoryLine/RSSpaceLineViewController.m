@@ -21,7 +21,9 @@
 #import "RSSpaceDetailViewController.h"
 #import "RSSpaceLineNavigationBar.h"
 #import <UIImageView+WebCache.h>
-@interface RSSpaceLineViewController ()<UITableViewDelegate, UITableViewDataSource>
+#import "DBCameraViewController.h"
+
+@interface RSSpaceLineViewController ()<UITableViewDelegate, UITableViewDataSource, DBCameraViewControllerDelegate>
 @property (nonatomic, strong) RSSpaceLineNavigationBar *bar;
 @property (nonatomic, strong) UIImageView *avatarImageView;
 @property (nonatomic, strong) UIButton *userCenterButton;
@@ -266,11 +268,40 @@
 
 #pragma mark take picture
 -(void)showVideoViewController {
-    RSSpaceCreateViewController *ctr = [[RSSpaceCreateViewController alloc] init];
-    [self.navigationController pushViewController:ctr animated:YES];
+    DBCameraViewController *cameraController = [DBCameraViewController initWithDelegate:self];
+    [cameraController setUseCameraSegue:NO];
+    [self.navigationController pushViewController:cameraController animated:YES];
+//    RSSpaceCreateViewController *ctr = [[RSSpaceCreateViewController alloc] init];
+//    [self.navigationController pushViewController:ctr animated:YES];
 //    MGMarkSetViewController *ctr =  [[MGMarkSetViewController alloc] initWithNibName:nil bundle:nil];
 //    ctr.hidesBottomBarWhenPushed = YES;
 //    [self.navigationController pushViewController:ctr animated:YES];
 }
 
+#pragma mark - DBCameraViewControllerDelegate
+
+- (void) camera:(id)cameraViewController didFinishWithImage:(UIImage *)image withMetadata:(NSDictionary *)metadata
+{
+    //    DetailViewController *detail = [[DetailViewController alloc] init];
+    //    [detail setDetailImage:image];
+    //    [self.navigationController pushViewController:detail animated:NO];
+    [cameraViewController restoreFullScreenMode];
+    //    @weakify(self);
+    //    [self.presentedViewController dismissViewControllerAnimated:YES completion:^{
+    //        @RSStrongify(self);
+    //        [self.pictureImageView setImage:image];
+    //    }];
+//    [self.pictureImageView setImage:image];
+//    [self.navigationController popViewControllerAnimated:cameraViewController];
+    RSSpaceCreateViewController *ctr = [[RSSpaceCreateViewController alloc] init];
+    [ctr.pictureImageView setImage:image];
+    [self.navigationController pushViewController:ctr animated:YES];
+}
+
+- (void) dismissCamera:(id)cameraViewController{
+    //    [self dismissViewControllerAnimated:YES completion:nil];
+    [cameraViewController restoreFullScreenMode];
+    [self.navigationController popViewControllerAnimated:cameraViewController];
+    
+}
 @end

@@ -22,6 +22,7 @@
 -(void)updateWithLoginInfo:(RSLoginResp *)loginInfo {
     self.wxuid = loginInfo.userName;
     self.sessionKey = loginInfo.sessionKey;
+    self.qiniuToken = loginInfo.qiniuToken;
 }
 
 -(void)clear {

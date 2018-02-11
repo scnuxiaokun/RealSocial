@@ -65,7 +65,7 @@
             NSLog(@"%@", responseString);
             [signal sendError:error];
         } else {
-            NSLog(@"%@", responseObject);
+//            NSLog(@"%@", responseObject);
             RSResponse *response;
             if ([request isKindOfClass:[RSPKGRequest class]]) {
                 response = [[RSPKGResponse alloc] init];

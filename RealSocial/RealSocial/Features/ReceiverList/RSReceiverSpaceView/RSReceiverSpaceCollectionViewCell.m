@@ -68,12 +68,20 @@
 
 -(void)setViewModel:(RSReceiverSpaceItemViewModel *)viewModel {
     _viewModel = viewModel;
-    self.avatarImageView.url = viewModel.avatarUrl;
-    self.numLabel.text = viewModel.name;
-    self.numLabel.text = viewModel.num;
-    if (viewModel.isSeleted) {
-        self.backgroundColor = [UIColor blueColor];
-    } else {
+    if (viewModel.type == RSReceiverSpaceItemViewModelTypeNormal) {
+        self.avatarImageView.url = viewModel.avatarUrl;
+        self.nameLabel.text = viewModel.name;
+        self.numLabel.text = viewModel.num;
+        if (viewModel.isSeleted) {
+            self.backgroundColor = [UIColor blueColor];
+        } else {
+            self.backgroundColor = [UIColor whiteColor];
+        }
+    }
+    if (viewModel.type == RSReceiverSpaceItemViewModelTypeAdd) {
+        self.avatarImageView.url = @"";
+        self.avatarImageView.backgroundColor = [UIColor yellowColor];
+        self.numLabel.text = @"+";
         self.backgroundColor = [UIColor whiteColor];
     }
 }

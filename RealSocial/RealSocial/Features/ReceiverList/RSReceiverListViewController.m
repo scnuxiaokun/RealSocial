@@ -9,7 +9,8 @@
 #import "RSReceiverListViewController.h"
 #import <MJRefresh/MJRefresh.h>
 #import <BlocksKit/BlocksKit.h>
-
+#import <UIImageView+WebCache.h>
+#import "RSReceiverTitleView.h"
 @interface RSReceiverListViewController ()
 @end
 
@@ -139,14 +140,33 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.viewModel.listData count];
 }
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    RSReceiverTitleView *view = [[RSReceiverTitleView alloc] init];
+    view.label.text = @"我的好友";
+    return view;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 40;
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *indentifier = @"RSFriendListViewCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@""];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:indentifier];
+//        UIImage *image = [UIImage imageWithColor:[UIColor randomColor] size:CGSizeMake(48, 48)];
+//        UIImage *image = [UIImage imageNamed:@"defaultAvatar"];
+//        cell.imageView.image = image;
     }
     RSReceiverListItemViewModel *itemViewModel = [self.viewModel.listData objectOrNilAtIndex:indexPath.row];
     cell.textLabel.text = itemViewModel.name;
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:itemViewModel.avatarUrl] placeholderImage:[UIImage imageNamed:@"defaultAvatar"]];
+//    @weakify(self);
+//    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:itemViewModel.avatarUrl] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+//        @RSStrongify(self);
+//        [self.tableView reloadRowAtIndexPath:indexPath withRowAnimation:UITableViewRowAnimationNone];
+//    }];
     if (itemViewModel.isSelected) {
         cell.backgroundColor = [UIColor blueColor];
     } else {
@@ -157,7 +177,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     RSReceiverListItemViewModel *itemViewModel = [self.viewModel.listData objectOrNilAtIndex:indexPath.row];
-    itemViewModel.isSelected = YES;
+    itemViewModel.isSelected = !itemViewModel.isSelected;
     [tableView reloadRowAtIndexPath:indexPath withRowAnimation:UITableViewRowAnimationNone];
 //    RSChatViewController *ctr = [[RSChatViewController alloc] init];
 //    ctr.hidesBottomBarWhenPushed = YES;

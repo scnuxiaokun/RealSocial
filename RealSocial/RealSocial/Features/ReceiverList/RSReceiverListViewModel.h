@@ -8,7 +8,9 @@
 
 #import "RSViewModel.h"
 @interface RSReceiverListItemViewModel : RSViewModel
+@property (nonatomic, strong) NSString *avatarUrl;
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *uid;
 @property (nonatomic, assign) BOOL isSelected;
 @end
 @interface RSReceiverListViewModel : RSViewModel

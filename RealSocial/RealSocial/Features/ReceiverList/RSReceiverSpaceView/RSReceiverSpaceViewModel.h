@@ -7,14 +7,20 @@
 //
 
 #import "RSViewModel.h"
+typedef NS_ENUM(NSInteger, RSReceiverSpaceItemViewModelType) {
+    RSReceiverSpaceItemViewModelTypeNormal,
+    RSReceiverSpaceItemViewModelTypeAdd,
+};
 @interface RSReceiverSpaceItemViewModel : RSViewModel
 @property (nonatomic, strong) NSString *avatarUrl;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *num;
 @property (nonatomic, assign) BOOL isSeleted;
 @property (nonatomic, assign) long long spaceId;
+@property (nonatomic, assign) RSReceiverSpaceItemViewModelType type;
 @end
 @interface RSReceiverSpaceViewModel : RSViewModel
 @property (nonatomic, strong) NSArray *listData;
 -(NSArray *)getSelectedSpaces;
+-(RACSignal *)createGroupSpaceWithAuthors:(NSArray *)authors;
 @end

@@ -40,7 +40,9 @@
         NSMutableArray *tmp = [[NSMutableArray alloc] init];
         for (RSContact *contact in resp.contactArray) {
             RSReceiverListItemViewModel *item = [RSReceiverListItemViewModel new];
-            item.name = contact.userName;
+            item.name = contact.nickName;
+            item.uid = contact.userName;
+            item.avatarUrl = contact.headImgURL;
             if ([self.selectedData objectForKey:contact.userName]) {
                 item.isSelected = YES;
             } else {
@@ -91,4 +93,5 @@
     }
     return tmp;
 }
+
 @end

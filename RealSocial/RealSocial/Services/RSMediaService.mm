@@ -81,7 +81,7 @@
 //        builder.recorder =  [QNFileRecorder fileRecorderWithFolder:@"保存目录" error:&error];
     }];
     //重用uploadManager。一般地，只需要创建一个uploadManager对象
-    NSString * token = @"hf-tV28lhKn3V7DQGssjEJubR6lTN9fn4bH47k_K:D9g1XpuN4kBMJuSnGt_OI2i5hmk=:eyJzY29wZSI6InNreXBsYW4iLCJkZWFkbGluZSI6MTUxODI2MjQ3NX0=";
+    NSString * token = [RSLoginService shareInstance].loginInfo.qiniuToken;
     NSString * key = pictureId;
     
     QNUploadManager *uploadManage = [QNUploadManager  sharedInstanceWithConfiguration:config];
@@ -97,7 +97,8 @@
             }
 //            NSString *hash = [resp objectForKey:@"hash"];
         }else{
-            NSLog(@"失败");
+            NSLog(@"CDN上传失败");
+            NSLog(@"error:%@", info.error);
             pictrueModel.status = RSPictureStatusUploadFail;
             [[RSDBService db] updateAllRowsInTable:NSStringFromClass([RSPictureModel class]) onProperty:RSPictureModel.status withObject:pictrueModel];
             if (completionHandler) {

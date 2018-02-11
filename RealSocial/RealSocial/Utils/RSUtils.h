@@ -14,4 +14,5 @@
 +(MBProgressHUD *)loadingViewWithMessage:(NSString *)msg;
 + (void)showTipViewWithMessage:(NSString*)msg;
 + (void)showTipViewWithMessage:(NSString*)msg lastTime:(NSInteger)lastTime;
++ (UIViewController *)getViewControllerFrom:(UIView *)view;
 @end

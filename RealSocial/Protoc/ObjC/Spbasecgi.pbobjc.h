@@ -30,7 +30,6 @@ CF_EXTERN_C_BEGIN
 @class RSBaseReq;
 @class RSBaseResp;
 @class RSContact;
-@class RSMsg;
 @class RSProfile;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -76,7 +75,8 @@ typedef GPB_ENUM(RSLoginResp_FieldNumber) {
   RSLoginResp_FieldNumber_OpCode = 2,
   RSLoginResp_FieldNumber_UserName = 3,
   RSLoginResp_FieldNumber_SessionKey = 4,
-  RSLoginResp_FieldNumber_Profile = 5,
+  RSLoginResp_FieldNumber_QiniuToken = 5,
+  RSLoginResp_FieldNumber_Profile = 6,
 };
 
 @interface RSLoginResp : GPBMessage
@@ -96,103 +96,13 @@ typedef GPB_ENUM(RSLoginResp_FieldNumber) {
 /** Test to see if @c sessionKey has been set. */
 @property(nonatomic, readwrite) BOOL hasSessionKey;
 
+@property(nonatomic, readwrite, copy, null_resettable) NSString *qiniuToken;
+/** Test to see if @c qiniuToken has been set. */
+@property(nonatomic, readwrite) BOOL hasQiniuToken;
+
 @property(nonatomic, readwrite, strong, null_resettable) RSProfile *profile;
 /** Test to see if @c profile has been set. */
 @property(nonatomic, readwrite) BOOL hasProfile;
-
-@end
-
-#pragma mark - RSUpLoadImgReq
-
-typedef GPB_ENUM(RSUpLoadImgReq_FieldNumber) {
-  RSUpLoadImgReq_FieldNumber_BaseReq = 1,
-  RSUpLoadImgReq_FieldNumber_CliImgId = 2,
-  RSUpLoadImgReq_FieldNumber_Total = 3,
-  RSUpLoadImgReq_FieldNumber_OffSet = 4,
-  RSUpLoadImgReq_FieldNumber_Buff = 5,
-};
-
-@interface RSUpLoadImgReq : GPBMessage
-
-@property(nonatomic, readwrite, strong, null_resettable) RSBaseReq *baseReq;
-/** Test to see if @c baseReq has been set. */
-@property(nonatomic, readwrite) BOOL hasBaseReq;
-
-@property(nonatomic, readwrite, copy, null_resettable) NSData *cliImgId;
-/** Test to see if @c cliImgId has been set. */
-@property(nonatomic, readwrite) BOOL hasCliImgId;
-
-@property(nonatomic, readwrite) uint32_t total;
-
-@property(nonatomic, readwrite) BOOL hasTotal;
-@property(nonatomic, readwrite) uint32_t offSet;
-
-@property(nonatomic, readwrite) BOOL hasOffSet;
-@property(nonatomic, readwrite, copy, null_resettable) NSData *buff;
-/** Test to see if @c buff has been set. */
-@property(nonatomic, readwrite) BOOL hasBuff;
-
-@end
-
-#pragma mark - RSUpLoadImgResp
-
-typedef GPB_ENUM(RSUpLoadImgResp_FieldNumber) {
-  RSUpLoadImgResp_FieldNumber_BaseResp = 1,
-  RSUpLoadImgResp_FieldNumber_SvrImgId = 2,
-};
-
-@interface RSUpLoadImgResp : GPBMessage
-
-@property(nonatomic, readwrite, strong, null_resettable) RSBaseResp *baseResp;
-/** Test to see if @c baseResp has been set. */
-@property(nonatomic, readwrite) BOOL hasBaseResp;
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *svrImgId;
-/** Test to see if @c svrImgId has been set. */
-@property(nonatomic, readwrite) BOOL hasSvrImgId;
-
-@end
-
-#pragma mark - RSSyncReq
-
-typedef GPB_ENUM(RSSyncReq_FieldNumber) {
-  RSSyncReq_FieldNumber_BaseReq = 1,
-  RSSyncReq_FieldNumber_SyncBuff = 2,
-};
-
-@interface RSSyncReq : GPBMessage
-
-@property(nonatomic, readwrite, strong, null_resettable) RSBaseReq *baseReq;
-/** Test to see if @c baseReq has been set. */
-@property(nonatomic, readwrite) BOOL hasBaseReq;
-
-@property(nonatomic, readwrite, copy, null_resettable) NSData *syncBuff;
-/** Test to see if @c syncBuff has been set. */
-@property(nonatomic, readwrite) BOOL hasSyncBuff;
-
-@end
-
-#pragma mark - RSSyncResp
-
-typedef GPB_ENUM(RSSyncResp_FieldNumber) {
-  RSSyncResp_FieldNumber_BaseResp = 1,
-  RSSyncResp_FieldNumber_NextSyncBuff = 2,
-  RSSyncResp_FieldNumber_MsgArray = 3,
-};
-
-@interface RSSyncResp : GPBMessage
-
-@property(nonatomic, readwrite, strong, null_resettable) RSBaseResp *baseResp;
-/** Test to see if @c baseResp has been set. */
-@property(nonatomic, readwrite) BOOL hasBaseResp;
-
-@property(nonatomic, readwrite, copy, null_resettable) NSData *nextSyncBuff;
-/** Test to see if @c nextSyncBuff has been set. */
-@property(nonatomic, readwrite) BOOL hasNextSyncBuff;
-
-@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<RSMsg*> *msgArray;
-/** The number of items in @c msgArray without causing the array to be created. */
-@property(nonatomic, readonly) NSUInteger msgArray_Count;
 
 @end
 

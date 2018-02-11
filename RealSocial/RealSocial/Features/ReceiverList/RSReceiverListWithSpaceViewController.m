@@ -45,7 +45,7 @@
     if (_spaceView) {
         return _spaceView;
     }
-    _spaceView = [[RSReceiverSpaceView alloc] initWithFrame:CGRectMake(0, 0, self.contentView.width, 138+40)];
+    _spaceView = [[RSReceiverSpaceView alloc] initWithFrame:CGRectMake(0, 0, self.contentView.width, 138+40+20)];
     return _spaceView;
 }
 

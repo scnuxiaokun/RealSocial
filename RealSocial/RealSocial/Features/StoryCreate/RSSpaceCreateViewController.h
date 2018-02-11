@@ -9,5 +9,5 @@
 #import "RSSubUIViewController.h"
 
 @interface RSSpaceCreateViewController : RSSubUIViewController
-
+@property (nonatomic, strong) UIImageView *pictureImageView;
 @end

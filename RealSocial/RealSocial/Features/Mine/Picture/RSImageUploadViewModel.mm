@@ -81,43 +81,44 @@
 }
 
 -(void)savePictureNetWork:(NSData *)fileData pictureId:(NSString *)pictureId{
-    RSUpLoadImgReq *req = [RSUpLoadImgReq new];
-    req.cliImgId = [NSData dataWithHexString:pictureId];
-    req.total = [fileData length];
-    [self sendPicture:req data:fileData pictureId:pictureId];
+//    RSUpLoadImgReq *req = [RSUpLoadImgReq new];
+//    req.cliImgId = [NSData dataWithHexString:pictureId];
+//    req.total = [fileData length];
+//    [self sendPicture:req data:fileData pictureId:pictureId];
 }
 
--(void)sendPicture:(RSUpLoadImgReq *)req data:(NSData *)fileData pictureId:(NSString *)pictureId{
-    NSInteger perBuff = 100000;
-    req.buff = [fileData subdataWithRange:NSMakeRange(req.offSet, perBuff)];
-    RSRequest *request = [[RSRequest alloc] init];
-    request.mokeResponseData = [self moke];
-    request.cgiName = @"uploadImage";
-    request.data = [req data];
-    @weakify(self);
-    [[RSNetWorkService sendRequest:request] subscribeCompleted:^{
-        @RSStrongify(self);
-        NSInteger offSet = req.offSet + perBuff;
-        if (offSet + perBuff > req.total) {
-            
-        }
-        NSData *buff = [fileData subdataWithRange:NSMakeRange(offSet, perBuff)];
-        if (buff) {
-            req.offSet = offSet;
-            [self sendPicture:req data:fileData pictureId:pictureId];
-        } else {
-            //上传完成
-            RSPictureModel *pictrueModel = [[RSPictureModel alloc] init];
-            pictrueModel.pictureId = pictureId;
-            pictrueModel.status = RSPictureStatusUploadFinish;
-            [[RSDBService db] updateAllRowsInTable:NSStringFromClass([RSPictureModel class]) onProperty:RSPictureModel.status withObject:pictrueModel];
-        }
-    }];
-}
+//-(void)sendPicture:(RSUpLoadImgReq *)req data:(NSData *)fileData pictureId:(NSString *)pictureId{
+//    NSInteger perBuff = 100000;
+//    req.buff = [fileData subdataWithRange:NSMakeRange(req.offSet, perBuff)];
+//    RSRequest *request = [[RSRequest alloc] init];
+//    request.mokeResponseData = [self moke];
+//    request.cgiName = @"uploadImage";
+//    request.data = [req data];
+//    @weakify(self);
+//    [[RSNetWorkService sendRequest:request] subscribeCompleted:^{
+//        @RSStrongify(self);
+//        NSInteger offSet = req.offSet + perBuff;
+//        if (offSet + perBuff > req.total) {
+//
+//        }
+//        NSData *buff = [fileData subdataWithRange:NSMakeRange(offSet, perBuff)];
+//        if (buff) {
+//            req.offSet = offSet;
+//            [self sendPicture:req data:fileData pictureId:pictureId];
+//        } else {
+//            //上传完成
+//            RSPictureModel *pictrueModel = [[RSPictureModel alloc] init];
+//            pictrueModel.pictureId = pictureId;
+//            pictrueModel.status = RSPictureStatusUploadFinish;
+//            [[RSDBService db] updateAllRowsInTable:NSStringFromClass([RSPictureModel class]) onProperty:RSPictureModel.status withObject:pictrueModel];
+//        }
+//    }];
+//}
 
 -(NSData *)moke {
-    RSUpLoadImgResp *resp = [RSUpLoadImgResp new];
-    return [resp data];
+    return nil;
+//    RSUpLoadImgResp *resp = [RSUpLoadImgResp new];
+//    return [resp data];
 }
 
 -(BOOL)savePictureLocal:(NSData *)fileData pictureId:(NSString *)pictureId {

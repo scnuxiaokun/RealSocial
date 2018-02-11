@@ -50,28 +50,11 @@
             if (type == RSSpaceCreateModelTypeSignal) {
                 [self createSignalSpaceWithPictureId:pictureId toUsers:users toSpaces:spaces];
             }
-            if (type == RSSpaceCreateModelTypeGruop) {
-                [self createGroupSpaceWithPictureId:pictureId Authors:users];
-            }
+//            if (type == RSSpaceCreateModelTypeGruop) {
+//                [self createGroupSpaceWithPictureId:pictureId Authors:users];
+//            }
         }];
         return nil;
-    }];
-}
-
--(void)createGroupSpaceWithPictureId:(NSString *)pictureId Authors:(NSArray *)authors {
-    BOOL result = [self updateSpaceCreateModel:pictureId status:RSSpaceCreateModelStatusCreating];
-    if (result == NO) {
-        return;
-    }
-    RSRequest *request = [self buildRequestWithPictureId:pictureId Authors:authors];
-    RACSignal *signal = [RSNetWorkService sendRequest:request];
-    [signal subscribeNext:^(RSResponse *response) {
-        RSCreateSpaceResp *resp = [RSCreateSpaceResp parseFromData:response.data error:nil];
-        NSLog(@"创建多人协作Space成功,svrId:%llu",resp.spaceId.svrId);
-    } error:^(NSError * _Nullable error) {
-        NSLog(@"创建多人协作Space失败:%@",error);
-    } completed:^{
-        
     }];
 }
 
@@ -129,29 +112,6 @@
     return dbResult;
 }
 
-//创建多人创作Space
--(RSRequest *)buildRequestWithPictureId:(NSString *)pictureId Authors:(NSArray *)authors {
-    RSCreateSpaceReq *req = [RSCreateSpaceReq new];
-    RSSpace *space = [RSSpace new];
-    space.type = RSenSpaceType_SpaceTypeGroup;
-    RSIdPair *idpair = [RSIdPair new];
-    idpair.clientId = pictureId;
-    space.spaceId = idpair;
-    RSStar *star = [RSStar new];
-    star.type = RSenStarType_StarTypeImg;
-    star.starId = idpair;
-    RSStarImg *img = [RSStarImg new];
-    img.imgURL = [RSMediaService urlWithPictureId:pictureId];
-    img.thumbURL = [RSMediaService urlWithPictureId:pictureId];
-    star.img = img;
-    [space.starListArray addObject:star];
-    space.creator = [RSLoginService shareInstance].loginInfo.uid;
-    space.authorArray = [[NSMutableArray alloc] initWithArray:authors];
-    [space.authorArray addObject:space.creator];
-    req.space = space;
-    RSRequest *request = [RSRequestFactory requestWithReq:req moke:nil];
-    return request;
-}
 //添加Start到多个Space
 -(RSRequest *)buildRequestWithPictureId:(NSString *)pictureId toSpaces:(NSArray *)spaces {
     RSAddStarReq *req = [RSAddStarReq new];
