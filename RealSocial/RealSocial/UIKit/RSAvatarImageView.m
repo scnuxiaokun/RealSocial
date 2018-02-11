@@ -27,7 +27,6 @@
     self = [super init];
     if (self) {
         self.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"defaultAvatar"]];
-        self.backgroundColor = [UIColor whiteColor];
         self.imageView.contentMode = UIViewContentModeScaleAspectFit;
         [self addSubview:self.imageView];
         [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -55,25 +54,8 @@
     [_oneAvatar removeFromSuperview];
     [_twoAvatar removeFromSuperview];
     self.imageView.hidden = NO;
+    self.backgroundColor = [UIColor whiteColor];
     [self.imageView sd_setImageWithURL:[NSURL URLWithString:url]];
-}
-
--(void)layoutSubviews {
-    [super layoutSubviews];
-//    if (_maskLayer) {
-//        _maskLayer = [CAShapeLayer new];
-////        [self.layer addSublayer:_maskLayer];
-//        self.layer.mask = _maskLayer;
-//
-//        _maskLayer.fillColor = [UIColor redColor].CGColor;
-//        _maskLayer.strokeColor = [UIColor redColor].CGColor;
-//    }
-//    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds
-//                                                   byRoundingCorners:UIRectCornerAllCorners
-//                                                         cornerRadii:CGSizeMake(10, 10)];
-//
-//    _maskLayer.path= maskPath.CGPath;
-//    _maskLayer.frame=self.bounds;
 }
 
 -(void)setUrls:(NSArray *)urls {
@@ -103,10 +85,7 @@
             }];
         }
         self.imageView.hidden = YES;
-//        self.layer.cornerRadius = 0;
-//        self.layer.masksToBounds = NO;
-//        self.image = nil;
-//        [_maskLayer setHidden:YES];
+        self.backgroundColor = [UIColor clearColor];
         return;
     }
     NSString *oneUrl = [urls firstObject];
@@ -134,6 +113,8 @@
     self.width = self.height = width;
     self.imageView.layer.cornerRadius = (self.width-2)/2;
     self.imageView.layer.masksToBounds = YES;
+    self.layer.cornerRadius = self.width/2;
+//    self.layer.masksToBounds = YES;
     [self mas_updateConstraints:^(MASConstraintMaker *make) {
         make.width.height.mas_equalTo(width);
     }];

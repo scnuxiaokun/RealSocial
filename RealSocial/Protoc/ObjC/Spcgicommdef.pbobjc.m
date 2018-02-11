@@ -204,6 +204,48 @@ BOOL RSenStarType_IsValidValue(int32_t value__) {
   }
 }
 
+#pragma mark - Enum RSenReceiverType
+
+GPBEnumDescriptor *RSenReceiverType_EnumDescriptor(void) {
+  static GPBEnumDescriptor *descriptor = NULL;
+  if (!descriptor) {
+    static const char *valueNames =
+        "ReceiverTypeCreator\000ReceiverTypeList\000Rec"
+        "eiverTypeCreatorFriend\000ReceiverTypeAutho"
+        "r\000ReceiverTypeAuthorFriend\000";
+    static const int32_t values[] = {
+        RSenReceiverType_ReceiverTypeCreator,
+        RSenReceiverType_ReceiverTypeList,
+        RSenReceiverType_ReceiverTypeCreatorFriend,
+        RSenReceiverType_ReceiverTypeAuthor,
+        RSenReceiverType_ReceiverTypeAuthorFriend,
+    };
+    GPBEnumDescriptor *worker =
+        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(RSenReceiverType)
+                                       valueNames:valueNames
+                                           values:values
+                                            count:(uint32_t)(sizeof(values) / sizeof(int32_t))
+                                     enumVerifier:RSenReceiverType_IsValidValue];
+    if (!OSAtomicCompareAndSwapPtrBarrier(nil, worker, (void * volatile *)&descriptor)) {
+      [worker release];
+    }
+  }
+  return descriptor;
+}
+
+BOOL RSenReceiverType_IsValidValue(int32_t value__) {
+  switch (value__) {
+    case RSenReceiverType_ReceiverTypeCreator:
+    case RSenReceiverType_ReceiverTypeList:
+    case RSenReceiverType_ReceiverTypeCreatorFriend:
+    case RSenReceiverType_ReceiverTypeAuthor:
+    case RSenReceiverType_ReceiverTypeAuthorFriend:
+      return YES;
+    default:
+      return NO;
+  }
+}
+
 
 #pragma clang diagnostic pop
 

@@ -12,7 +12,7 @@ typedef NS_ENUM(NSInteger, RSReceiverSpaceItemViewModelType) {
     RSReceiverSpaceItemViewModelTypeAdd,
 };
 @interface RSReceiverSpaceItemViewModel : RSViewModel
-@property (nonatomic, strong) NSString *avatarUrl;
+@property (nonatomic, strong) NSArray *avatarUrls;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *num;
 @property (nonatomic, assign) BOOL isSeleted;

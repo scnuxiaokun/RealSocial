@@ -27,6 +27,7 @@
         [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.avatarImageView.mas_bottom);
             make.centerX.equalTo(self.contentView);
+            make.left.right.equalTo(self);
         }];
         [self.numLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.numLabel.mas_bottom);
@@ -53,6 +54,7 @@
     _nameLabel = [[UILabel alloc] init];
     _nameLabel.textColor = [UIColor grayColor];
     _nameLabel.font = [UIFont systemFontOfSize:12];
+    _nameLabel.textAlignment = NSTextAlignmentCenter;
     return _nameLabel;
 }
 
@@ -69,7 +71,7 @@
 -(void)setViewModel:(RSReceiverSpaceItemViewModel *)viewModel {
     _viewModel = viewModel;
     if (viewModel.type == RSReceiverSpaceItemViewModelTypeNormal) {
-        self.avatarImageView.url = viewModel.avatarUrl;
+        [self.avatarImageView setUrls:viewModel.avatarUrls];
         self.nameLabel.text = viewModel.name;
         self.numLabel.text = viewModel.num;
         if (viewModel.isSeleted) {
@@ -79,9 +81,11 @@
         }
     }
     if (viewModel.type == RSReceiverSpaceItemViewModelTypeAdd) {
-        self.avatarImageView.url = @"";
-        self.avatarImageView.backgroundColor = [UIColor yellowColor];
-        self.numLabel.text = @"+";
+        [self.avatarImageView setUrl:@""];
+        
+        self.avatarImageView.backgroundColor = [UIColor grayColor];
+        self.nameLabel.text = @"创建Group";
+//        self.numLabel.text = @"+";
         self.backgroundColor = [UIColor whiteColor];
     }
 }

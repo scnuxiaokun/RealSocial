@@ -13,6 +13,7 @@
 #import "Spcgicommdef.pbobjc.h"
 #import "RSRequestFactory.h"
 #import "RSLoginService.h"
+#import "RSContactService.h"
 
 @implementation RSReceiverSpaceItemViewModel
 -(instancetype)init {
@@ -36,9 +37,17 @@
         [self sendUpdateData:resp];
         NSMutableArray *tmp = [[NSMutableArray alloc] init];
         for (RSSpace *space in resp.listArray) {
+            if (space.type != RSenSpaceType_SpaceTypeGroup) {
+                continue;
+            }
             RSReceiverSpaceItemViewModel *item = [[RSReceiverSpaceItemViewModel alloc] init];
-            item.avatarUrl = @"http://www.ladysh.com/d/file/2016080410/2306_160803134243_1.jpg";
-            item.name = space.creator;
+            NSArray<RSContactModel *> *contacts = [[RSContactService shareInstance] getContactsByUids:space.authorArray];
+            NSMutableArray *tmpUrls = [[NSMutableArray alloc] init];
+            for (RSContactModel *model in contacts) {
+                [tmpUrls addObject:model.avatarUrl];
+            }
+            item.avatarUrls = tmpUrls;
+            item.name = space.name;
             item.spaceId = space.spaceId.svrId;
             item.num = [NSString stringWithFormat:@"(%lu)", (unsigned long)space.authorArray_Count];
             [tmp addObject:item];
@@ -98,6 +107,10 @@
     RSCreateSpaceReq *req = [RSCreateSpaceReq new];
     RSSpace *space = [RSSpace new];
     space.type = RSenSpaceType_SpaceTypeGroup;
+    space.name = @"客户端默认Group name";
+    RSReceiver *receiver = [RSReceiver new];
+    receiver.type = RSenReceiverType_ReceiverTypeAuthor;
+    space.receiver = receiver;
     RSIdPair *idpair = [RSIdPair new];
     idpair.clientId = clientId;
     space.spaceId = idpair;

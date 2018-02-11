@@ -54,4 +54,10 @@
     _nickLabel.font = [UIFont systemFontOfSize:17];
     return _nickLabel;
 }
+
+-(void)setViewModel:(RSReceiverListItemViewModel *)viewModel {
+    _viewModel = viewModel;
+    [self.avatarImageView setUrl:viewModel.avatarUrl];
+    self.nickLabel.text = viewModel.name;
+}
 @end

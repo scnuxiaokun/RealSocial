@@ -30,6 +30,7 @@ CF_EXTERN_C_BEGIN
 @class RSBaseReq;
 @class RSBaseResp;
 @class RSIdPair;
+@class RSReceiver;
 @class RSSpace;
 @class RSStar;
 @class RSStarImg;
@@ -146,6 +147,25 @@ typedef GPB_ENUM(RSStar_FieldNumber) {
 
 @end
 
+#pragma mark - RSReceiver
+
+typedef GPB_ENUM(RSReceiver_FieldNumber) {
+  RSReceiver_FieldNumber_Type = 1,
+  RSReceiver_FieldNumber_UserNameArray = 2,
+};
+
+@interface RSReceiver : GPBMessage
+
+/** enReceiverType */
+@property(nonatomic, readwrite) uint32_t type;
+
+@property(nonatomic, readwrite) BOOL hasType;
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<NSString*> *userNameArray;
+/** The number of items in @c userNameArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger userNameArray_Count;
+
+@end
+
 #pragma mark - RSSpace
 
 typedef GPB_ENUM(RSSpace_FieldNumber) {
@@ -154,8 +174,10 @@ typedef GPB_ENUM(RSSpace_FieldNumber) {
   RSSpace_FieldNumber_CreateTime = 3,
   RSSpace_FieldNumber_UpdateTime = 4,
   RSSpace_FieldNumber_Creator = 5,
-  RSSpace_FieldNumber_AuthorArray = 6,
-  RSSpace_FieldNumber_StarListArray = 7,
+  RSSpace_FieldNumber_Name = 6,
+  RSSpace_FieldNumber_AuthorArray = 7,
+  RSSpace_FieldNumber_Receiver = 8,
+  RSSpace_FieldNumber_StarListArray = 9,
 };
 
 @interface RSSpace : GPBMessage
@@ -178,9 +200,17 @@ typedef GPB_ENUM(RSSpace_FieldNumber) {
 /** Test to see if @c creator has been set. */
 @property(nonatomic, readwrite) BOOL hasCreator;
 
+@property(nonatomic, readwrite, copy, null_resettable) NSString *name;
+/** Test to see if @c name has been set. */
+@property(nonatomic, readwrite) BOOL hasName;
+
 @property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<NSString*> *authorArray;
 /** The number of items in @c authorArray without causing the array to be created. */
 @property(nonatomic, readonly) NSUInteger authorArray_Count;
+
+@property(nonatomic, readwrite, strong, null_resettable) RSReceiver *receiver;
+/** Test to see if @c receiver has been set. */
+@property(nonatomic, readwrite) BOOL hasReceiver;
 
 @property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<RSStar*> *starListArray;
 /** The number of items in @c starListArray without causing the array to be created. */

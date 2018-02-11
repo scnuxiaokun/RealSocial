@@ -29,7 +29,7 @@ static const CGFloat RSReceiverSpaceViewCollectionViewHeight = 138;
 -(instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor randomColor];
+        self.backgroundColor = [UIColor grayColor];
         [self addSubview:self.titleView];
         [self addSubview:self.collectionView];
         

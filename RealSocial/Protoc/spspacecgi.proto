@@ -9,123 +9,130 @@ option cc_generic_services = true;
 
 message StarImg
 {
-    optional string ThumbURL = 1;
-    optional string ImgURL = 2;
+optional string ThumbURL = 1;
+optional string ImgURL = 2;
 }
 
 message StarVideo
 {
-    optional string ThumbURL = 1;
-    optional string VideoURL = 2;
+optional string ThumbURL = 1;
+optional string VideoURL = 2;
 }
 
 message IdPair
 {
-    optional uint64 SvrId = 1;
-    optional string ClientId = 2;
+optional uint64 SvrId = 1;
+optional string ClientId = 2;
 }
 
-message Star 
+message Star
 {
-    optional IdPair StarId = 1;
-    optional uint32 Type = 2;// enStarType
-    optional string Author = 3;
-    optional uint32 CreateTime = 4;
-    optional StarImg Img = 5;
-    optional StarVideo Video = 6;
+optional IdPair StarId = 1;
+optional uint32 Type = 2;// enStarType
+optional string Author = 3;
+optional uint32 CreateTime = 4;
+optional StarImg Img = 5;
+optional StarVideo Video = 6;
+}
+
+message Receiver
+{
+optional uint32 Type = 1;// enReceiverType
+repeated string UserName = 2;
 }
 
 message Space
 {
-    optional IdPair SpaceId = 1;
-    optional uint32 Type = 2;// enSpaceType
-    optional uint32 CreateTime = 3;
-    optional uint32 UpdateTime = 4;
-    optional string Creator = 5;
-    repeated string Author = 6;
-    repeated Star StarList = 7;
+optional IdPair SpaceId = 1;
+optional uint32 Type = 2;// enSpaceType
+optional uint32 CreateTime = 3;
+optional uint32 UpdateTime = 4;
+optional string Creator = 5;
+optional string Name = 6;
+repeated string Author = 7;
+optional Receiver Receiver = 8;
+repeated Star StarList = 9;
 }
 
 message CreateSpaceReq
 {
-    optional BaseReq BaseReq = 1;
-    optional Space Space = 2;
+optional BaseReq BaseReq = 1;
+optional Space Space = 2;
 }
 
 message CreateSpaceResp
 {
-    optional BaseResp BaseResp = 1;
-    optional IdPair SpaceId = 2;
-    repeated IdPair StarIdList = 3;
+optional BaseResp BaseResp = 1;
+optional IdPair SpaceId = 2;
+repeated IdPair StarIdList = 3;
 }
 
 message AddStarReq
 {
-    optional BaseReq BaseReq = 1;
-    optional IdPair SpaceId = 2;
-    repeated Star StarList = 3;
+optional BaseReq BaseReq = 1;
+optional IdPair SpaceId = 2;
+repeated Star StarList = 3;
 }
 
 message AddStarResp
 {
-    optional BaseResp BaseResp = 1;
-    repeated IdPair StarIdList = 2;
+optional BaseResp BaseResp = 1;
+repeated IdPair StarIdList = 2;
 }
 
 message AddAuthorReq
 {
-    optional BaseReq BaseReq = 1;
-    optional IdPair SpaceId = 2;
-    repeated string Author = 3;
+optional BaseReq BaseReq = 1;
+optional IdPair SpaceId = 2;
+repeated string Author = 3;
 }
 
 message AddAuthorResp
 {
-    optional BaseResp BaseResp = 1;
+optional BaseResp BaseResp = 1;
 }
 
 message GetAllSpaceReq
 {
-    optional BaseReq BaseReq = 1;
+optional BaseReq BaseReq = 1;
 }
 
-message GetAllSpaceResp 
+message GetAllSpaceResp
 {
-    optional BaseResp BaseResp = 1;
-    repeated Space List = 2;
+optional BaseResp BaseResp = 1;
+repeated Space List = 2;
 }
 
 message GetAllMySpaceReq
 {
-    optional BaseReq BaseReq = 1;
+optional BaseReq BaseReq = 1;
 }
 
 message GetAllMySpaceResp
 {
-    optional BaseResp BaseResp = 1;
-    repeated Space List = 2;
+optional BaseResp BaseResp = 1;
+repeated Space List = 2;
 }
 
 message GetAllMemoirReq
 {
-    optional BaseReq BaseReq = 1;
+optional BaseReq BaseReq = 1;
 }
 
 message GetAllMemoirResp
 {
-    optional BaseResp BaseResp = 1;
-    repeated Space List = 2;
+optional BaseResp BaseResp = 1;
+repeated Space List = 2;
 }
 
 message AddMemoirReq
 {
-    optional BaseReq BaseReq = 1;
-    optional IdPair SpaceId = 2;
+optional BaseReq BaseReq = 1;
+optional IdPair SpaceId = 2;
 }
 
 message AddMemoirResp
 {
-    optional BaseResp BaseResp = 1;
+optional BaseResp BaseResp = 1;
 }
-
 

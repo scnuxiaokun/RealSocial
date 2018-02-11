@@ -12,6 +12,7 @@
 #import "Spcgicomm.pbobjc.h"
 #import "RSRequestFactory.h"
 #import "RSContactService.h"
+#import "RSLoginService.h"
 @implementation RSReceiverListItemViewModel
 @end
 @implementation RSReceiverListViewModel
@@ -54,7 +55,11 @@
 
 -(void)updateListData:(NSArray<RSContactModel *> *)contactList {
     NSMutableArray *tmp = [[NSMutableArray alloc] init];
+    NSString *myuid = [RSLoginService shareInstance].loginInfo.uid;
     for (RSContactModel *model in contactList) {
+        if ([model.uid isEqualToString:myuid]) {
+            continue;
+        }
         RSReceiverListItemViewModel *item = [RSReceiverListItemViewModel new];
         item.name = model.nickName;
         item.uid = model.uid;

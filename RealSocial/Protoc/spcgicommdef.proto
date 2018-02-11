@@ -35,3 +35,12 @@ enum enStarType
 STAR_TYPE_IMG = 1;
 STAR_TYPE_VIDEO = 2;
 }
+
+enum enReceiverType
+{
+RECEIVER_TYPE_CREATOR = 1;// 个人创作 - 自己
+RECEIVER_TYPE_LIST = 2;// 个人创作 - 列表
+RECEIVER_TYPE_CREATOR_FRIEND = 3;// 个人创作 - 好友
+RECEIVER_TYPE_AUTHOR = 4;// 多人创作 - 创作者
+RECEIVER_TYPE_AUTHOR_FRIEND = 5;// 多人创作 - 创作者好友
+}

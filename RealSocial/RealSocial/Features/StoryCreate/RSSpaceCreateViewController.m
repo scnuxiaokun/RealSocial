@@ -131,10 +131,25 @@
         ctr.defaultToUsers = self.toUsersArray;
         @weakify(self);
         [ctr setSpaceCompletionHandler:^(RSReceiverListWithSpaceViewController *ctr, NSArray *toUsers, NSArray *spaceIds) {
-            self.toSpaceIdsArray = spaceIds;
-            self.toUserLabel.text = [toUsers componentsJoinedByString:@";"];
-            self.toUsersArray = toUsers;
+            @RSStrongify(self);
+//            self.toSpaceIdsArray = spaceIds;
+//            self.toUserLabel.text = [toUsers componentsJoinedByString:@";"];
+//            self.toUsersArray = toUsers;
             self.createType = RSSpaceCreateModelTypeSignal;
+            [self.HUD showAnimated:YES];
+            @weakify(self);
+            [[[self.viewModel create:self.pictureImageView.image toUsers:toUsers toSpaces:spaceIds type:RSSpaceCreateModelTypeSignal] deliverOnMainThread] subscribeNext:^(id  _Nullable x) {
+                
+            } error:^(NSError * _Nullable error) {
+                @RSStrongify(self);
+                [self.HUD hideAnimated:YES];
+                [RSUtils showTipViewWithMessage:@"创建Space失败"];
+            } completed:^{
+                @RSStrongify(self);
+                [self.HUD hideAnimated:YES];
+                [RSUtils showTipViewWithMessage:@"创建Space成功"];
+//                [self.navigationController popToRootViewControllerAnimated:YES];
+            }];
         }];
         [self.navigationController pushViewController:ctr animated:YES];
     }];

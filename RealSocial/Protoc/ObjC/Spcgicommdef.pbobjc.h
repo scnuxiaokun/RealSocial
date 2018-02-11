@@ -111,6 +111,33 @@ GPBEnumDescriptor *RSenStarType_EnumDescriptor(void);
  **/
 BOOL RSenStarType_IsValidValue(int32_t value);
 
+#pragma mark - Enum RSenReceiverType
+
+typedef GPB_ENUM(RSenReceiverType) {
+  /** 个人创作 - 自己 */
+  RSenReceiverType_ReceiverTypeCreator = 1,
+
+  /** 个人创作 - 列表 */
+  RSenReceiverType_ReceiverTypeList = 2,
+
+  /** 个人创作 - 好友 */
+  RSenReceiverType_ReceiverTypeCreatorFriend = 3,
+
+  /** 多人创作 - 创作者 */
+  RSenReceiverType_ReceiverTypeAuthor = 4,
+
+  /** 多人创作 - 创作者好友 */
+  RSenReceiverType_ReceiverTypeAuthorFriend = 5,
+};
+
+GPBEnumDescriptor *RSenReceiverType_EnumDescriptor(void);
+
+/**
+ * Checks to see if the given value is defined by the enum or was not known at
+ * the time this source was generated.
+ **/
+BOOL RSenReceiverType_IsValidValue(int32_t value);
+
 #pragma mark - RSSpcgicommdefRoot
 
 /**

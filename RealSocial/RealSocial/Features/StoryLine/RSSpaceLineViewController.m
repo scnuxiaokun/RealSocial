@@ -23,6 +23,8 @@
 #import <UIImageView+WebCache.h>
 #import "DBCameraViewController.h"
 #import "RSAvatarImageView.h"
+#import "RSReceiverListWithSpaceViewController.h"
+#import "RSSpaceCreateViewModel.h"
 
 @interface RSSpaceLineViewController ()<UITableViewDelegate, UITableViewDataSource, DBCameraViewControllerDelegate>
 @property (nonatomic, strong) RSSpaceLineNavigationBar *bar;
@@ -71,7 +73,7 @@
 //        make.right.equalTo(self.view).offset(0);
 //        make.width.height.mas_equalTo(100);
 //    }];
-    [self.viewModel loadData];
+//    [self.viewModel loadData];
     
 //    /** 进行联网授权版本判断，联网授权就需要进行网络授权 */
 //    BOOL needLicense = [MGFaceLicenseHandle getNeedNetLicense];
@@ -90,6 +92,11 @@
 //    } else {
 //        NSLog(@"SDK 为非联网授权版本！");
 //    }
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.viewModel loadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -295,9 +302,27 @@
     //    }];
 //    [self.pictureImageView setImage:image];
 //    [self.navigationController popViewControllerAnimated:cameraViewController];
+    
     RSSpaceCreateViewController *ctr = [[RSSpaceCreateViewController alloc] init];
     [ctr.pictureImageView setImage:image];
     [self.navigationController pushViewController:ctr animated:YES];
+    
+//    RSReceiverListWithSpaceViewController *ctr = [[RSReceiverListWithSpaceViewController alloc] init];
+////    ctr.defaultToUsers = self.toUsersArray;
+//    @weakify(self);
+//    [ctr setSpaceCompletionHandler:^(RSReceiverListWithSpaceViewController *ctr, NSArray *toUsers, NSArray *spaceIds) {
+////        self.toSpaceIdsArray = spaceIds;
+////        self.toUserLabel.text = [toUsers componentsJoinedByString:@";"];
+////        self.toUsersArray = toUsers;
+////        self.createType = RSSpaceCreateModelTypeSignal;
+//        RSSpaceCreateViewModel *createViewModel = [[RSSpaceCreateViewModel alloc] init];
+//        [[createViewModel create:image toUsers:toUsers toSpaces:spaceIds type:RSSpaceCreateModelTypeSignal] subscribeError:^(NSError * _Nullable error) {
+//            [RSUtils showTipViewWithMessage:@"创建Story失败"];
+//        } completed:^{
+//            [RSUtils showTipViewWithMessage:@"创建Story成功"];
+//        }];
+//    }];
+//    [self.navigationController pushViewController:ctr animated:YES];
 }
 
 - (void) dismissCamera:(id)cameraViewController{

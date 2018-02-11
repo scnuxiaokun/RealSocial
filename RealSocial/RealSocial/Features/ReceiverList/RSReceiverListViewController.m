@@ -151,6 +151,10 @@
     return 40;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 60;
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *indentifier = @"RSReceiverListTableViewCell";
     RSReceiverListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:indentifier];
@@ -158,17 +162,11 @@
         cell = [[RSReceiverListTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:indentifier];
     }
     RSReceiverListItemViewModel *itemViewModel = [self.viewModel.listData objectOrNilAtIndex:indexPath.row];
-    cell.textLabel.text = itemViewModel.name;
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:itemViewModel.avatarUrl] placeholderImage:[UIImage imageNamed:@"defaultAvatar"]];
-//    @weakify(self);
-//    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:itemViewModel.avatarUrl] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-//        @RSStrongify(self);
-//        [self.tableView reloadRowAtIndexPath:indexPath withRowAnimation:UITableViewRowAnimationNone];
-//    }];
+    cell.viewModel = itemViewModel;
     if (itemViewModel.isSelected) {
-        cell.backgroundColor = [UIColor blueColor];
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else {
-        cell.backgroundColor = [UIColor whiteColor];
+        cell.accessoryType = UITableViewCellAccessoryNone;
     }
     return cell;
 }

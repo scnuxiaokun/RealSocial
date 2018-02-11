@@ -324,6 +324,65 @@ typedef struct RSStar__storage_ {
 
 @end
 
+#pragma mark - RSReceiver
+
+@implementation RSReceiver
+
+@dynamic hasType, type;
+@dynamic userNameArray, userNameArray_Count;
+
+typedef struct RSReceiver__storage_ {
+  uint32_t _has_storage_[1];
+  uint32_t type;
+  NSMutableArray *userNameArray;
+} RSReceiver__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "type",
+        .dataTypeSpecific.className = NULL,
+        .number = RSReceiver_FieldNumber_Type,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(RSReceiver__storage_, type),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "userNameArray",
+        .dataTypeSpecific.className = NULL,
+        .number = RSReceiver_FieldNumber_UserNameArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(RSReceiver__storage_, userNameArray),
+        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[RSReceiver class]
+                                     rootClass:[RSSpspacecgiRoot class]
+                                          file:RSSpspacecgiRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(RSReceiver__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\002\001D\000\002\000UserName\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
 #pragma mark - RSSpace
 
 @implementation RSSpace
@@ -333,7 +392,9 @@ typedef struct RSStar__storage_ {
 @dynamic hasCreateTime, createTime;
 @dynamic hasUpdateTime, updateTime;
 @dynamic hasCreator, creator;
+@dynamic hasName, name;
 @dynamic authorArray, authorArray_Count;
+@dynamic hasReceiver, receiver;
 @dynamic starListArray, starListArray_Count;
 
 typedef struct RSSpace__storage_ {
@@ -343,7 +404,9 @@ typedef struct RSSpace__storage_ {
   uint32_t updateTime;
   RSIdPair *spaceId;
   NSString *creator;
+  NSString *name;
   NSMutableArray *authorArray;
+  RSReceiver *receiver;
   NSMutableArray *starListArray;
 } RSSpace__storage_;
 
@@ -399,6 +462,15 @@ typedef struct RSSpace__storage_ {
         .dataType = GPBDataTypeString,
       },
       {
+        .name = "name",
+        .dataTypeSpecific.className = NULL,
+        .number = RSSpace_FieldNumber_Name,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(RSSpace__storage_, name),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
         .name = "authorArray",
         .dataTypeSpecific.className = NULL,
         .number = RSSpace_FieldNumber_AuthorArray,
@@ -406,6 +478,15 @@ typedef struct RSSpace__storage_ {
         .offset = (uint32_t)offsetof(RSSpace__storage_, authorArray),
         .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "receiver",
+        .dataTypeSpecific.className = GPBStringifySymbol(RSReceiver),
+        .number = RSSpace_FieldNumber_Receiver,
+        .hasIndex = 6,
+        .offset = (uint32_t)offsetof(RSSpace__storage_, receiver),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
       },
       {
         .name = "starListArray",
@@ -427,7 +508,8 @@ typedef struct RSSpace__storage_ {
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
-        "\007\001G\000\002D\000\003J\000\004J\000\005G\000\006\000Author\000\007\000StarList\000";
+        "\t\001G\000\002D\000\003J\000\004J\000\005G\000\006D\000\007\000Author\000\010H\000\t\000StarLis"
+        "t\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     NSAssert(descriptor == nil, @"Startup recursed!");
