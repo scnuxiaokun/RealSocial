@@ -148,7 +148,7 @@
                 @RSStrongify(self);
                 [self.HUD hideAnimated:YES];
                 [RSUtils showTipViewWithMessage:@"创建Space成功"];
-//                [self.navigationController popToRootViewControllerAnimated:YES];
+                [self.navigationController popToRootViewControllerAnimated:YES];
             }];
         }];
         [self.navigationController pushViewController:ctr animated:YES];

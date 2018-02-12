@@ -1,12 +1,12 @@
 //
-//  RSStoryCreateViewModel.m
+//  RSSpaceService.m
 //  RealSocial
 //
-//  Created by kuncai on 2018/2/7.
+//  Created by kuncai on 2018/2/12.
 //  Copyright © 2018年 scnukuncai. All rights reserved.
 //
 
-#import "RSSpaceCreateViewModel.h"
+#import "RSSpaceService.h"
 #import "RSMediaService.h"
 #import "RSNetWorkService.h"
 #import "Spspacecgi.pbobjc.h"
@@ -16,45 +16,37 @@
 #import "RSSpaceCreateModel+WCTTableCoding.h"
 #import "RSDBService.h"
 
-@implementation RSSpaceCreateViewModel
+@implementation RSSpaceService
++(RSSpaceService *)shareInstance {
+    static dispatch_once_t once;
+    static id sharedInstance;
+    dispatch_once(&once, ^{
+        sharedInstance = [[RSSpaceService alloc] init];
+    });
+    return sharedInstance;
+}
 
--(RACSignal *)create:(UIImage *)picture toUsers:(NSArray *)users toSpaces:(NSArray *)spaces type:(RSSpaceCreateModelType)type {
+-(void)create:(NSData *)fileData mediaId:(NSString *)mediaId toUsers:(NSArray *)users toSpaces:(NSArray *)spaces {
+//    NSData *fileData = UIImageJPEGRepresentation(picture, 0.1);
+    NSString *pictureId = mediaId;
+    RSSpaceCreateModel *spaceCreateModel = [[RSSpaceCreateModel alloc] init];
+    spaceCreateModel.mediaId = pictureId;
+    spaceCreateModel.creator = [RSLoginService shareInstance].loginInfo.uid;
+    spaceCreateModel.createTime = [NSDate date];
+    spaceCreateModel.type = RSSpaceCreateModelTypeSignal;
+    spaceCreateModel.users = users;
+    spaceCreateModel.spaces = spaces;
+    BOOL dbResult = [[RSDBService db] insertOrReplaceObject:spaceCreateModel into:NSStringFromClass([RSSpaceCreateModel class])];
+    if (dbResult == NO) {
+        return;
+    }
     @weakify(self);
-    return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
-        @strongify(self);
-        NSData *fileData = UIImageJPEGRepresentation(picture, 0.1);
-        NSString *pictureId = [RSMediaService pictureIdWithData:fileData];
-        BOOL result = [RSMediaService savePictureLocal:fileData pictureId:pictureId];
-        if (result == NO) {
-            [subscriber sendError:[NSError errorWithString:@"照片本地保存失败"]];
-            return nil;
+    [RSMediaService uploadPictureCDN:fileData pictureId:pictureId complete:^(BOOL isOK, NSError *error) {
+        @RSStrongify(self);
+        if (isOK == NO) {
+            return;
         }
-        [subscriber sendCompleted];
-        RSSpaceCreateModel *spaceCreateModel = [[RSSpaceCreateModel alloc] init];
-        spaceCreateModel.mediaId = pictureId;
-        spaceCreateModel.creator = [RSLoginService shareInstance].loginInfo.uid;
-        spaceCreateModel.createTime = [NSDate date];
-        spaceCreateModel.type = type;
-        spaceCreateModel.users = users;
-        spaceCreateModel.spaces = spaces;
-        BOOL dbResult = [[RSDBService db] insertOrReplaceObject:spaceCreateModel into:NSStringFromClass([RSSpaceCreateModel class])];
-        if (dbResult == NO) {
-            return nil;
-        }
-        @weakify(self);
-        [RSMediaService uploadPictureCDN:fileData pictureId:pictureId complete:^(BOOL isOK, NSError *error) {
-            @RSStrongify(self);
-            if (isOK == NO) {
-                return;
-            }
-            if (type == RSSpaceCreateModelTypeSignal) {
-                [self createSignalSpaceWithPictureId:pictureId toUsers:users toSpaces:spaces];
-            }
-//            if (type == RSSpaceCreateModelTypeGruop) {
-//                [self createGroupSpaceWithPictureId:pictureId Authors:users];
-//            }
-        }];
-        return nil;
+        [self createSignalSpaceWithPictureId:pictureId toUsers:users toSpaces:spaces];
     }];
 }
 
@@ -64,14 +56,11 @@
         return;
     }
     NSMutableArray *signals = [[NSMutableArray alloc] init];
-    /*
-     //创建多个单人Space 缺失
-    for (NSString *user in users) {
-        RSRequest *request = [self buildRequestWithPictureId:pictureId toUsers:@[user]];
+    if ([users count] > 0) {
+        RSRequest *request = [self buildRequestWithPictureId:pictureId toUsers:users];
         RACSignal *signal = [RSNetWorkService sendRequest:request];
         [signal subscribeNext:^(RSResponse *response) {
             RSCreateSpaceResp *resp = [RSCreateSpaceResp parseFromData:response.data error:nil];
-            [self sendUpdateData:resp];
             NSLog(@"创建Space成功,svrId:%llu",resp.spaceId.svrId);
         } error:^(NSError * _Nullable error) {
             NSLog(@"创建Space失败:%@",error);
@@ -80,7 +69,6 @@
         }];
         [signals addObject:signal];
     }
-     */
     
     for (NSNumber *spaceIds in spaces) {
         //往多个space添加star
@@ -132,11 +120,36 @@
     return request;
 }
 
--(NSData *)moke {
-    return nil;
-    RSCreateSpaceReq *resp = [RSCreateSpaceReq new];
+//创建signle space发送给多个好友
+-(RSRequest *)buildRequestWithPictureId:(NSString *)pictureId toUsers:(NSArray *)users {
+    RSCreateSpaceReq *req = [RSCreateSpaceReq new];
+    
+    RSSpace *space = [RSSpace new];
+    space.type = RSenSpaceType_SpaceTypeSingle;
+    
     RSIdPair *idpair = [RSIdPair new];
-    idpair.svrId = 123;
-    return [resp data];
+    idpair.clientId = pictureId;
+    space.spaceId = idpair;
+    
+    RSStar *star = [RSStar new];
+    star.type = RSenStarType_StarTypeImg;
+    star.starId = idpair;
+    star.author = [RSLoginService shareInstance].loginInfo.uid;
+    RSStarImg *img = [RSStarImg new];
+    img.imgURL = [RSMediaService urlWithPictureId:pictureId];
+    img.thumbURL = [RSMediaService urlWithPictureId:pictureId];
+    star.img = img;
+    [space.starListArray addObject:star];
+    
+    RSReceiver *receiver = [RSReceiver new];
+    receiver.type = RSenReceiverType_ReceiverTypeList;
+    receiver.userNameArray = [[NSMutableArray alloc] initWithArray:users];
+    space.receiver = receiver;
+    
+    space.creator = [RSLoginService shareInstance].loginInfo.uid;
+    
+    req.space = space;
+    RSRequest *request = [RSRequestFactory requestWithReq:req moke:nil];
+    return request;
 }
 @end

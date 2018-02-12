@@ -61,7 +61,7 @@
         @weakify(self);
         dispatch_sync_on_main_queue(^{
             @RSStrongify(self);
-            self.listData = tmp;
+            self.listData = [[tmp reverseObjectEnumerator] allObjects];;
         });
     } error:^(NSError * _Nullable error) {
         [self sendErrorSignal:error];

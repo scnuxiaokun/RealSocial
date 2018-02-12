@@ -60,9 +60,11 @@
 
     NSURLSessionTask *task = [session dataTaskWithRequest:urlRequest completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         if (error) {
+            NSLog(@"###########[%@][begin errorlog]#############",request.cgiName);
             NSLog(@"%@", error);
             NSString *responseString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
             NSLog(@"%@", responseString);
+            NSLog(@"###########[%@][end errorlog]#############",request.cgiName);
             [signal sendError:error];
         } else {
 //            NSLog(@"%@", responseObject);

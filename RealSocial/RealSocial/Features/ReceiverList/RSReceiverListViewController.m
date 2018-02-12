@@ -44,7 +44,9 @@
 }
 
 -(void)loadData {
+    NSLog(@"RSReceiverListViewController loadData");
     [self.viewModel loadData];
+    
 //    [self.spaceView.viewModel loadData];
 }
 
