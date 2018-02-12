@@ -61,14 +61,32 @@
     
     //设置当前的imageview
     NSString *imgUrl = [self.dataSources objectAtIndex:_currIndex];
-    [self.currImageView sd_setImageWithURL:[[NSURL alloc] initWithString:imgUrl] placeholderImage:nil];
+//    [self.currImageView sd_setImageWithURL:[[NSURL alloc] initWithString:imgUrl] placeholderImage:nil];
+    @weakify(self);
+    [[SDWebImageManager sharedManager] loadImageWithURL:[NSURL URLWithString:imgUrl] options:SDWebImageProgressiveDownload progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
+        
+    } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
+        @RSStrongify(self);
+        if (!error) {
+            [self.currImageView setImage:image];
+        }
+    }];
     //设置下一张图片
     imgUrl = [self.dataSources objectAtIndex:_nextIndex];
-    [self.backImageView sd_setImageWithURL:[[NSURL alloc] initWithString:imgUrl] placeholderImage:nil];
+//    [self.backImageView sd_setImageWithURL:[[NSURL alloc] initWithString:imgUrl] placeholderImage:nil];
+    [[SDWebImageManager sharedManager] loadImageWithURL:[NSURL URLWithString:imgUrl] options:SDWebImageProgressiveDownload progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
+        
+    } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
+        @RSStrongify(self);
+        if (!error) {
+            [self.backImageView setImage:image];
+        }
+    }];
     
     self.pageControl.numberOfPages = _dataSources.count;
     [self layoutSubviews];
 }
+
 
 - (void)layoutSubviews {
     [super layoutSubviews];
@@ -158,7 +176,16 @@
         self.nextIndex = self.currIndex - 1;
         if (self.nextIndex < 0) self.nextIndex = self.dataSources.count - 1;
         NSString *imgUrl = [self.dataSources objectAtIndex:self.nextIndex];
-        [self.backImageView sd_setImageWithURL:[[NSURL alloc] initWithString:imgUrl] placeholderImage:nil];
+//        [self.backImageView sd_setImageWithURL:[[NSURL alloc] initWithString:imgUrl] placeholderImage:nil];
+        @weakify(self);
+        [[SDWebImageManager sharedManager] loadImageWithURL:[NSURL URLWithString:imgUrl] options:SDWebImageProgressiveDownload progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
+            
+        } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
+            @RSStrongify(self);
+            if (!error) {
+                [self.backImageView setImage:image];
+            }
+        }];
         if (offsetX <= self.width) [self changeToNext];
         
         //向左滚动
@@ -167,7 +194,16 @@
         
         self.nextIndex = (self.currIndex + 1) % self.dataSources.count;
         NSString *imgUrl = [self.dataSources objectAtIndex:self.nextIndex];
-        [self.backImageView sd_setImageWithURL:[[NSURL alloc] initWithString:imgUrl] placeholderImage:nil];
+//        [self.backImageView sd_setImageWithURL:[[NSURL alloc] initWithString:imgUrl] placeholderImage:nil];
+        @weakify(self);
+        [[SDWebImageManager sharedManager] loadImageWithURL:[NSURL URLWithString:imgUrl] options:SDWebImageProgressiveDownload progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
+            
+        } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
+            @RSStrongify(self);
+            if (!error) {
+                [self.backImageView setImage:image];
+            }
+        }];
         if (offsetX >= self.width * 3) [self changeToNext];
     }
 }
@@ -214,11 +250,11 @@
         //添加手势监听图片的点击
         [_scrollView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageClick)]];
         _currImageView = [[UIImageView alloc] init];
-        _currImageView.contentMode = UIViewContentModeScaleAspectFit;
+        _currImageView.contentMode = UIViewContentModeScaleAspectFill;
         _currImageView.clipsToBounds = YES;
         [_scrollView addSubview:_currImageView];
         _backImageView = [[UIImageView alloc] init];
-        _backImageView.contentMode = UIViewContentModeScaleAspectFit;
+        _backImageView.contentMode = UIViewContentModeScaleAspectFill;
         _backImageView.clipsToBounds = YES;
         [_scrollView addSubview:_backImageView];
     }

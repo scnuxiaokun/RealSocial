@@ -132,9 +132,10 @@
         @weakify(self);
         [ctr setSpaceCompletionHandler:^(RSReceiverListWithSpaceViewController *ctr, NSArray *toUsers, NSArray *spaceIds) {
             @RSStrongify(self);
-//            self.toSpaceIdsArray = spaceIds;
-//            self.toUserLabel.text = [toUsers componentsJoinedByString:@";"];
-//            self.toUsersArray = toUsers;
+            if ([toUsers count] <= 0 && [spaceIds count] <= 0) {
+                [RSUtils showTipViewWithMessage:@"必须选择一个对象"];
+                return;
+            }
             self.createType = RSSpaceCreateModelTypeSignal;
             [self.HUD showAnimated:YES];
             @weakify(self);

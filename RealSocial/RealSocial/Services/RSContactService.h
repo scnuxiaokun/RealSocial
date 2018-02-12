@@ -11,6 +11,7 @@
 #import "RSContactModel.h"
 @interface RSContactService : NSObject
 +(RSContactService *)shareInstance;
+-(RACSignal *)loadData;
 -(BOOL)saveAllContactResp:(RSGetAllContactResp *)resp;
 -(NSArray<RSContactModel *>*)getAllContact;
 -(RSContactModel *)getContactByUid:(NSString *)uid;

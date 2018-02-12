@@ -95,7 +95,7 @@
     if (_mediaImageView) {
         return _mediaImageView;
     }
-    _mediaImageView = [[UIImageView alloc] init];
+    _mediaImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"defaultSpaceBg"]];
     _mediaImageView.contentMode = UIViewContentModeScaleAspectFill;
     _mediaImageView.layer.cornerRadius = 10.f;
     _mediaImageView.layer.masksToBounds = YES;
@@ -127,7 +127,15 @@
     _viewModel = viewModel;
 //    [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:viewModel.avatarUrl] placeholderImage:[UIImage imageNamed:@"defaultAvatar"]];
     [self.avatarImageView setUrls:viewModel.avatarUrls];
-    [self.mediaImageView sd_setImageWithURL:[NSURL URLWithString:viewModel.mediaUrl] placeholderImage:[UIImage imageNamed:@"defaultSpaceBg"]];
+    @weakify(self);
+//    [self.mediaImageView sd_setImageWithURL:[NSURL URLWithString:viewModel.mediaUrl] placeholderImage:[UIImage imageNamed:@"defaultSpaceBg"]];
+    [[SDWebImageManager sharedManager] loadImageWithURL:[NSURL URLWithString:viewModel.mediaUrl] options:SDWebImageProgressiveDownload progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
+        
+    } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
+        if (!error) {
+            [self.mediaImageView setImage:image];
+        }
+    }];
     self.titleLabel.text = viewModel.titleString;
     self.subtitleLabel.text = viewModel.subTitleString;
 }

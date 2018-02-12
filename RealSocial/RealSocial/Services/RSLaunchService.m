@@ -38,7 +38,7 @@
 -(void)start {
     self.startBlock();
     [WXApi registerApp:WEIXIN_LOGIN_APP_ID];
-    
+    [self initALBBMAN];
     
     RSRequest *request = [RSRequest new];
     request.mokeResponseData = [self mokeResponse];
@@ -54,7 +54,7 @@
 -(void)initALBBMAN {
     [[ALBBMANAnalytics getInstance] initWithAppKey:@"24797003" secretKey:@"4762b1eb5e601e96b8e838306125f6ab"];
     //    [[ALBBMANAnalytics getInstance] turnOnDebug];
-    [[RSLoginService shareInstance].loginSignal subscribeNext:^(id  _Nullable x) {
+    [[[RSLoginService shareInstance].loginSignal deliverOnMainThread] subscribeNext:^(id  _Nullable x) {
         RSLoginInfoModel *loginInfo = [RSLoginService shareInstance].loginInfo;
         [[ALBBMANAnalytics getInstance] updateUserAccount:loginInfo.uid userid:loginInfo.uid];
     }];

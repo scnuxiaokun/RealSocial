@@ -108,6 +108,10 @@ static const CGFloat RSReceiverSpaceViewCollectionViewHeight = 138;
         @weakify(self);
         [receiverListViewController setCompletionHandler:^(RSReceiverListViewController *ctr, NSArray *toUsers) {
             @RSStrongify(self);
+            if ([toUsers count] <= 0) {
+                [RSUtils showTipViewWithMessage:@"必须选择一个对象"];
+                return;
+            }
             [[[self.viewModel createGroupSpaceWithAuthors:toUsers] deliverOnMainThread] subscribeError:^(NSError * _Nullable error) {
                 [RSUtils showTipViewWithMessage:@"创建多人Space失败"];
             } completed:^{

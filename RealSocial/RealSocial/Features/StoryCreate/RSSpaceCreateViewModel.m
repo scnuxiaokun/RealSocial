@@ -23,6 +23,14 @@
     @weakify(self);
     return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
         @strongify(self);
+        if (!picture) {
+            [subscriber sendError:[NSError errorWithString:@"发送内容不能为空"]];
+            return nil;
+        }
+        if ([users count]<=0 && [spaces count]<=0) {
+            [subscriber sendError:[NSError errorWithString:@"发送对象不能为空"]];
+            return nil;
+        }
         NSData *fileData = UIImageJPEGRepresentation(picture, 0.1);
         NSString *pictureId = [RSMediaService pictureIdWithData:fileData];
         BOOL result = [RSMediaService savePictureLocal:fileData pictureId:pictureId];

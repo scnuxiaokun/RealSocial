@@ -25,6 +25,7 @@
 #import "RSAvatarImageView.h"
 #import "RSReceiverListWithSpaceViewController.h"
 #import "RSSpaceCreateViewModel.h"
+#import "RSContactService.h"
 
 @interface RSSpaceLineViewController ()<UITableViewDelegate, UITableViewDataSource, DBCameraViewControllerDelegate>
 @property (nonatomic, strong) RSSpaceLineNavigationBar *bar;
@@ -92,6 +93,7 @@
 //    } else {
 //        NSLog(@"SDK 为非联网授权版本！");
 //    }
+    [[RSContactService shareInstance] loadData];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -265,6 +267,11 @@
         cell = [[RSSpaceLineViewTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:indentifier];
     }
     cell.viewModel = [self.viewModel.listData objectOrNilAtIndex:indexPath.row];
+//    @weakify(self);
+//    [cell setCompletionHanldler:^(RSSpaceLineViewTableViewCell *cell) {
+//        @RSStrongify(self);
+//        [tableView reloadRowAtIndexPath:indexPath withRowAnimation:UITableViewRowAnimationNone];
+//    }];
     return cell;
 }
 

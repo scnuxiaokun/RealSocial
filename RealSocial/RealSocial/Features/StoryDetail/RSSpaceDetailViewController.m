@@ -110,7 +110,7 @@
         return _photoBrower;
     }
     _photoBrower = [[RSPhotoBrower alloc] initWithFrame:self.contentView.bounds];
-    _photoBrower.backgroundColor = [UIColor randomColor];
+    _photoBrower.backgroundColor = [UIColor blackColor];
     _photoBrower.dataSources = self.viewModel.photoUrlArray;
     _photoBrower.layer.cornerRadius = 10;
     _photoBrower.layer.masksToBounds = YES;

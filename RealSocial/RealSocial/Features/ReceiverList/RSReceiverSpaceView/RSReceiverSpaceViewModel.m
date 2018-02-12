@@ -58,7 +58,7 @@
         @weakify(self);
         dispatch_sync_on_main_queue(^{
             @RSStrongify(self);
-            self.listData = tmp;
+            self.listData = [[tmp reverseObjectEnumerator] allObjects];
         });
     } error:^(NSError * _Nullable error) {
         [self sendErrorSignal:error];
@@ -85,6 +85,10 @@
         if (!self) {
             return nil;
         }
+        if ([authors count] <= 0) {
+            [subscriber sendError:[NSError errorWithString:@"创作者为能为空"]];
+            return nil;
+        }
         NSTimeInterval time = [[NSDate date] timeIntervalSince1970];
         NSString *pictureId = [NSString stringWithFormat:@"%@_%f",[RSLoginService shareInstance].loginInfo.uid, time];
         RSRequest *request = [self buildRequestWithClientId:pictureId Authors:authors];
@@ -107,7 +111,8 @@
     RSCreateSpaceReq *req = [RSCreateSpaceReq new];
     RSSpace *space = [RSSpace new];
     space.type = RSenSpaceType_SpaceTypeGroup;
-    space.name = @"客户端默认Group name";
+    NSString *myNickName = [[RSContactService shareInstance] getNickNameByUid:[RSLoginService shareInstance].loginInfo.uid];
+    space.name = [myNickName stringByAppendingString:@"的圈子"];
     RSReceiver *receiver = [RSReceiver new];
     receiver.type = RSenReceiverType_ReceiverTypeAuthor;
     space.receiver = receiver;

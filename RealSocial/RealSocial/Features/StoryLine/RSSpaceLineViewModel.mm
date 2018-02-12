@@ -22,7 +22,7 @@
     }
     if (space.type == RSenSpaceType_SpaceTypeGroup) {
         NSArray<RSContactModel *> *contacts = [[RSContactService shareInstance] getContactsByUids:space.authorArray];
-        self.titleString = @"group name";
+        self.titleString = space.name;
         NSMutableArray *tmp = [[NSMutableArray alloc] init];
         for (RSContactModel *model in contacts) {
             [tmp addObject:model.avatarUrl];
@@ -36,6 +36,7 @@
 //        self.titleString = firstItem.author;
 //        self.avatarUrl = @"http://www.ladysh.com/d/file/2016080410/2306_160803134243_1.jpg";
         self.mediaUrl = (firstItem.type == RSenStarType_StarTypeImg) ? firstItem.img.imgURL :firstItem.video.videoURL;
+        self.titleString = [self.titleString stringByAppendingString:[NSString stringWithFormat:@"(%lu)",space.starListArray_Count]];
     }
 }
 @end
@@ -53,15 +54,20 @@
         }
         [self sendUpdateData:resp];
         NSMutableArray *tmp = [[NSMutableArray alloc] init];
+        int i=0;
         for (RSSpace *space in resp.listArray) {
             RSSpaceLineItemViewModel *itemVM = [[RSSpaceLineItemViewModel alloc] init];
             [itemVM updateWithSpace:space];
             [tmp addObject:itemVM];
+            if (i > 2) {
+//                break;
+            }
+            i++;
         }
         @weakify(self);
         dispatch_sync_on_main_queue(^{
             @RSStrongify(self);
-            self.listData = [[tmp reverseObjectEnumerator] allObjects];;
+            self.listData = [[tmp reverseObjectEnumerator] allObjects];
         });
     } error:^(NSError * _Nullable error) {
         [self sendErrorSignal:error];

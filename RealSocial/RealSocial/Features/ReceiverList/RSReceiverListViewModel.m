@@ -26,29 +26,16 @@
 -(void)loadData {
     NSArray<RSContactModel *> *contactList = [[RSContactService shareInstance] getAllContact];
     [self updateListData:contactList];
-    RSGetAllContactReq *req = [RSGetAllContactReq new];
-//    RSPKGRequest *request = [[RSPKGRequest alloc] init];
-//    request.cgiName = @"contact/getall";
-//    request.data = [req data];
-//    request.mokeResponseData = [self mokeResponse];
-    
-    RSRequest *request = [RSRequestFactory requestWithReq:req moke:[self mokeResponse]];
-    RACSignal *signal = [RSNetWorkService sendRequest:request];
+    RACSignal *signal = [[RSContactService shareInstance] loadData];
     @weakify(self);
     [signal subscribeNext:^(RSResponse *response) {
-        @RSStrongify(self);
-        RSGetAllContactResp *resp = [RSGetAllContactResp parseFromData:response.data error:nil];
-//        FriendList *list = [FriendList parseFromData:response.data error:nil];
-//        [self.liveData setData:list];
-        [self sendUpdateData:resp];
-        [[RSContactService shareInstance] saveAllContactResp:resp];
-        NSArray<RSContactModel *> *contactList = [[RSContactService shareInstance] getAllContact];
-        [self updateListData:contactList];
     } error:^(NSError * _Nullable error) {
         @RSStrongify(self);
         [self sendErrorSignal:error];
     } completed:^{
         @RSStrongify(self);
+        NSArray<RSContactModel *> *contactList = [[RSContactService shareInstance] getAllContact];
+        [self updateListData:contactList];
         [self sendCompleteSignal];
     }];
 }

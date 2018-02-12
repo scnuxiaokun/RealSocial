@@ -10,6 +10,10 @@
 #import "RSDBService.h"
 #import "RSContactModel+WCTTableCoding.h"
 #import "Spcgicomm.pbobjc.h"
+#import "Spbasecgi.pbobjc.h"
+#import "RSRequestFactory.h"
+#import "RSLoginService.h"
+#import "RSNetWorkService.h"
 
 @implementation RSContactService {
     NSMutableDictionary *_dic;
@@ -30,6 +34,24 @@
         _dic = [[NSMutableDictionary alloc] init];
     }
     return self;
+}
+
+-(RACSignal *)loadData {
+    RSGetAllContactReq *req = [RSGetAllContactReq new];
+    RSRequest *request = [RSRequestFactory requestWithReq:req moke:nil];
+    RACSignal *signal = [RSNetWorkService sendRequest:request];
+    @weakify(self);
+    [signal subscribeNext:^(RSResponse *response) {
+        @RSStrongify(self);
+        RSGetAllContactResp *resp = [RSGetAllContactResp parseFromData:response.data error:nil];
+        [self saveAllContactResp:resp];
+    } error:^(NSError * _Nullable error) {
+        
+    } completed:^{
+        
+        
+    }];
+    return signal;
 }
 
 -(BOOL)saveAllContactResp:(RSGetAllContactResp *)resp {
