@@ -19,7 +19,7 @@
 -(instancetype)init {
     self = [super init];
     if (self) {
-        self.isSeleted = NO;
+        self.isSelected = NO;
         self.type = RSReceiverSpaceItemViewModelTypeNormal;
     }
     return self;
@@ -52,9 +52,9 @@
             item.num = [NSString stringWithFormat:@"(%lu)", (unsigned long)space.authorArray_Count];
             [tmp addObject:item];
         }
-        RSReceiverSpaceItemViewModel *item = [[RSReceiverSpaceItemViewModel alloc] init];
-        item.type = RSReceiverSpaceItemViewModelTypeAdd;
-        [tmp addObject:item];
+//        RSReceiverSpaceItemViewModel *item = [[RSReceiverSpaceItemViewModel alloc] init];
+//        item.type = RSReceiverSpaceItemViewModelTypeAdd;
+//        [tmp addObject:item];
         @weakify(self);
         dispatch_sync_on_main_queue(^{
             @RSStrongify(self);
@@ -70,7 +70,7 @@
 -(NSArray *)getSelectedSpaces {
     NSMutableArray *tmp = [[NSMutableArray alloc] init];
     for (RSReceiverSpaceItemViewModel *item in self.listData) {
-        if (item.isSeleted && item.type == RSReceiverSpaceItemViewModelTypeNormal) {
+        if (item.isSelected && item.type == RSReceiverSpaceItemViewModelTypeNormal) {
             [tmp addObject:@(item.spaceId)];
         }
     }
@@ -78,7 +78,7 @@
     
 }
 
--(RACSignal *)createGroupSpaceWithAuthors:(NSArray *)authors {
+-(RACSignal *)createGroupSpaceWithAuthors:(NSArray *)authors SpaceName:(NSString *)name {
     @weakify(self);
     return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
         @strongify(self);
@@ -91,7 +91,7 @@
         }
         NSTimeInterval time = [[NSDate date] timeIntervalSince1970];
         NSString *pictureId = [NSString stringWithFormat:@"%@_%f",[RSLoginService shareInstance].loginInfo.uid, time];
-        RSRequest *request = [self buildRequestWithClientId:pictureId Authors:authors];
+        RSRequest *request = [self buildRequestWithClientId:pictureId Authors:authors Name:name];
         RACSignal *signal = [RSNetWorkService sendRequest:request];
         [signal subscribeNext:^(RSResponse *response) {
             RSCreateSpaceResp *resp = [RSCreateSpaceResp parseFromData:response.data error:nil];
@@ -107,12 +107,18 @@
 }
 
 //创建多人创作Space
--(RSRequest *)buildRequestWithClientId:(NSString *)clientId Authors:(NSArray *)authors {
+-(RSRequest *)buildRequestWithClientId:(NSString *)clientId Authors:(NSArray *)authors Name:(NSString *)name{
     RSCreateSpaceReq *req = [RSCreateSpaceReq new];
     RSSpace *space = [RSSpace new];
     space.type = RSenSpaceType_SpaceTypeGroup;
-    NSString *myNickName = [[RSContactService shareInstance] getNickNameByUid:[RSLoginService shareInstance].loginInfo.uid];
-    space.name = [myNickName stringByAppendingString:@"的圈子"];
+    
+    if ([name length] > 0) {
+        space.name = name;
+    } else {
+        NSString *myNickName = [[RSContactService shareInstance] getNickNameByUid:[RSLoginService shareInstance].loginInfo.uid];
+        space.name = [myNickName stringByAppendingString:@"的圈子"];
+    }
+    
     RSReceiver *receiver = [RSReceiver new];
     receiver.type = RSenReceiverType_ReceiverTypeAuthor;
     space.receiver = receiver;

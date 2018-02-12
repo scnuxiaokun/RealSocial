@@ -55,7 +55,7 @@
     [_twoAvatar removeFromSuperview];
     self.imageView.hidden = NO;
     self.backgroundColor = [UIColor whiteColor];
-    [self.imageView sd_setImageWithURL:[NSURL URLWithString:url]];
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"defaultAvatar"]];
 }
 
 -(void)setUrls:(NSArray *)urls {

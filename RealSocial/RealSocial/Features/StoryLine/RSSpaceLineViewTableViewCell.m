@@ -129,6 +129,7 @@
     [self.avatarImageView setUrls:viewModel.avatarUrls];
     @weakify(self);
 //    [self.mediaImageView sd_setImageWithURL:[NSURL URLWithString:viewModel.mediaUrl] placeholderImage:[UIImage imageNamed:@"defaultSpaceBg"]];
+    [self.mediaImageView setImage:[UIImage imageNamed:@"defaultSpaceBg"]];
     [[SDWebImageManager sharedManager] loadImageWithURL:[NSURL URLWithString:viewModel.mediaUrl] options:SDWebImageProgressiveDownload progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
         
     } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {

@@ -20,6 +20,7 @@
         [self.contentView addSubview:self.avatarImageView];
         [self.contentView addSubview:self.nameLabel];
         [self.contentView addSubview:self.numLabel];
+        [self.contentView addSubview:self.selectedImageView];
         
         [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.centerX.equalTo(self.contentView);
@@ -32,6 +33,12 @@
         [self.numLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.numLabel.mas_bottom);
             make.centerX.equalTo(self.contentView);
+        }];
+        
+        [self.selectedImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.right.equalTo(self.contentView);
+            make.width.height.mas_equalTo(20);
+//            make.right.equalTo(self.contentView).with.offset(-14);
         }];
     }
     
@@ -68,16 +75,24 @@
     return _numLabel;
 }
 
+-(UIImageView *)selectedImageView {
+    if (_selectedImageView) {
+        return _selectedImageView;
+    }
+    _selectedImageView = [[UIImageView alloc] init];
+    return _selectedImageView;
+}
+
 -(void)setViewModel:(RSReceiverSpaceItemViewModel *)viewModel {
     _viewModel = viewModel;
     if (viewModel.type == RSReceiverSpaceItemViewModelTypeNormal) {
         [self.avatarImageView setUrls:viewModel.avatarUrls];
         self.nameLabel.text = viewModel.name;
         self.numLabel.text = viewModel.num;
-        if (viewModel.isSeleted) {
-            self.backgroundColor = [UIColor blueColor];
+        if (viewModel.isSelected) {
+            self.selectedImageView.image = [UIImage imageNamed:@"checkbox-selected"];
         } else {
-            self.backgroundColor = [UIColor whiteColor];
+            self.selectedImageView.image = [UIImage imageNamed:@"checkbox-nor"];
         }
     }
     if (viewModel.type == RSReceiverSpaceItemViewModelTypeAdd) {

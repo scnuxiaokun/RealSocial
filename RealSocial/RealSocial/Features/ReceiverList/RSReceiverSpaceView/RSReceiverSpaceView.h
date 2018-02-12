@@ -13,4 +13,6 @@
 @property (nonatomic, strong) RSReceiverTitleView *titleView;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) RSReceiverSpaceViewModel *viewModel;
+@property (nonatomic, strong) UIButton *createGroupButton;
+@property (nonatomic, assign) NSInteger selectedCount;
 @end

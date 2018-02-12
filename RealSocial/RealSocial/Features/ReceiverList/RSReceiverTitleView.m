@@ -23,7 +23,7 @@
         self.backgroundColor = [UIColor whiteColor];
         [self addSubview:self.label];
         [self.label mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.equalTo(self);
+            make.bottom.equalTo(self).with.offset(-15);
             make.left.equalTo(self).with.offset(20);
         }];
     }

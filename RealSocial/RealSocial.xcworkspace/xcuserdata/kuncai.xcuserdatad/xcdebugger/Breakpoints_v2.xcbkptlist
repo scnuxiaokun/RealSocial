@@ -179,13 +179,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RealSocial/Services/WXApiService.m"
-            timestampString = "540104124.441487"
+            filePath = "RealSocial/Features/StoryLine/RSSpaceLineViewController.m"
+            timestampString = "540120086.074093"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
-            landmarkName = "-login:"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
+            landmarkName = "-avatarImageView"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RealSocial/Features/StoryLine/RSSpaceLineViewController.m"
+            timestampString = "540120086.074824"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
+            landmarkName = "-avatarImageView"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

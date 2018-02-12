@@ -26,6 +26,8 @@
 #import "RSReceiverListWithSpaceViewController.h"
 #import "RSSpaceCreateViewModel.h"
 #import "RSContactService.h"
+#import <UIImageView+WebCache.h>
+#import "RSLoginService.h"
 
 @interface RSSpaceLineViewController ()<UITableViewDelegate, UITableViewDataSource, DBCameraViewControllerDelegate>
 @property (nonatomic, strong) RSSpaceLineNavigationBar *bar;
@@ -33,7 +35,8 @@
 @property (nonatomic, strong) UIButton *userCenterButton;
 @property (nonatomic, strong) UIButton *createButton;
 @property (nonatomic, strong) UIButton *commentButton;
-@property (nonatomic, strong) UIButton *searchButton;
+//@property (nonatomic, strong) UIButton *searchButton;
+@property (nonatomic, strong) UIButton *createGroupButton;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) RSSpaceLineViewModel *viewModel;
 @end
@@ -47,7 +50,6 @@
     [self.view addSubview:self.bar];
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.createButton];
-    
     
 //    UIBarButtonItem *leftButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.userCenterButton];
 //    UIBarButtonItem *commentButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.commentButton];
@@ -93,12 +95,13 @@
 //    } else {
 //        NSLog(@"SDK 为非联网授权版本！");
 //    }
-    [[RSContactService shareInstance] loadData];
+//    [[RSContactService shareInstance] loadData];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self.viewModel loadData];
+    [[RSContactService shareInstance] loadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -123,18 +126,26 @@
     _bar = [[RSSpaceLineNavigationBar alloc] init];
     [_bar addSubview:self.avatarImageView];
     [_bar addSubview:self.commentButton];
-    [_bar addSubview:self.searchButton];
+//    [_bar addSubview:self.searchButton];
+    [_bar addSubview:self.createGroupButton];
     [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_bar);
         make.left.equalTo(_bar).with.offset(12);
     }];
-    [self.searchButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//    [self.searchButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.right.equalTo(_bar).with.offset(-12);
+//        make.centerY.equalTo(_bar);
+//        make.height.width.mas_equalTo(24);
+//    }];
+    [self.commentButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(_bar).with.offset(-12);
         make.centerY.equalTo(_bar);
+        make.height.width.mas_equalTo(24);
     }];
-    [self.commentButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.searchButton.mas_left).with.offset(-12);
+    [self.createGroupButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.commentButton.mas_left).with.offset(-12);
         make.centerY.equalTo(_bar);
+        make.height.width.equalTo(self.commentButton);
     }];
     return _bar;
 }
@@ -144,11 +155,9 @@
         return _avatarImageView;
     }
     _avatarImageView = [[RSAvatarImageView alloc] init];
-    _avatarImageView.url = @"http://www.ladysh.com/d/file/2016080410/2306_160803134243_1.jpg";
+//    _avatarImageView.url = @"http://www.ladysh.com/d/file/2016080410/2306_160803134243_1.jpg";
     _avatarImageView.type = RSAvatarImageViewType48;
-//    _avatarImageView.layer.cornerRadius = _avatarImageView.height/2;
-//    _avatarImageView.layer.masksToBounds = YES;
-//    [_avatarImageView sd_setImageWithURL:[NSURL URLWithString:@"http://www.ladysh.com/d/file/2016080410/2306_160803134243_1.jpg"]];
+    _avatarImageView.url = [[RSContactService shareInstance] getAvatarUrlByUid:[RSLoginService shareInstance].loginInfo.uid];
     _avatarImageView.userInteractionEnabled = YES;
     @weakify(self);
     [_avatarImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
@@ -156,6 +165,10 @@
         RSMineViewController *mineCtr = [[RSMineViewController alloc] init];
         [self.navigationController pushViewController:mineCtr animated:YES];
     }]];
+    [[[RSContactService shareInstance].updateSignal deliverOnMainThread] subscribeNext:^(id  _Nullable x) {
+        @RSStrongify(self);
+        self.avatarImageView.url = [[RSContactService shareInstance] getAvatarUrlByUid:[RSLoginService shareInstance].loginInfo.uid];
+    }];
     return _avatarImageView;
 }
 
@@ -179,10 +192,11 @@
     if (_createButton) {
         return _createButton;
     }_createButton = [[UIButton alloc] init];
+    [_createButton setImage:[UIImage imageNamed:@"btn-camera"] forState:UIControlStateNormal];
     [_createButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.mas_equalTo(80);
     }];
-    [_createButton setBackgroundColor:[UIColor randomColor]];
+    [_createButton setBackgroundColor:[UIColor whiteColor]];
     _createButton.layer.cornerRadius = 80/2;
 //    [_createButton setTitle:@"+" forState:UIControlStateNormal];
 //    _createButton.titleLabel.font = [UIFont boldSystemFontOfSize:36];
@@ -194,20 +208,30 @@
     return _createButton;
 }
 
--(UIButton *)searchButton {
-    if (_searchButton) {
-        return _searchButton;
-    }_searchButton = [[UIButton alloc] init];
-    [_searchButton setBackgroundColor:[UIColor grayColor]];
-    [_searchButton setTitle:@"评论" forState:UIControlStateNormal];
-    return _searchButton;
+-(UIButton *)createGroupButton {
+    if (_createGroupButton) {
+        return _createGroupButton;
+    }_createGroupButton = [[UIButton alloc] init];
+    [_createGroupButton setImage:[UIImage imageNamed:@"btn-newGroup"] forState:UIControlStateNormal];
+    return _createGroupButton;
 }
+
+//-(UIButton *)searchButton {
+//    if (_searchButton) {
+//        return _searchButton;
+//    }_searchButton = [[UIButton alloc] init];
+////    [_searchButton setBackgroundColor:[UIColor grayColor]];
+////    [_searchButton setTitle:@"搜索" forState:UIControlStateNormal];
+//    [_searchButton setImage:[UIImage imageNamed:@"btn-search"] forState:UIControlStateNormal];
+//    return _searchButton;
+//}
 -(UIButton *)commentButton {
     if (_commentButton) {
         return _commentButton;
     }_commentButton = [[UIButton alloc] init];
-    [_commentButton setBackgroundColor:[UIColor grayColor]];
-    [_commentButton setTitle:@"搜索" forState:UIControlStateNormal];
+    [_commentButton setImage:[UIImage imageNamed:@"btn-comment-nor"] forState:UIControlStateNormal];
+//    [_commentButton setBackgroundColor:[UIColor grayColor]];
+//    [_commentButton setTitle:@"评论" forState:UIControlStateNormal];
     return _commentButton;
 }
 
@@ -276,6 +300,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     RSSpaceLineItemViewModel *itemViewModel = [self.viewModel.listData objectOrNilAtIndex:indexPath.row];
     RSSpaceDetailViewController *ctr = [[RSSpaceDetailViewController alloc] init];
     [ctr.viewModel updateWithStory:itemViewModel.space];

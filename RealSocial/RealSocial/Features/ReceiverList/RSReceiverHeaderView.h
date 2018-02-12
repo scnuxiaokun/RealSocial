@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface RSReceiverHeaderView : UIView 
-
+@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UILabel *subTitleLabel;
 @end

@@ -25,6 +25,7 @@
     if (self) {
         [self.contentView addSubview:self.avatarImageView];
         [self.contentView addSubview:self.nickLabel];
+        [self.contentView addSubview:self.selectedImageView];
         [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.contentView).with.offset(12);
             make.centerY.equalTo(self.contentView);
@@ -32,6 +33,11 @@
         [self.nickLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.avatarImageView.mas_right).with.offset(12);
             make.centerY.equalTo(self.contentView);
+        }];
+        [self.selectedImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(self.contentView);
+            make.right.equalTo(self.contentView).with.offset(-14);
+            make.width.height.mas_equalTo(20);
         }];
     }
     return self;
@@ -55,9 +61,22 @@
     return _nickLabel;
 }
 
+-(UIImageView *)selectedImageView {
+    if (_selectedImageView) {
+        return _selectedImageView;
+    }
+    _selectedImageView = [[UIImageView alloc] init];
+    return _selectedImageView;
+}
+
 -(void)setViewModel:(RSReceiverListItemViewModel *)viewModel {
     _viewModel = viewModel;
     [self.avatarImageView setUrl:viewModel.avatarUrl];
     self.nickLabel.text = viewModel.name;
+    if (viewModel.isSelected) {
+        self.selectedImageView.image = [UIImage imageNamed:@"checkbox-selected"];
+    } else {
+        self.selectedImageView.image = [UIImage imageNamed:@"checkbox-nor"];
+    }
 }
 @end

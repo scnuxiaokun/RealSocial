@@ -24,6 +24,7 @@ typedef void (^RSReceiverListCompletionHandler)(RSReceiverListViewController *ct
 @property (nonatomic, strong) RSReceiverHeaderView *headerView;
 @property (nonatomic, strong) NSArray *defaultToUsers;
 @property (nonatomic, copy) RSReceiverListCompletionHandler completionHandler;
+@property (nonatomic, assign) NSInteger selectedCount;
 
 -(void)finishButton:(id)sender;
 -(void)loadData;

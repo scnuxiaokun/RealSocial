@@ -32,6 +32,7 @@
     self = [super init];
     if (self) {
         _dic = [[NSMutableDictionary alloc] init];
+        self.updateSignal = [RACReplaySubject subject];
     }
     return self;
 }
@@ -48,8 +49,7 @@
     } error:^(NSError * _Nullable error) {
         
     } completed:^{
-        
-        
+        [self.updateSignal sendNext:@(YES)];
     }];
     return signal;
 }

@@ -18,13 +18,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.tableView.tableHeaderView = self.spaceView;
+    self.headerView.titleLabel.text = @"分享小事";
+    self.headerView.subTitleLabel.text = @"分享小事，共同回忆";
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 
 /*
@@ -46,6 +47,15 @@
         return _spaceView;
     }
     _spaceView = [[RSReceiverSpaceView alloc] initWithFrame:CGRectMake(0, 0, self.contentView.width, 138+40+20)];
+    @weakify(self);
+    [[RACObserve(_spaceView, selectedCount) deliverOnMainThread] subscribeNext:^(id  _Nullable x) {
+        @RSStrongify(self);
+        if (self.spaceView.selectedCount + self.selectedCount > 0) {
+            [self.finishButtonItem setEnabled:YES];
+        } else {
+            [self.finishButtonItem setEnabled:NO];
+        }
+    }];
     return _spaceView;
 }
 

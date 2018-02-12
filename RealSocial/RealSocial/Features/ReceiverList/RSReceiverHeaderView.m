@@ -20,10 +20,38 @@
 -(instancetype)init {
     self = [super init];
     if (self) {
-        self.backgroundColor = [UIColor blueColor];
+        self.backgroundColor = [UIColor lightGrayColor];
+        [self addSubview:self.titleLabel];
+        [self addSubview:self.subTitleLabel];
+        [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self).with.offset(12);
+            make.top.equalTo(self).with.offset(40);
+        }];
+        [self.subTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.titleLabel);
+            make.top.equalTo(self.titleLabel.mas_bottom).with.offset(2);
+        }];
     }
     return self;
 }
 
+-(UILabel *)titleLabel {
+    if (_titleLabel) {
+        return _titleLabel;
+    }
+    _titleLabel = [[UILabel alloc] init];
+    _titleLabel.font = [UIFont boldSystemFontOfSize:20];
+    return _titleLabel;
+}
+
+-(UILabel *)subTitleLabel {
+    if (_subTitleLabel) {
+        return _subTitleLabel;
+    }
+    _subTitleLabel = [[UILabel alloc] init];
+    _subTitleLabel.font = [UIFont systemFontOfSize:14];
+    _subTitleLabel.textColor = [UIColor grayColor];
+    return _subTitleLabel;
+}
 
 @end

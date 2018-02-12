@@ -166,6 +166,31 @@
 		AD68318120178E290085DDCD /* VideoVert.glsl in Resources */ = {isa = PBXBuildFile; fileRef = AD68317B20178E290085DDCD /* VideoVert.glsl */; };
 		AD6831842017952F0085DDCD /* RSChatListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6831832017952F0085DDCD /* RSChatListViewModel.m */; };
 		AD78584A2026C0D700B8261F /* RSPictureListItemViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7858492026C0D700B8261F /* RSPictureListItemViewModel.m */; };
+		AD7BBC012031732100CD1708 /* btn-searchbar-clear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD7BBBEF2031731E00CD1708 /* btn-searchbar-clear@2x.png */; };
+		AD7BBC022031732100CD1708 /* btn-confirm-nor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD7BBBF02031731E00CD1708 /* btn-confirm-nor@2x.png */; };
+		AD7BBC032031732100CD1708 /* btn-comment-nor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD7BBBF12031731E00CD1708 /* btn-comment-nor@2x.png */; };
+		AD7BBC042031732100CD1708 /* btn-search@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD7BBBF22031731E00CD1708 /* btn-search@3x.png */; };
+		AD7BBC052031732100CD1708 /* btn-camera@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD7BBBF32031731F00CD1708 /* btn-camera@3x.png */; };
+		AD7BBC062031732100CD1708 /* btn-newGroup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD7BBBF42031731F00CD1708 /* btn-newGroup@2x.png */; };
+		AD7BBC072031732100CD1708 /* btn-searchbar-clear@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD7BBBF52031731F00CD1708 /* btn-searchbar-clear@3x.png */; };
+		AD7BBC082031732100CD1708 /* btn-camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD7BBBF62031731F00CD1708 /* btn-camera@2x.png */; };
+		AD7BBC092031732100CD1708 /* btn-confirm-nor@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD7BBBF72031731F00CD1708 /* btn-confirm-nor@3x.png */; };
+		AD7BBC0A2031732100CD1708 /* btn-comment-nor@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD7BBBF82031731F00CD1708 /* btn-comment-nor@3x.png */; };
+		AD7BBC0B2031732100CD1708 /* btn-sent-hl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD7BBBF92031732000CD1708 /* btn-sent-hl@2x.png */; };
+		AD7BBC0C2031732100CD1708 /* btn-comment-new@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD7BBBFA2031732000CD1708 /* btn-comment-new@3x.png */; };
+		AD7BBC0D2031732100CD1708 /* btn-sent-hl@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD7BBBFB2031732000CD1708 /* btn-sent-hl@3x.png */; };
+		AD7BBC0E2031732100CD1708 /* btn-confirm-hl@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD7BBBFC2031732000CD1708 /* btn-confirm-hl@3x.png */; };
+		AD7BBC0F2031732100CD1708 /* btn-newGroup@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD7BBBFD2031732100CD1708 /* btn-newGroup@3x.png */; };
+		AD7BBC102031732100CD1708 /* btn-search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD7BBBFE2031732100CD1708 /* btn-search@2x.png */; };
+		AD7BBC112031732100CD1708 /* btn-comment-new@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD7BBBFF2031732100CD1708 /* btn-comment-new@2x.png */; };
+		AD7BBC122031732100CD1708 /* btn-confirm-hl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD7BBC002031732100CD1708 /* btn-confirm-hl@2x.png */; };
+		AD7BBC152031792800CD1708 /* btn-send@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD7BBC132031792700CD1708 /* btn-send@2x.png */; };
+		AD7BBC162031792800CD1708 /* btn-send@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD7BBC142031792800CD1708 /* btn-send@3x.png */; };
+		AD7BBC1C20317F5E00CD1708 /* checkbox-nor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD7BBC1820317F5E00CD1708 /* checkbox-nor@2x.png */; };
+		AD7BBC1D20317F5E00CD1708 /* checkbox-nor@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD7BBC1920317F5E00CD1708 /* checkbox-nor@3x.png */; };
+		AD7BBC1E20317F5E00CD1708 /* checkbox-selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD7BBC1A20317F5E00CD1708 /* checkbox-selected@3x.png */; };
+		AD7BBC1F20317F5E00CD1708 /* checkbox-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD7BBC1B20317F5E00CD1708 /* checkbox-selected@2x.png */; };
+		AD7BBC22203187E300CD1708 /* RSReceiverListWithCreateGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7BBC21203187E300CD1708 /* RSReceiverListWithCreateGroupViewController.m */; };
 		AD7F6EC120286B0F00D49966 /* LoginInfo.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F6EBF20286B0F00D49966 /* LoginInfo.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AD7F6EC920286B1B00D49966 /* RSChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F6EC320286B1B00D49966 /* RSChatViewController.m */; };
 		AD7F6ECA20286B1B00D49966 /* RSChatViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F6EC420286B1B00D49966 /* RSChatViewModel.m */; };
@@ -547,6 +572,32 @@
 		AD6831832017952F0085DDCD /* RSChatListViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSChatListViewModel.m; sourceTree = "<group>"; };
 		AD7858482026C0D700B8261F /* RSPictureListItemViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSPictureListItemViewModel.h; sourceTree = "<group>"; };
 		AD7858492026C0D700B8261F /* RSPictureListItemViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSPictureListItemViewModel.m; sourceTree = "<group>"; };
+		AD7BBBEF2031731E00CD1708 /* btn-searchbar-clear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-searchbar-clear@2x.png"; sourceTree = "<group>"; };
+		AD7BBBF02031731E00CD1708 /* btn-confirm-nor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-confirm-nor@2x.png"; sourceTree = "<group>"; };
+		AD7BBBF12031731E00CD1708 /* btn-comment-nor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-comment-nor@2x.png"; sourceTree = "<group>"; };
+		AD7BBBF22031731E00CD1708 /* btn-search@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-search@3x.png"; sourceTree = "<group>"; };
+		AD7BBBF32031731F00CD1708 /* btn-camera@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-camera@3x.png"; sourceTree = "<group>"; };
+		AD7BBBF42031731F00CD1708 /* btn-newGroup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-newGroup@2x.png"; sourceTree = "<group>"; };
+		AD7BBBF52031731F00CD1708 /* btn-searchbar-clear@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-searchbar-clear@3x.png"; sourceTree = "<group>"; };
+		AD7BBBF62031731F00CD1708 /* btn-camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-camera@2x.png"; sourceTree = "<group>"; };
+		AD7BBBF72031731F00CD1708 /* btn-confirm-nor@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-confirm-nor@3x.png"; sourceTree = "<group>"; };
+		AD7BBBF82031731F00CD1708 /* btn-comment-nor@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-comment-nor@3x.png"; sourceTree = "<group>"; };
+		AD7BBBF92031732000CD1708 /* btn-sent-hl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-sent-hl@2x.png"; sourceTree = "<group>"; };
+		AD7BBBFA2031732000CD1708 /* btn-comment-new@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-comment-new@3x.png"; sourceTree = "<group>"; };
+		AD7BBBFB2031732000CD1708 /* btn-sent-hl@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-sent-hl@3x.png"; sourceTree = "<group>"; };
+		AD7BBBFC2031732000CD1708 /* btn-confirm-hl@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-confirm-hl@3x.png"; sourceTree = "<group>"; };
+		AD7BBBFD2031732100CD1708 /* btn-newGroup@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-newGroup@3x.png"; sourceTree = "<group>"; };
+		AD7BBBFE2031732100CD1708 /* btn-search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-search@2x.png"; sourceTree = "<group>"; };
+		AD7BBBFF2031732100CD1708 /* btn-comment-new@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-comment-new@2x.png"; sourceTree = "<group>"; };
+		AD7BBC002031732100CD1708 /* btn-confirm-hl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-confirm-hl@2x.png"; sourceTree = "<group>"; };
+		AD7BBC132031792700CD1708 /* btn-send@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-send@2x.png"; sourceTree = "<group>"; };
+		AD7BBC142031792800CD1708 /* btn-send@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-send@3x.png"; sourceTree = "<group>"; };
+		AD7BBC1820317F5E00CD1708 /* checkbox-nor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox-nor@2x.png"; sourceTree = "<group>"; };
+		AD7BBC1920317F5E00CD1708 /* checkbox-nor@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox-nor@3x.png"; sourceTree = "<group>"; };
+		AD7BBC1A20317F5E00CD1708 /* checkbox-selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox-selected@3x.png"; sourceTree = "<group>"; };
+		AD7BBC1B20317F5E00CD1708 /* checkbox-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox-selected@2x.png"; sourceTree = "<group>"; };
+		AD7BBC20203187E300CD1708 /* RSReceiverListWithCreateGroupViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSReceiverListWithCreateGroupViewController.h; sourceTree = "<group>"; };
+		AD7BBC21203187E300CD1708 /* RSReceiverListWithCreateGroupViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSReceiverListWithCreateGroupViewController.m; sourceTree = "<group>"; };
 		AD7F6EBF20286B0F00D49966 /* LoginInfo.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginInfo.pbobjc.m; sourceTree = "<group>"; };
 		AD7F6EC020286B0F00D49966 /* LoginInfo.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginInfo.pbobjc.h; sourceTree = "<group>"; };
 		AD7F6EC320286B1B00D49966 /* RSChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSChatViewController.m; sourceTree = "<group>"; };
@@ -1452,6 +1503,44 @@
 			path = Shaders;
 			sourceTree = "<group>";
 		};
+		AD7BBBCA2031727500CD1708 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				AD7BBC132031792700CD1708 /* btn-send@2x.png */,
+				AD7BBC142031792800CD1708 /* btn-send@3x.png */,
+				AD7BBBF62031731F00CD1708 /* btn-camera@2x.png */,
+				AD7BBBF32031731F00CD1708 /* btn-camera@3x.png */,
+				AD7BBBFF2031732100CD1708 /* btn-comment-new@2x.png */,
+				AD7BBBFA2031732000CD1708 /* btn-comment-new@3x.png */,
+				AD7BBBF12031731E00CD1708 /* btn-comment-nor@2x.png */,
+				AD7BBBF82031731F00CD1708 /* btn-comment-nor@3x.png */,
+				AD7BBC002031732100CD1708 /* btn-confirm-hl@2x.png */,
+				AD7BBBFC2031732000CD1708 /* btn-confirm-hl@3x.png */,
+				AD7BBBF02031731E00CD1708 /* btn-confirm-nor@2x.png */,
+				AD7BBBF72031731F00CD1708 /* btn-confirm-nor@3x.png */,
+				AD7BBBF42031731F00CD1708 /* btn-newGroup@2x.png */,
+				AD7BBBFD2031732100CD1708 /* btn-newGroup@3x.png */,
+				AD7BBBFE2031732100CD1708 /* btn-search@2x.png */,
+				AD7BBBF22031731E00CD1708 /* btn-search@3x.png */,
+				AD7BBBEF2031731E00CD1708 /* btn-searchbar-clear@2x.png */,
+				AD7BBBF52031731F00CD1708 /* btn-searchbar-clear@3x.png */,
+				AD7BBBF92031732000CD1708 /* btn-sent-hl@2x.png */,
+				AD7BBBFB2031732000CD1708 /* btn-sent-hl@3x.png */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		AD7BBC1720317F5E00CD1708 /* Checkbox  */ = {
+			isa = PBXGroup;
+			children = (
+				AD7BBC1820317F5E00CD1708 /* checkbox-nor@2x.png */,
+				AD7BBC1920317F5E00CD1708 /* checkbox-nor@3x.png */,
+				AD7BBC1A20317F5E00CD1708 /* checkbox-selected@3x.png */,
+				AD7BBC1B20317F5E00CD1708 /* checkbox-selected@2x.png */,
+			);
+			path = "Checkbox ";
+			sourceTree = "<group>";
+		};
 		AD7F6EC220286B1B00D49966 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
@@ -1642,6 +1731,8 @@
 		ADB1F70E2030499B00F3AE0A /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				AD7BBC1720317F5E00CD1708 /* Checkbox  */,
+				AD7BBBCA2031727500CD1708 /* Button */,
 				ADB1F710203049EF00F3AE0A /* defaultAvatar.png */,
 				ADB1F70F203049EE00F3AE0A /* defaultSpaceBg.png */,
 			);
@@ -1700,6 +1791,8 @@
 				ADB1F7062030053900F3AE0A /* RSReceiverListWithSpaceViewController.m */,
 				ADB1F71D20308C0400F3AE0A /* RSReceiverListTableViewCell.h */,
 				ADB1F71E20308C0400F3AE0A /* RSReceiverListTableViewCell.m */,
+				AD7BBC20203187E300CD1708 /* RSReceiverListWithCreateGroupViewController.h */,
+				AD7BBC21203187E300CD1708 /* RSReceiverListWithCreateGroupViewController.m */,
 			);
 			path = ReceiverList;
 			sourceTree = "<group>";
@@ -1924,6 +2017,8 @@
 				ADAC4EAB2014F18C0020DA91 /* BaseCell.xib in Resources */,
 				AD2DA57620234DD5006BA319 /* card_front.png in Resources */,
 				AD2DA57820234DD5006BA319 /* textrec-0.png in Resources */,
+				AD7BBC0D2031732100CD1708 /* btn-sent-hl@3x.png in Resources */,
+				AD7BBC0A2031732100CD1708 /* btn-comment-nor@3x.png in Resources */,
 				AD2DA56520234DD4006BA319 /* VideoVert.glsl in Resources */,
 				AD68318120178E290085DDCD /* VideoVert.glsl in Resources */,
 				AD2DA57220234DD5006BA319 /* screen-1.png in Resources */,
@@ -1936,12 +2031,16 @@
 				AD44C9E8202B0226003D16AC /* photograph_Select@3x.png in Resources */,
 				AD2DA56B20234DD4006BA319 /* 81_points_position.jpg in Resources */,
 				AD2DA57E20234DD5006BA319 /* debug-0.png in Resources */,
+				AD7BBC062031732100CD1708 /* btn-newGroup@2x.png in Resources */,
 				ADAC4EAE2014F18C0020DA91 /* MCSetCell.xib in Resources */,
 				AD2DA59120234DD5006BA319 /* 640_480.png in Resources */,
 				ADAC4EB12014F18C0020DA91 /* TextCell.xib in Resources */,
 				AD2DA58F20234DD5006BA319 /* 81-0.png in Resources */,
 				AD2DA56D20234DD4006BA319 /* area-1.png in Resources */,
+				AD7BBC082031732100CD1708 /* btn-camera@2x.png in Resources */,
+				AD7BBC102031732100CD1708 /* btn-search@2x.png in Resources */,
 				AD2DA56420234DD4006BA319 /* Face3DFragment.glsl in Resources */,
+				AD7BBC0C2031732100CD1708 /* btn-comment-new@3x.png in Resources */,
 				AD44C9EB202B0226003D16AC /* photograph@2x.png in Resources */,
 				AD2DA57520234DD5006BA319 /* 1280_720@3x.png in Resources */,
 				AD2DA59020234DD5006BA319 /* IMG_2393.JPG in Resources */,
@@ -1950,40 +2049,54 @@
 				AD68318020178E290085DDCD /* VideoFrag.glsl in Resources */,
 				AD3E956C2010C47D0019138F /* Images.xcassets in Resources */,
 				AD2DA56720234DD4006BA319 /* FacePointColor.glsl in Resources */,
+				AD7BBC022031732100CD1708 /* btn-confirm-nor@2x.png in Resources */,
 				AD2DA58920234DD5006BA319 /* faceCompare-1.png in Resources */,
 				AD2DA56920234DD4006BA319 /* background.png in Resources */,
 				AD2DA58720234DD5006BA319 /* user.png in Resources */,
 				AD2DA56A20234DD4006BA319 /* skin.png in Resources */,
 				AD2DA56820234DD4006BA319 /* standard_alpha.png in Resources */,
+				AD7BBC032031732100CD1708 /* btn-comment-nor@2x.png in Resources */,
 				ADAC4E772014F1150020DA91 /* megviifacepp_0_5_2_model in Resources */,
+				AD7BBC1D20317F5E00CD1708 /* checkbox-nor@3x.png in Resources */,
 				AD2DA57B20234DD5006BA319 /* record-1.png in Resources */,
 				AD2DA58420234DD5006BA319 /* pw.png in Resources */,
 				AD2DA58820234DD5006BA319 /* selected.png in Resources */,
 				ADAC4EB82014F18C0020DA91 /* MGFaceListViewController.storyboard in Resources */,
+				AD7BBC072031732100CD1708 /* btn-searchbar-clear@3x.png in Resources */,
 				ADF1E0A1202EEDA400B85B20 /* spspacecgi.proto in Resources */,
+				AD7BBC122031732100CD1708 /* btn-confirm-hl@2x.png in Resources */,
 				AD2DA58220234DD5006BA319 /* side-0.png in Resources */,
 				AD2DA58B20234DD5006BA319 /* unSelected.png in Resources */,
 				AD2DA58320234DD5006BA319 /* 1280_720.png in Resources */,
+				AD7BBC0F2031732100CD1708 /* btn-newGroup@3x.png in Resources */,
 				AD68317D20178E290085DDCD /* Face3DVertex.glsl in Resources */,
 				ADAC4ED920178B7F0020DA91 /* Localizable.strings in Resources */,
 				AD68317E20178E290085DDCD /* FacePointColor.glsl in Resources */,
 				AD2DA58E20234DD5006BA319 /* 81-1.png in Resources */,
 				AD2DA57A20234DD5006BA319 /* faceLogo.png in Resources */,
 				AD3E9499200F99820019138F /* .gitkeep in Resources */,
+				AD7BBC1F20317F5E00CD1708 /* checkbox-selected@2x.png in Resources */,
+				AD7BBC112031732100CD1708 /* btn-comment-new@2x.png in Resources */,
 				AD2DA58620234DD5006BA319 /* regist.png in Resources */,
 				AD44C9CE202AB4F0003D16AC /* spcgicomm.proto in Resources */,
 				AD2DA56320234DD4006BA319 /* VideoFrag.glsl in Resources */,
 				AD2DA57F20234DD5006BA319 /* record-0.png in Resources */,
 				AD2DA57020234DD5006BA319 /* faceinfo-0.png in Resources */,
+				AD7BBC0E2031732100CD1708 /* btn-confirm-hl@3x.png in Resources */,
 				AD2DA58120234DD5006BA319 /* side-1.png in Resources */,
 				AD3E911A200F97160019138F /* Main.storyboard in Resources */,
 				AD2F57532020BD5400E0CF83 /* spbuiltintype.proto in Resources */,
+				AD7BBC012031732100CD1708 /* btn-searchbar-clear@2x.png in Resources */,
+				AD7BBC162031792800CD1708 /* btn-send@3x.png in Resources */,
 				AD2DA58C20234DD5006BA319 /* 3D-0.png in Resources */,
 				AD2DA59220234DD5006BA319 /* 640_480@3x.png in Resources */,
 				AD2DA56220234DD4006BA319 /* Face3DVertex.glsl in Resources */,
+				AD7BBC1C20317F5E00CD1708 /* checkbox-nor@2x.png in Resources */,
 				AD2DA58520234DD5006BA319 /* 960_540.png in Resources */,
 				ADF1E0A2202EEDA400B85B20 /* spcgicommdef.proto in Resources */,
+				AD7BBC042031732100CD1708 /* btn-search@3x.png in Resources */,
 				AD2DA56F20234DD4006BA319 /* shader-1.png in Resources */,
+				AD7BBC0B2031732100CD1708 /* btn-sent-hl@2x.png in Resources */,
 				AD2DA57720234DD5006BA319 /* 960_540@3x.png in Resources */,
 				AD2DA56E20234DD4006BA319 /* area-0.png in Resources */,
 				AD2DA58A20234DD5006BA319 /* faceCompare-0.png in Resources */,
@@ -1995,9 +2108,13 @@
 				AD68317C20178E290085DDCD /* Face3DFragment.glsl in Resources */,
 				ADB1F711203049EF00F3AE0A /* defaultSpaceBg.png in Resources */,
 				AD2DA56C20234DD4006BA319 /* shader-0.png in Resources */,
+				AD7BBC052031732100CD1708 /* btn-camera@3x.png in Resources */,
 				AD2DA58020234DD5006BA319 /* 1920_1080.png in Resources */,
 				AD2DA57320234DD5006BA319 /* faceinfo-1.png in Resources */,
 				AD44C9EA202B0226003D16AC /* photograph@3x.png in Resources */,
+				AD7BBC152031792800CD1708 /* btn-send@2x.png in Resources */,
+				AD7BBC1E20317F5E00CD1708 /* checkbox-selected@3x.png in Resources */,
+				AD7BBC092031732100CD1708 /* btn-confirm-nor@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2194,6 +2311,7 @@
 				AD3E94E8200F99820019138F /* SafeKitLog.m in Sources */,
 				ADF1E063202C5F0900B85B20 /* NormalDismissAnimation.m in Sources */,
 				AD3E94B3200F99820019138F /* LOTShapeStroke.m in Sources */,
+				AD7BBC22203187E300CD1708 /* RSReceiverListWithCreateGroupViewController.m in Sources */,
 				ADF1E09C202EECCA00B85B20 /* Spcgicommdef.pbobjc.m in Sources */,
 				AD78584A2026C0D700B8261F /* RSPictureListItemViewModel.m in Sources */,
 				ADDC6A89201337DD00439D01 /* FPSecretKeyUtils.m in Sources */,

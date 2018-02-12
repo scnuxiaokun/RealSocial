@@ -12,15 +12,17 @@
 #import <UIImageView+WebCache.h>
 #import "RSReceiverTitleView.h"
 #import "RSReceiverListTableViewCell.h"
-@interface RSReceiverListViewController ()
+@interface RSReceiverListViewController () 
 @end
 
-@implementation RSReceiverListViewController
+@implementation RSReceiverListViewController {
+
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-//    [self.navigationItem setRightBarButtonItems:@[self.finishButtonItem] animated:YES];
+    self.selectedCount = 0;
     
     [self.contentView addSubview:self.headerView];
     [self.contentView addSubview:self.finishButtonItem];
@@ -32,8 +34,9 @@
     }];
     
     [self.finishButtonItem mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.top.equalTo(self.headerView);
-        make.height.mas_equalTo(100);
+        make.top.equalTo(self.headerView.titleLabel);
+        make.right.equalTo(self.headerView).with.offset(-12);
+        make.width.height.mas_equalTo(40);
     }];
     
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -77,8 +80,11 @@
         return _finishButtonItem;
     }
     UIButton *button = [[UIButton alloc] init];
-    [button setBackgroundColor:[UIColor blueColor]];
-    [button setTitle:@"完成" forState:UIControlStateNormal];
+//    [button setEnabled:NO];
+    [button setBackgroundColor:[UIColor clearColor]];
+//    [button setTitle:@"完成" forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:@"btn-confirm-nor"] forState:UIControlStateDisabled];
+    [button setImage:[UIImage imageNamed:@"btn-confirm-hl"] forState:UIControlStateNormal];
     @weakify(self);
     [button addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
         @RSStrongify(self);
@@ -90,6 +96,14 @@
         [self finishButton:sender];
     }];
     _finishButtonItem = button;
+    [[RACObserve(self, selectedCount) deliverOnMainThread] subscribeNext:^(id  _Nullable x) {
+        @RSStrongify(self);
+        if (self.selectedCount > 0) {
+            [self.finishButtonItem setEnabled:YES];
+        } else {
+            [self.finishButtonItem setEnabled:NO];
+        }
+    }];
 //    _finishButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
     return _finishButtonItem;
 }
@@ -99,7 +113,7 @@
         //            self.completionHandler(self, [self.viewModel getSelectedUsers], [self.spaceView.viewModel getSelectedSpaces]);
         self.completionHandler(self, [self.viewModel getSelectedUsers]);
     }
-    [self.navigationController popViewControllerAnimated:YES];
+//    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(RSReceiverHeaderView *)headerView {
@@ -107,8 +121,12 @@
         return _headerView;
     }
     _headerView = [[RSReceiverHeaderView alloc] init];
+    _headerView.titleLabel.text = @"新建圈子";
+    _headerView.subTitleLabel.text = @"新建圈子共同回忆";
     return _headerView;
 }
+
+
 
 -(UITableView *)tableView {
     if (_tableView) {
@@ -136,6 +154,8 @@
     }];
     return _tableView;
 }
+
+#pragma mark tableview delegate
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -165,11 +185,6 @@
     }
     RSReceiverListItemViewModel *itemViewModel = [self.viewModel.listData objectOrNilAtIndex:indexPath.row];
     cell.viewModel = itemViewModel;
-    if (itemViewModel.isSelected) {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    } else {
-        cell.accessoryType = UITableViewCellAccessoryNone;
-    }
     return cell;
 }
 
@@ -177,8 +192,10 @@
     RSReceiverListItemViewModel *itemViewModel = [self.viewModel.listData objectOrNilAtIndex:indexPath.row];
     itemViewModel.isSelected = !itemViewModel.isSelected;
     [tableView reloadRowAtIndexPath:indexPath withRowAnimation:UITableViewRowAnimationNone];
-//    RSChatViewController *ctr = [[RSChatViewController alloc] init];
-//    ctr.hidesBottomBarWhenPushed = YES;
-//    [self.navigationController pushViewController:ctr animated:YES];
+    if (itemViewModel.isSelected) {
+        self.selectedCount = self.selectedCount + 1;
+    } else {
+        self.selectedCount = self.selectedCount - 1;
+    }
 }
 @end

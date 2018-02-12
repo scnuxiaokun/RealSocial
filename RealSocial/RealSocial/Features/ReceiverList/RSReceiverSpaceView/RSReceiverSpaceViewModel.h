@@ -15,12 +15,12 @@ typedef NS_ENUM(NSInteger, RSReceiverSpaceItemViewModelType) {
 @property (nonatomic, strong) NSArray *avatarUrls;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *num;
-@property (nonatomic, assign) BOOL isSeleted;
+@property (nonatomic, assign) BOOL isSelected;
 @property (nonatomic, assign) long long spaceId;
 @property (nonatomic, assign) RSReceiverSpaceItemViewModelType type;
 @end
 @interface RSReceiverSpaceViewModel : RSViewModel
 @property (nonatomic, strong) NSArray *listData;
 -(NSArray *)getSelectedSpaces;
--(RACSignal *)createGroupSpaceWithAuthors:(NSArray *)authors;
+-(RACSignal *)createGroupSpaceWithAuthors:(NSArray *)authors SpaceName:(NSString *)name;
 @end

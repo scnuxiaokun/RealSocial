@@ -13,5 +13,6 @@
 @property (nonatomic, strong) RSAvatarImageView *avatarImageView;
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) UILabel *numLabel;
+@property (nonatomic, strong ) UIImageView *selectedImageView;
 @property (nonatomic, strong) RSReceiverSpaceItemViewModel *viewModel;
 @end

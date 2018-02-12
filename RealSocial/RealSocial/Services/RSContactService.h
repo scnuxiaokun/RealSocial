@@ -10,6 +10,7 @@
 #import "Spbasecgi.pbobjc.h"
 #import "RSContactModel.h"
 @interface RSContactService : NSObject
+@property (nonatomic, strong) RACReplaySubject *updateSignal;
 +(RSContactService *)shareInstance;
 -(RACSignal *)loadData;
 -(BOOL)saveAllContactResp:(RSGetAllContactResp *)resp;
