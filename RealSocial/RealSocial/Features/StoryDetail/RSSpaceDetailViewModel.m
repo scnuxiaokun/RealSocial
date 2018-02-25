@@ -19,6 +19,7 @@
             }
         }
     }
+    tmp = [[tmp reverseObjectEnumerator] allObjects];
     self.photoUrlArray = tmp;
 }
 @end

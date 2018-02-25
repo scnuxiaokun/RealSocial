@@ -64,22 +64,19 @@
     //设置当前的imageview
     NSString *imgUrl = [self.dataSources objectAtIndex:_currIndex];
 //    [self.currImageView sd_setImageWithURL:[[NSURL alloc] initWithString:imgUrl] placeholderImage:nil];
-    [self.currImageView sd_showActivityIndicatorView];
+    
     @weakify(self);
-//    [[SDWebImageManager sharedManager] loadImageWithURL:[NSURL URLWithString:imgUrl] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
-//
-//    } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
-//        @RSStrongify(self);
-//        [self.currImageView sd_removeActivityIndicator];
-//        if (!error) {
-//            [self.currImageView setImage:image];
-//        }
-//    }];
+    [self.currImageView sd_addActivityIndicator];
+    [self.currImageView setImage:[UIImage imageWithColor:[UIColor grayColor]]];
     [RSImageDownloadService downloadImageWithUrl:[NSURL URLWithString:imgUrl] completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
         @RSStrongify(self);
-        [self.currImageView sd_removeActivityIndicator];
         NSString *currentImgUrl = [self.dataSources objectAtIndex:self.currIndex];
+        if (!currentImgUrl && !imageURL) {
+            [self.currImageView sd_removeActivityIndicator];
+            return;
+        }
         if ([currentImgUrl isEqualToString:imageURL.absoluteString]) {
+            [self.currImageView sd_removeActivityIndicator];
             if (!error) {
                 [self.currImageView setImage:image];
             }
@@ -87,28 +84,7 @@
     }];
     //设置下一张图片
     imgUrl = [self.dataSources objectAtIndex:_nextIndex];
-//    [self.backImageView sd_setImageWithURL:[[NSURL alloc] initWithString:imgUrl] placeholderImage:nil];
-    [self.backImageView sd_showActivityIndicatorView];
-//    [[SDWebImageManager sharedManager] loadImageWithURL:[NSURL URLWithString:imgUrl] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
-//
-//    } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
-//        @RSStrongify(self);
-//        [self.backImageView sd_removeActivityIndicator];
-//        if (!error) {
-//            [self.backImageView setImage:image];
-//        }
-//    }];
-    
-    [RSImageDownloadService downloadImageWithUrl:[NSURL URLWithString:imgUrl] completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
-        @RSStrongify(self);
-        [self.backImageView sd_removeActivityIndicator];
-        NSString *currentImgUrl = [self.dataSources objectAtIndex:self.nextIndex];
-        if ([currentImgUrl isEqualToString:imageURL.absoluteString]) {
-            if (!error) {
-                [self.backImageView setImage:image];
-            }
-        }
-    }];
+    [self loadBackImageView:imgUrl];
     
     self.pageControl.numberOfPages = _dataSources.count;
     [self layoutSubviews];
@@ -204,28 +180,7 @@
         self.nextIndex = self.currIndex - 1;
         if (self.nextIndex < 0) self.nextIndex = self.dataSources.count - 1;
         NSString *imgUrl = [self.dataSources objectAtIndex:self.nextIndex];
-//        [self.backImageView sd_setImageWithURL:[[NSURL alloc] initWithString:imgUrl] placeholderImage:nil];
-        [self.backImageView sd_showActivityIndicatorView];
-        @weakify(self);
-//        [[SDWebImageManager sharedManager] loadImageWithURL:[NSURL URLWithString:imgUrl] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
-//
-//        } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
-//            @RSStrongify(self);
-//            [self.backImageView sd_removeActivityIndicator];
-//            if (!error) {
-//                [self.backImageView setImage:image];
-//            }
-//        }];
-        [RSImageDownloadService downloadImageWithUrl:[NSURL URLWithString:imgUrl] completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
-            @RSStrongify(self);
-            [self.backImageView sd_removeActivityIndicator];
-            NSString *currentImgUrl = [self.dataSources objectAtIndex:self.nextIndex];
-            if ([currentImgUrl isEqualToString:imageURL.absoluteString]) {
-                if (!error) {
-                    [self.backImageView setImage:image];
-                }
-            }
-        }];
+        [self loadBackImageView:imgUrl];
         if (offsetX <= self.width) {
             NSLog(@"scrollViewDidScroll:changeToNext向左");
             [self changeToNext];
@@ -237,33 +192,36 @@
         
         self.nextIndex = (self.currIndex + 1) % self.dataSources.count;
         NSString *imgUrl = [self.dataSources objectAtIndex:self.nextIndex];
-//        [self.backImageView sd_setImageWithURL:[[NSURL alloc] initWithString:imgUrl] placeholderImage:nil];
-        [self.backImageView sd_showActivityIndicatorView];
-        @weakify(self);
-//        [[SDWebImageManager sharedManager] loadImageWithURL:[NSURL URLWithString:imgUrl] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
-//
-//        } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
-//            @RSStrongify(self);
-//            [self.backImageView sd_removeActivityIndicator];
-//            if (!error) {
-//                [self.backImageView setImage:image];
-//            }
-//        }];
-        [RSImageDownloadService downloadImageWithUrl:[NSURL URLWithString:imgUrl] completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
-            @RSStrongify(self);
-            [self.backImageView sd_removeActivityIndicator];
-            NSString *currentImgUrl = [self.dataSources objectAtIndex:self.nextIndex];
-            if ([currentImgUrl isEqualToString:imageURL.absoluteString]) {
-                if (!error) {
-                    [self.backImageView setImage:image];
-                }
-            }
-        }];
+        [self loadBackImageView:imgUrl];
         if (offsetX >= self.width * 3) {
             NSLog(@"scrollViewDidScroll:changeToNext向右");
             [self changeToNext];
         }
     }
+}
+
+-(void)loadBackImageView:(NSString *)imgUrl {
+    [self.backImageView sd_addActivityIndicator];
+    [self.backImageView setImage:[UIImage imageWithColor:[UIColor grayColor]]];
+    @weakify(self);
+    [RSImageDownloadService downloadImageWithUrl:[NSURL URLWithString:imgUrl] completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
+        @RSStrongify(self);
+        NSString *currentImgUrl = [self.dataSources objectAtIndex:self.nextIndex];
+        if (!currentImgUrl && !imageURL) {
+            [self.backImageView sd_removeActivityIndicator];
+            return;
+        }
+        
+        if ([currentImgUrl isEqualToString:imageURL.absoluteString]) {
+            [self.backImageView sd_removeActivityIndicator];
+            if (!error) {
+                [self.backImageView setImage:image];
+                if (self.currIndex == self.nextIndex) {
+                    self.currImageView.image = self.backImageView.image;
+                }
+            }
+        }
+    }];
 }
 
 - (void)changeToNext {
@@ -315,11 +273,13 @@
         _currImageView.contentMode = UIViewContentModeScaleAspectFill;
         _currImageView.clipsToBounds = YES;
         [_currImageView sd_setIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        [_currImageView setImage:[UIImage imageWithColor:[UIColor grayColor]]];
         [_scrollView addSubview:_currImageView];
         _backImageView = [[UIImageView alloc] init];
         _backImageView.contentMode = UIViewContentModeScaleAspectFill;
         _backImageView.clipsToBounds = YES;
         [_backImageView sd_setIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        [_backImageView setImage:[UIImage imageWithColor:[UIColor grayColor]]];
         [_scrollView addSubview:_backImageView];
     }
     return _scrollView;

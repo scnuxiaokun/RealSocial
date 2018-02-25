@@ -146,6 +146,10 @@
     [RSImageDownloadService downloadImageWithUrl:[NSURL URLWithString:viewModel.mediaUrl] completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
         @RSStrongify(self);
         NSString *currentImgUrl = self.viewModel.mediaUrl;
+        if (!currentImgUrl && !imageURL) {
+            [self.mediaImageView sd_removeActivityIndicator];
+            return;
+        }
         if ([currentImgUrl isEqualToString:imageURL.absoluteString]) {
             [self.mediaImageView sd_removeActivityIndicator];
             if (!error) {
@@ -153,7 +157,6 @@
             } else {
                 NSLog(@"%@", error);
             }
-            
         }
         
     }];
