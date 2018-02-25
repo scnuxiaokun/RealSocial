@@ -94,7 +94,7 @@
 -(NSString *)getAvatarUrlByUid:(NSString *)uid {
     RSContactModel *model = [self getContactByUid:uid];
     if (model) {
-        return model.nickName;
+        return model.avatarUrl;
     }
     return @"";
 }
