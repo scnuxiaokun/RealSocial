@@ -273,3 +273,4 @@ SDWebImageManager *manager = [SDWebImageManager sharedManager];
 - (nullable NSString *)cacheKeyForURL:(nullable NSURL *)url;
 
 @end
+

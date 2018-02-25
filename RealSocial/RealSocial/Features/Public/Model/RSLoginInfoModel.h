@@ -15,6 +15,7 @@
 @property (nonatomic, retain) NSString *wxuid;
 @property (nonatomic, retain) NSData *sessionKey;
 @property (nonatomic, strong) NSString *qiniuToken;
+@property (nonatomic, assign) unsigned long long uin;
 -(void)updateWithLoginInfo:(RSLoginResp *)loginInfo;
 -(void)clear;
 @end

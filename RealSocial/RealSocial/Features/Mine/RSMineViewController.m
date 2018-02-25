@@ -17,6 +17,8 @@
 #import "MGMarkSetViewController.h"
 #import "UIImageView+WebCache.h"
 #import "RSPictureListViewController.h"
+#import <SDImageCache.h>
+#import <LGAlertView.h>
 
 @interface RSMineViewController ()
 @property (nonatomic, strong) UIImageView *avatarImageView;
@@ -26,6 +28,7 @@
 @property (nonatomic, strong) UIButton *takePhotoButton;
 @property (nonatomic, strong) UIButton *uploadPhotoButton;
 @property (nonatomic, strong) UIButton *pictureListButton;
+@property (nonatomic, strong) UIButton *clearImageButon;
 @end
 
 @implementation RSMineViewController
@@ -41,6 +44,7 @@
     [self.contentView addSubview:self.uploadPhotoButton];
     [self.contentView addSubview:self.avatarImageView];
     [self.contentView addSubview:self.pictureListButton];
+    [self.contentView addSubview:self.clearImageButon];
     
     [self.uidLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView).with.offset(20);
@@ -65,28 +69,33 @@
         make.top.equalTo(self.logoutButton.mas_bottom).with.offset(20);
         make.centerX.equalTo(self.contentView);
     }];
+    [self.clearImageButon mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.pictureListButton.mas_bottom).with.offset(20);
+        make.centerX.equalTo(self.contentView);
+    }];
     
     [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.centerX.equalTo(self.contentView);
     }];
     
-    /** 进行联网授权版本判断，联网授权就需要进行网络授权 */
-    BOOL needLicense = [MGFaceLicenseHandle getNeedNetLicense];
     
-    if (needLicense) {
-//        self.videoBtn.userInteractionEnabled = NO;
-        [MGFaceLicenseHandle licenseForNetwokrFinish:^(bool License, NSDate *sdkDate) {
-            if (!License) {
-                NSLog(@"联网授权失败 ！！！");
-                assert(NO);
-            } else {
-                NSLog(@"联网授权成功");
-//                self.videoBtn.userInteractionEnabled = YES;
-            }
-        }];
-    } else {
-        NSLog(@"SDK 为非联网授权版本！");
-    }
+    /** 进行联网授权版本判断，联网授权就需要进行网络授权 */
+//    BOOL needLicense = [MGFaceLicenseHandle getNeedNetLicense];
+//    
+//    if (needLicense) {
+////        self.videoBtn.userInteractionEnabled = NO;
+//        [MGFaceLicenseHandle licenseForNetwokrFinish:^(bool License, NSDate *sdkDate) {
+//            if (!License) {
+//                NSLog(@"联网授权失败 ！！！");
+//                assert(NO);
+//            } else {
+//                NSLog(@"联网授权成功");
+////                self.videoBtn.userInteractionEnabled = YES;
+//            }
+//        }];
+//    } else {
+//        NSLog(@"SDK 为非联网授权版本！");
+//    }
 }
 
 -(void)showVideoViewController {
@@ -201,6 +210,23 @@
         [self showVideoViewController];
     }];
     return _takePhotoButton;
+}
+
+-(UIButton *)clearImageButon {
+    if (_clearImageButon) {
+        return _clearImageButon;
+    }
+    _clearImageButon = [[UIButton alloc] init];
+    [_clearImageButon setTitle:@"清理图片缓存" forState:UIControlStateNormal];
+    [_clearImageButon setBackgroundColor:[UIColor greenColor]];
+//    @weakify(self);
+    [_clearImageButon addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
+        [[SDWebImageManager sharedManager].imageCache clearDiskOnCompletion:^{
+            [[SDWebImageManager sharedManager].imageCache clearMemory];
+            [RSUtils showTipViewWithMessage:@"清理成功"];
+        }];
+    }];
+    return _clearImageButon;
 }
 
 -(UIButton *)uploadPhotoButton {

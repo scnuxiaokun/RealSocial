@@ -23,6 +23,7 @@
     self.wxuid = loginInfo.userName;
     self.sessionKey = loginInfo.sessionKey;
     self.qiniuToken = loginInfo.qiniuToken;
+    self.uin = loginInfo.uin;
 }
 
 -(void)clear {

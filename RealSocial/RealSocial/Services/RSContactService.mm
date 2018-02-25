@@ -86,11 +86,17 @@
 }
 -(NSString *)getNickNameByUid:(NSString *)uid {
     RSContactModel *model = [self getContactByUid:uid];
-    return model.nickName;
+    if (model) {
+        return model.nickName;
+    }
+    return @"";
 }
 -(NSString *)getAvatarUrlByUid:(NSString *)uid {
     RSContactModel *model = [self getContactByUid:uid];
-    return model.avatarUrl;
+    if (model) {
+        return model.nickName;
+    }
+    return @"";
 }
 
 -(NSArray<RSContactModel *>*)getContactsByUids:(NSArray *)uids {

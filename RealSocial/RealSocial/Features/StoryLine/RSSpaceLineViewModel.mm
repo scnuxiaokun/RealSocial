@@ -16,9 +16,15 @@
     _space = space;
     if (space.type == RSenSpaceType_SpaceTypeSingle) {
         RSContactModel *creatorModel = [[RSContactService shareInstance] getContactByUid:space.creator];
-        self.titleString = creatorModel.nickName;
-        self.avatarUrls = @[creatorModel.avatarUrl];
-        self.subTitleString = @"Single sub title test";
+        if (creatorModel) {
+            self.titleString = creatorModel.nickName;
+            self.avatarUrls = @[creatorModel.avatarUrl];
+            self.subTitleString = @"Single sub title test";
+        } else {
+            self.titleString = @"";
+            self.avatarUrls = @[];
+            self.subTitleString = @"Single sub title test";
+        }
     }
     if (space.type == RSenSpaceType_SpaceTypeGroup) {
         NSArray<RSContactModel *> *contacts = [[RSContactService shareInstance] getContactsByUids:space.authorArray];
@@ -32,7 +38,7 @@
     }
     
     if (space.starListArray_Count > 0) {
-        RSStar *firstItem = [space.starListArray firstObject];
+        RSStar *firstItem = [space.starListArray lastObject];
 //        self.titleString = firstItem.author;
 //        self.avatarUrl = @"http://www.ladysh.com/d/file/2016080410/2306_160803134243_1.jpg";
         self.mediaUrl = (firstItem.type == RSenStarType_StarTypeImg) ? firstItem.img.imgURL :firstItem.video.videoURL;
@@ -53,21 +59,38 @@
             return;
         }
         [self sendUpdateData:resp];
+        NSArray *sortListArray = [resp.listArray sortedArrayWithOptions:NSSortStable usingComparator:
+                            ^NSComparisonResult(RSSpace *  _Nonnull obj1, RSSpace *  _Nonnull obj2) {
+                                if (obj1.updateTime > obj2.updateTime) {
+                                    return NSOrderedAscending;
+                                }
+                                return  NSOrderedDescending;
+                            }];
+        
+        NSInteger hour24 = [[NSDate date] timeIntervalSince1970] - 3600;
         NSMutableArray *tmp = [[NSMutableArray alloc] init];
-        int i=0;
-        for (RSSpace *space in resp.listArray) {
-            RSSpaceLineItemViewModel *itemVM = [[RSSpaceLineItemViewModel alloc] init];
-            [itemVM updateWithSpace:space];
-            [tmp addObject:itemVM];
-            if (i > 2) {
-//                break;
+        for (RSSpace *space in sortListArray) {
+            if (space.updateTime > hour24) {
+                RSSpaceLineItemViewModel *itemVM = [[RSSpaceLineItemViewModel alloc] init];
+                [itemVM updateWithSpace:space];
+                [tmp addObject:itemVM];
             }
-            i++;
         }
+        if ([tmp count] <= 0) {
+            for (RSSpace *space in sortListArray) {
+                RSSpaceLineItemViewModel *itemVM = [[RSSpaceLineItemViewModel alloc] init];
+                [itemVM updateWithSpace:space];
+                [tmp addObject:itemVM];
+                if ([tmp count] >= 10) {
+                    break;
+                }
+            }
+        }
+        
         @weakify(self);
         dispatch_sync_on_main_queue(^{
             @RSStrongify(self);
-            self.listData = [[tmp reverseObjectEnumerator] allObjects];
+            self.listData = tmp;
         });
     } error:^(NSError * _Nullable error) {
         [self sendErrorSignal:error];

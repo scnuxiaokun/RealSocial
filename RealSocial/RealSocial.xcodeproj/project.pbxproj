@@ -244,6 +244,7 @@
 		ADB1F71F20308C0400F3AE0A /* RSReceiverListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB1F71E20308C0400F3AE0A /* RSReceiverListTableViewCell.m */; };
 		ADB1F7222031457A00F3AE0A /* RSSpaceService.mm in Sources */ = {isa = PBXBuildFile; fileRef = ADB1F7212031457A00F3AE0A /* RSSpaceService.mm */; };
 		ADCA8E8920274D5000C372B7 /* RSMessageModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = ADCA8E8620274D5000C372B7 /* RSMessageModel.mm */; };
+		ADD756CE204293D1004B23FA /* RSImageDownloadService.m in Sources */ = {isa = PBXBuildFile; fileRef = ADD756CD204293D1004B23FA /* RSImageDownloadService.m */; };
 		ADDC6A5820130E0F00439D01 /* RSUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A5720130E0F00439D01 /* RSUIViewController.m */; };
 		ADDC6A5B20130E2D00439D01 /* RSUINavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A5A20130E2D00439D01 /* RSUINavigationController.m */; };
 		ADDC6A5E20130E5E00439D01 /* RSChatListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A5D20130E5E00439D01 /* RSChatListViewController.m */; };
@@ -704,6 +705,9 @@
 		ADCA8E8620274D5000C372B7 /* RSMessageModel.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RSMessageModel.mm; sourceTree = "<group>"; };
 		ADCA8E8720274D5000C372B7 /* RSMessageModel+WCTTableCoding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RSMessageModel+WCTTableCoding.h"; sourceTree = "<group>"; };
 		ADCA8E8820274D5000C372B7 /* RSMessageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSMessageModel.h; sourceTree = "<group>"; };
+		ADD756CC204293D1004B23FA /* RSImageDownloadService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSImageDownloadService.h; sourceTree = "<group>"; };
+		ADD756CD204293D1004B23FA /* RSImageDownloadService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSImageDownloadService.m; sourceTree = "<group>"; };
+		ADD756CF2042AFEB004B23FA /* RealSocial.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RealSocial.entitlements; sourceTree = "<group>"; };
 		ADDC6A5620130E0F00439D01 /* RSUIViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSUIViewController.h; sourceTree = "<group>"; };
 		ADDC6A5720130E0F00439D01 /* RSUIViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSUIViewController.m; sourceTree = "<group>"; };
 		ADDC6A5920130E2D00439D01 /* RSUINavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSUINavigationController.h; sourceTree = "<group>"; };
@@ -1010,6 +1014,7 @@
 		AD3E9111200F97160019138F /* RealSocial */ = {
 			isa = PBXGroup;
 			children = (
+				ADD756CF2042AFEB004B23FA /* RealSocial.entitlements */,
 				AD3E9188200F997D0019138F /* Vendors */,
 				AD3E9149200F995F0019138F /* Constants */,
 				AD3E9171200F995F0019138F /* Features */,
@@ -1088,6 +1093,8 @@
 				ADB1F71B2030688900F3AE0A /* RSContactService.mm */,
 				ADB1F7202031457A00F3AE0A /* RSSpaceService.h */,
 				ADB1F7212031457A00F3AE0A /* RSSpaceService.mm */,
+				ADD756CC204293D1004B23FA /* RSImageDownloadService.h */,
+				ADD756CD204293D1004B23FA /* RSImageDownloadService.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1975,6 +1982,11 @@
 					AD3E910E200F97160019138F = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					AD3E9126200F97160019138F = {
 						CreatedOnToolsVersion = 9.2;
@@ -2255,6 +2267,7 @@
 				AD2DA5A520235DAA006BA319 /* RSPictureModel.mm in Sources */,
 				ADDC6A7B20132FCF00439D01 /* RSLanchViewController.m in Sources */,
 				AD3E94E5200F99820019138F /* NSException+SafeKit.m in Sources */,
+				ADD756CE204293D1004B23FA /* RSImageDownloadService.m in Sources */,
 				AD3E94D1200F99820019138F /* LOTStrokeRenderer.m in Sources */,
 				ADDC6A8A201337DD00439D01 /* FPKeychainUtils.m in Sources */,
 				AD3E94AE200F99820019138F /* LOTShapeGroup.m in Sources */,
@@ -2546,6 +2559,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = RealSocial/RealSocial.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A3N2LMHK78;
@@ -2578,6 +2592,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = RealSocial/RealSocial.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A3N2LMHK78;

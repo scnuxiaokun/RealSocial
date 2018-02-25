@@ -21,6 +21,7 @@ optional string UserName = 3;
 optional bytes SessionKey = 4;
 optional string QiniuToken = 5;
 optional Profile Profile = 6;
+optional uint64 Uin = 7;//tmp
 }
 
 message GetAllContactReq

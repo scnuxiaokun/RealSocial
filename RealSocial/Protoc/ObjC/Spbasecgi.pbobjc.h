@@ -77,6 +77,7 @@ typedef GPB_ENUM(RSLoginResp_FieldNumber) {
   RSLoginResp_FieldNumber_SessionKey = 4,
   RSLoginResp_FieldNumber_QiniuToken = 5,
   RSLoginResp_FieldNumber_Profile = 6,
+  RSLoginResp_FieldNumber_Uin = 7,
 };
 
 @interface RSLoginResp : GPBMessage
@@ -104,6 +105,10 @@ typedef GPB_ENUM(RSLoginResp_FieldNumber) {
 /** Test to see if @c profile has been set. */
 @property(nonatomic, readwrite) BOOL hasProfile;
 
+/** tmp */
+@property(nonatomic, readwrite) uint64_t uin;
+
+@property(nonatomic, readwrite) BOOL hasUin;
 @end
 
 #pragma mark - RSGetAllContactReq

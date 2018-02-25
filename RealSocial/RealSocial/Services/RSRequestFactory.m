@@ -12,13 +12,16 @@
 #import "Spspacecgi.pbobjc.h"
 #import "Spcgicommdef.pbobjc.h"
 #import "RSPKGRequest.h"
-
+#import "RSLoginService.h"
 @implementation RSRequestFactory
 +(RSRequest *)requestWithReq:(GPBMessage *)req moke:(GPBMessage *)mokeResponse {
     RSRequest *request;
     if ([req isKindOfClass:[RSLoginReq class]]) {
         request = [[RSRequest alloc] init];
     } else {
+        RSBaseReq *baseReq = [RSBaseReq new];
+        baseReq.uin = [RSLoginService shareInstance].loginInfo.uin;
+        [req setValue:baseReq forKey:@"baseReq"];
         request = [[RSPKGRequest alloc] init];
     }
     request.cgiName = [self cgiNameWithReq:req];

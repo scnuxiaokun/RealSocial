@@ -296,6 +296,7 @@
 //        @RSStrongify(self);
 //        [tableView reloadRowAtIndexPath:indexPath withRowAnimation:UITableViewRowAnimationNone];
 //    }];
+    NSLog(@"indexPatch:%ld", indexPath.row);
     return cell;
 }
 

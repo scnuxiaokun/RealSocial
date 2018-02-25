@@ -89,8 +89,7 @@ static const CGFloat RSReceiverSpaceViewCollectionViewHeight = 138;
                 [RSUtils showTipViewWithMessage:@"创建多人Space成功"];
                 [self.viewModel loadData];
                 UIViewController *ctr = [RSUtils getViewControllerFrom:self];
-                [ctr.navigationController popToRootViewControllerAnimated:YES];
-                
+                [ctr.navigationController popToViewController:ctr animated:YES];
             }];
         }];
         UIViewController *ctr = [RSUtils getViewControllerFrom:self];

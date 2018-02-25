@@ -8,6 +8,9 @@
 
 #import "RSSpaceLineViewTableViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <SDWebImage/UIView+WebCache.h>
+#import <SDWebImageManager.h>
+#import "RSImageDownloadService.h"
 
 @implementation RSSpaceLineViewTableViewCell
 
@@ -100,6 +103,7 @@
     _mediaImageView.layer.cornerRadius = 10.f;
     _mediaImageView.layer.masksToBounds = YES;
     _mediaImageView.backgroundColor = [UIColor clearColor];
+    [_mediaImageView sd_setIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     return _mediaImageView;
 }
 
@@ -128,14 +132,30 @@
 //    [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:viewModel.avatarUrl] placeholderImage:[UIImage imageNamed:@"defaultAvatar"]];
     [self.avatarImageView setUrls:viewModel.avatarUrls];
     @weakify(self);
-//    [self.mediaImageView sd_setImageWithURL:[NSURL URLWithString:viewModel.mediaUrl] placeholderImage:[UIImage imageNamed:@"defaultSpaceBg"]];
-    [self.mediaImageView setImage:[UIImage imageNamed:@"defaultSpaceBg"]];
-    [[SDWebImageManager sharedManager] loadImageWithURL:[NSURL URLWithString:viewModel.mediaUrl] options:SDWebImageProgressiveDownload progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
-        
-    } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
-        if (!error) {
-            [self.mediaImageView setImage:image];
+//    [self.mediaImageView sd_setImageWithURL:[NSURL URLWithString:viewModel.mediaUrl] placeholderImage:[UIImage imageWithColor:[UIColor grayColor]]];
+    [self.mediaImageView setImage:[UIImage imageWithColor:[UIColor grayColor]]];
+//    [[SDWebImageManager sharedManager] loadImageWithURL:[NSURL URLWithString:viewModel.mediaUrl] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
+//
+//    } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
+//        if (!error) {
+//            [self.mediaImageView setImage:image];
+//        }
+//    }];
+    [self.mediaImageView sd_removeActivityIndicator];
+    [self.mediaImageView sd_addActivityIndicator];
+    [RSImageDownloadService downloadImageWithUrl:[NSURL URLWithString:viewModel.mediaUrl] completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
+        @RSStrongify(self);
+        NSString *currentImgUrl = self.viewModel.mediaUrl;
+        if ([currentImgUrl isEqualToString:imageURL.absoluteString]) {
+            [self.mediaImageView sd_removeActivityIndicator];
+            if (!error) {
+                [self.mediaImageView setImage:image];
+            } else {
+                NSLog(@"%@", error);
+            }
+            
         }
+        
     }];
     self.titleLabel.text = viewModel.titleString;
     self.subtitleLabel.text = viewModel.subTitleString;

@@ -113,6 +113,7 @@ typedef struct RSLoginReq__storage_ {
 @dynamic hasSessionKey, sessionKey;
 @dynamic hasQiniuToken, qiniuToken;
 @dynamic hasProfile, profile;
+@dynamic hasUin, uin;
 
 typedef struct RSLoginResp__storage_ {
   uint32_t _has_storage_[1];
@@ -122,6 +123,7 @@ typedef struct RSLoginResp__storage_ {
   NSData *sessionKey;
   NSString *qiniuToken;
   RSProfile *profile;
+  uint64_t uin;
 } RSLoginResp__storage_;
 
 // This method is threadsafe because it is initially called
@@ -184,6 +186,15 @@ typedef struct RSLoginResp__storage_ {
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
       },
+      {
+        .name = "uin",
+        .dataTypeSpecific.className = NULL,
+        .number = RSLoginResp_FieldNumber_Uin,
+        .hasIndex = 6,
+        .offset = (uint32_t)offsetof(RSLoginResp__storage_, uin),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt64,
+      },
     };
     GPBDescriptor *localDescriptor =
         [GPBDescriptor allocDescriptorForClass:[RSLoginResp class]
@@ -195,7 +206,7 @@ typedef struct RSLoginResp__storage_ {
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
-        "\006\001H\000\002F\000\003H\000\004J\000\005J\000\006G\000";
+        "\007\001H\000\002F\000\003H\000\004J\000\005J\000\006G\000\007C\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     NSAssert(descriptor == nil, @"Startup recursed!");
