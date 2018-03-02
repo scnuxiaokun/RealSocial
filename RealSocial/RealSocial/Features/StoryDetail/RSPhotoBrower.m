@@ -83,8 +83,8 @@
         }
     }];
     //设置下一张图片
-    imgUrl = [self.dataSources objectAtIndex:_nextIndex];
-    [self loadBackImageView:imgUrl];
+//    imgUrl = [self.dataSources objectAtIndex:_nextIndex];
+//    [self loadBackImageView:imgUrl];
     
     self.pageControl.numberOfPages = _dataSources.count;
     [self layoutSubviews];
