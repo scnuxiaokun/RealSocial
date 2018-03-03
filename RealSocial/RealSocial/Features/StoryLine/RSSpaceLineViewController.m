@@ -39,6 +39,7 @@
 @property (nonatomic, strong) UIButton *createGroupButton;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) RSSpaceLineViewModel *viewModel;
+@property (nonatomic, strong) MBProgressHUD *HUD;
 @end
 
 @implementation RSSpaceLineViewController
@@ -96,10 +97,13 @@
 //        NSLog(@"SDK 为非联网授权版本！");
 //    }
 //    [[RSContactService shareInstance] loadData];
+    self.HUD = [RSUtils loadingViewWithMessage:nil];
+    self.HUD.removeFromSuperViewOnHide = NO;
 }
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    [self.HUD showAnimated:YES];
     [self.viewModel loadData];
     [[RSContactService shareInstance] loadData];
 }
@@ -255,6 +259,7 @@
     @weakify(self);
     _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         @strongify(self);
+        [self.HUD showAnimated:YES];
         [self.viewModel loadData];
     }];
     [[RACObserve(self.viewModel, listData) deliverOnMainThread] subscribeNext:^(id  _Nullable x) {
@@ -263,10 +268,12 @@
     }];
     [[self.viewModel.completeSignal deliverOnMainThread] subscribeNext:^(id  _Nullable x) {
         @RSStrongify(self);
+        [self.HUD hideAnimated:YES];
         [self.tableView.mj_header endRefreshing];
     }];
     [[self.viewModel.errorSignal deliverOnMainThread] subscribeNext:^(id  _Nullable x){
         @RSStrongify(self);
+        [self.HUD hideAnimated:YES];
         [self.tableView.mj_header endRefreshing];
     }];
     return _tableView;

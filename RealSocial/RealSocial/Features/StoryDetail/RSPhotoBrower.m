@@ -104,6 +104,7 @@
 #pragma mark 设置scrollView的contentSize
 - (void)setScrollViewContentSize {
     if (_dataSources.count > 1) {
+        self.scrollView.scrollEnabled = YES;
         self.scrollView.contentSize = CGSizeMake(self.width * 5, 0);
         self.scrollView.contentOffset = CGPointMake(self.width * 2, 0);
         self.currImageView.frame = CGRectMake(self.width * 2, 0, self.width, self.height);
@@ -112,6 +113,7 @@
             [self startTimer];
         }
     } else {
+        self.scrollView.scrollEnabled = NO;
         //只要一张图片时，scrollview不可滚动，且关闭定时器
         self.scrollView.contentSize = CGSizeZero;
         self.scrollView.contentOffset = CGPointZero;
