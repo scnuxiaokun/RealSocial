@@ -59,8 +59,7 @@
     if ([users count] > 0) {
         RSRequest *request = [self buildRequestWithPictureId:pictureId toUsers:users];
         RACSignal *signal = [RSNetWorkService sendRequest:request];
-        [signal subscribeNext:^(RSResponse *response) {
-            RSCreateSpaceResp *resp = [RSCreateSpaceResp parseFromData:response.data error:nil];
+        [signal subscribeNext:^(RSCreateSpaceResp *resp) {
             NSLog(@"创建Space成功,svrId:%llu",resp.spaceId.svrId);
         } error:^(NSError * _Nullable error) {
             NSLog(@"创建Space失败:%@",error);
@@ -74,8 +73,7 @@
         //往多个space添加star
         RSRequest *request = [self buildRequestWithPictureId:pictureId toSpaces:@[spaceIds]];
         RACSignal *signal = [RSNetWorkService sendRequest:request];
-        [signal subscribeNext:^(RSResponse *response) {
-            RSCreateSpaceResp *resp = [RSCreateSpaceResp parseFromData:response.data error:nil];
+        [signal subscribeNext:^(RSCreateSpaceResp *resp) {
             NSLog(@"添加start成功,svrId:%llu",resp.spaceId.svrId);
         } error:^(NSError * _Nullable error) {
             NSLog(@"添加start失败:%@",error);
@@ -116,7 +114,7 @@
     img.thumbURL = [RSMediaService urlWithPictureId:pictureId];
     star.img = img;
     [req.starListArray addObject:star];
-    RSRequest *request = [RSRequestFactory requestWithReq:req moke:nil];
+    RSRequest *request = [RSRequestFactory requestWithReq:req resp:[RSCreateSpaceResp class] moke:nil];
     return request;
 }
 
@@ -149,7 +147,7 @@
     space.creator = [RSLoginService shareInstance].loginInfo.uid;
     
     req.space = space;
-    RSRequest *request = [RSRequestFactory requestWithReq:req moke:nil];
+    RSRequest *request = [RSRequestFactory requestWithReq:req resp:[RSCreateSpaceResp class] moke:nil];
     return request;
 }
 @end

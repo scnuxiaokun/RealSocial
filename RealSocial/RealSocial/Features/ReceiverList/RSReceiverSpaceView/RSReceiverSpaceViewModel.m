@@ -29,11 +29,10 @@
 
 -(void)loadData {
     RSGetAllMySpaceReq *req = [RSGetAllMySpaceReq new];
-    RSRequest *request = [RSRequestFactory requestWithReq:req moke:nil];
+    RSRequest *request = [RSRequestFactory requestWithReq:req resp:[RSGetAllMySpaceResp class] moke:nil];
     @weakify(self);
-    [[RSNetWorkService sendRequest:request] subscribeNext:^(RSResponse *response) {
+    [[RSNetWorkService sendRequest:request] subscribeNext:^(RSGetAllMySpaceResp *resp) {
         @RSStrongify(self);
-        RSGetAllMySpaceResp *resp = [RSGetAllMySpaceResp parseFromData:response.data error:nil];
         [self sendUpdateData:resp];
         NSMutableArray *tmp = [[NSMutableArray alloc] init];
         for (RSSpace *space in resp.listArray) {
@@ -93,8 +92,8 @@
         NSString *pictureId = [NSString stringWithFormat:@"%@_%f",[RSLoginService shareInstance].loginInfo.uid, time];
         RSRequest *request = [self buildRequestWithClientId:pictureId Authors:authors Name:name];
         RACSignal *signal = [RSNetWorkService sendRequest:request];
-        [signal subscribeNext:^(RSResponse *response) {
-            RSCreateSpaceResp *resp = [RSCreateSpaceResp parseFromData:response.data error:nil];
+        [signal subscribeNext:^(RSCreateSpaceResp *resp) {
+//            RSCreateSpaceResp *resp = [RSCreateSpaceResp parseFromData:response.data error:nil];
             NSLog(@"创建多人协作Space成功,svrId:%llu",resp.spaceId.svrId);
         } error:^(NSError * _Nullable error) {
             NSLog(@"创建多人协作Space失败:%@",error);
@@ -137,7 +136,7 @@
     space.authorArray = [[NSMutableArray alloc] initWithArray:authors];
     [space.authorArray addObject:space.creator];
     req.space = space;
-    RSRequest *request = [RSRequestFactory requestWithReq:req moke:nil];
+    RSRequest *request = [RSRequestFactory requestWithReq:req resp:[RSCreateSpaceResp class] moke:nil];
     return request;
 }
 @end

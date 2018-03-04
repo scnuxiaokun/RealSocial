@@ -78,6 +78,10 @@
         response.data = responseObject;
 //        RSResponseResp *resp = [RSResponseResp parseFromData:response.data error:nil];
         if (request.respClass) {
+            if ([response.data length] <= 0) {
+                [signal sendError:[NSError errorWithString:@"reponse data is empty"]];
+                return;
+            }
             NSError *error;
            NSObject *resp = [request.respClass parseFromData:response.data error:&error];
             if (error) {
@@ -93,6 +97,7 @@
             }
             NSLog(@"%@:%@", request.respClass, resp);
             [signal sendNext:resp];
+            [signal sendCompleted];
             return;
         }
         [signal sendNext:response];

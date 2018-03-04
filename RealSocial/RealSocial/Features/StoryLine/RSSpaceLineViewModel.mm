@@ -49,15 +49,11 @@
 @implementation RSSpaceLineViewModel
 -(void)loadData {
     RSGetAllSpaceReq *req = [RSGetAllSpaceReq new];
-    RSRequest *request = [RSRequestFactory requestWithReq:req moke:[self moke]];
+    RSRequest *request = [RSRequestFactory requestWithReq:req resp:[RSGetAllSpaceResp class] moke:nil];
     RACSignal *signal = [RSNetWorkService sendRequest:request];
     @weakify(self);
-    [signal subscribeNext:^(RSResponse *response) {
+    [signal subscribeNext:^(RSGetAllSpaceResp *resp) {
         @RSStrongify(self);
-        RSGetAllSpaceResp *resp = [RSGetAllSpaceResp parseFromData:response.data error:nil];
-        if (!resp) {
-            return;
-        }
         [self sendUpdateData:resp];
         NSArray *sortListArray = [resp.listArray sortedArrayWithOptions:NSSortStable usingComparator:
                             ^NSComparisonResult(RSSpace *  _Nonnull obj1, RSSpace *  _Nonnull obj2) {

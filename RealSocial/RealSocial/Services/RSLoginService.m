@@ -76,13 +76,12 @@
     RACSubject *signal = [RACSubject subject];
     RSLoginReq *req = [RSLoginReq new];
     req.code = code;
-    RSRequest *request = [RSRequestFactory requestWithReq:req moke:[self mokeResponse]];
+    RSRequest *request = [RSRequestFactory requestWithReq:req resp:[RSLoginResp class] moke:nil];
 //    RSRequest *request = [RSRequest new];
 //    request.cgiName = @"base/login";
 //    request.data = [req data];
 //    request.mokeResponseData = [self mokeResponse];
-    [[RSNetWorkService sendRequest:request] subscribeNext:^(RSResponse *response) {
-        RSLoginResp *resp = [RSLoginResp parseFromData:response.data error:nil];
+    [[RSNetWorkService sendRequest:request] subscribeNext:^(RSLoginResp *resp) {
         [self.loginInfo updateWithLoginInfo:resp];
         [self saveLoginInfo];
         [self.loginSignal sendNext:@(YES)];

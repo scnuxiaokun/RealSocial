@@ -39,12 +39,11 @@
 
 -(RACSignal *)loadData {
     RSGetAllContactReq *req = [RSGetAllContactReq new];
-    RSRequest *request = [RSRequestFactory requestWithReq:req moke:nil];
+    RSRequest *request = [RSRequestFactory requestWithReq:req resp:[RSGetAllContactResp class] moke:nil];
     RACSignal *signal = [RSNetWorkService sendRequest:request];
     @weakify(self);
-    [signal subscribeNext:^(RSResponse *response) {
+    [signal subscribeNext:^(RSGetAllContactResp *resp) {
         @RSStrongify(self);
-        RSGetAllContactResp *resp = [RSGetAllContactResp parseFromData:response.data error:nil];
         [self saveAllContactResp:resp];
     } error:^(NSError * _Nullable error) {
         
