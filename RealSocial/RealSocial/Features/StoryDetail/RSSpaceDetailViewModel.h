@@ -11,5 +11,5 @@
 #import "Spcgicommdef.pbobjc.h"
 @interface RSSpaceDetailViewModel : RSViewModel
 @property (nonatomic, strong) NSArray *photoUrlArray;
--(void)updateWithStory:(RSSpace *)story;
+-(void)updateWithSpace:(RSSpace *)space;
 @end

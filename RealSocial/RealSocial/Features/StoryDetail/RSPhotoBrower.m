@@ -23,8 +23,7 @@
 @property (nonatomic, strong) UIImageView *currImageView;
 //待显示的imageView
 @property (nonatomic, strong) UIImageView *backImageView;
-//当前显示图片的索引
-@property (nonatomic, assign) NSInteger currIndex;
+
 //待显示图片的索引
 @property (nonatomic, assign) NSInteger nextIndex;
 //是否自动滚动,默认为不自动滚动

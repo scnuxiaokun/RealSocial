@@ -7,7 +7,6 @@
 //
 
 #import "RSResponse.h"
-
 @implementation RSResponse
 
 @end

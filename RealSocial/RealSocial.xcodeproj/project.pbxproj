@@ -244,6 +244,8 @@
 		ADB1F71F20308C0400F3AE0A /* RSReceiverListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB1F71E20308C0400F3AE0A /* RSReceiverListTableViewCell.m */; };
 		ADB1F7222031457A00F3AE0A /* RSSpaceService.mm in Sources */ = {isa = PBXBuildFile; fileRef = ADB1F7212031457A00F3AE0A /* RSSpaceService.mm */; };
 		ADCA8E8920274D5000C372B7 /* RSMessageModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = ADCA8E8620274D5000C372B7 /* RSMessageModel.mm */; };
+		ADCB1678204A86FB005CF264 /* RSSpaceDetailAddCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = ADCB1677204A86FB005CF264 /* RSSpaceDetailAddCommentView.m */; };
+		ADCB167B204C1F9E005CF264 /* RSSpaceDetailAddCommentViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADCB167A204C1F9E005CF264 /* RSSpaceDetailAddCommentViewModel.m */; };
 		ADD756CE204293D1004B23FA /* RSImageDownloadService.m in Sources */ = {isa = PBXBuildFile; fileRef = ADD756CD204293D1004B23FA /* RSImageDownloadService.m */; };
 		ADDC6A5820130E0F00439D01 /* RSUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A5720130E0F00439D01 /* RSUIViewController.m */; };
 		ADDC6A5B20130E2D00439D01 /* RSUINavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDC6A5A20130E2D00439D01 /* RSUINavigationController.m */; };
@@ -705,6 +707,10 @@
 		ADCA8E8620274D5000C372B7 /* RSMessageModel.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RSMessageModel.mm; sourceTree = "<group>"; };
 		ADCA8E8720274D5000C372B7 /* RSMessageModel+WCTTableCoding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RSMessageModel+WCTTableCoding.h"; sourceTree = "<group>"; };
 		ADCA8E8820274D5000C372B7 /* RSMessageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSMessageModel.h; sourceTree = "<group>"; };
+		ADCB1676204A86FB005CF264 /* RSSpaceDetailAddCommentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSSpaceDetailAddCommentView.h; sourceTree = "<group>"; };
+		ADCB1677204A86FB005CF264 /* RSSpaceDetailAddCommentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSSpaceDetailAddCommentView.m; sourceTree = "<group>"; };
+		ADCB1679204C1F9E005CF264 /* RSSpaceDetailAddCommentViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSSpaceDetailAddCommentViewModel.h; sourceTree = "<group>"; };
+		ADCB167A204C1F9E005CF264 /* RSSpaceDetailAddCommentViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSSpaceDetailAddCommentViewModel.m; sourceTree = "<group>"; };
 		ADD756CC204293D1004B23FA /* RSImageDownloadService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSImageDownloadService.h; sourceTree = "<group>"; };
 		ADD756CD204293D1004B23FA /* RSImageDownloadService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSImageDownloadService.m; sourceTree = "<group>"; };
 		ADD756CF2042AFEB004B23FA /* RealSocial.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RealSocial.entitlements; sourceTree = "<group>"; };
@@ -1872,6 +1878,10 @@
 				ADF1E080202DE3BD00B85B20 /* RSSpaceDetailViewModel.m */,
 				ADF1E082202EC06E00B85B20 /* RSPhotoBrower.h */,
 				ADF1E083202EC06E00B85B20 /* RSPhotoBrower.m */,
+				ADCB1676204A86FB005CF264 /* RSSpaceDetailAddCommentView.h */,
+				ADCB1677204A86FB005CF264 /* RSSpaceDetailAddCommentView.m */,
+				ADCB1679204C1F9E005CF264 /* RSSpaceDetailAddCommentViewModel.h */,
+				ADCB167A204C1F9E005CF264 /* RSSpaceDetailAddCommentViewModel.m */,
 			);
 			path = StoryDetail;
 			sourceTree = "<group>";
@@ -2260,6 +2270,7 @@
 				AD3E94C1200F99820019138F /* LOTRoundedRectAnimator.m in Sources */,
 				ADB1F7222031457A00F3AE0A /* RSSpaceService.mm in Sources */,
 				AD3E9117200F97160019138F /* ViewController.m in Sources */,
+				ADCB1678204A86FB005CF264 /* RSSpaceDetailAddCommentView.m in Sources */,
 				ADDC6A5820130E0F00439D01 /* RSUIViewController.m in Sources */,
 				AD3E94A3200F99820019138F /* CALayer+Compat.m in Sources */,
 				AD2F574B2020BBED00E0CF83 /* RSMessageViewModel.mm in Sources */,
@@ -2323,6 +2334,7 @@
 				AD2DA5962023500B006BA319 /* RSPictureListViewController.m in Sources */,
 				AD3E94E8200F99820019138F /* SafeKitLog.m in Sources */,
 				ADF1E063202C5F0900B85B20 /* NormalDismissAnimation.m in Sources */,
+				ADCB167B204C1F9E005CF264 /* RSSpaceDetailAddCommentViewModel.m in Sources */,
 				AD3E94B3200F99820019138F /* LOTShapeStroke.m in Sources */,
 				AD7BBC22203187E300CD1708 /* RSReceiverListWithCreateGroupViewController.m in Sources */,
 				ADF1E09C202EECCA00B85B20 /* Spcgicommdef.pbobjc.m in Sources */,

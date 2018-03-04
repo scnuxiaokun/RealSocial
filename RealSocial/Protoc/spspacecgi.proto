@@ -25,6 +25,14 @@ optional uint64 SvrId = 1;
 optional string ClientId = 2;
 }
 
+message Comment
+{
+optional IdPair CommentId = 1;
+optional string FromUser = 2;
+optional uint32 CreateTime = 3;
+optional string Content = 4;
+}
+
 message Star
 {
 optional IdPair StarId = 1;
@@ -33,6 +41,7 @@ optional string Author = 3;
 optional uint32 CreateTime = 4;
 optional StarImg Img = 5;
 optional StarVideo Video = 6;
+repeated Comment CommentList = 7;
 }
 
 message Receiver
@@ -78,6 +87,20 @@ message AddStarResp
 {
 optional BaseResp BaseResp = 1;
 repeated IdPair StarIdList = 2;
+}
+
+message AddCommentReq
+{
+optional BaseReq BaseReq = 1;
+optional IdPair SpaceId = 2;
+optional IdPair StarId = 3;
+optional Comment Comment = 4;
+}
+
+message AddCommentResp
+{
+optional BaseResp BaseResp = 1;
+optional IdPair CommentId = 2;
 }
 
 message AddAuthorReq
@@ -135,4 +158,6 @@ message AddMemoirResp
 {
 optional BaseResp BaseResp = 1;
 }
+
+
 

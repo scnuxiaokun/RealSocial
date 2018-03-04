@@ -58,7 +58,7 @@
     session.responseSerializer = [AFHTTPResponseSerializer serializer];
     session.responseSerializer.acceptableContentTypes = [[NSSet alloc] initWithObjects:@"application/proto",@"text/html", nil];
 
-    NSURLSessionTask *task = [session dataTaskWithRequest:urlRequest completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+    NSURLSessionTask *task = [session dataTaskWithRequest:urlRequest completionHandler:^(NSURLResponse * _Nonnull urlResponse, id  _Nullable responseObject, NSError * _Nullable error) {
         if (error) {
             NSLog(@"###########[%@][begin errorlog]#############",request.cgiName);
             NSLog(@"%@", error);
@@ -66,18 +66,37 @@
             NSLog(@"%@", responseString);
             NSLog(@"###########[%@][end errorlog]#############",request.cgiName);
             [signal sendError:error];
-        } else {
-//            NSLog(@"%@", responseObject);
-            RSResponse *response;
-            if ([request isKindOfClass:[RSPKGRequest class]]) {
-                response = [[RSPKGResponse alloc] init];
-            } else {
-                response = [[RSResponse alloc] init];
-            }
-            response.data = responseObject;
-            [signal sendNext:response];
-            [signal sendCompleted];
+            return;
         }
+//            NSLog(@"%@", responseObject);
+        RSResponse *response;
+        if ([request isKindOfClass:[RSPKGRequest class]]) {
+            response = [[RSPKGResponse alloc] init];
+        } else {
+            response = [[RSResponse alloc] init];
+        }
+        response.data = responseObject;
+//        RSResponseResp *resp = [RSResponseResp parseFromData:response.data error:nil];
+        if (request.respClass) {
+            NSError *error;
+           NSObject *resp = [request.respClass parseFromData:response.data error:&error];
+            if (error) {
+                [signal sendError:error];
+                return;
+            }
+            RSBaseResp *baseResp = [resp valueForKey:@"baseResp"];
+            if (baseResp) {
+                if (baseResp.errCode != 0) {
+                    [signal sendError:[NSError errorWithString:baseResp.errMsg code:baseResp.errCode]];
+                    return;
+                }
+            }
+            NSLog(@"%@:%@", request.respClass, resp);
+            [signal sendNext:resp];
+            return;
+        }
+        [signal sendNext:response];
+        [signal sendCompleted];
     }];
     [task resume];
     

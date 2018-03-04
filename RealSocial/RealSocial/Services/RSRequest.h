@@ -13,4 +13,5 @@
 @property (nonatomic, strong) NSData *data;
 //@property (nonatomic, strong) GPBMessage *pbObj;
 @property (nonatomic, strong) NSString *cgiName;
+@property (nonatomic, assign) Class respClass;
 @end

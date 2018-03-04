@@ -311,7 +311,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     RSSpaceLineItemViewModel *itemViewModel = [self.viewModel.listData objectOrNilAtIndex:indexPath.row];
     RSSpaceDetailViewController *ctr = [[RSSpaceDetailViewController alloc] init];
-    [ctr.viewModel updateWithStory:itemViewModel.space];
+    [ctr.viewModel updateWithSpace:itemViewModel.space];
     [self.navigationController pushViewController:ctr animated:YES];
 }
 

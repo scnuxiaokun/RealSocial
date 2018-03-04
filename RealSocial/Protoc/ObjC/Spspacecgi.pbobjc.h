@@ -29,6 +29,7 @@ CF_EXTERN_C_BEGIN
 
 @class RSBaseReq;
 @class RSBaseResp;
+@class RSComment;
 @class RSIdPair;
 @class RSReceiver;
 @class RSSpace;
@@ -109,6 +110,34 @@ typedef GPB_ENUM(RSIdPair_FieldNumber) {
 
 @end
 
+#pragma mark - RSComment
+
+typedef GPB_ENUM(RSComment_FieldNumber) {
+  RSComment_FieldNumber_CommentId = 1,
+  RSComment_FieldNumber_FromUser = 2,
+  RSComment_FieldNumber_CreateTime = 3,
+  RSComment_FieldNumber_Content = 4,
+};
+
+@interface RSComment : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) RSIdPair *commentId;
+/** Test to see if @c commentId has been set. */
+@property(nonatomic, readwrite) BOOL hasCommentId;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *fromUser;
+/** Test to see if @c fromUser has been set. */
+@property(nonatomic, readwrite) BOOL hasFromUser;
+
+@property(nonatomic, readwrite) uint32_t createTime;
+
+@property(nonatomic, readwrite) BOOL hasCreateTime;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *content;
+/** Test to see if @c content has been set. */
+@property(nonatomic, readwrite) BOOL hasContent;
+
+@end
+
 #pragma mark - RSStar
 
 typedef GPB_ENUM(RSStar_FieldNumber) {
@@ -118,6 +147,7 @@ typedef GPB_ENUM(RSStar_FieldNumber) {
   RSStar_FieldNumber_CreateTime = 4,
   RSStar_FieldNumber_Img = 5,
   RSStar_FieldNumber_Video = 6,
+  RSStar_FieldNumber_CommentListArray = 7,
 };
 
 @interface RSStar : GPBMessage
@@ -144,6 +174,10 @@ typedef GPB_ENUM(RSStar_FieldNumber) {
 @property(nonatomic, readwrite, strong, null_resettable) RSStarVideo *video;
 /** Test to see if @c video has been set. */
 @property(nonatomic, readwrite) BOOL hasVideo;
+
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<RSComment*> *commentListArray;
+/** The number of items in @c commentListArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger commentListArray_Count;
 
 @end
 
@@ -301,6 +335,54 @@ typedef GPB_ENUM(RSAddStarResp_FieldNumber) {
 @property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<RSIdPair*> *starIdListArray;
 /** The number of items in @c starIdListArray without causing the array to be created. */
 @property(nonatomic, readonly) NSUInteger starIdListArray_Count;
+
+@end
+
+#pragma mark - RSAddCommentReq
+
+typedef GPB_ENUM(RSAddCommentReq_FieldNumber) {
+  RSAddCommentReq_FieldNumber_BaseReq = 1,
+  RSAddCommentReq_FieldNumber_SpaceId = 2,
+  RSAddCommentReq_FieldNumber_StarId = 3,
+  RSAddCommentReq_FieldNumber_Comment = 4,
+};
+
+@interface RSAddCommentReq : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) RSBaseReq *baseReq;
+/** Test to see if @c baseReq has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseReq;
+
+@property(nonatomic, readwrite, strong, null_resettable) RSIdPair *spaceId;
+/** Test to see if @c spaceId has been set. */
+@property(nonatomic, readwrite) BOOL hasSpaceId;
+
+@property(nonatomic, readwrite, strong, null_resettable) RSIdPair *starId;
+/** Test to see if @c starId has been set. */
+@property(nonatomic, readwrite) BOOL hasStarId;
+
+@property(nonatomic, readwrite, strong, null_resettable) RSComment *comment;
+/** Test to see if @c comment has been set. */
+@property(nonatomic, readwrite) BOOL hasComment;
+
+@end
+
+#pragma mark - RSAddCommentResp
+
+typedef GPB_ENUM(RSAddCommentResp_FieldNumber) {
+  RSAddCommentResp_FieldNumber_BaseResp = 1,
+  RSAddCommentResp_FieldNumber_CommentId = 2,
+};
+
+@interface RSAddCommentResp : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) RSBaseResp *baseResp;
+/** Test to see if @c baseResp has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseResp;
+
+@property(nonatomic, readwrite, strong, null_resettable) RSIdPair *commentId;
+/** Test to see if @c commentId has been set. */
+@property(nonatomic, readwrite) BOOL hasCommentId;
 
 @end
 

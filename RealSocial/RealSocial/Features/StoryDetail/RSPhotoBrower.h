@@ -22,6 +22,9 @@
 //数据源
 @property (strong,nonatomic) NSArray *dataSources;
 
+//当前显示图片的索引
+@property (nonatomic, assign) NSInteger currIndex;
+
 //开启自动滚动
 -(void)startAutoScroll;
 @end  

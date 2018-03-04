@@ -221,6 +221,87 @@ typedef struct RSIdPair__storage_ {
 
 @end
 
+#pragma mark - RSComment
+
+@implementation RSComment
+
+@dynamic hasCommentId, commentId;
+@dynamic hasFromUser, fromUser;
+@dynamic hasCreateTime, createTime;
+@dynamic hasContent, content;
+
+typedef struct RSComment__storage_ {
+  uint32_t _has_storage_[1];
+  uint32_t createTime;
+  RSIdPair *commentId;
+  NSString *fromUser;
+  NSString *content;
+} RSComment__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "commentId",
+        .dataTypeSpecific.className = GPBStringifySymbol(RSIdPair),
+        .number = RSComment_FieldNumber_CommentId,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(RSComment__storage_, commentId),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "fromUser",
+        .dataTypeSpecific.className = NULL,
+        .number = RSComment_FieldNumber_FromUser,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(RSComment__storage_, fromUser),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "createTime",
+        .dataTypeSpecific.className = NULL,
+        .number = RSComment_FieldNumber_CreateTime,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(RSComment__storage_, createTime),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "content",
+        .dataTypeSpecific.className = NULL,
+        .number = RSComment_FieldNumber_Content,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(RSComment__storage_, content),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[RSComment class]
+                                     rootClass:[RSSpspacecgiRoot class]
+                                          file:RSSpspacecgiRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(RSComment__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\004\001I\000\002H\000\003J\000\004G\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
 #pragma mark - RSStar
 
 @implementation RSStar
@@ -231,6 +312,7 @@ typedef struct RSIdPair__storage_ {
 @dynamic hasCreateTime, createTime;
 @dynamic hasImg, img;
 @dynamic hasVideo, video;
+@dynamic commentListArray, commentListArray_Count;
 
 typedef struct RSStar__storage_ {
   uint32_t _has_storage_[1];
@@ -240,6 +322,7 @@ typedef struct RSStar__storage_ {
   NSString *author;
   RSStarImg *img;
   RSStarVideo *video;
+  NSMutableArray *commentListArray;
 } RSStar__storage_;
 
 // This method is threadsafe because it is initially called
@@ -302,6 +385,15 @@ typedef struct RSStar__storage_ {
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeMessage,
       },
+      {
+        .name = "commentListArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(RSComment),
+        .number = RSStar_FieldNumber_CommentListArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(RSStar__storage_, commentListArray),
+        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
     };
     GPBDescriptor *localDescriptor =
         [GPBDescriptor allocDescriptorForClass:[RSStar class]
@@ -313,7 +405,7 @@ typedef struct RSStar__storage_ {
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
-        "\006\001F\000\002D\000\003F\000\004J\000\005C\000\006E\000";
+        "\007\001F\000\002D\000\003F\000\004J\000\005C\000\006E\000\007\000CommentList\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     NSAssert(descriptor == nil, @"Startup recursed!");
@@ -768,6 +860,146 @@ typedef struct RSAddStarResp__storage_ {
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
         "\002\001H\000\002\000StarIdList\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - RSAddCommentReq
+
+@implementation RSAddCommentReq
+
+@dynamic hasBaseReq, baseReq;
+@dynamic hasSpaceId, spaceId;
+@dynamic hasStarId, starId;
+@dynamic hasComment, comment;
+
+typedef struct RSAddCommentReq__storage_ {
+  uint32_t _has_storage_[1];
+  RSBaseReq *baseReq;
+  RSIdPair *spaceId;
+  RSIdPair *starId;
+  RSComment *comment;
+} RSAddCommentReq__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "baseReq",
+        .dataTypeSpecific.className = GPBStringifySymbol(RSBaseReq),
+        .number = RSAddCommentReq_FieldNumber_BaseReq,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(RSAddCommentReq__storage_, baseReq),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "spaceId",
+        .dataTypeSpecific.className = GPBStringifySymbol(RSIdPair),
+        .number = RSAddCommentReq_FieldNumber_SpaceId,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(RSAddCommentReq__storage_, spaceId),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "starId",
+        .dataTypeSpecific.className = GPBStringifySymbol(RSIdPair),
+        .number = RSAddCommentReq_FieldNumber_StarId,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(RSAddCommentReq__storage_, starId),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "comment",
+        .dataTypeSpecific.className = GPBStringifySymbol(RSComment),
+        .number = RSAddCommentReq_FieldNumber_Comment,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(RSAddCommentReq__storage_, comment),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[RSAddCommentReq class]
+                                     rootClass:[RSSpspacecgiRoot class]
+                                          file:RSSpspacecgiRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(RSAddCommentReq__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\004\001G\000\002G\000\003F\000\004G\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - RSAddCommentResp
+
+@implementation RSAddCommentResp
+
+@dynamic hasBaseResp, baseResp;
+@dynamic hasCommentId, commentId;
+
+typedef struct RSAddCommentResp__storage_ {
+  uint32_t _has_storage_[1];
+  RSBaseResp *baseResp;
+  RSIdPair *commentId;
+} RSAddCommentResp__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "baseResp",
+        .dataTypeSpecific.className = GPBStringifySymbol(RSBaseResp),
+        .number = RSAddCommentResp_FieldNumber_BaseResp,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(RSAddCommentResp__storage_, baseResp),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "commentId",
+        .dataTypeSpecific.className = GPBStringifySymbol(RSIdPair),
+        .number = RSAddCommentResp_FieldNumber_CommentId,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(RSAddCommentResp__storage_, commentId),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[RSAddCommentResp class]
+                                     rootClass:[RSSpspacecgiRoot class]
+                                          file:RSSpspacecgiRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(RSAddCommentResp__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\002\001H\000\002I\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     NSAssert(descriptor == nil, @"Startup recursed!");

@@ -9,17 +9,17 @@
 #import "RSSpaceDetailViewModel.h"
 
 @implementation RSSpaceDetailViewModel
--(void)updateWithStory:(RSSpace *)story {
+-(void)updateWithSpace:(RSSpace *)space {
+    [self sendUpdateData:space];
     NSMutableArray *tmp = [[NSMutableArray alloc] init];
-    for (RSStar *storyItem in story.starListArray) {
-        if (storyItem.type == RSenStarType_StarTypeImg) {
-            RSStarImg *img = storyItem.img;
+    for (RSStar *star in space.starListArray) {
+        if (star.type == RSenStarType_StarTypeImg) {
+            RSStarImg *img = star.img;
             if (img.imgURL) {
                 [tmp addObject:img.imgURL];
             }
         }
     }
-    tmp = [[tmp reverseObjectEnumerator] allObjects];
-    self.photoUrlArray = tmp;
+    self.photoUrlArray = [[tmp reverseObjectEnumerator] allObjects];
 }
 @end

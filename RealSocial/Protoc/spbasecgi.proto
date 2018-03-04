@@ -34,4 +34,3 @@ message GetAllContactResp
 optional BaseResp BaseResp = 1;
 repeated Contact Contact = 2;
 }
-

@@ -10,6 +10,7 @@
 #import <UIImageView+WebCache.h>
 #import "RSPhotoBrower.h"
 #import "RSMineViewController.h"
+#import "RSSpaceDetailAddCommentView.h"
 @interface RSSpaceDetailViewController () <UIScrollViewDelegate>
 
 //photo brower
@@ -28,6 +29,7 @@
 //RSPhotoBrower
 @property (nonatomic, strong) RSPhotoBrower *photoBrower;
 @property (nonatomic, strong) UIImageView *avatarImageView;
+@property (nonatomic, strong) RSSpaceDetailAddCommentView *addCommentView;
 @end
 
 @implementation RSSpaceDetailViewController
@@ -80,11 +82,16 @@
 //    self.automaticallyAdjustsScrollViewInsets = NO;
     [self.contentView addSubview:self.photoBrower];
     [self.contentView addSubview:self.avatarImageView];
+    [self.contentView addSubview:self.addCommentView];
     
     [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView).with.offset(12);
         make.height.width.mas_equalTo(self.avatarImageView.height);
         make.centerY.equalTo(self.photoBrower.mas_top);
+    }];
+    [self.addCommentView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.equalTo(self.contentView);
+        make.height.mas_equalTo(100);
     }];
 }
 
@@ -133,6 +140,21 @@
     }]];
     return _avatarImageView;
 }
+
+-(RSSpaceDetailAddCommentView *)addCommentView {
+    if (_addCommentView) {
+        return _addCommentView;
+    }
+    _addCommentView = [[RSSpaceDetailAddCommentView alloc] init];
+    @weakify(self);
+    [self.viewModel.updateSignal subscribeNext:^(RSSpace *space) {
+        @RSStrongify(self);
+        [self.addCommentView.viewModel updateWithSpace:space];
+    }];
+    RAC(_addCommentView.viewModel, starIndex) = RACObserve(self.photoBrower, currIndex);
+    return _addCommentView;
+}
+
 
 -(RSSpaceDetailViewModel *)viewModel {
     if (_viewModel) {
