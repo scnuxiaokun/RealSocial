@@ -34,7 +34,7 @@
     comment.commentId = [RSRequestFactory randomPairIdWithKey:@"addComment"];
     comment.fromUser = [RSLoginService shareInstance].loginInfo.uid;
     comment.content = content;
-//    req.comment = comment;
+    req.comment = comment;
     NSLog(@"RSAddCommentReq:%@", req);
     RSRequest *request = [RSRequestFactory requestWithReq:req resp:[RSAddCommentResp class] moke:nil];
     [[RSNetWorkService sendRequest:request] subscribeNext:^(RSAddCommentResp *resp) {
