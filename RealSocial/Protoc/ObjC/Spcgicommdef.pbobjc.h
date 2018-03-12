@@ -50,6 +50,36 @@ GPBEnumDescriptor *RSenCgiErrorCode_EnumDescriptor(void);
  **/
 BOOL RSenCgiErrorCode_IsValidValue(int32_t value);
 
+#pragma mark - Enum RSenLoginOpCode
+
+typedef GPB_ENUM(RSenLoginOpCode) {
+  RSenLoginOpCode_LoginOpcodeHome = 0,
+  RSenLoginOpCode_LoginOpcodeRegisterFace = 1,
+};
+
+GPBEnumDescriptor *RSenLoginOpCode_EnumDescriptor(void);
+
+/**
+ * Checks to see if the given value is defined by the enum or was not known at
+ * the time this source was generated.
+ **/
+BOOL RSenLoginOpCode_IsValidValue(int32_t value);
+
+#pragma mark - Enum RSenAddFriendOpCode
+
+typedef GPB_ENUM(RSenAddFriendOpCode) {
+  RSenAddFriendOpCode_AddFriendopcodeSucc = 0,
+  RSenAddFriendOpCode_AddFriendopcodeFail = 1,
+};
+
+GPBEnumDescriptor *RSenAddFriendOpCode_EnumDescriptor(void);
+
+/**
+ * Checks to see if the given value is defined by the enum or was not known at
+ * the time this source was generated.
+ **/
+BOOL RSenAddFriendOpCode_IsValidValue(int32_t value);
+
 #pragma mark - Enum RSenSex
 
 typedef GPB_ENUM(RSenSex) {

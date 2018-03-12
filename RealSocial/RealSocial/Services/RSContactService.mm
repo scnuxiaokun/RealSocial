@@ -14,6 +14,7 @@
 #import "RSRequestFactory.h"
 #import "RSLoginService.h"
 #import "RSNetWorkService.h"
+#import "RSLoginService.h"
 
 @implementation RSContactService {
     NSMutableDictionary *_dic;
@@ -104,5 +105,13 @@
 //        [_dic setObject:model forKey:model.uid];
 //    }
     return tmp;
+}
+
+-(NSString *)getMyAvatarUrl {
+   return [self getAvatarUrlByUid:[RSLoginService shareInstance].loginInfo.uid];
+}
+
+-(NSString *)getMyNickName {
+   return [self getNickNameByUid:[RSLoginService shareInstance].loginInfo.uid];
 }
 @end

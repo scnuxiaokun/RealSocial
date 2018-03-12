@@ -28,15 +28,18 @@
 #import "RSContactService.h"
 #import <UIImageView+WebCache.h>
 #import "RSLoginService.h"
+#import "RSSpaceCreateCameraViewController.h"
+#import "RSCreateSpaceCameraView.h"
 
 @interface RSSpaceLineViewController ()<UITableViewDelegate, UITableViewDataSource, DBCameraViewControllerDelegate>
 @property (nonatomic, strong) RSSpaceLineNavigationBar *bar;
-@property (nonatomic, strong) RSAvatarImageView *avatarImageView;
+//@property (nonatomic, strong) RSAvatarImageView *avatarImageView;
 @property (nonatomic, strong) UIButton *userCenterButton;
 @property (nonatomic, strong) UIButton *createButton;
-@property (nonatomic, strong) UIButton *commentButton;
+//@property (nonatomic, strong) UIButton *commentButton;
 //@property (nonatomic, strong) UIButton *searchButton;
-@property (nonatomic, strong) UIButton *createGroupButton;
+//@property (nonatomic, strong) UIButton *createGroupButton;
+@property (nonatomic, strong) UIImageView *circleImageView;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) RSSpaceLineViewModel *viewModel;
 @property (nonatomic, strong) MBProgressHUD *HUD;
@@ -128,69 +131,88 @@
         return _bar;
     }
     _bar = [[RSSpaceLineNavigationBar alloc] init];
-    [_bar addSubview:self.avatarImageView];
-    [_bar addSubview:self.commentButton];
-//    [_bar addSubview:self.searchButton];
-    [_bar addSubview:self.createGroupButton];
-    [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(_bar);
-        make.left.equalTo(_bar).with.offset(12);
+    [_bar addSubview:self.circleImageView];
+    [self.circleImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(_bar);
     }];
+//    [_bar addSubview:self.avatarImageView];
+//    [_bar addSubview:self.commentButton];
+//    [_bar addSubview:self.searchButton];
+//    [_bar addSubview:self.createGroupButton];
+//    [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.centerY.equalTo(_bar);
+//        make.left.equalTo(_bar).with.offset(12);
+//    }];
 //    [self.searchButton mas_makeConstraints:^(MASConstraintMaker *make) {
 //        make.right.equalTo(_bar).with.offset(-12);
 //        make.centerY.equalTo(_bar);
 //        make.height.width.mas_equalTo(24);
 //    }];
-    [self.commentButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(_bar).with.offset(-12);
-        make.centerY.equalTo(_bar);
-        make.height.width.mas_equalTo(24);
-    }];
-    [self.createGroupButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.commentButton.mas_left).with.offset(-12);
-        make.centerY.equalTo(_bar);
-        make.height.width.equalTo(self.commentButton);
-    }];
+//    [self.commentButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.right.equalTo(_bar).with.offset(-12);
+//        make.centerY.equalTo(_bar);
+//        make.height.width.mas_equalTo(24);
+//    }];
+//    [self.createGroupButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.right.equalTo(self.commentButton.mas_left).with.offset(-12);
+//        make.centerY.equalTo(_bar);
+//        make.height.width.equalTo(self.commentButton);
+//    }];
     return _bar;
 }
 
--(RSAvatarImageView *)avatarImageView {
-    if (_avatarImageView) {
-        return _avatarImageView;
+-(UIImageView *)circleImageView {
+    if (_circleImageView) {
+        return _circleImageView;
     }
-    _avatarImageView = [[RSAvatarImageView alloc] init];
-//    _avatarImageView.url = @"http://www.ladysh.com/d/file/2016080410/2306_160803134243_1.jpg";
-    _avatarImageView.type = RSAvatarImageViewType48;
-    _avatarImageView.url = [[RSContactService shareInstance] getAvatarUrlByUid:[RSLoginService shareInstance].loginInfo.uid];
-    _avatarImageView.userInteractionEnabled = YES;
+    _circleImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo-spaceline-temp"]];
+    _circleImageView.userInteractionEnabled = YES;
     @weakify(self);
-    [_avatarImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
+    [_circleImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
         @RSStrongify(self);
         RSMineViewController *mineCtr = [[RSMineViewController alloc] init];
         [self.navigationController pushViewController:mineCtr animated:YES];
     }]];
-    [[[RSContactService shareInstance].updateSignal deliverOnMainThread] subscribeNext:^(id  _Nullable x) {
-        @RSStrongify(self);
-        self.avatarImageView.url = [[RSContactService shareInstance] getAvatarUrlByUid:[RSLoginService shareInstance].loginInfo.uid];
-    }];
-    return _avatarImageView;
+    return _circleImageView;
 }
 
--(UIButton *)userCenterButton {
-    if (_userCenterButton) {
-        return _userCenterButton;
-    }
-    _userCenterButton = [[UIButton alloc] init];
-    [_userCenterButton setBackgroundColor:[UIColor blueColor]];
-    [_userCenterButton setTitle:@"我" forState:UIControlStateNormal];
-    @weakify(self);
-    [_userCenterButton addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
-        @RSStrongify(self);
-        RSMineViewController *mineCtr = [[RSMineViewController alloc] init];
-        [self.navigationController pushViewController:mineCtr animated:YES];
-    }];
-    return _userCenterButton;
-}
+//-(RSAvatarImageView *)avatarImageView {
+//    if (_avatarImageView) {
+//        return _avatarImageView;
+//    }
+//    _avatarImageView = [[RSAvatarImageView alloc] init];
+////    _avatarImageView.url = @"http://www.ladysh.com/d/file/2016080410/2306_160803134243_1.jpg";
+//    _avatarImageView.type = RSAvatarImageViewType48;
+//    _avatarImageView.url = [[RSContactService shareInstance] getAvatarUrlByUid:[RSLoginService shareInstance].loginInfo.uid];
+//    _avatarImageView.userInteractionEnabled = YES;
+//    @weakify(self);
+//    [_avatarImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
+//        @RSStrongify(self);
+//        RSMineViewController *mineCtr = [[RSMineViewController alloc] init];
+//        [self.navigationController pushViewController:mineCtr animated:YES];
+//    }]];
+//    [[[RSContactService shareInstance].updateSignal deliverOnMainThread] subscribeNext:^(id  _Nullable x) {
+//        @RSStrongify(self);
+//        self.avatarImageView.url = [[RSContactService shareInstance] getAvatarUrlByUid:[RSLoginService shareInstance].loginInfo.uid];
+//    }];
+//    return _avatarImageView;
+//}
+
+//-(UIButton *)userCenterButton {
+//    if (_userCenterButton) {
+//        return _userCenterButton;
+//    }
+//    _userCenterButton = [[UIButton alloc] init];
+//    [_userCenterButton setBackgroundColor:[UIColor blueColor]];
+//    [_userCenterButton setTitle:@"我" forState:UIControlStateNormal];
+//    @weakify(self);
+//    [_userCenterButton addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
+//        @RSStrongify(self);
+//        RSMineViewController *mineCtr = [[RSMineViewController alloc] init];
+//        [self.navigationController pushViewController:mineCtr animated:YES];
+//    }];
+//    return _userCenterButton;
+//}
 
 -(UIButton *)createButton {
     if (_createButton) {
@@ -212,13 +234,13 @@
     return _createButton;
 }
 
--(UIButton *)createGroupButton {
-    if (_createGroupButton) {
-        return _createGroupButton;
-    }_createGroupButton = [[UIButton alloc] init];
-    [_createGroupButton setImage:[UIImage imageNamed:@"btn-newGroup"] forState:UIControlStateNormal];
-    return _createGroupButton;
-}
+//-(UIButton *)createGroupButton {
+//    if (_createGroupButton) {
+//        return _createGroupButton;
+//    }_createGroupButton = [[UIButton alloc] init];
+//    [_createGroupButton setImage:[UIImage imageNamed:@"btn-newGroup"] forState:UIControlStateNormal];
+//    return _createGroupButton;
+//}
 
 //-(UIButton *)searchButton {
 //    if (_searchButton) {
@@ -229,15 +251,15 @@
 //    [_searchButton setImage:[UIImage imageNamed:@"btn-search"] forState:UIControlStateNormal];
 //    return _searchButton;
 //}
--(UIButton *)commentButton {
-    if (_commentButton) {
-        return _commentButton;
-    }_commentButton = [[UIButton alloc] init];
-    [_commentButton setImage:[UIImage imageNamed:@"btn-comment-nor"] forState:UIControlStateNormal];
-//    [_commentButton setBackgroundColor:[UIColor grayColor]];
-//    [_commentButton setTitle:@"评论" forState:UIControlStateNormal];
-    return _commentButton;
-}
+//-(UIButton *)commentButton {
+//    if (_commentButton) {
+//        return _commentButton;
+//    }_commentButton = [[UIButton alloc] init];
+//    [_commentButton setImage:[UIImage imageNamed:@"btn-comment-nor"] forState:UIControlStateNormal];
+////    [_commentButton setBackgroundColor:[UIColor grayColor]];
+////    [_commentButton setTitle:@"评论" forState:UIControlStateNormal];
+//    return _commentButton;
+//}
 
 -(RSSpaceLineViewModel *)viewModel {
     if (_viewModel) {
@@ -276,6 +298,10 @@
         [self.HUD hideAnimated:YES];
         [self.tableView.mj_header endRefreshing];
     }];
+    [[[RSContactService shareInstance].updateSignal deliverOnMainThread] subscribeNext:^(id  _Nullable x) {
+        @RSStrongify(self);
+        [self.tableView reloadData];
+    }];
     return _tableView;
 }
 
@@ -287,7 +313,7 @@
     return [self.viewModel.listData count];
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 100;
+    return 120;
     //    RSPictureModel *itemViewModel = [self.viewModel.listData objectOrNilAtIndex:indexPath.row];
     //    return itemViewModel.height;
 }
@@ -310,6 +336,8 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     RSSpaceLineItemViewModel *itemViewModel = [self.viewModel.listData objectOrNilAtIndex:indexPath.row];
+    [itemViewModel saveReadedToDB];
+    [tableView reloadRowAtIndexPath:indexPath withRowAnimation:UITableViewRowAnimationNone];
     RSSpaceDetailViewController *ctr = [[RSSpaceDetailViewController alloc] init];
     [ctr.viewModel updateWithSpace:itemViewModel.space];
     [self.navigationController pushViewController:ctr animated:YES];
@@ -317,7 +345,9 @@
 
 #pragma mark take picture
 -(void)showVideoViewController {
-    DBCameraViewController *cameraController = [DBCameraViewController initWithDelegate:self];
+    RSCreateSpaceCameraView *camera = [RSCreateSpaceCameraView initWithFrame:CGRectMake(0, 78, self.view.width, self.view.height-78-100)];
+    [camera buildInterface];
+    RSSpaceCreateCameraViewController *cameraController = [[RSSpaceCreateCameraViewController alloc] initWithDelegate:self cameraView:camera];
     [cameraController setUseCameraSegue:NO];
     [self.navigationController pushViewController:cameraController animated:YES];
 //    RSSpaceCreateViewController *ctr = [[RSSpaceCreateViewController alloc] init];
@@ -331,38 +361,10 @@
 
 - (void) camera:(id)cameraViewController didFinishWithImage:(UIImage *)image withMetadata:(NSDictionary *)metadata
 {
-    //    DetailViewController *detail = [[DetailViewController alloc] init];
-    //    [detail setDetailImage:image];
-    //    [self.navigationController pushViewController:detail animated:NO];
     [cameraViewController restoreFullScreenMode];
-    //    @weakify(self);
-    //    [self.presentedViewController dismissViewControllerAnimated:YES completion:^{
-    //        @RSStrongify(self);
-    //        [self.pictureImageView setImage:image];
-    //    }];
-//    [self.pictureImageView setImage:image];
-//    [self.navigationController popViewControllerAnimated:cameraViewController];
-    
     RSSpaceCreateViewController *ctr = [[RSSpaceCreateViewController alloc] init];
     [ctr.pictureImageView setImage:image];
     [self.navigationController pushViewController:ctr animated:YES];
-    
-//    RSReceiverListWithSpaceViewController *ctr = [[RSReceiverListWithSpaceViewController alloc] init];
-////    ctr.defaultToUsers = self.toUsersArray;
-//    @weakify(self);
-//    [ctr setSpaceCompletionHandler:^(RSReceiverListWithSpaceViewController *ctr, NSArray *toUsers, NSArray *spaceIds) {
-////        self.toSpaceIdsArray = spaceIds;
-////        self.toUserLabel.text = [toUsers componentsJoinedByString:@";"];
-////        self.toUsersArray = toUsers;
-////        self.createType = RSSpaceCreateModelTypeSignal;
-//        RSSpaceCreateViewModel *createViewModel = [[RSSpaceCreateViewModel alloc] init];
-//        [[createViewModel create:image toUsers:toUsers toSpaces:spaceIds type:RSSpaceCreateModelTypeSignal] subscribeError:^(NSError * _Nullable error) {
-//            [RSUtils showTipViewWithMessage:@"创建Story失败"];
-//        } completed:^{
-//            [RSUtils showTipViewWithMessage:@"创建Story成功"];
-//        }];
-//    }];
-//    [self.navigationController pushViewController:ctr animated:YES];
 }
 
 - (void) dismissCamera:(id)cameraViewController{

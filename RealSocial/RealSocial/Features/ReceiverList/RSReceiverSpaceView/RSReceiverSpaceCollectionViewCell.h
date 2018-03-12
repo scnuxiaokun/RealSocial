@@ -15,4 +15,5 @@
 @property (nonatomic, strong) UILabel *numLabel;
 @property (nonatomic, strong ) UIImageView *selectedImageView;
 @property (nonatomic, strong) RSReceiverSpaceItemViewModel *viewModel;
+-(void)setSelected:(BOOL)isSelected;
 @end

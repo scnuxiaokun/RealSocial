@@ -8,6 +8,6 @@
 
 #import "RSSubUIViewController.h"
 
-@interface RSMineViewController : RSSubUIViewController
+@interface RSMineViewController : RSUIViewController
 
 @end

@@ -12,6 +12,7 @@
 #import "RSReceiverHeaderView.h"
 
 #import "RSReceiverListViewModel.h"
+#import "RSReceiverOperationBar.h"
 
 @class RSReceiverListViewController;
 typedef void (^RSReceiverListCompletionHandler)(RSReceiverListViewController *ctr, NSArray *toUsers);
@@ -25,7 +26,9 @@ typedef void (^RSReceiverListCompletionHandler)(RSReceiverListViewController *ct
 @property (nonatomic, strong) NSArray *defaultToUsers;
 @property (nonatomic, copy) RSReceiverListCompletionHandler completionHandler;
 @property (nonatomic, assign) NSInteger selectedCount;
-
+@property (nonatomic, strong) RSReceiverOperationBar *bottomOperationBar;
+//@property (nonatomic, assign) BOOL canSelect;
 -(void)finishButton:(id)sender;
 -(void)loadData;
+-(void)setAllunSelected;
 @end

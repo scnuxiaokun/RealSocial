@@ -31,8 +31,8 @@
         [self addSubview:self.imageView];
         [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.center.equalTo(self);
-            make.width.equalTo(self).with.offset(-2);
-            make.height.equalTo(self).with.offset(-2);
+            make.width.equalTo(self).with.offset(-4);
+            make.height.equalTo(self).with.offset(-4);
         }];
 //        self.image = [UIImage imageNamed:@"defaultAvatar"];
 //        _bgView = [[UIView alloc] init];
@@ -62,10 +62,14 @@
     if ([urls count] > 1 ) {
         NSString *oneUrl = [urls firstObject];
         NSString *twoUrl = [urls lastObject];
+        RSAvatarImageViewType smallType = RSAvatarImageViewType48;
+        if (self.type == RSAvatarImageViewType80) {
+            smallType = RSAvatarImageViewType60;
+        }
         if (oneUrl) {
             if (!_oneAvatar) {
                 _oneAvatar = [[RSAvatarImageView alloc] init];
-                [_oneAvatar setType:RSAvatarImageViewType48];
+                [_oneAvatar setType:smallType];
             }
             [_oneAvatar setUrl:oneUrl];
             [self addSubview:_oneAvatar];
@@ -76,10 +80,11 @@
         if (twoUrl) {
             if (!_twoAvatar) {
                 _twoAvatar = [[RSAvatarImageView alloc] init];
-                [_twoAvatar setType:RSAvatarImageViewType48];
+                [_twoAvatar setType:smallType];
             }
             [_twoAvatar setUrl:twoUrl];
-            [self addSubview:_twoAvatar];
+//            [self addSubview:_twoAvatar];
+            [self insertSubview:_twoAvatar belowSubview:_oneAvatar];
             [_twoAvatar mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.bottom.right.equalTo(self);
             }];
@@ -103,10 +108,18 @@
         case RSAvatarImageViewType48:
             width=48;
             break;
+        case RSAvatarImageViewType60:
+            width=60;
+            break;
         case RSAvatarImageViewType80:
             width=80;
             break;
-            
+        case RSAvatarImageViewType100:
+            width=100;
+            break;
+        case RSAvatarImageViewType120:
+            width=120;
+            break;
         default:
             break;
     }

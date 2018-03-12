@@ -28,8 +28,9 @@
 -(void)setFrame:(CGRect)frame
 {
     frame.origin.x = 12;//这里间距为10，可以根据自己的情况调整
+    frame.origin.y += 2;
     frame.size.width -= 2 * frame.origin.x;
-    frame.size.height -= frame.origin.x;
+    frame.size.height -= 4;
     [super setFrame:frame];
 }
 
@@ -41,8 +42,8 @@
 //        [self.contentView addSubview:self.avatarBgImageView];
         [self.contentView addSubview:self.avatarImageView];
         [self.contentView addSubview:self.titleLabel];
-        [self.contentView addSubview:self.subtitleLabel];
-        
+//        [self.contentView addSubview:self.subtitleLabel];
+//
         [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self.contentView);
             make.left.equalTo(self.contentView).with.offset(0);
@@ -56,13 +57,13 @@
         }];
         
         [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.contentView).with.offset(27);
+            make.top.equalTo(self.contentView).with.offset(38);
             make.left.equalTo(self.avatarImageView.mas_right).with.offset(15);
         }];
-        [self.subtitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.equalTo(self.contentView).with.offset(-27);
-            make.left.equalTo(self.titleLabel);
-        }];
+//        [self.subtitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.bottom.equalTo(self.contentView).with.offset(-38);
+//            make.left.equalTo(self.titleLabel);
+//        }];
     }
     return self;
 }
@@ -104,6 +105,9 @@
     _mediaImageView.layer.masksToBounds = YES;
     _mediaImageView.backgroundColor = [UIColor clearColor];
     [_mediaImageView sd_setIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    _mediaImageViewEffectView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight]];
+    [_mediaImageView addSubview:_mediaImageViewEffectView];
+
     return _mediaImageView;
 }
 
@@ -112,8 +116,8 @@
         return _titleLabel;
     }
     _titleLabel = [[UILabel alloc] init];
-    _titleLabel.font = [UIFont boldSystemFontOfSize:17];
-    _titleLabel.textColor = [UIColor whiteColor];
+    _titleLabel.font = [UIFont boldSystemFontOfSize:20];
+    _titleLabel.textColor = [UIColor mainTextColor];
     return _titleLabel;
 }
 
@@ -122,14 +126,15 @@
         return _subtitleLabel;
     }
     _subtitleLabel = [[UILabel alloc] init];
-    _subtitleLabel.font = [UIFont systemFontOfSize:14];
-    _subtitleLabel.textColor = [UIColor whiteColor];
+    _subtitleLabel.font = [UIFont systemFontOfSize:12];
+    _subtitleLabel.textColor = [UIColor mainTextColor];
     return _subtitleLabel;
 }
 
 -(void)setViewModel:(RSSpaceLineItemViewModel *)viewModel {
     _viewModel = viewModel;
 //    [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:viewModel.avatarUrl] placeholderImage:[UIImage imageNamed:@"defaultAvatar"]];
+    NSLog(@"avatarUrls:%@", viewModel.avatarUrls);
     [self.avatarImageView setUrls:viewModel.avatarUrls];
     @weakify(self);
 //    [self.mediaImageView sd_setImageWithURL:[NSURL URLWithString:viewModel.mediaUrl] placeholderImage:[UIImage imageWithColor:[UIColor grayColor]]];
@@ -158,9 +163,22 @@
                 NSLog(@"%@", error);
             }
         }
-        
     }];
     self.titleLabel.text = viewModel.titleString;
     self.subtitleLabel.text = viewModel.subTitleString;
+    if (viewModel.isReaded == YES) {
+//        self.backgroundColor = [UIColor grayColor];
+        self.titleLabel.textColor = [UIColor mainTextColor];
+        self.mediaImageViewEffectView.hidden = NO;
+    } else {
+        self.titleLabel.textColor = [UIColor whiteColor];
+        self.mediaImageViewEffectView.hidden = YES;
+//        self.backgroundColor = [UIColor clearColor];
+    }
+}
+
+-(void)layoutSubviews {
+    [super layoutSubviews];
+    self.mediaImageViewEffectView.frame = self.mediaImageView.bounds;
 }
 @end

@@ -25,23 +25,29 @@
     self.selectedCount = 0;
     
     [self.contentView addSubview:self.headerView];
-    [self.contentView addSubview:self.finishButtonItem];
+//    [self.contentView addSubview:self.finishButtonItem];
     [self.contentView addSubview:self.tableView];
+    [self.contentView addSubview:self.bottomOperationBar];
     
     [self.headerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.equalTo(self.contentView);
-        make.height.mas_equalTo(160);
+        make.height.mas_equalTo(108);
     }];
     
-    [self.finishButtonItem mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.headerView.titleLabel);
-        make.right.equalTo(self.headerView).with.offset(-12);
-        make.width.height.mas_equalTo(40);
-    }];
+//    [self.finishButtonItem mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(self.headerView.titleLabel);
+//        make.right.equalTo(self.headerView).with.offset(-12);
+//        make.width.height.mas_equalTo(40);
+//    }];
     
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.bottom.equalTo(self.contentView);
+        make.left.right.equalTo(self.contentView);
         make.top.equalTo(self.headerView.mas_bottom);
+    }];
+    [self.bottomOperationBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.tableView.mas_bottom);
+        make.left.right.bottom.equalTo(self.contentView);
+        make.height.mas_equalTo(94);
     }];
     [self loadData];
 }
@@ -122,11 +128,22 @@
     }
     _headerView = [[RSReceiverHeaderView alloc] init];
     _headerView.titleLabel.text = @"新建圈子";
-    _headerView.subTitleLabel.text = @"新建圈子共同回忆";
+//    _headerView.subTitleLabel.text = @"新建圈子共同回忆";
     return _headerView;
 }
 
-
+-(RSReceiverOperationBar *)bottomOperationBar {
+    if (_bottomOperationBar) {
+        return _bottomOperationBar;
+    }
+    _bottomOperationBar = [[RSReceiverOperationBar alloc] init];
+    @weakify(self);
+    [_bottomOperationBar.sendButton addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
+        @RSStrongify(self);
+        [self finishButton:sender];
+    }];
+    return _bottomOperationBar;
+}
 
 -(UITableView *)tableView {
     if (_tableView) {
@@ -194,8 +211,21 @@
     [tableView reloadRowAtIndexPath:indexPath withRowAnimation:UITableViewRowAnimationNone];
     if (itemViewModel.isSelected) {
         self.selectedCount = self.selectedCount + 1;
+        [self.bottomOperationBar.avatarContentView addReceiver:itemViewModel.avatarUrl];
     } else {
         self.selectedCount = self.selectedCount - 1;
+        [self.bottomOperationBar.avatarContentView removeReceiver:itemViewModel.avatarUrl];
     }
+}
+
+-(void)setAllunSelected {
+    for (RSReceiverListItemViewModel *itemViewModel in self.viewModel.listData) {
+        if (itemViewModel.isSelected) {
+            itemViewModel.isSelected = NO;
+            self.selectedCount = self.selectedCount - 1;
+        }
+    }
+    [self.tableView reloadData];
+    [self.bottomOperationBar.avatarContentView removeAllReceiver];
 }
 @end

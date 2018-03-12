@@ -88,6 +88,14 @@
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [[ALBBMANPageHitHelper getInstance] pageAppear:self];
+    @weakify(self);
+    dispatch_async_on_main_queue(^{
+        @RSStrongify(self);
+        UIImage *snapshotImage = [self.navigationController.view snapshotImage];
+        self.snapshotImage = snapshotImage;
+//      self.snapshotImage = [self imageByApplyingAlpha:0.5 image:snapshotImage];
+    });
+    
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
@@ -106,14 +114,16 @@
 //    self.navigationController.navigationBar.translucent = YES;
 //    [self.navigationController.navigationBar setShadowImage:nil];
 //    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-    
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    self.navigationController.view.backgroundColor = [UIColor colorWithPatternImage:[self.navigationController.view snapshotImage]];
-
+    
+    if (self.snapshotImage) {
+        self.navigationController.view.backgroundColor = [UIColor colorWithPatternImage:self.snapshotImage];
+    }
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

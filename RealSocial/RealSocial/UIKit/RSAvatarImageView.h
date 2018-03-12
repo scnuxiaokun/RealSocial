@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 typedef NS_ENUM(NSInteger, RSAvatarImageViewType) {
     RSAvatarImageViewType48,
+    RSAvatarImageViewType60,
     RSAvatarImageViewType80,
+    RSAvatarImageViewType100,
+    RSAvatarImageViewType120,
 };
 @interface RSAvatarImageView : UIView
 @property (nonatomic, strong) UIImageView *imageView;

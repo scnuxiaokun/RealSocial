@@ -90,6 +90,30 @@
     return YES;
 }
 
+- (BOOL) setupSessionWithPreset:(NSString *)sessionPreset backCamera:(BOOL)isBackCamera error:(NSError **)error {
+    if (isBackCamera) {
+        _videoInput = [[AVCaptureDeviceInput alloc] initWithDevice:[self backCamera] error:error];
+    } else {
+        _videoInput = [[AVCaptureDeviceInput alloc] initWithDevice:[self frontCamera] error:error];
+    }
+    
+    _stillImageOutput = [[AVCaptureStillImageOutput alloc] init];
+    [_stillImageOutput setOutputSettings:@{ AVVideoCodecKey : AVVideoCodecJPEG }];
+    
+    _captureSession = [[AVCaptureSession alloc] init];
+    if ( [_captureSession canAddInput:_videoInput] )
+        [_captureSession addInput:_videoInput];
+    
+    if ( [_captureSession canAddOutput:_stillImageOutput] )
+        [_captureSession addOutput:_stillImageOutput];
+    
+    [_captureSession setSessionPreset:sessionPreset];
+    
+    [self setFlashMode:AVCaptureFlashModeOff];
+    
+    return YES;
+}
+
 - (void) captureSessionDidStartRunning:(NSNotification *)notification
 {
     if ( [_delegate respondsToSelector:@selector(captureSessionDidStartRunning)] )

@@ -20,17 +20,30 @@
 -(instancetype)init {
     self = [super init];
     if (self) {
-        self.backgroundColor = [UIColor lightGrayColor];
+        self.backgroundColor = RGBA(245, 245, 245, 0.9);
+        
         [self addSubview:self.titleLabel];
-        [self addSubview:self.subTitleLabel];
+        [self addSubview:self.textFieldImageView];
+        [self addSubview:self.textField];
+//        [self addSubview:self.subTitleLabel];
         [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self).with.offset(12);
-            make.top.equalTo(self).with.offset(40);
+            make.top.equalTo(self).with.offset(30);
         }];
-        [self.subTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        [self.textFieldImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.titleLabel);
-            make.top.equalTo(self.titleLabel.mas_bottom).with.offset(2);
+            make.width.height.mas_equalTo(20);
+            make.top.equalTo(self.titleLabel.mas_bottom).with.offset(16);
         }];
+        [self.textField mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.textFieldImageView.mas_right).with.offset(5);
+            make.centerY.equalTo(self.textFieldImageView);
+            make.right.equalTo(self);
+        }];
+//        [self.subTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.left.equalTo(self.titleLabel);
+//            make.top.equalTo(self.titleLabel.mas_bottom).with.offset(2);
+//        }];
     }
     return self;
 }
@@ -44,14 +57,40 @@
     return _titleLabel;
 }
 
--(UILabel *)subTitleLabel {
-    if (_subTitleLabel) {
-        return _subTitleLabel;
+-(UIImageView *)textFieldImageView {
+    if (_textFieldImageView) {
+        return _textFieldImageView;
     }
-    _subTitleLabel = [[UILabel alloc] init];
-    _subTitleLabel.font = [UIFont systemFontOfSize:14];
-    _subTitleLabel.textColor = [UIColor grayColor];
-    return _subTitleLabel;
+    _textFieldImageView = [[UIImageView alloc] initWithImage:[UIImage imageWithColor:[UIColor randomColor]]];
+    return _textFieldImageView;
 }
+
+-(UITextField *)textField {
+    if (_textField) {
+        return _textField;
+    }
+    _textField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 0, 20)];
+    _textField.font = [UIFont boldSystemFontOfSize:14];
+    _textField.textColor = [UIColor grayColor];
+    _textField.backgroundColor = [UIColor clearColor];
+//    _textField.layer.borderColor = [UIColor whiteColor].CGColor;
+//    _textField.layer.borderWidth = 1;
+//    _textField.layer.cornerRadius = _textField.height/2;
+    _textField.returnKeyType = UIReturnKeySearch;
+//    [_textField setClearButtonMode:UITextFieldViewModeAlways];
+    //    _textField.delegate = self;
+    _textField.placeholder = @"搜索好友";
+    return _textField;
+}
+
+//-(UILabel *)subTitleLabel {
+//    if (_subTitleLabel) {
+//        return _subTitleLabel;
+//    }
+//    _subTitleLabel = [[UILabel alloc] init];
+//    _subTitleLabel.font = [UIFont systemFontOfSize:14];
+//    _subTitleLabel.textColor = [UIColor grayColor];
+//    return _subTitleLabel;
+//}
 
 @end

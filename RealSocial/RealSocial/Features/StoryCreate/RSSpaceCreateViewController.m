@@ -21,7 +21,7 @@
 //@property (nonatomic, strong) UILabel *toUserLabel;
 //@property (nonatomic, strong) NSArray *toUsersArray;
 //@property (nonatomic, strong) NSArray *toSpaceIdsArray;
-@property (nonatomic, assign) RSSpaceCreateModelType createType;
+//@property (nonatomic, assign) RSSpaceCreateModelType createType;
 @end
 
 @implementation RSSpaceCreateViewController
@@ -43,10 +43,11 @@
 //    }];
     [self.contentView addSubview:self.toUserButtom];
     [self.toUserButtom mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.contentView).with.offset(-12);
+//        make.right.equalTo(self.contentView).with.offset(-12);
+        make.centerX.equalTo(self.contentView);
         make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideBottom);
-        make.height.mas_equalTo(42);
-        make.width.mas_equalTo(100);
+        make.width.height.mas_equalTo(42);
+//        make.width.mas_equalTo(100);
     }];
 //    [self.contentView addSubview:self.toUserLabel];
 //    [self.toUserLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -125,6 +126,7 @@
         return _toUserButtom;
     }
     _toUserButtom = [[UIButton alloc] init];
+    _toUserButtom.layer.cornerRadius = 30;
 //    [_toUserButtom setTitle:@"》》" forState:UIControlStateNormal];
     [_toUserButtom setImage:[UIImage imageNamed:@"btn-send"] forState:UIControlStateNormal];
     [_toUserButtom setBackgroundColor:[UIColor clearColor]];
@@ -134,21 +136,46 @@
         RSReceiverListWithSpaceViewController *ctr = [[RSReceiverListWithSpaceViewController alloc] init];
 //        ctr.defaultToUsers = self.toUsersArray;
         @weakify(self);
-        [ctr setSpaceCompletionHandler:^(RSReceiverListWithSpaceViewController *ctr, NSArray *toUsers, NSArray *spaceIds) {
+        [ctr setSpaceCompletionHandler:^(RSReceiverListWithSpaceViewController *ctr, NSArray *toUsers, NSArray *spaceIds, BOOL isSelectedAllFriend,BOOL isSelectedMemories) {
             @RSStrongify(self);
+            [self.HUD showAnimated:YES];
+            @weakify(self);
+            if (isSelectedAllFriend) {
+                [[[self.viewModel createToAllFriends:self.pictureImageView.image] deliverOnMainThread] subscribeError:^(NSError * _Nullable error) {
+                    @RSStrongify(self);
+                    [self.HUD hideAnimated:YES];
+                    [RSUtils showTipViewWithMessage:[error localizedDescription]];
+                } completed:^{
+                    @RSStrongify(self);
+                    [self.HUD hideAnimated:YES];
+                    [RSUtils showTipViewWithMessage:@"创建Space给所有朋友成功"];
+                    [self.navigationController popToRootViewControllerAnimated:YES];
+                }];
+                return;
+            }
+            if (isSelectedMemories) {
+                [[[self.viewModel createToMemories:self.pictureImageView.image] deliverOnMainThread] subscribeError:^(NSError * _Nullable error) {
+                    @RSStrongify(self);
+                    [self.HUD hideAnimated:YES];
+                    [RSUtils showTipViewWithMessage:[error localizedDescription]];
+                } completed:^{
+                    @RSStrongify(self);
+                    [self.HUD hideAnimated:YES];
+                    [RSUtils showTipViewWithMessage:@"创建Space给回忆成功"];
+                    [self.navigationController popToRootViewControllerAnimated:YES];
+                }];
+                return;
+            }
             if ([toUsers count] <= 0 && [spaceIds count] <= 0) {
                 [RSUtils showTipViewWithMessage:@"必须选择一个对象"];
                 return;
             }
-            self.createType = RSSpaceCreateModelTypeSignal;
-            [self.HUD showAnimated:YES];
-            @weakify(self);
-            [[[self.viewModel create:self.pictureImageView.image toUsers:toUsers toSpaces:spaceIds type:RSSpaceCreateModelTypeSignal] deliverOnMainThread] subscribeNext:^(id  _Nullable x) {
+            [[[self.viewModel create:self.pictureImageView.image toUsers:toUsers toSpaces:spaceIds] deliverOnMainThread] subscribeNext:^(id  _Nullable x) {
                 
             } error:^(NSError * _Nullable error) {
                 @RSStrongify(self);
                 [self.HUD hideAnimated:YES];
-                [RSUtils showTipViewWithMessage:@"创建Space失败"];
+                [RSUtils showTipViewWithMessage:[error localizedDescription]];
             } completed:^{
                 @RSStrongify(self);
                 [self.HUD hideAnimated:YES];

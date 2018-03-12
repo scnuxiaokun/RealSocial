@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Spbasecgi.pbobjc.h"
 #import "RSContactModel.h"
+
 @interface RSContactService : NSObject
 @property (nonatomic, strong) RACReplaySubject *updateSignal;
 +(RSContactService *)shareInstance;
@@ -19,4 +20,6 @@
 -(NSArray<RSContactModel *>*)getContactsByUids:(NSArray *)uids;
 -(NSString *)getNickNameByUid:(NSString *)uid;
 -(NSString *)getAvatarUrlByUid:(NSString *)uid;
+-(NSString *)getMyAvatarUrl;
+-(NSString *)getMyNickName;
 @end

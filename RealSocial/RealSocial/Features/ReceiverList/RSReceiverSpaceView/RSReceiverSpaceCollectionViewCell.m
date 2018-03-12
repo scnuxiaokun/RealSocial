@@ -26,7 +26,7 @@
             make.top.centerX.equalTo(self.contentView);
         }];
         [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.avatarImageView.mas_bottom);
+            make.top.equalTo(self.avatarImageView.mas_bottom).with.offset(4);
             make.centerX.equalTo(self.contentView);
             make.left.right.equalTo(self);
         }];
@@ -36,7 +36,7 @@
         }];
         
         [self.selectedImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.right.equalTo(self.contentView);
+            make.top.right.equalTo(self.avatarImageView);
             make.width.height.mas_equalTo(20);
 //            make.right.equalTo(self.contentView).with.offset(-14);
         }];
@@ -80,7 +80,16 @@
         return _selectedImageView;
     }
     _selectedImageView = [[UIImageView alloc] init];
+    _selectedImageView.backgroundColor = [UIColor whiteColor];
     return _selectedImageView;
+}
+
+-(void)setSelected:(BOOL)isSelected {
+    if (isSelected) {
+        self.selectedImageView.image = [UIImage imageNamed:@"checkbox-selected"];
+    } else {
+        self.selectedImageView.image = [UIImage imageNamed:@"checkbox-nor"];
+    }
 }
 
 -(void)setViewModel:(RSReceiverSpaceItemViewModel *)viewModel {
@@ -89,11 +98,7 @@
         [self.avatarImageView setUrls:viewModel.avatarUrls];
         self.nameLabel.text = viewModel.name;
         self.numLabel.text = viewModel.num;
-        if (viewModel.isSelected) {
-            self.selectedImageView.image = [UIImage imageNamed:@"checkbox-selected"];
-        } else {
-            self.selectedImageView.image = [UIImage imageNamed:@"checkbox-nor"];
-        }
+        [self setSelected:viewModel.isSelected];
     }
     if (viewModel.type == RSReceiverSpaceItemViewModelTypeAdd) {
         [self.avatarImageView setUrl:@""];

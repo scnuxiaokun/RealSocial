@@ -10,6 +10,7 @@
 #import "Spspacecgi.pbobjc.h"
 #import "Spcgicommdef.pbobjc.h"
 @interface RSSpaceDetailViewModel : RSViewModel
+@property (nonatomic, strong) NSArray *avatarUrls;
 @property (nonatomic, strong) NSArray *photoUrlArray;
 -(void)updateWithSpace:(RSSpace *)space;
 @end

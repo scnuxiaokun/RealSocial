@@ -21,6 +21,7 @@ WCDB_SYNTHESIZE(RSSpaceCreateModel, users)
 WCDB_SYNTHESIZE(RSSpaceCreateModel, spaces)
 WCDB_SYNTHESIZE(RSSpaceCreateModel, createTime)
 WCDB_SYNTHESIZE(RSSpaceCreateModel, creator)
+WCDB_SYNTHESIZE(RSSpaceCreateModel, mediaPath)
 WCDB_UNIQUE(RSSpaceCreateModel, mediaId)
 WCDB_NOT_NULL(RSSpaceCreateModel, mediaId)
 -(instancetype)init {

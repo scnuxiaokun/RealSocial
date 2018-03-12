@@ -21,6 +21,7 @@
 -(void)saveLoginInfo;
 -(BOOL)isLogined;
 -(BOOL)logout;
+-(BOOL)hasRegisterFace;
 //-(RACSignal *)FPQQLoginWithUid:(NSString *)uid andA2Key:(NSData *)a2Key andAccount:(NSString *)account;
 -(RACSignal *)WXLoginWithAppid:(NSString *)appid andCode:(NSString *)code;
 @end

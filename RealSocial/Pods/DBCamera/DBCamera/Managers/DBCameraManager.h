@@ -131,6 +131,7 @@
  *  @return BOOL value indicates if the setup is ok
  */
 - (BOOL) setupSessionWithPreset:(NSString *)sessionPreset error:(NSError **)error;
+- (BOOL) setupSessionWithPreset:(NSString *)sessionPreset backCamera:(BOOL)isBackCamera error:(NSError **)error;
 
 /**
  *  Start recording

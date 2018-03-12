@@ -10,5 +10,7 @@
 #import "RSSpaceCreateModel.h"
 
 @interface RSSpaceCreateViewModel : RSViewModel
--(RACSignal *)create:(UIImage *)picture toUsers:(NSArray *)users toSpaces:(NSArray *)spaces type:(RSSpaceCreateModelType)type;
+-(RACSignal *)create:(UIImage *)picture toUsers:(NSArray *)users toSpaces:(NSArray *)spaces;
+-(RACSignal *)createToAllFriends:(UIImage *)picture;
+-(RACSignal *)createToMemories:(UIImage *)picture;
 @end

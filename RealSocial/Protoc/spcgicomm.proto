@@ -47,3 +47,16 @@ optional uint32 Sex = 3;//enSex
 optional string HeadImgUrl = 4;
 }
 
+message Group
+{
+// hhh
+optional string HeadImgUrl = 4;
+}
+
+
+message FaceBuffer
+{
+optional bytes  Buffer = 1;
+// 2 jiaodu
+}
+

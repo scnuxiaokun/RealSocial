@@ -26,14 +26,24 @@
     return sharedInstance;
 }
 
+-(void)createToAllFriends:(NSData *)fileData mediaId:(NSString *)mediaId {
+    [self _create:fileData mediaId:mediaId toUsers:@[] toSpaces:@[] type:RSenReceiverType_ReceiverTypeCreatorFriend];
+}
+
+-(void)createToMemories:(NSData *)fileData mediaId:(NSString *)mediaId {
+    [self _create:fileData mediaId:mediaId toUsers:@[] toSpaces:@[] type:RSenReceiverType_ReceiverTypeCreator];
+}
+
 -(void)create:(NSData *)fileData mediaId:(NSString *)mediaId toUsers:(NSArray *)users toSpaces:(NSArray *)spaces {
-//    NSData *fileData = UIImageJPEGRepresentation(picture, 0.1);
-    NSString *pictureId = mediaId;
+    [self _create:fileData mediaId:mediaId toUsers:users toSpaces:spaces type:RSenReceiverType_ReceiverTypeList];
+}
+
+-(void)_create:(NSData *)fileData mediaId:(NSString *)mediaId toUsers:(NSArray *)users toSpaces:(NSArray *)spaces type:(RSenReceiverType)type {
     RSSpaceCreateModel *spaceCreateModel = [[RSSpaceCreateModel alloc] init];
-    spaceCreateModel.mediaId = pictureId;
+    spaceCreateModel.mediaId = mediaId;
     spaceCreateModel.creator = [RSLoginService shareInstance].loginInfo.uid;
     spaceCreateModel.createTime = [NSDate date];
-    spaceCreateModel.type = RSSpaceCreateModelTypeSignal;
+    spaceCreateModel.type = type;
     spaceCreateModel.users = users;
     spaceCreateModel.spaces = spaces;
     BOOL dbResult = [[RSDBService db] insertOrReplaceObject:spaceCreateModel into:NSStringFromClass([RSSpaceCreateModel class])];
@@ -41,20 +51,45 @@
         return;
     }
     @weakify(self);
-    [RSMediaService uploadPictureCDN:fileData pictureId:pictureId complete:^(BOOL isOK, NSError *error) {
+    [RSMediaService uploadPictureCDN:fileData pictureId:mediaId complete:^(BOOL isOK, NSError *error) {
         @RSStrongify(self);
         if (isOK == NO) {
             return;
         }
-        [self createSignalSpaceWithPictureId:pictureId toUsers:users toSpaces:spaces];
+        BOOL result = [self updateSpaceCreateModel:mediaId status:RSSpaceCreateModelStatusCreating];
+        if (result == NO) {
+            return;
+        }
+        switch (type) {
+            case RSenReceiverType_ReceiverTypeCreator:
+                //回忆
+                [self _createSpaceWithMediaId:mediaId type:type];
+                break;
+            case RSenReceiverType_ReceiverTypeCreatorFriend:
+                //所有好友
+                [self _createSpaceWithMediaId:mediaId type:type];
+                break;
+            default:
+                [self createSignalSpaceWithPictureId:mediaId toUsers:users toSpaces:spaces];
+                break;
+        }
+        
+    }];
+}
+
+-(void)_createSpaceWithMediaId:(NSString *)mediaId type:(RSenReceiverType)type {
+    RSRequest *request = [self buildRequestWithPictureId:mediaId type:type];
+    RACSignal *signal = [RSNetWorkService sendRequest:request];
+    [signal subscribeNext:^(RSCreateSpaceResp *resp) {
+        NSLog(@"创建Space成功,svrId:%llu",resp.spaceId.svrId);
+    } error:^(NSError * _Nullable error) {
+        NSLog(@"创建Space失败:%@",error);
+    } completed:^{
+        
     }];
 }
 
 -(void)createSignalSpaceWithPictureId:(NSString *)pictureId toUsers:(NSArray *)users toSpaces:(NSArray *)spaces {
-    BOOL result = [self updateSpaceCreateModel:pictureId status:RSSpaceCreateModelStatusCreating];
-    if (result == NO) {
-        return;
-    }
     NSMutableArray *signals = [[NSMutableArray alloc] init];
     if ([users count] > 0) {
         RSRequest *request = [self buildRequestWithPictureId:pictureId toUsers:users];
@@ -142,6 +177,38 @@
     RSReceiver *receiver = [RSReceiver new];
     receiver.type = RSenReceiverType_ReceiverTypeList;
     receiver.userNameArray = [[NSMutableArray alloc] initWithArray:users];
+    space.receiver = receiver;
+    
+    space.creator = [RSLoginService shareInstance].loginInfo.uid;
+    
+    req.space = space;
+    RSRequest *request = [RSRequestFactory requestWithReq:req resp:[RSCreateSpaceResp class] moke:nil];
+    return request;
+}
+
+-(RSRequest *)buildRequestWithPictureId:(NSString *)pictureId type:(RSenReceiverType)type{
+    RSCreateSpaceReq *req = [RSCreateSpaceReq new];
+    
+    RSSpace *space = [RSSpace new];
+    space.type = RSenSpaceType_SpaceTypeSingle;
+    
+    RSIdPair *idpair = [RSIdPair new];
+    idpair.clientId = pictureId;
+    space.spaceId = idpair;
+    
+    RSStar *star = [RSStar new];
+    star.type = RSenStarType_StarTypeImg;
+    star.starId = idpair;
+    star.author = [RSLoginService shareInstance].loginInfo.uid;
+    RSStarImg *img = [RSStarImg new];
+    img.imgURL = [RSMediaService urlWithPictureId:pictureId];
+    img.thumbURL = [RSMediaService urlWithPictureId:pictureId];
+    star.img = img;
+    [space.starListArray addObject:star];
+    
+    RSReceiver *receiver = [RSReceiver new];
+    receiver.type = type;
+    receiver.userNameArray = [[NSMutableArray alloc] initWithArray:@[[RSLoginService shareInstance].loginInfo.uid]];
     space.receiver = receiver;
     
     space.creator = [RSLoginService shareInstance].loginInfo.uid;

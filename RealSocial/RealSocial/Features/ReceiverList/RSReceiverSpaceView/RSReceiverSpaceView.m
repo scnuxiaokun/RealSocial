@@ -7,9 +7,8 @@
 //
 
 #import "RSReceiverSpaceView.h"
-#import "RSReceiverSpaceCollectionViewCell.h"
 #import "RSReceiverListWithCreateGroupViewController.h"
-static const CGFloat RSReceiverSpaceViewCollectionViewHeight = 138;
+static const CGFloat RSReceiverSpaceViewCollectionViewHeight = 148;
 @implementation RSReceiverSpaceView
 
 /*
@@ -30,14 +29,20 @@ static const CGFloat RSReceiverSpaceViewCollectionViewHeight = 138;
     self = [super initWithFrame:frame];
     if (self) {
         self.selectedCount = 0;
-        self.backgroundColor = [UIColor grayColor];
+        self.backgroundColor = [UIColor whiteColor];
+        [self addSubview:self.fixedSpaceView];
         [self addSubview:self.titleView];
         [self addSubview:self.createGroupButton];
         [self addSubview:self.collectionView];
         
+        [self.fixedSpaceView mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.height.mas_equalTo(160);
+            make.top.left.right.equalTo(self);
+        }];
         [self.titleView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.top.right.equalTo(self);
-            make.height.mas_equalTo(60);
+            make.top.equalTo(self.fixedSpaceView.mas_bottom);
+            make.left.right.equalTo(self);
+            make.height.mas_equalTo(58);
         }];
         [self.createGroupButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self.titleView.label);
@@ -47,6 +52,16 @@ static const CGFloat RSReceiverSpaceViewCollectionViewHeight = 138;
             make.top.equalTo(self.titleView.mas_bottom);
             make.left.right.equalTo(self);
             make.height.mas_equalTo(RSReceiverSpaceViewCollectionViewHeight);
+            make.bottom.equalTo(self);
+        }];
+        UIView *line = [[UIView alloc] init];
+        line.backgroundColor = [UIColor grayColor];
+        [self addSubview:line];
+        [line mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self).with.offset(20);
+            make.right.equalTo(self).with.offset(-20);
+            make.height.mas_equalTo(1/[UIScreen screenScale]);
+            make.bottom.equalTo(self);
         }];
     }
     return self;
@@ -107,6 +122,75 @@ static const CGFloat RSReceiverSpaceViewCollectionViewHeight = 138;
     _titleView = [[RSReceiverTitleView alloc] init];
     _titleView.label.text = @"我的圈子";
     return _titleView;
+}
+
+-(UIView *)fixedSpaceView {
+    if (_fixedSpaceView) {
+        return _fixedSpaceView;
+    }
+    _fixedSpaceView = [[UIView alloc] init];
+    _fixedSpaceView.backgroundColor = [UIColor clearColor];
+    [_fixedSpaceView addSubview:self.allFriendCell];
+    [_fixedSpaceView addSubview:self.memoriesCell];
+    [self.allFriendCell mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(_fixedSpaceView);
+        make.left.equalTo(_fixedSpaceView).with.offset(10);
+        make.width.mas_equalTo(self.allFriendCell.width);
+        make.height.mas_equalTo(self.allFriendCell.height);
+    }];
+    [self.memoriesCell mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.allFriendCell.mas_right).with.offset(20);
+        make.centerY.equalTo(_fixedSpaceView);
+        make.width.mas_equalTo(self.memoriesCell.width);
+        make.height.mas_equalTo(self.memoriesCell.height);
+    }];
+    UIView *line = [[UIView alloc] init];
+    line.backgroundColor = [UIColor grayColor];
+    [_fixedSpaceView addSubview:line];
+    [line mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_fixedSpaceView).with.offset(20);
+        make.right.equalTo(_fixedSpaceView).with.offset(-20);
+        make.height.mas_equalTo(1/[UIScreen screenScale]);
+        make.bottom.equalTo(_fixedSpaceView);
+    }];
+    return _fixedSpaceView;
+}
+
+-(RSReceiverSpaceCollectionViewCell *)allFriendCell {
+    if (_allFriendCell) {
+        return _allFriendCell;
+    }
+    _allFriendCell = [[RSReceiverSpaceCollectionViewCell alloc] initWithFrame:CGRectMake(0, 0, 110, 100)];
+    RSReceiverSpaceItemViewModel *allFriendItemViewModel = [[RSReceiverSpaceItemViewModel alloc] init];
+    allFriendItemViewModel.avatarUrls = nil;
+    allFriendItemViewModel.name = @"分享所有好友";
+    _allFriendCell.viewModel = allFriendItemViewModel;
+    _allFriendCell.avatarImageView.imageView.image = [UIImage imageNamed:@"user"];
+    @weakify(self);
+    [_allFriendCell addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
+        @RSStrongify(self);
+        self.allFriendCell.viewModel.isSelected = !self.allFriendCell.viewModel.isSelected;
+        [self.allFriendCell setSelected:self.allFriendCell.viewModel.isSelected];
+    }]];
+    return _allFriendCell;
+}
+
+-(RSReceiverSpaceCollectionViewCell *)memoriesCell {
+    if (_memoriesCell) {
+        return _memoriesCell;
+    }
+    _memoriesCell = [[RSReceiverSpaceCollectionViewCell alloc] initWithFrame:CGRectMake(0, 0, 110, 100)];
+    RSReceiverSpaceItemViewModel *memoriesCellItemViewModel = [[RSReceiverSpaceItemViewModel alloc] init];
+    memoriesCellItemViewModel.avatarUrls = nil;
+    memoriesCellItemViewModel.name = @"我的回忆录";
+    _memoriesCell.viewModel = memoriesCellItemViewModel;
+    @weakify(self);
+    [_memoriesCell addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
+        @RSStrongify(self);
+        self.memoriesCell.viewModel.isSelected = !self.memoriesCell.viewModel.isSelected;
+        [self.memoriesCell setSelected:self.memoriesCell.viewModel.isSelected];
+    }]];
+    return _memoriesCell;
 }
 
 -(UICollectionView *)collectionView {
@@ -185,5 +269,15 @@ static const CGFloat RSReceiverSpaceViewCollectionViewHeight = 138;
 #pragma mark - UICollectionViewDelegateFlowLayout
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+}
+
+-(void)setAllunSelected {
+    for (RSReceiverListItemViewModel *itemViewModel in self.viewModel.listData) {
+        if (itemViewModel.isSelected) {
+            itemViewModel.isSelected = NO;
+            self.selectedCount = self.selectedCount - 1;
+        }
+    }
+    [self.collectionView reloadData];
 }
 @end

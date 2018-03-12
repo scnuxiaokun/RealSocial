@@ -95,7 +95,7 @@
                     return;
                 }
             }
-            NSLog(@"%@:%@", request.respClass, resp);
+//            NSLog(@"%@:%@", request.respClass, resp);
             [signal sendNext:resp];
             [signal sendCompleted];
             return;
@@ -121,7 +121,7 @@
 +(RACSignal *)sendDebugRequest:(RSRequest *)request {
     RACReplaySubject *signal = [RACReplaySubject subject];
     dispatch_async(YYDispatchQueueGetForQOS(NSQualityOfServiceBackground), ^{
-        [NSThread sleepForTimeInterval:0.1];
+        [NSThread sleepForTimeInterval:0.5];
         RSResponse *response = [RSResponse new];
         response.data = request.mokeResponseData;
         [signal sendNext:response];

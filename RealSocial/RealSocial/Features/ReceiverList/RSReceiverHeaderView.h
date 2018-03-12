@@ -10,5 +10,7 @@
 
 @interface RSReceiverHeaderView : UIView 
 @property (nonatomic, strong) UILabel *titleLabel;
-@property (nonatomic, strong) UILabel *subTitleLabel;
+//@property (nonatomic, strong) UILabel *subTitleLabel;
+@property (nonatomic, strong) UITextField *textField;
+@property (nonatomic, strong) UIImageView *textFieldImageView;
 @end

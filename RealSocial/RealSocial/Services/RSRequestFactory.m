@@ -58,6 +58,8 @@
                           @"AddStarReq" : @"space/star/add",
                           @"GetAllSpaceReq" : @"space/getall",
                           @"AddCommentReq" : @"space/star/comment/add",
+                          @"RegisterFaceReq" : @"face/register",
+                          @"AddFriendReq" : @"friend/add"
                           };
     NSString *key = [classString substringWithRange:NSMakeRange(2, [classString length] - 2)];
     return [dic objectForKey:key];

@@ -485,6 +485,102 @@ typedef struct RSContact__storage_ {
 
 @end
 
+#pragma mark - RSGroup
+
+@implementation RSGroup
+
+@dynamic hasHeadImgURL, headImgURL;
+
+typedef struct RSGroup__storage_ {
+  uint32_t _has_storage_[1];
+  NSString *headImgURL;
+} RSGroup__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "headImgURL",
+        .dataTypeSpecific.className = NULL,
+        .number = RSGroup_FieldNumber_HeadImgURL,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(RSGroup__storage_, headImgURL),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[RSGroup class]
+                                     rootClass:[RSSpcgicommRoot class]
+                                          file:RSSpcgicommRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(RSGroup__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\001\004H!!\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - RSFaceBuffer
+
+@implementation RSFaceBuffer
+
+@dynamic hasBuffer, buffer;
+
+typedef struct RSFaceBuffer__storage_ {
+  uint32_t _has_storage_[1];
+  NSData *buffer;
+} RSFaceBuffer__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "buffer",
+        .dataTypeSpecific.className = NULL,
+        .number = RSFaceBuffer_FieldNumber_Buffer,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(RSFaceBuffer__storage_, buffer),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeBytes,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[RSFaceBuffer class]
+                                     rootClass:[RSSpcgicommRoot class]
+                                          file:RSSpcgicommRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(RSFaceBuffer__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\001\001F\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
 
 #pragma clang diagnostic pop
 

@@ -30,6 +30,7 @@ CF_EXTERN_C_BEGIN
 @class RSBaseReq;
 @class RSBaseResp;
 @class RSContact;
+@class RSFaceBuffer;
 @class RSProfile;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -86,6 +87,7 @@ typedef GPB_ENUM(RSLoginResp_FieldNumber) {
 /** Test to see if @c baseResp has been set. */
 @property(nonatomic, readwrite) BOOL hasBaseResp;
 
+/** enLoginOpCode */
 @property(nonatomic, readwrite) uint32_t opCode;
 
 @property(nonatomic, readwrite) BOOL hasOpCode;
@@ -109,6 +111,82 @@ typedef GPB_ENUM(RSLoginResp_FieldNumber) {
 @property(nonatomic, readwrite) uint64_t uin;
 
 @property(nonatomic, readwrite) BOOL hasUin;
+@end
+
+#pragma mark - RSRegisterFaceReq
+
+typedef GPB_ENUM(RSRegisterFaceReq_FieldNumber) {
+  RSRegisterFaceReq_FieldNumber_BaseReq = 1,
+  RSRegisterFaceReq_FieldNumber_FaceBufferArray = 2,
+};
+
+@interface RSRegisterFaceReq : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) RSBaseReq *baseReq;
+/** Test to see if @c baseReq has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseReq;
+
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<RSFaceBuffer*> *faceBufferArray;
+/** The number of items in @c faceBufferArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger faceBufferArray_Count;
+
+@end
+
+#pragma mark - RSRegisterFaceResp
+
+typedef GPB_ENUM(RSRegisterFaceResp_FieldNumber) {
+  RSRegisterFaceResp_FieldNumber_BaseResp = 1,
+};
+
+@interface RSRegisterFaceResp : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) RSBaseResp *baseResp;
+/** Test to see if @c baseResp has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseResp;
+
+@end
+
+#pragma mark - RSAddFriendReq
+
+typedef GPB_ENUM(RSAddFriendReq_FieldNumber) {
+  RSAddFriendReq_FieldNumber_BaseReq = 1,
+  RSAddFriendReq_FieldNumber_Imgurl = 2,
+};
+
+@interface RSAddFriendReq : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) RSBaseReq *baseReq;
+/** Test to see if @c baseReq has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseReq;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *imgurl;
+/** Test to see if @c imgurl has been set. */
+@property(nonatomic, readwrite) BOOL hasImgurl;
+
+@end
+
+#pragma mark - RSAddFriendResp
+
+typedef GPB_ENUM(RSAddFriendResp_FieldNumber) {
+  RSAddFriendResp_FieldNumber_BaseResp = 1,
+  RSAddFriendResp_FieldNumber_OpCode = 2,
+  RSAddFriendResp_FieldNumber_ToAddArray = 3,
+};
+
+@interface RSAddFriendResp : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) RSBaseResp *baseResp;
+/** Test to see if @c baseResp has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseResp;
+
+/** enAddFriendOpCode */
+@property(nonatomic, readwrite) uint32_t opCode;
+
+@property(nonatomic, readwrite) BOOL hasOpCode;
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<RSContact*> *toAddArray;
+/** The number of items in @c toAddArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger toAddArray_Count;
+
 @end
 
 #pragma mark - RSGetAllContactReq

@@ -16,5 +16,6 @@
 @property (strong, nonatomic) UIViewController *mainViewController;
 
 + (AppDelegate*)shareInstance;
+- (void)showMainView;
 @end
 

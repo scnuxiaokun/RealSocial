@@ -109,6 +109,11 @@
 }
 
 +(NSString *)urlWithPictureId:(NSString *)pictureId {
-    return [@"http://p3rtyrrga.bkt.clouddn.com" stringByAppendingPathComponent:pictureId];
+    return [NSString stringWithFormat:@"http://p3rtyrrga.bkt.clouddn.com/%@",pictureId];
+}
+
++(BOOL)saveImageToAsset:(UIImage *)image {
+    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+    return YES;
 }
 @end

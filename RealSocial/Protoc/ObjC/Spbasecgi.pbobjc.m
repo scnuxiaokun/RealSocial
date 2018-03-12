@@ -217,6 +217,242 @@ typedef struct RSLoginResp__storage_ {
 
 @end
 
+#pragma mark - RSRegisterFaceReq
+
+@implementation RSRegisterFaceReq
+
+@dynamic hasBaseReq, baseReq;
+@dynamic faceBufferArray, faceBufferArray_Count;
+
+typedef struct RSRegisterFaceReq__storage_ {
+  uint32_t _has_storage_[1];
+  RSBaseReq *baseReq;
+  NSMutableArray *faceBufferArray;
+} RSRegisterFaceReq__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "baseReq",
+        .dataTypeSpecific.className = GPBStringifySymbol(RSBaseReq),
+        .number = RSRegisterFaceReq_FieldNumber_BaseReq,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(RSRegisterFaceReq__storage_, baseReq),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "faceBufferArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(RSFaceBuffer),
+        .number = RSRegisterFaceReq_FieldNumber_FaceBufferArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(RSRegisterFaceReq__storage_, faceBufferArray),
+        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[RSRegisterFaceReq class]
+                                     rootClass:[RSSpbasecgiRoot class]
+                                          file:RSSpbasecgiRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(RSRegisterFaceReq__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\002\001G\000\002\000FaceBuffer\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - RSRegisterFaceResp
+
+@implementation RSRegisterFaceResp
+
+@dynamic hasBaseResp, baseResp;
+
+typedef struct RSRegisterFaceResp__storage_ {
+  uint32_t _has_storage_[1];
+  RSBaseResp *baseResp;
+} RSRegisterFaceResp__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "baseResp",
+        .dataTypeSpecific.className = GPBStringifySymbol(RSBaseResp),
+        .number = RSRegisterFaceResp_FieldNumber_BaseResp,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(RSRegisterFaceResp__storage_, baseResp),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[RSRegisterFaceResp class]
+                                     rootClass:[RSSpbasecgiRoot class]
+                                          file:RSSpbasecgiRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(RSRegisterFaceResp__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\001\001H\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - RSAddFriendReq
+
+@implementation RSAddFriendReq
+
+@dynamic hasBaseReq, baseReq;
+@dynamic hasImgurl, imgurl;
+
+typedef struct RSAddFriendReq__storage_ {
+  uint32_t _has_storage_[1];
+  RSBaseReq *baseReq;
+  NSString *imgurl;
+} RSAddFriendReq__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "baseReq",
+        .dataTypeSpecific.className = GPBStringifySymbol(RSBaseReq),
+        .number = RSAddFriendReq_FieldNumber_BaseReq,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(RSAddFriendReq__storage_, baseReq),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "imgurl",
+        .dataTypeSpecific.className = NULL,
+        .number = RSAddFriendReq_FieldNumber_Imgurl,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(RSAddFriendReq__storage_, imgurl),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[RSAddFriendReq class]
+                                     rootClass:[RSSpbasecgiRoot class]
+                                          file:RSSpbasecgiRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(RSAddFriendReq__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\002\001G\000\002F\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - RSAddFriendResp
+
+@implementation RSAddFriendResp
+
+@dynamic hasBaseResp, baseResp;
+@dynamic hasOpCode, opCode;
+@dynamic toAddArray, toAddArray_Count;
+
+typedef struct RSAddFriendResp__storage_ {
+  uint32_t _has_storage_[1];
+  uint32_t opCode;
+  RSBaseResp *baseResp;
+  NSMutableArray *toAddArray;
+} RSAddFriendResp__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "baseResp",
+        .dataTypeSpecific.className = GPBStringifySymbol(RSBaseResp),
+        .number = RSAddFriendResp_FieldNumber_BaseResp,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(RSAddFriendResp__storage_, baseResp),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "opCode",
+        .dataTypeSpecific.className = NULL,
+        .number = RSAddFriendResp_FieldNumber_OpCode,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(RSAddFriendResp__storage_, opCode),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "toAddArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(RSContact),
+        .number = RSAddFriendResp_FieldNumber_ToAddArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(RSAddFriendResp__storage_, toAddArray),
+        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[RSAddFriendResp class]
+                                     rootClass:[RSSpbasecgiRoot class]
+                                          file:RSSpbasecgiRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(RSAddFriendResp__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\003\001H\000\002F\000\003\000ToAdd\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
 #pragma mark - RSGetAllContactReq
 
 @implementation RSGetAllContactReq

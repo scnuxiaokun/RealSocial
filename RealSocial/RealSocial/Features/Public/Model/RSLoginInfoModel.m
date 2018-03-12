@@ -24,6 +24,7 @@
     self.sessionKey = loginInfo.sessionKey;
     self.qiniuToken = loginInfo.qiniuToken;
     self.uin = loginInfo.uin;
+    self.opCode = loginInfo.opCode;
 }
 
 -(void)clear {

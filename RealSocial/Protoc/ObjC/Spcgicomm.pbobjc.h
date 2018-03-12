@@ -193,6 +193,36 @@ typedef GPB_ENUM(RSContact_FieldNumber) {
 
 @end
 
+#pragma mark - RSGroup
+
+typedef GPB_ENUM(RSGroup_FieldNumber) {
+  RSGroup_FieldNumber_HeadImgURL = 4,
+};
+
+@interface RSGroup : GPBMessage
+
+/** hhh */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *headImgURL;
+/** Test to see if @c headImgURL has been set. */
+@property(nonatomic, readwrite) BOOL hasHeadImgURL;
+
+@end
+
+#pragma mark - RSFaceBuffer
+
+typedef GPB_ENUM(RSFaceBuffer_FieldNumber) {
+  RSFaceBuffer_FieldNumber_Buffer = 1,
+};
+
+@interface RSFaceBuffer : GPBMessage
+
+/** 2 jiaodu */
+@property(nonatomic, readwrite, copy, null_resettable) NSData *buffer;
+/** Test to see if @c buffer has been set. */
+@property(nonatomic, readwrite) BOOL hasBuffer;
+
+@end
+
 NS_ASSUME_NONNULL_END
 
 CF_EXTERN_C_END

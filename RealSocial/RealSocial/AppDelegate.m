@@ -12,7 +12,15 @@
 #import "RSLoginService.h"
 #import "RSLanchViewController.h"
 #import "RSHandleOpenUrlHelper.h"
+#import "RSRegisterFaceViewController.h"
 //#import <AlicloudMobileAnalitics/ALBBMAN.h>
+
+#import "MGVideoViewController.h"
+#import "MCSetModel.h"
+#import "MCSetCell.h"
+#import "MGHeader.h"
+#import "MGFaceLicenseHandle.h"
+#import "MGMarkSetViewController.h"
 
 @interface AppDelegate ()
 
@@ -47,7 +55,11 @@
     }];
     [[RSLaunchService shareInstance] setLoginCompleteBlock:^{
         @RSStrongify(self);
-        [self showMainView];
+        if ([[RSLoginService shareInstance] hasRegisterFace]) {
+            [self showMainView];
+        } else {
+            [self showRegisterFaceView];
+        }
     }];
     [[RSLaunchService shareInstance] setLogoutCompleteBlock:^{
         @RSStrongify(self);
@@ -66,12 +78,92 @@
         } else {
             [self showLoginView];
         }
-        
     });
+}
+
+-(void)showRegisterFaceView {
+    /** 进行联网授权版本判断，联网授权就需要进行网络授权 */
+    BOOL needLicense = [MGFaceLicenseHandle getNeedNetLicense];
+    if (needLicense) {
+        [MGFaceLicenseHandle licenseForNetwokrFinish:^(bool License, NSDate *sdkDate) {
+            if (!License) {
+                NSLog(@"联网授权失败 ！！！");
+                @weakify(self);
+                dispatch_sync_on_main_queue(^{
+                    @RSStrongify(self);
+                    [self showMainView];
+                });
+            } else {
+                NSLog(@"联网授权成功");
+                @weakify(self);
+                dispatch_sync_on_main_queue(^{
+                    @RSStrongify(self);
+                    if ([RSLoginService shareInstance].isLogined) {
+                        NSString *modelPath = [[NSBundle mainBundle] pathForResource:KMGFACEMODELNAME ofType:@""];
+                        NSData *modelData = [NSData dataWithContentsOfFile:modelPath];
+                        int maxFaceCount = 0;
+                        int faceSize = 100;
+                        int internal = 40;
+                        MGDetectROI detectROI = MGDetectROIMake(0, 0, 0, 0);
+                        MGFacepp *markManager = [[MGFacepp alloc] initWithModel:modelData
+                                                                   maxFaceCount:1
+                                                                  faceppSetting:^(MGFaceppConfig *config) {
+                                                                      config.minFaceSize = faceSize;
+                                                                      config.interval = internal;
+                                                                      config.orientation = 0;
+                                                                      config.detectionMode = MGFppDetectionModeTrackingFast;
+                                                                      
+                                                                      config.detectROI = detectROI;
+                                                                      config.pixelFormatType = PixelFormatTypeRGBA;
+                                                                  }];
+                        AVCaptureDevicePosition device = [self getCamera:NO];
+                        MGVideoManager *videoManager = [MGVideoManager videoPreset:AVCaptureSessionPreset640x480
+                                                                    devicePosition:device
+                                                                       videoRecord:NO
+                                                                        videoSound:NO];
+                        RSRegisterFaceViewController *videoController = [[RSRegisterFaceViewController alloc] initWithNibName:nil bundle:nil];
+                        //                        videoController.detectRect = CGRectMake(100, 100, 300, 300);
+                        videoController.videoSize = CGSizeMake(480, 640);
+                        videoController.videoManager = videoManager;
+                        videoController.markManager = markManager;
+                        videoController.debug = NO;
+                        videoController.pointsNum = 81;
+                        videoController.show3D = NO;
+                        videoController.faceInfo = YES;
+                        videoController.faceCompare = NO;
+                        self.window.rootViewController = videoController;
+                        [self.window makeKeyWindow];
+                    } else {
+                        [self showMainView];
+                    }
+                });
+            }
+        }];
+    } else {
+        NSLog(@"SDK 为非联网授权版本！");
+    }
+    
+    
+}
+
+- (AVCaptureDevicePosition)getCamera:(BOOL)index{
+    AVCaptureDevicePosition tempVideo;
+    if (index == NO) {
+        tempVideo = AVCaptureDevicePositionFront;
+    }else{
+        tempVideo = AVCaptureDevicePositionBack;
+    }
+    return tempVideo;
 }
 
 - (void)showLoginView {
     dispatch_sync_on_main_queue(^{
+        if ([self.window.rootViewController isKindOfClass:[RSUINavigationController class]]) {
+            RSUINavigationController *navCtr = (RSUINavigationController *)self.window.rootViewController;
+            if ([navCtr.topViewController isKindOfClass:[RSLoginViewController  class]]) {
+                return;//防止重复显示
+            }
+        }
         RSLoginViewController *loginCtr = [[RSLoginViewController alloc] init];
         RSUINavigationController *navCtr = [[RSUINavigationController alloc] initWithRootViewController:loginCtr];
         self.window.rootViewController = navCtr;
@@ -81,9 +173,13 @@
 
 - (void)showStartView {
     dispatch_sync_on_main_queue(^{
-        RSLanchViewController *ctr = [[RSLanchViewController alloc] init];
-        self.window.rootViewController = ctr;
-        [self.window makeKeyWindow];
+        if ([RSLoginService shareInstance].isLogined) {
+            RSLanchViewController *ctr = [[RSLanchViewController alloc] init];
+            self.window.rootViewController = ctr;
+            [self.window makeKeyWindow];
+        } else {
+            [self showLoginView];
+        }
     });
 }
 

@@ -7,10 +7,13 @@
 //
 
 #import "RSModel.h"
-typedef NS_ENUM(NSInteger, RSSpaceCreateModelType) {
-    RSSpaceCreateModelTypeSignal,////添加Star到Space与创建单人Space
-    RSSpaceCreateModelTypeGruop,////创建多人Space
-};
+#import "Spcgicommdef.pbobjc.h"
+//typedef NS_ENUM(NSInteger, RSSpaceCreateModelType) {
+//    RSSpaceCreateModelTypeSignal,////添加Star到Space与创建单人Space
+//    RSSpaceCreateModelTypeGruop,////创建多人Space
+//    RSSpaceCreateModelTypeAllFriends,
+//    RSSpaceCreateModelTypeMemories,
+//};
 
 typedef NS_ENUM(NSUInteger ,RSSpaceCreateModelStatus) {
     RSSpaceCreateModelStatusInit,
@@ -20,10 +23,11 @@ typedef NS_ENUM(NSUInteger ,RSSpaceCreateModelStatus) {
 };
 @interface RSSpaceCreateModel : RSModel
 @property(nonatomic, strong) NSString *mediaId;
-@property(nonatomic, assign) RSSpaceCreateModelType type;
+@property(nonatomic, assign) RSenReceiverType type;
 @property(nonatomic, assign) RSSpaceCreateModelStatus status;
 @property(nonatomic, strong) NSArray *users;
 @property(nonatomic, strong) NSArray *spaces;
 @property(nonatomic, strong) NSDate *createTime;
 @property(nonatomic, strong) NSString *creator;
+@property(nonatomic, strong) NSString *mediaPath;
 @end

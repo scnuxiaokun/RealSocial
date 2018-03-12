@@ -66,6 +66,74 @@ BOOL RSenCgiErrorCode_IsValidValue(int32_t value__) {
   }
 }
 
+#pragma mark - Enum RSenLoginOpCode
+
+GPBEnumDescriptor *RSenLoginOpCode_EnumDescriptor(void) {
+  static GPBEnumDescriptor *descriptor = NULL;
+  if (!descriptor) {
+    static const char *valueNames =
+        "LoginOpcodeHome\000LoginOpcodeRegisterFace\000";
+    static const int32_t values[] = {
+        RSenLoginOpCode_LoginOpcodeHome,
+        RSenLoginOpCode_LoginOpcodeRegisterFace,
+    };
+    GPBEnumDescriptor *worker =
+        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(RSenLoginOpCode)
+                                       valueNames:valueNames
+                                           values:values
+                                            count:(uint32_t)(sizeof(values) / sizeof(int32_t))
+                                     enumVerifier:RSenLoginOpCode_IsValidValue];
+    if (!OSAtomicCompareAndSwapPtrBarrier(nil, worker, (void * volatile *)&descriptor)) {
+      [worker release];
+    }
+  }
+  return descriptor;
+}
+
+BOOL RSenLoginOpCode_IsValidValue(int32_t value__) {
+  switch (value__) {
+    case RSenLoginOpCode_LoginOpcodeHome:
+    case RSenLoginOpCode_LoginOpcodeRegisterFace:
+      return YES;
+    default:
+      return NO;
+  }
+}
+
+#pragma mark - Enum RSenAddFriendOpCode
+
+GPBEnumDescriptor *RSenAddFriendOpCode_EnumDescriptor(void) {
+  static GPBEnumDescriptor *descriptor = NULL;
+  if (!descriptor) {
+    static const char *valueNames =
+        "AddFriendopcodeSucc\000AddFriendopcodeFail\000";
+    static const int32_t values[] = {
+        RSenAddFriendOpCode_AddFriendopcodeSucc,
+        RSenAddFriendOpCode_AddFriendopcodeFail,
+    };
+    GPBEnumDescriptor *worker =
+        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(RSenAddFriendOpCode)
+                                       valueNames:valueNames
+                                           values:values
+                                            count:(uint32_t)(sizeof(values) / sizeof(int32_t))
+                                     enumVerifier:RSenAddFriendOpCode_IsValidValue];
+    if (!OSAtomicCompareAndSwapPtrBarrier(nil, worker, (void * volatile *)&descriptor)) {
+      [worker release];
+    }
+  }
+  return descriptor;
+}
+
+BOOL RSenAddFriendOpCode_IsValidValue(int32_t value__) {
+  switch (value__) {
+    case RSenAddFriendOpCode_AddFriendopcodeSucc:
+    case RSenAddFriendOpCode_AddFriendopcodeFail:
+      return YES;
+    default:
+      return NO;
+  }
+}
+
 #pragma mark - Enum RSenSex
 
 GPBEnumDescriptor *RSenSex_EnumDescriptor(void) {

@@ -9,10 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "RSReceiverTitleView.h"
 #import "RSReceiverSpaceViewModel.h"
+#import "RSReceiverSpaceCollectionViewCell.h"
 @interface RSReceiverSpaceView : UIView<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong) RSReceiverTitleView *titleView;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) RSReceiverSpaceViewModel *viewModel;
 @property (nonatomic, strong) UIButton *createGroupButton;
 @property (nonatomic, assign) NSInteger selectedCount;
+@property (nonatomic, strong) UIView *fixedSpaceView;
+@property (nonatomic, strong) RSReceiverSpaceCollectionViewCell *allFriendCell;
+@property (nonatomic, strong) RSReceiverSpaceCollectionViewCell *memoriesCell;
+-(void)setAllunSelected;
 @end

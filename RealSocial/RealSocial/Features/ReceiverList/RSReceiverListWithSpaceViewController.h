@@ -11,7 +11,7 @@
 #import "RSReceiverSpaceViewModel.h"
 
 @class RSReceiverListWithSpaceViewController;
-typedef void (^RSReceiverListWithSpaceViewControllerCompletionHandler)(RSReceiverListWithSpaceViewController *ctr, NSArray *toUsers, NSArray *spaceIds);
+typedef void (^RSReceiverListWithSpaceViewControllerCompletionHandler)(RSReceiverListWithSpaceViewController *ctr, NSArray *toUsers, NSArray *spaceIds, BOOL isSelectedAllFriend,BOOL isSelectedMemories);
 @interface RSReceiverListWithSpaceViewController : RSReceiverListViewController
 @property (nonatomic, strong) RSReceiverSpaceView *spaceView;
 @property (nonatomic, copy) RSReceiverListWithSpaceViewControllerCompletionHandler spaceCompletionHandler;

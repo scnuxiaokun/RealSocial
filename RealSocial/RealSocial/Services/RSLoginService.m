@@ -81,7 +81,9 @@
 //    request.cgiName = @"base/login";
 //    request.data = [req data];
 //    request.mokeResponseData = [self mokeResponse];
+    @weakify(self);
     [[RSNetWorkService sendRequest:request] subscribeNext:^(RSLoginResp *resp) {
+        @RSStrongify(self);
         [self.loginInfo updateWithLoginInfo:resp];
         [self saveLoginInfo];
         [self.loginSignal sendNext:@(YES)];
@@ -133,5 +135,13 @@
     [FPKeychainUtils save:kFPLoginServiceKeyChainKey data:self.loginInfo];
     [_logoutSignal sendNext:@(YES)];
     return YES;
+}
+
+-(BOOL)hasRegisterFace {
+    if (self.loginInfo.opCode == RSenLoginOpCode_LoginOpcodeRegisterFace) {
+        return NO;
+    }
+    return YES;
+    
 }
 @end

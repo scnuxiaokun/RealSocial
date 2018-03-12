@@ -13,6 +13,8 @@ typedef void (^RSUploadCompletionHandler)(BOOL isOK, NSError *error);
 +(NSString *)localPictureDir;
 +(NSString *)pictureIdWithData:(NSData *)data;
 +(BOOL)savePictureLocal:(NSData *)fileData pictureId:(NSString *)pictureId;
+//保存到相册
++(BOOL)saveImageToAsset:(UIImage *)image;
 +(void)uploadPictureCDN:(NSData *)fileData pictureId:(NSString *)pictureId complete:(RSUploadCompletionHandler)completionHandler;
 +(NSString *)urlWithPictureId:(NSString *)pictureId;
 @end

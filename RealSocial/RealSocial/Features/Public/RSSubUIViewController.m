@@ -18,7 +18,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 //    [self.transitionController prepareGestureRecognizerInViewController:self];
-    self.view.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.8];
+    self.view.backgroundColor = [UIColor clearColor];
     [self.view addSubview:self.contentView];
     [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(self.view);
@@ -44,6 +44,15 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    if ([self.navigationController.viewControllers count] > 1) {
+        UIViewController *preCtr = [self.navigationController.viewControllers objectOrNilAtIndex:[self.navigationController.viewControllers count]-2];
+        if (preCtr && [preCtr isKindOfClass:[RSUIViewController class]]) {
+            self.navigationController.view.backgroundColor = [UIColor colorWithPatternImage:[self imageByApplyingAlpha:0.5 image:[(RSUIViewController*)preCtr snapshotImage]]];
+        }
+    }
+    
+    
     //导航透明
 //    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
 //    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
@@ -64,6 +73,31 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (UIImage *)imageByApplyingAlpha:(CGFloat)alpha  image:(UIImage*)image
+{
+    UIGraphicsBeginImageContextWithOptions(image.size, NO, 0.0f);
+    
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    
+    CGRect area = CGRectMake(0, 0, image.size.width, image.size.height);
+    
+    CGContextScaleCTM(ctx, 1, -1);
+    
+    CGContextTranslateCTM(ctx, 0, -area.size.height);
+    
+    CGContextSetBlendMode(ctx, kCGBlendModeMultiply);
+    
+    CGContextSetAlpha(ctx, alpha);
+    
+    CGContextDrawImage(ctx, area, image.CGImage);
+    
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
+
 /*
 #pragma mark - Navigation
 
@@ -78,6 +112,11 @@
         return _contentView;
     }
     _contentView = [[UIView alloc] init];
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH-40)/2, 10, 40, 4)];
+    line.backgroundColor = RGBA(0, 0, 0, .2f);
+    line.layer.cornerRadius = 2;
+    line.layer.masksToBounds = YES;
+    [_contentView addSubview:line];
     _contentView.backgroundColor = [UIColor clearColor];
     return _contentView;
 }

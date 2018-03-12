@@ -15,6 +15,7 @@ typedef void (^RSSpaceLineViewTableViewCellCompletionHandler)(RSSpaceLineViewTab
 @property (nonatomic, strong) RSAvatarImageView *avatarImageView;
 //@property (nonatomic, strong) UIImageView *avatarBgImageView;
 @property (nonatomic, strong) UIImageView *mediaImageView;
+@property (nonatomic, strong) UIVisualEffectView *mediaImageViewEffectView;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *subtitleLabel;
 @property (nonatomic, strong) RSSpaceLineItemViewModel *viewModel;
