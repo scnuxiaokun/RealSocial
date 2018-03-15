@@ -18,7 +18,7 @@
     RSRegisterFaceReq *req = [RSRegisterFaceReq new];
     RSFaceBuffer *faceBuffer = [RSFaceBuffer new];
     faceBuffer.buffer = fileData;
-    [req.faceBufferArray addObject:faceBuffer];
+    [req.faceBufferListArray addObject:faceBuffer];
     RSRequest *request = [RSRequestFactory requestWithReq:req resp:[RSRegisterFaceResp class] moke:nil];
     RACSignal *signal = [RSNetWorkService sendRequest:request];
     return signal;

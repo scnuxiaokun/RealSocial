@@ -7,6 +7,7 @@ import "spcgicomm.proto";
 option objc_class_prefix="RS";
 option cc_generic_services = true;
 
+
 message LoginReq
 {
 optional BaseReq BaseReq = 1;
@@ -27,12 +28,39 @@ optional uint64 Uin = 7;//tmp
 message RegisterFaceReq
 {
 optional BaseReq BaseReq = 1;
-repeated FaceBuffer FaceBuffer = 2;
+repeated FaceBuffer FaceBufferList = 2;
 }
 
 message RegisterFaceResp
 {
 optional BaseResp BaseResp = 1;
+}
+
+message SyncReq
+{
+optional BaseReq BaseReq = 1;
+optional bytes  SyncBuff = 2;
+optional uint32 Selector = 3;
+}
+
+message SyncItem
+{
+optional uint32 Type = 1;// enSyncType
+optional uint64 Seq = 2;
+}
+
+message SyncBuff
+{
+repeated SyncItem List = 1;
+}
+
+message SyncResp
+{
+optional BaseResp BaseResp = 1;
+optional bytes  SyncBuff = 2;
+optional uint32 IsEnd = 3;
+repeated Contact ContactList = 4;
+repeated Group GroupList = 5;
 }
 
 message AddFriendReq

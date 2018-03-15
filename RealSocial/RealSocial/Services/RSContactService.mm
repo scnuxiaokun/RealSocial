@@ -55,20 +55,29 @@
 }
 
 -(BOOL)saveAllContactResp:(RSGetAllContactResp *)resp {
+    return [self saveContactList:resp.contactArray];
+}
+
+-(BOOL)saveContactList:(NSArray *)contactList {
     NSMutableArray *tmp = [[NSMutableArray alloc] init];
-    for (RSContact *contact in resp.contactArray) {
+    for (RSContact *contact in contactList) {
         RSContactModel *model = [[RSContactModel alloc] init];
         model.uid = contact.userName;
         model.nickName = contact.nickName;
         model.avatarUrl = contact.headImgURL;
         model.sex = (RSenSex)contact.sex;
+        model.delFlag = (RSenDelFlag)contact.delFlag;
         [tmp addObject:model];
     }
-   return [[RSDBService db] insertOrReplaceObjects:tmp into:NSStringFromClass([RSContactModel class])];
+    return [[RSDBService db] insertOrReplaceObjects:tmp into:NSStringFromClass([RSContactModel class])];
 }
 
 -(NSArray*)getAllContact {
     return [[RSDBService db] getAllObjectsOfClass:[RSContactModel class] fromTable:NSStringFromClass([RSContactModel class])];
+}
+
+-(NSArray<RSContactModel *>*)getExistContact {
+    return [[RSDBService db] getObjectsOfClass:[RSContactModel class] fromTable:NSStringFromClass([RSContactModel class]) where:RSContactModel.delFlag==NO];
 }
 
 -(RSContactModel *)getContactByUid:(NSString *)uid {

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		123DF128ED7439AB67995CDA /* libPods-RealSocial.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C194DAA8A9C057DA270C97 /* libPods-RealSocial.a */; };
+		626F0F5E2057F2EB00A6D231 /* RSCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 626F0F5D2057F2EB00A6D231 /* RSCamera.m */; };
+		626F0F642058155C00A6D231 /* RSGeneralCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = 626F0F632058155C00A6D231 /* RSGeneralCameraView.m */; };
 		AD2DA56220234DD4006BA319 /* Face3DVertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA52E20234DD4006BA319 /* Face3DVertex.glsl */; };
 		AD2DA56320234DD4006BA319 /* VideoFrag.glsl in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA52F20234DD4006BA319 /* VideoFrag.glsl */; };
 		AD2DA56420234DD4006BA319 /* Face3DFragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = AD2DA53020234DD4006BA319 /* Face3DFragment.glsl */; };
@@ -70,7 +72,6 @@
 		AD3E9114200F97160019138F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3E9113200F97160019138F /* AppDelegate.m */; };
 		AD3E9117200F97160019138F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3E9116200F97160019138F /* ViewController.m */; };
 		AD3E911A200F97160019138F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD3E9118200F97160019138F /* Main.storyboard */; };
-		AD3E911C200F97160019138F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD3E911B200F97160019138F /* Assets.xcassets */; };
 		AD3E911F200F97160019138F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD3E911D200F97160019138F /* LaunchScreen.storyboard */; };
 		AD3E9122200F97160019138F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3E9121200F97160019138F /* main.m */; };
 		AD3E912C200F97160019138F /* RealSocialTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3E912B200F97160019138F /* RealSocialTests.m */; };
@@ -158,6 +159,9 @@
 		AD44C9EB202B0226003D16AC /* photograph@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD44C9E7202B0226003D16AC /* photograph@2x.png */; };
 		AD44C9EF202B17F4003D16AC /* RSSpaceCreateViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD44C9EE202B17F4003D16AC /* RSSpaceCreateViewModel.m */; };
 		AD44C9F2202B3F95003D16AC /* RSMediaService.mm in Sources */ = {isa = PBXBuildFile; fileRef = AD44C9F1202B3F95003D16AC /* RSMediaService.mm */; };
+		AD491BD620594E0E00B69D2D /* RSKeyValueModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = AD491BD320594E0D00B69D2D /* RSKeyValueModel.mm */; };
+		AD491BD920594E1A00B69D2D /* RSKeyValueService.mm in Sources */ = {isa = PBXBuildFile; fileRef = AD491BD720594E1A00B69D2D /* RSKeyValueService.mm */; };
+		AD491BDC205950B200B69D2D /* RSSyncService.m in Sources */ = {isa = PBXBuildFile; fileRef = AD491BDA205950B100B69D2D /* RSSyncService.m */; };
 		AD4FEE792052BA17006B9E5D /* RSCreateSpaceCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4FEE752052BA16006B9E5D /* RSCreateSpaceCameraView.m */; };
 		AD4FEE7A2052BA17006B9E5D /* RSSpaceCreateCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4FEE772052BA16006B9E5D /* RSSpaceCreateCameraViewController.m */; };
 		AD4FEE802053A07C006B9E5D /* RSSpaceDetailTouchAddCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4FEE7F2053A07B006B9E5D /* RSSpaceDetailTouchAddCommentView.m */; };
@@ -302,10 +306,14 @@
 		ADF1E0A5202EF32400B85B20 /* RSReceiverSpaceView.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF1E0A4202EF32400B85B20 /* RSReceiverSpaceView.m */; };
 		ADF1E0A8202EF41E00B85B20 /* RSReceiverHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF1E0A7202EF41E00B85B20 /* RSReceiverHeaderView.m */; };
 		ADF1E0AB202EFABE00B85B20 /* RSReceiverTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF1E0AA202EFABE00B85B20 /* RSReceiverTitleView.m */; };
+		E10669442058E6E80080BFE6 /* RSProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E10669432058E6E80080BFE6 /* RSProfileViewController.m */; };
+		E10669482058F1230080BFE6 /* UILabel+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = E10669472058F1230080BFE6 /* UILabel+Helper.m */; };
+		E106694D205901060080BFE6 /* UIButton+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = E106694C205901060080BFE6 /* UIButton+Helper.m */; };
 		E134B49B20514B4E007BAD76 /* RSCustomCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = E134B49820514B4D007BAD76 /* RSCustomCamera.m */; };
 		E134B49C20514B4E007BAD76 /* RSAddFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E134B49920514B4D007BAD76 /* RSAddFriendsViewController.m */; };
 		E134B4A4205297D3007BAD76 /* RSAddFriendsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E134B4A3205297D3007BAD76 /* RSAddFriendsViewModel.m */; };
 		E1E7BDB72056223C00748B31 /* RSSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E7BDB62056223C00748B31 /* RSSettingViewController.m */; };
+		E1E7BDBA2056329500748B31 /* RSSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E7BDB92056329500748B31 /* RSSettingTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -329,6 +337,12 @@
 		16C194DAA8A9C057DA270C97 /* libPods-RealSocial.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RealSocial.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50CA8B4FC9CDE384A43E0EBE /* Pods-RealSocial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealSocial.release.xcconfig"; path = "Pods/Target Support Files/Pods-RealSocial/Pods-RealSocial.release.xcconfig"; sourceTree = "<group>"; };
 		5FD2F8352C087E2A0B6E42C8 /* Pods-RealSocial.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealSocial.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RealSocial/Pods-RealSocial.debug.xcconfig"; sourceTree = "<group>"; };
+		626F0F5C2057F2EB00A6D231 /* RSCamera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSCamera.h; sourceTree = "<group>"; };
+		626F0F5D2057F2EB00A6D231 /* RSCamera.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSCamera.m; sourceTree = "<group>"; };
+		626F0F622058155C00A6D231 /* RSGeneralCameraView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSGeneralCameraView.h; sourceTree = "<group>"; };
+		626F0F632058155C00A6D231 /* RSGeneralCameraView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSGeneralCameraView.m; sourceTree = "<group>"; };
+		626F0F682058167900A6D231 /* RSGeneralCameraViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSGeneralCameraViewDelegate.h; sourceTree = "<group>"; };
+		626F0F69205947A200A6D231 /* RSUtilMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSUtilMacro.h; sourceTree = "<group>"; };
 		AD2DA52E20234DD4006BA319 /* Face3DVertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Face3DVertex.glsl; sourceTree = "<group>"; };
 		AD2DA52F20234DD4006BA319 /* VideoFrag.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VideoFrag.glsl; sourceTree = "<group>"; };
 		AD2DA53020234DD4006BA319 /* Face3DFragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Face3DFragment.glsl; sourceTree = "<group>"; };
@@ -404,7 +418,6 @@
 		AD3E9115200F97160019138F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		AD3E9116200F97160019138F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		AD3E9119200F97160019138F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		AD3E911B200F97160019138F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD3E911E200F97160019138F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD3E9120200F97160019138F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD3E9121200F97160019138F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -581,6 +594,13 @@
 		AD44C9EE202B17F4003D16AC /* RSSpaceCreateViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSSpaceCreateViewModel.m; sourceTree = "<group>"; };
 		AD44C9F0202B3F95003D16AC /* RSMediaService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSMediaService.h; sourceTree = "<group>"; };
 		AD44C9F1202B3F95003D16AC /* RSMediaService.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RSMediaService.mm; sourceTree = "<group>"; };
+		AD491BD320594E0D00B69D2D /* RSKeyValueModel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RSKeyValueModel.mm; sourceTree = "<group>"; };
+		AD491BD420594E0E00B69D2D /* RSKeyValueModel+WCTTableCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RSKeyValueModel+WCTTableCoding.h"; sourceTree = "<group>"; };
+		AD491BD520594E0E00B69D2D /* RSKeyValueModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKeyValueModel.h; sourceTree = "<group>"; };
+		AD491BD720594E1A00B69D2D /* RSKeyValueService.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RSKeyValueService.mm; sourceTree = "<group>"; };
+		AD491BD820594E1A00B69D2D /* RSKeyValueService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKeyValueService.h; sourceTree = "<group>"; };
+		AD491BDA205950B100B69D2D /* RSSyncService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSyncService.m; sourceTree = "<group>"; };
+		AD491BDB205950B100B69D2D /* RSSyncService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSyncService.h; sourceTree = "<group>"; };
 		AD4FEE752052BA16006B9E5D /* RSCreateSpaceCameraView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSCreateSpaceCameraView.m; sourceTree = "<group>"; };
 		AD4FEE762052BA16006B9E5D /* RSSpaceCreateCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSpaceCreateCameraViewController.h; sourceTree = "<group>"; };
 		AD4FEE772052BA16006B9E5D /* RSSpaceCreateCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSpaceCreateCameraViewController.m; sourceTree = "<group>"; };
@@ -844,6 +864,13 @@
 		ADF1E0A7202EF41E00B85B20 /* RSReceiverHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSReceiverHeaderView.m; sourceTree = "<group>"; };
 		ADF1E0A9202EFABE00B85B20 /* RSReceiverTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSReceiverTitleView.h; sourceTree = "<group>"; };
 		ADF1E0AA202EFABE00B85B20 /* RSReceiverTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSReceiverTitleView.m; sourceTree = "<group>"; };
+		C2F76CC0F6F13DC75AF4DAE1 /* Pods-RealSocial.ad hoc distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealSocial.ad hoc distribution.xcconfig"; path = "Pods/Target Support Files/Pods-RealSocial/Pods-RealSocial.ad hoc distribution.xcconfig"; sourceTree = "<group>"; };
+		E10669422058E6E80080BFE6 /* RSProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSProfileViewController.h; sourceTree = "<group>"; };
+		E10669432058E6E80080BFE6 /* RSProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSProfileViewController.m; sourceTree = "<group>"; };
+		E10669462058F1230080BFE6 /* UILabel+Helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+Helper.h"; sourceTree = "<group>"; };
+		E10669472058F1230080BFE6 /* UILabel+Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Helper.m"; sourceTree = "<group>"; };
+		E106694B205901060080BFE6 /* UIButton+Helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+Helper.h"; sourceTree = "<group>"; };
+		E106694C205901060080BFE6 /* UIButton+Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Helper.m"; sourceTree = "<group>"; };
 		E134B49720514B4C007BAD76 /* RSAddFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSAddFriendsViewController.h; sourceTree = "<group>"; };
 		E134B49820514B4D007BAD76 /* RSCustomCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSCustomCamera.m; sourceTree = "<group>"; };
 		E134B49920514B4D007BAD76 /* RSAddFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSAddFriendsViewController.m; sourceTree = "<group>"; };
@@ -852,6 +879,8 @@
 		E134B4A3205297D3007BAD76 /* RSAddFriendsViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSAddFriendsViewModel.m; sourceTree = "<group>"; };
 		E1E7BDB52056223C00748B31 /* RSSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSSettingViewController.h; sourceTree = "<group>"; };
 		E1E7BDB62056223C00748B31 /* RSSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSSettingViewController.m; sourceTree = "<group>"; };
+		E1E7BDB82056329500748B31 /* RSSettingTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSSettingTableViewCell.h; sourceTree = "<group>"; };
+		E1E7BDB92056329500748B31 /* RSSettingTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSSettingTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -900,6 +929,7 @@
 			children = (
 				5FD2F8352C087E2A0B6E42C8 /* Pods-RealSocial.debug.xcconfig */,
 				50CA8B4FC9CDE384A43E0EBE /* Pods-RealSocial.release.xcconfig */,
+				C2F76CC0F6F13DC75AF4DAE1 /* Pods-RealSocial.ad hoc distribution.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1083,7 +1113,6 @@
 				AD3E9115200F97160019138F /* ViewController.h */,
 				AD3E9116200F97160019138F /* ViewController.m */,
 				AD3E9118200F97160019138F /* Main.storyboard */,
-				AD3E911B200F97160019138F /* Assets.xcassets */,
 				AD3E911D200F97160019138F /* LaunchScreen.storyboard */,
 				AD3E9120200F97160019138F /* Info.plist */,
 				AD3E9121200F97160019138F /* main.m */,
@@ -1119,6 +1148,10 @@
 				AD3E9560200F9C9E0019138F /* RSHandleOpenUrlHelper.m */,
 				ADD00BFF204FDCCE00456BC5 /* UIColor+Helper.h */,
 				ADD00C00204FDCCE00456BC5 /* UIColor+Helper.m */,
+				E10669462058F1230080BFE6 /* UILabel+Helper.h */,
+				E10669472058F1230080BFE6 /* UILabel+Helper.m */,
+				E106694B205901060080BFE6 /* UIButton+Helper.h */,
+				E106694C205901060080BFE6 /* UIButton+Helper.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1126,6 +1159,10 @@
 		AD3E9145200F995E0019138F /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				AD491BDB205950B100B69D2D /* RSSyncService.h */,
+				AD491BDA205950B100B69D2D /* RSSyncService.m */,
+				AD491BD820594E1A00B69D2D /* RSKeyValueService.h */,
+				AD491BD720594E1A00B69D2D /* RSKeyValueService.mm */,
 				AD3E9146200F995E0019138F /* RSLoginService.h */,
 				AD3E9147200F995E0019138F /* RSLoginService.m */,
 				AD3E9562200F9D6B0019138F /* WXApiService.h */,
@@ -1174,6 +1211,7 @@
 				ADDC6A7F201336DD00439D01 /* RSNSUserDefaultsConstants.h */,
 				AD3E955C200F9B850019138F /* RSConstants.h */,
 				AD3E955B200F9B850019138F /* RSUIConstants.h */,
+				626F0F69205947A200A6D231 /* RSUtilMacro.h */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -1200,6 +1238,7 @@
 		AD3E9171200F995F0019138F /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				E14C9DE62057C1A100A296C3 /* Profile */,
 				AD4FEE6B20528D3E006B9E5D /* Camera */,
 				ADD00C08205112F700456BC5 /* Register */,
 				ADF1E072202C9AC000B85B20 /* StoryDetail */,
@@ -1568,6 +1607,11 @@
 		AD4FEE6B20528D3E006B9E5D /* Camera */ = {
 			isa = PBXGroup;
 			children = (
+				626F0F5C2057F2EB00A6D231 /* RSCamera.h */,
+				626F0F5D2057F2EB00A6D231 /* RSCamera.m */,
+				626F0F622058155C00A6D231 /* RSGeneralCameraView.h */,
+				626F0F632058155C00A6D231 /* RSGeneralCameraView.m */,
+				626F0F682058167900A6D231 /* RSGeneralCameraViewDelegate.h */,
 				ADD00C1020511B3D00456BC5 /* RSCameraViewController.h */,
 				ADD00C0F20511B3D00456BC5 /* RSCameraViewController.m */,
 			);
@@ -1826,6 +1870,9 @@
 		ADB1F713203066CA00F3AE0A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AD491BD520594E0E00B69D2D /* RSKeyValueModel.h */,
+				AD491BD320594E0D00B69D2D /* RSKeyValueModel.mm */,
+				AD491BD420594E0E00B69D2D /* RSKeyValueModel+WCTTableCoding.h */,
 				ADB1F708203010AA00F3AE0A /* RSSpaceCreateModel.h */,
 				ADB1F70B2030126600F3AE0A /* RSSpaceCreateModel.mm */,
 				ADB1F70C2030126600F3AE0A /* RSSpaceCreateModel+WCTTableCoding.h */,
@@ -1983,11 +2030,22 @@
 			path = StoryDetail;
 			sourceTree = "<group>";
 		};
+		E14C9DE62057C1A100A296C3 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				E10669422058E6E80080BFE6 /* RSProfileViewController.h */,
+				E10669432058E6E80080BFE6 /* RSProfileViewController.m */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		E1E7BDB4205621FB00748B31 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
 				E1E7BDB52056223C00748B31 /* RSSettingViewController.h */,
 				E1E7BDB62056223C00748B31 /* RSSettingViewController.m */,
+				E1E7BDB82056329500748B31 /* RSSettingTableViewCell.h */,
+				E1E7BDB92056329500748B31 /* RSSettingTableViewCell.m */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -2153,7 +2211,6 @@
 				AD68317F20178E290085DDCD /* FacePointSize.glsl in Resources */,
 				AD44C9E9202B0226003D16AC /* photograph_Select@2x.png in Resources */,
 				AD2DA57920234DD5006BA319 /* textrec-1.png in Resources */,
-				AD3E911C200F97160019138F /* Assets.xcassets in Resources */,
 				AD2DA57C20234DD5006BA319 /* debug-1.png in Resources */,
 				AD2DA57120234DD5006BA319 /* screen-0.png in Resources */,
 				AD44C9E8202B0226003D16AC /* photograph_Select@3x.png in Resources */,
@@ -2284,7 +2341,9 @@
 				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_miss_etikate.png",
 				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_1.png",
 				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_2.png",
+				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -2302,7 +2361,9 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_miss_etikate.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_soft_elegance_1.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_soft_elegance_2.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2375,9 +2436,11 @@
 				ADDC6A9B2013508C00439D01 /* RSMineViewController.m in Sources */,
 				ADAC4EB92014F18C0020DA91 /* MGMarkSetViewController.m in Sources */,
 				AD3E94CE200F99820019138F /* LOTGradientFillRender.m in Sources */,
+				AD491BD920594E1A00B69D2D /* RSKeyValueService.mm in Sources */,
 				ADAC4EB42014F18C0020DA91 /* MGFaceCompareModel.m in Sources */,
 				AD3E94C1200F99820019138F /* LOTRoundedRectAnimator.m in Sources */,
 				ADD00C01204FDCCE00456BC5 /* UIColor+Helper.m in Sources */,
+				626F0F642058155C00A6D231 /* RSGeneralCameraView.m in Sources */,
 				ADB1F7222031457A00F3AE0A /* RSSpaceService.mm in Sources */,
 				AD3E9117200F97160019138F /* ViewController.m in Sources */,
 				ADCB1678204A86FB005CF264 /* RSSpaceDetailAddCommentView.m in Sources */,
@@ -2440,6 +2503,7 @@
 				AD3E9174200F99600019138F /* RSLoginService.m in Sources */,
 				ADF1E081202DE3BD00B85B20 /* RSSpaceDetailViewModel.m in Sources */,
 				AD3E94E4200F99820019138F /* NSArray+safe.m in Sources */,
+				E10669482058F1230080BFE6 /* UILabel+Helper.m in Sources */,
 				ADF1E07E202D546A00B85B20 /* RSRequestFactory.m in Sources */,
 				AD7F6ECA20286B1B00D49966 /* RSChatViewModel.m in Sources */,
 				AD3E94CD200F99820019138F /* LOTFillRenderer.m in Sources */,
@@ -2474,9 +2538,11 @@
 				AD3E94B1200F99820019138F /* LOTShapeRepeater.m in Sources */,
 				AD3E94BC200F99820019138F /* LOTComposition.m in Sources */,
 				ADD00C04204FE45E00456BC5 /* RSReceiverCteateGroupFormView.m in Sources */,
+				E1E7BDBA2056329500748B31 /* RSSettingTableViewCell.m in Sources */,
 				AD7F6EC120286B0F00D49966 /* LoginInfo.pbobjc.m in Sources */,
 				AD3E94C2200F99820019138F /* LOTArrayInterpolator.m in Sources */,
 				AD3E94AA200F99820019138F /* LOTMask.m in Sources */,
+				AD491BDC205950B200B69D2D /* RSSyncService.m in Sources */,
 				AD3E94D0200F99820019138F /* LOTRepeaterRenderer.m in Sources */,
 				ADDC6A7420132AA500439D01 /* RSLaunchService.m in Sources */,
 				ADF1E08A202ECD7300B85B20 /* RSSpaceLineNavigationBar.m in Sources */,
@@ -2485,10 +2551,12 @@
 				ADE70E7520285873003B8921 /* Spbuiltintype.pbobjc.m in Sources */,
 				ADAC4E792014F1150020DA91 /* MGOpenGLRenderer.m in Sources */,
 				AD3E94B7200F99820019138F /* LOTAnimatedSwitch.m in Sources */,
+				E10669442058E6E80080BFE6 /* RSProfileViewController.m in Sources */,
 				ADAC4EAD2014F18C0020DA91 /* MCSetCell.m in Sources */,
 				ADB1F71F20308C0400F3AE0A /* RSReceiverListTableViewCell.m in Sources */,
 				AD3E94B9200F99820019138F /* LOTAnimationTransitionController.m in Sources */,
 				ADB1F7072030053A00F3AE0A /* RSReceiverListWithSpaceViewController.m in Sources */,
+				626F0F5E2057F2EB00A6D231 /* RSCamera.m in Sources */,
 				ADAC4EAC2014F18C0020DA91 /* BaseCollectionCell.m in Sources */,
 				ADDC6A5E20130E5E00439D01 /* RSChatListViewController.m in Sources */,
 				ADAC4EA92014F18C0020DA91 /* MGDetectPictureVC.m in Sources */,
@@ -2502,10 +2570,12 @@
 				AD3E949D200F99820019138F /* LOTBezierData.m in Sources */,
 				ADAC4EA82014F18C0020DA91 /* MGFileManager.m in Sources */,
 				AD87FDA42018D14B006C8A96 /* UIImage+Util.m in Sources */,
+				AD491BD620594E0E00B69D2D /* RSKeyValueModel.mm in Sources */,
 				ADF1E0AB202EFABE00B85B20 /* RSReceiverTitleView.m in Sources */,
 				AD44C9D1202AB4F6003D16AC /* Spcgicomm.pbobjc.m in Sources */,
 				ADD00C1120511B3F00456BC5 /* RSCameraViewController.m in Sources */,
 				ADD5D1D5205532B900267A15 /* RSSpaceModel.mm in Sources */,
+				E106694D205901060080BFE6 /* UIButton+Helper.m in Sources */,
 				AD3E956A200FA0070019138F /* RSModel.m in Sources */,
 				AD3E9567200F9E6B0019138F /* RSLoginInfoModel.m in Sources */,
 				AD3E949C200F99820019138F /* LOTMaskContainer.m in Sources */,
@@ -2696,7 +2766,7 @@
 				CODE_SIGN_ENTITLEMENTS = RealSocial/RealSocial.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = C975565F3U;
+				DEVELOPMENT_TEAM = A3N2LMHK78;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2712,7 +2782,7 @@
 					"$(PROJECT_DIR)/RealSocial/Vendors/WXLoginSDK",
 					"$(PROJECT_DIR)/RealSocial/Vendors/FCPPSDK/MGFaceppSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kc.faceDemoJCH;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kc.faceDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2727,9 +2797,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = RealSocial/RealSocial.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = C975565F3U;
+				DEVELOPMENT_TEAM = A3N2LMHK78;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2746,7 +2817,7 @@
 					"$(PROJECT_DIR)/MGBaseKit/MegviiLicMgr-iOS-SDK",
 					"$(PROJECT_DIR)/RealSocial/Vendors/FCPPSDK/MGFaceppSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kc.faceDemoJCH;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kc.faceDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2868,15 +2939,16 @@
 		};
 		AD85CF4D2043CC51002816C3 /* ad hoc distribution */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5FD2F8352C087E2A0B6E42C8 /* Pods-RealSocial.debug.xcconfig */;
+			baseConfigurationReference = C2F76CC0F6F13DC75AF4DAE1 /* Pods-RealSocial.ad hoc distribution.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = RealSocial/RealSocial.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = C975565F3U;
+				DEVELOPMENT_TEAM = A3N2LMHK78;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2892,7 +2964,7 @@
 					"$(PROJECT_DIR)/RealSocial/Vendors/WXLoginSDK",
 					"$(PROJECT_DIR)/RealSocial/Vendors/FCPPSDK/MGFaceppSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kc.faceDemoJCH;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kc.faceDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

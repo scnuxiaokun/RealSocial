@@ -98,7 +98,24 @@
             self.createGroupCompletionHandler(self, self.createGroupFormView.textField, [self.viewModel getSelectedUsers]);
         }
     }];
+//    @weakify(self);
+//    [_createGroupFormView.textField addBlockForControlEvents:UIControlEventEditingDidBegin block:^(id sender) {
+//        @RSStrongify(self);
+//        [self addGestureRecognizerToBackgroundView];
+//    }];
+//    [_createGroupFormView.textField addBlockForControlEvents:UIControlEventEditingDidEnd block:^(id sender) {
+//        @RSStrongify(self);
+//        [[[UIApplication sharedApplication] keyWindow] endEditing:NO];
+//    }];
     return _createGroupFormView;
 }
 
+//-(void)addGestureRecognizerToBackgroundView {
+//    @weakify(self);
+//    [self.scrollView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithActionBlock:^(UITapGestureRecognizer *sender) {
+//        @FPStrongify(self);
+//        [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
+//        [self.scrollView removeGestureRecognizer:sender];
+//    }]];
+//}
 @end

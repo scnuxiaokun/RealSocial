@@ -31,7 +31,9 @@ CF_EXTERN_C_BEGIN
 @class RSBaseResp;
 @class RSContact;
 @class RSFaceBuffer;
+@class RSGroup;
 @class RSProfile;
+@class RSSyncItem;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -117,7 +119,7 @@ typedef GPB_ENUM(RSLoginResp_FieldNumber) {
 
 typedef GPB_ENUM(RSRegisterFaceReq_FieldNumber) {
   RSRegisterFaceReq_FieldNumber_BaseReq = 1,
-  RSRegisterFaceReq_FieldNumber_FaceBufferArray = 2,
+  RSRegisterFaceReq_FieldNumber_FaceBufferListArray = 2,
 };
 
 @interface RSRegisterFaceReq : GPBMessage
@@ -126,9 +128,9 @@ typedef GPB_ENUM(RSRegisterFaceReq_FieldNumber) {
 /** Test to see if @c baseReq has been set. */
 @property(nonatomic, readwrite) BOOL hasBaseReq;
 
-@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<RSFaceBuffer*> *faceBufferArray;
-/** The number of items in @c faceBufferArray without causing the array to be created. */
-@property(nonatomic, readonly) NSUInteger faceBufferArray_Count;
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<RSFaceBuffer*> *faceBufferListArray;
+/** The number of items in @c faceBufferListArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger faceBufferListArray_Count;
 
 @end
 
@@ -143,6 +145,94 @@ typedef GPB_ENUM(RSRegisterFaceResp_FieldNumber) {
 @property(nonatomic, readwrite, strong, null_resettable) RSBaseResp *baseResp;
 /** Test to see if @c baseResp has been set. */
 @property(nonatomic, readwrite) BOOL hasBaseResp;
+
+@end
+
+#pragma mark - RSSyncReq
+
+typedef GPB_ENUM(RSSyncReq_FieldNumber) {
+  RSSyncReq_FieldNumber_BaseReq = 1,
+  RSSyncReq_FieldNumber_SyncBuff = 2,
+  RSSyncReq_FieldNumber_Selector = 3,
+};
+
+@interface RSSyncReq : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) RSBaseReq *baseReq;
+/** Test to see if @c baseReq has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseReq;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *syncBuff;
+/** Test to see if @c syncBuff has been set. */
+@property(nonatomic, readwrite) BOOL hasSyncBuff;
+
+@property(nonatomic, readwrite) uint32_t selector;
+
+@property(nonatomic, readwrite) BOOL hasSelector;
+@end
+
+#pragma mark - RSSyncItem
+
+typedef GPB_ENUM(RSSyncItem_FieldNumber) {
+  RSSyncItem_FieldNumber_Type = 1,
+  RSSyncItem_FieldNumber_Seq = 2,
+};
+
+@interface RSSyncItem : GPBMessage
+
+/** enSyncType */
+@property(nonatomic, readwrite) uint32_t type;
+
+@property(nonatomic, readwrite) BOOL hasType;
+@property(nonatomic, readwrite) uint64_t seq;
+
+@property(nonatomic, readwrite) BOOL hasSeq;
+@end
+
+#pragma mark - RSSyncBuff
+
+typedef GPB_ENUM(RSSyncBuff_FieldNumber) {
+  RSSyncBuff_FieldNumber_ListArray = 1,
+};
+
+@interface RSSyncBuff : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<RSSyncItem*> *listArray;
+/** The number of items in @c listArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger listArray_Count;
+
+@end
+
+#pragma mark - RSSyncResp
+
+typedef GPB_ENUM(RSSyncResp_FieldNumber) {
+  RSSyncResp_FieldNumber_BaseResp = 1,
+  RSSyncResp_FieldNumber_SyncBuff = 2,
+  RSSyncResp_FieldNumber_IsEnd = 3,
+  RSSyncResp_FieldNumber_ContactListArray = 4,
+  RSSyncResp_FieldNumber_GroupListArray = 5,
+};
+
+@interface RSSyncResp : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) RSBaseResp *baseResp;
+/** Test to see if @c baseResp has been set. */
+@property(nonatomic, readwrite) BOOL hasBaseResp;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *syncBuff;
+/** Test to see if @c syncBuff has been set. */
+@property(nonatomic, readwrite) BOOL hasSyncBuff;
+
+@property(nonatomic, readwrite) uint32_t isEnd;
+
+@property(nonatomic, readwrite) BOOL hasIsEnd;
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<RSContact*> *contactListArray;
+/** The number of items in @c contactListArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger contactListArray_Count;
+
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<RSGroup*> *groupListArray;
+/** The number of items in @c groupListArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger groupListArray_Count;
 
 @end
 

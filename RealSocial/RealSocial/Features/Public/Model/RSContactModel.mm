@@ -18,6 +18,7 @@ WCDB_SYNTHESIZE(RSContactModel, nickName)
 WCDB_SYNTHESIZE(RSContactModel, uid)
 WCDB_SYNTHESIZE(RSContactModel, avatarUrl)
 WCDB_SYNTHESIZE(RSContactModel, sex)
+WCDB_SYNTHESIZE_DEFAULT(RSContactModel, delFlag, NO);
 WCDB_UNIQUE(RSContactModel, uid)
 WCDB_NOT_NULL(RSContactModel, uid)
 -(instancetype)init {

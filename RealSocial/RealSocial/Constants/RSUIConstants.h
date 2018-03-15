@@ -22,7 +22,7 @@ static CGFloat kNaviBarBottom = 64.0;
 static CGFloat kTabBarHeight = 49.0;
 static CGFloat kStatusBarHeight = 20.0;
 
-#define kNaviBarHeightAndStatusBarHeight (kNaviBarBottom)
+#define kNaviBarHeightAndStatusBarHeight (kNaviBarHeight+[[UIApplication sharedApplication] statusBarFrame].size.height)
 #define RGBA(r,g,b,a) [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]
 #define RGB(r,g,b) RGBA(r,g,b,1.0f)
 #define SCREEN_WIDTH    ([[UIScreen mainScreen] bounds].size.width)

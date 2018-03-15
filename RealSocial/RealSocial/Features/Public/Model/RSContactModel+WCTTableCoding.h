@@ -15,5 +15,5 @@ WCDB_PROPERTY(uid)
 WCDB_PROPERTY(nickName)
 WCDB_PROPERTY(avatarUrl)
 WCDB_PROPERTY(sex)
-
+WCDB_PROPERTY(delFlag)
 @end

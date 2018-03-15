@@ -3,6 +3,7 @@ syntax="proto2";
 
 package spcgi;
 option objc_class_prefix="RS";
+
 message PKG
 {
 optional bytes  Str = 1;
@@ -45,6 +46,7 @@ optional string UserName = 1;
 optional string NickName = 2;
 optional uint32 Sex = 3;//enSex
 optional string HeadImgUrl = 4;
+optional uint32 DelFlag = 5;//enDelFlag
 }
 
 message Group
@@ -53,10 +55,8 @@ message Group
 optional string HeadImgUrl = 4;
 }
 
-
 message FaceBuffer
 {
 optional bytes  Buffer = 1;
 // 2 jiaodu
 }
-

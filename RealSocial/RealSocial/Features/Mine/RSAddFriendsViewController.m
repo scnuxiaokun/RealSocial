@@ -9,13 +9,17 @@
 #import "RSAddFriendsViewController.h"
 #import "UIImageView+WebCache.h"
 #import "RSAvatarImageView.h"
-@interface RSAddFriendsViewController ()<DBCameraViewControllerDelegate>
+#import "RSContactService.h"
+@interface RSAddFriendsViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property (nonatomic, strong) UIButton *wxAdd, *successBtn, *okBtn, *reTryBtn, *wxAddBtn;
-@property (nonatomic, strong) UILabel *readyTitle, *readyTip, *faildTitle, *faildTip,*takePhotoTip, *succedTip;
+@property (nonatomic, strong) UILabel *readyTitle, *readyTip, *faildTitle, *faildTip,*takePhotoTip, *succedTip, *friendName;
 
 
-@property (nonatomic, strong) RSAvatarImageView *headImageOne, *headImageTwo;
-@property (nonatomic, strong) UIView *successLine, *coverView;
+@property (nonatomic, strong) RSAvatarImageView *headImageOne;
+@property (nonatomic, strong) UIView *successLine, *coverView, *bottomView;
+@property (nonatomic, strong) UIImageView *myImageView;
+
+@property (nonatomic, strong) UIImagePickerController *myPicker;
 
 @end
 
@@ -35,6 +39,8 @@
     self.contentView.layer.cornerRadius = 10;
     self.contentView.layer.masksToBounds = YES;
     //添加视图
+    
+    self.myPicker.delegate = self;
     
     
     [self readyAddFriends];
@@ -58,11 +64,12 @@
 }
 
 - (void)readyAddFriends{
-    [self.reTryBtn removeFromSuperview];
-    [self.wxAddBtn removeFromSuperview];
+    [self.contentView removeAllSubviews];
+    [self.contentView addSubview:self.line];
     [self.faildTitle removeFromSuperview];
     [self.faildTip removeFromSuperview];
-    
+    [self.view sendSubviewToBack:self.contentView];
+    [self.contentView addSubview:self.myImageView];
     [self.contentView addSubview:self.readyTitle];
     [self.contentView addSubview:self.readyTip];
     [self.contentView addSubview:self.takePhotoTip];
@@ -137,28 +144,51 @@
         [self.view bringSubviewToFront:self.contentView];
     } completion:^(BOOL finished) {
         
-        [self.contentView addSubview:self.headImageTwo];
+       
         [self.contentView addSubview:self.headImageOne];
-        [self.contentView addSubview:self.succedTip];
+        [self.contentView addSubview:self.friendName];
         [self.contentView addSubview:self.okBtn];
-        self.headImageOne.url = [dic objectForKey:@"headImageOne"];
-        self.headImageTwo.url = [dic objectForKey:@"headImageTwo"];
-        self.succedTip.text = [NSString stringWithFormat:@"与 %@ 成为好友",[dic objectForKey:@"friendName"]];
+        [self.contentView addSubview:self.succedTip];
+        [self.contentView addSubview:self.bottomView];
+        self.headImageOne.url = [dic objectForKey:@"friendHeadImageUrl"];
+        self.friendName.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"friendName"]];
+        
+        switch ([[dic objectForKey:@"opCode"] intValue]) {
+            case 1:
+            self.succedTip.text = @"已发送好友申请，等待对方确认";
+            break;
+            case 2:
+            self.succedTip.text = @"已是好友";
+            break;
+            case 3:
+            self.succedTip.text = @"已加好友";
+            break;
+            default:
+            break;
+        }
+        
         
         
         [self.headImageOne mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.contentView).with.offset(98);
+            make.centerX.equalTo(self.contentView.mas_centerX);
             make.top.equalTo(self.contentView).with.offset(188);
-            make.height.mas_equalTo(120);
-            make.width.mas_equalTo(120);
         }];
         
-        [self.headImageTwo mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.contentView).with.offset(158);
-            make.top.equalTo(self.contentView).with.offset(248);
-            make.height.mas_equalTo(120);
-            make.width.mas_equalTo(120);
+        [self.friendName mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(self.contentView.mas_centerX);
+            make.top.equalTo(self.headImageOne.mas_bottom).mas_offset(10);
         }];
+        [self.succedTip mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(self.contentView.mas_centerX);
+            make.top.equalTo(self.friendName.mas_bottom).mas_offset(8);
+        }];
+        [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(self.contentView.mas_centerX);
+            make.bottom.equalTo(self.contentView.mas_bottom).mas_offset(-20);
+            make.height.mas_equalTo(18);
+            make.width.mas_equalTo(170);
+        }];
+       
         
         
     }];
@@ -182,7 +212,8 @@
     [self.readyTitle removeFromSuperview];
     [self.readyTip removeFromSuperview];
     [self.takePhotoTip removeFromSuperview];
-    
+    [self.reTryBtn removeFromSuperview];
+    [self.wxAddBtn removeFromSuperview];
     
     self.faildTitle.text = @"身边未找到好友";
     self.faildTip.text = @"请让好友进入添加好友页面等待，若好友尚未安装app，可发送微信邀请";
@@ -201,14 +232,6 @@
         make.left.equalTo(self.contentView.mas_centerX).with.offset(50);
     }];
 
-//    CGFloat width = 355/734.0f*(SCREEN_HEIGHT-64)-1.0f;
-//    [self.customCamera mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.centerX.equalTo(self.view);
-//        make.top.equalTo(self.view).with.offset(100);
-//        make.height.mas_equalTo(width);
-//        make.width.mas_equalTo(width);
-//    }];
-    
 }
 
 - (void)reTryAddFrinends{
@@ -303,10 +326,71 @@
         [_wxAdd setTitleColor:RGBA(9, 10, 70, .4f) forState:UIControlStateNormal];
         [_wxAdd setImage:[UIImage imageNamed:@"wx-add"] forState:UIControlStateNormal];
         [_wxAdd setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
-        [_wxAdd addTarget:self action:@selector(actionPress) forControlEvents:UIControlEventTouchUpInside];
+//        [_wxAdd addTarget:self action:@selector(actionPress) forControlEvents:UIControlEventTouchUpInside];
+        
+                [_wxAdd addTarget:self action:@selector(choosePicture) forControlEvents:UIControlEventTouchUpInside];
+        
     }
     return _wxAdd;
 }
+
+- (UIImagePickerController *)myPicker{
+    if (!_myPicker) {
+         _myPicker = [[UIImagePickerController alloc] init];
+        UIImagePickerControllerSourceType mySourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        _myPicker.sourceType = mySourceType;
+        _myPicker.delegate = self;
+        _myPicker.allowsEditing = YES;
+       
+    }
+        return _myPicker;
+}
+
+-(void)choosePicture{
+  
+    //通过模态的方式推出系统相册
+    [self presentViewController:self.myPicker animated:YES completion:^{
+        NSLog(@"进入相册");
+//        self.myPicker.delegate = self;
+    }];
+    
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+//    取得所选取的图片,原大小,可编辑等，info是选取的图片的信息字典
+        UIImage *selectImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+         NSLog(@"模态返回") ;
+        //设置图片进相框
+        self.myImageView.image = selectImage;
+   
+    [picker dismissViewControllerAnimated:YES completion:^{
+         NSLog(@"模态返回") ;
+    }];
+
+}
+
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    NSLog(@"2222222");
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+    
+}
+
+- (UIImageView *)myImageView{
+    if (!_myImageView) {
+        _myImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 300, 300)];
+        
+    }
+    return _myImageView;
+}
+
+
+
+
+
+
 
 -(UIView *)coverView{
     if (!_coverView) {
@@ -334,30 +418,35 @@
 - (RSAvatarImageView *)headImageOne{
     if (!_headImageOne) {
         _headImageOne = [[RSAvatarImageView alloc] init];
-        _headImageOne.type = RSAvatarImageViewType120;
+        _headImageOne.type = RSAvatarImageViewType80;
     }
     return _headImageOne;
 }
 
-- (RSAvatarImageView *)headImageTwo{
-    if (!_headImageTwo) {
-        _headImageTwo = [[RSAvatarImageView alloc] init];
-        _headImageTwo.type = RSAvatarImageViewType120;
+
+- (UILabel *)friendName{
+    if (!_friendName) {
+        _friendName = [[UILabel alloc] init];
+        _friendName.text = @"与 彩雪asaya 成为好友";
+        _friendName.font = [UIFont fontWithName:@"PingFang-SC-Semibold" size:17];
+        _friendName.lineBreakMode = NSLineBreakByWordWrapping|NSLineBreakByTruncatingTail;
+        _friendName.numberOfLines = 2;
+        [_friendName setTextColor:[UIColor main2]];
+        _friendName.textAlignment = NSTextAlignmentCenter;
     }
-    return _headImageTwo;
+    return _friendName;
 }
+
 - (UILabel *)succedTip{
-    if (!_succedTip) {
-        _succedTip = [[UILabel alloc] initWithFrame:CGRectMake(0, 398, SCREEN_WIDTH, 24)];
-        _succedTip.text = @"与 彩雪asaya 成为好友";
-        _succedTip.font = [UIFont fontWithName:@"PingFang-SC-Semibold" size:17];
-        _succedTip.lineBreakMode = NSLineBreakByWordWrapping|NSLineBreakByTruncatingTail;
-        _succedTip.numberOfLines = 2;
-        [_succedTip setTextColor:[UIColor main2]];
+    if(!_succedTip){
+        _succedTip = [[UILabel alloc] init];
+        [_succedTip setTextColor:RGBA(9, 10, 70, .4f)];
         _succedTip.textAlignment = NSTextAlignmentCenter;
+        _succedTip.font = [UIFont systemFontOfSize:14];
     }
     return _succedTip;
 }
+    
 -(UIButton *)okBtn{
     if (!_okBtn) {
         _okBtn = [[UIButton alloc] initWithFrame:CGRectMake((SCREEN_WIDTH-60)/2, self.contentView.height-134, 60, 60)];
@@ -370,6 +459,70 @@
 - (void)toRootView{
     [self.navigationController popViewControllerAnimated:YES];
 }
+    
+- (UIView *)bottomView{
+    if(!_bottomView){
+        _bottomView = [[UIView alloc] init];
+        UILabel *lableOne = [self getText:@"不是TA，"];
+        UILabel *lableTwo = [self getText:@" 或 "];
+        UIButton *btnOne = [self getBtn:@"重拍一张" action:@selector(reReadyAddFriends)];
+        UIButton *btnTwo = [self getBtn:@"微信邀请" action:nil];
+        [_bottomView addSubview:lableOne];
+        [_bottomView addSubview:lableTwo];
+        [_bottomView addSubview:btnOne];
+        [_bottomView addSubview:btnTwo];
+        
+        [lableOne mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(_bottomView.mas_left);
+            make.centerY.mas_equalTo(_bottomView.mas_centerY);
+            
+        }];
+        [btnOne mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(lableOne.mas_right);
+            make.centerY.mas_equalTo(_bottomView.mas_centerY);
+            
+        }];
+        [lableTwo mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(btnOne.mas_right);
+            make.centerY.mas_equalTo(_bottomView.mas_centerY);
+            
+        }];
+        [btnTwo mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(lableTwo.mas_right);
+            make.centerY.mas_equalTo(_bottomView.mas_centerY);
+            
+        }];
+        
+    }
+    return _bottomView;
+}
+
+- (UILabel *)getText:(NSString *)text{
+    UILabel *lable = [[UILabel alloc] init];
+    [lable setTextColor:RGBA(9, 10, 70, .4f)];
+    lable.textAlignment = NSTextAlignmentCenter;
+    lable.font = [UIFont systemFontOfSize:12];
+    lable.text = text;
+    return lable;
+}
+
+- (void)reReadyAddFriends{
+    [self readyAddFriends];
+    [self startRunning];
+}
+    
+- (UIButton *)getBtn:(NSString *)title action:(SEL)action{
+    NSDictionary *attribtDic = @{NSUnderlineStyleAttributeName: [NSNumber numberWithInteger:NSUnderlineStyleSingle]};
+    NSMutableAttributedString *attribtStr = [[NSMutableAttributedString alloc]initWithString:title attributes:attribtDic];
+    [attribtStr addAttribute:NSForegroundColorAttributeName value:RGBA(9, 10, 70, .4f)  range:NSMakeRange(0,[attribtStr length])];
+    [attribtStr addAttribute:NSUnderlineColorAttributeName value:RGBA(9, 10, 70, .4f) range:(NSRange){0,[attribtStr length]}];
+    UIButton *btn = [[UIButton alloc] init];
+    [btn setAttributedTitle:attribtStr forState:UIControlStateNormal];
+    [btn.titleLabel setFont:[UIFont systemFontOfSize:12]];
+    btn.titleLabel.textAlignment = NSTextAlignmentCenter;
+    [btn addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
+    return btn;
+ }
 
 //加好友失败
 
@@ -398,6 +551,12 @@
         [_wxAddBtn setTitleEdgeInsets:UIEdgeInsetsMake(65, -60, 0, 0)];
     }
     return _wxAddBtn;
+}
+    
+    
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self dismissCamera];
 }
 
 @end

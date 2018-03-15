@@ -12,6 +12,9 @@
 #import <WXApi.h>
 #import "WXApiService.h"
 #import <AlicloudMobileAnalitics/ALBBMAN.h>
+#import <AFNetworkReachabilityManager.h>
+#import "RSSyncService.h"
+
 
 @implementation RSLaunchService
 +(RSLaunchService *)shareInstance {
@@ -28,6 +31,7 @@
     if (self) {
         [[RSLoginService shareInstance].loginSignal subscribeNext:^(id  _Nullable x) {
             self.loginCompleteBlock();
+            [[RSSyncService shareInstance] loadData];
         }];
         [[RSLoginService shareInstance].logoutSignal subscribeNext:^(id  _Nullable x) {
             self.logoutCompleteBlock();
@@ -37,6 +41,7 @@
 }
 -(void)start {
     self.startBlock();
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     [WXApi registerApp:WEIXIN_LOGIN_APP_ID];
     [self initALBBMAN];
     
@@ -48,6 +53,7 @@
         self.startErrorBlock();
     } completed:^{
         self.startCompleteBlock();
+        [[RSSyncService shareInstance] loadData];
     }];
 }
 

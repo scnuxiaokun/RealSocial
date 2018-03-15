@@ -171,6 +171,7 @@ typedef GPB_ENUM(RSContact_FieldNumber) {
   RSContact_FieldNumber_NickName = 2,
   RSContact_FieldNumber_Sex = 3,
   RSContact_FieldNumber_HeadImgURL = 4,
+  RSContact_FieldNumber_DelFlag = 5,
 };
 
 @interface RSContact : GPBMessage
@@ -191,6 +192,10 @@ typedef GPB_ENUM(RSContact_FieldNumber) {
 /** Test to see if @c headImgURL has been set. */
 @property(nonatomic, readwrite) BOOL hasHeadImgURL;
 
+/** enDelFlag */
+@property(nonatomic, readwrite) uint32_t delFlag;
+
+@property(nonatomic, readwrite) BOOL hasDelFlag;
 @end
 
 #pragma mark - RSGroup

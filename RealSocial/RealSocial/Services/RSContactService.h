@@ -15,7 +15,9 @@
 +(RSContactService *)shareInstance;
 -(RACSignal *)loadData;
 -(BOOL)saveAllContactResp:(RSGetAllContactResp *)resp;
+-(BOOL)saveContactList:(NSArray *)contactList;
 -(NSArray<RSContactModel *>*)getAllContact;
+-(NSArray<RSContactModel *>*)getExistContact;
 -(RSContactModel *)getContactByUid:(NSString *)uid;
 -(NSArray<RSContactModel *>*)getContactsByUids:(NSArray *)uids;
 -(NSString *)getNickNameByUid:(NSString *)uid;

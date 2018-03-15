@@ -14,5 +14,5 @@
 @property (nonatomic, strong) NSString *uid;
 @property (nonatomic, strong) NSString *avatarUrl;
 @property (nonatomic, assign) RSenSex sex;
-
+@property (nonatomic, assign) RSenDelFlag delFlag;
 @end

@@ -65,11 +65,60 @@ GPBEnumDescriptor *RSenLoginOpCode_EnumDescriptor(void);
  **/
 BOOL RSenLoginOpCode_IsValidValue(int32_t value);
 
+#pragma mark - Enum RSenDelFlag
+
+typedef GPB_ENUM(RSenDelFlag) {
+  RSenDelFlag_DelflagExist = 0,
+  RSenDelFlag_DelflagNotExist = 1,
+};
+
+GPBEnumDescriptor *RSenDelFlag_EnumDescriptor(void);
+
+/**
+ * Checks to see if the given value is defined by the enum or was not known at
+ * the time this source was generated.
+ **/
+BOOL RSenDelFlag_IsValidValue(int32_t value);
+
+#pragma mark - Enum RSenSyncType
+
+/**
+ *
+ *  按位使用
+ **/
+typedef GPB_ENUM(RSenSyncType) {
+  /** 0x1 */
+  RSenSyncType_SyncTypeProfile = 1,
+
+  /** 0x2 */
+  RSenSyncType_SyncTypeContact = 2,
+
+  /** 0x4 */
+  RSenSyncType_SyncTypeGroup = 4,
+};
+
+GPBEnumDescriptor *RSenSyncType_EnumDescriptor(void);
+
+/**
+ * Checks to see if the given value is defined by the enum or was not known at
+ * the time this source was generated.
+ **/
+BOOL RSenSyncType_IsValidValue(int32_t value);
+
 #pragma mark - Enum RSenAddFriendOpCode
 
 typedef GPB_ENUM(RSenAddFriendOpCode) {
-  RSenAddFriendOpCode_AddFriendopcodeSucc = 0,
-  RSenAddFriendOpCode_AddFriendopcodeFail = 1,
+  /** 图像识别失败 */
+  RSenAddFriendOpCode_AddFriendOpcodeFail = 0,
+
+  /** 等待确认 */
+  RSenAddFriendOpCode_AddFriendOpcodeNeedConfirm = 1,
+
+  /** 成功添加好友 */
+  RSenAddFriendOpCode_AddFriendOpcodeAddBefore = 2,
+
+  /** 成功添加好友 */
+  RSenAddFriendOpCode_AddFriendOpcodeSucc = 3,
 };
 
 GPBEnumDescriptor *RSenAddFriendOpCode_EnumDescriptor(void);

@@ -26,7 +26,7 @@
                   moduleName = "RealSocial"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kuncai/workspace/RealSocialGit/RealSocial/Pods/AFNetworking/AFNetworking/AFURLRequestSerialization.m"
-                  timestampString = "542454746.055145"
+                  timestampString = "542738352.23905"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "387"
@@ -41,7 +41,7 @@
                   moduleName = "RealSocial"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kuncai/workspace/RealSocialGit/RealSocial/Pods/AFNetworking/AFNetworking/AFURLRequestSerialization.m"
-                  timestampString = "542454746.0598561"
+                  timestampString = "542738352.251377"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "387"
@@ -90,7 +90,7 @@
                   moduleName = "RealSocial"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kuncai/workspace/RealSocialGit/RealSocial/Pods/AFNetworking/AFNetworking/AFURLRequestSerialization.m"
-                  timestampString = "542454746.08744"
+                  timestampString = "542738352.2944109"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "408"
@@ -105,7 +105,7 @@
                   moduleName = "RealSocial"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kuncai/workspace/RealSocialGit/RealSocial/Pods/AFNetworking/AFNetworking/AFURLRequestSerialization.m"
-                  timestampString = "542454746.090946"
+                  timestampString = "542738352.3006901"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "408"
@@ -291,38 +291,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RealSocial/Services/RSSpaceService.mm"
-            timestampString = "542195998.585373"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "217"
-            endingLineNumber = "217"
-            landmarkName = "-buildRequestWithPictureId:type:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RealSocial/Features/ReceiverList/RSReceiverListViewController.m"
-            timestampString = "542195998.585664"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
-            landmarkName = "-bottomOperationBar"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "RealSocial/Vendors/FCPPSDK/MGDetectVideo/ViewControllers/MGVideoViewController.mm"
             timestampString = "542364656.6797349"
             startingColumnNumber = "9223372036854775807"
@@ -403,13 +371,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RealSocial/Features/StoryLine/RSSpaceLineViewModel.mm"
-            timestampString = "542459260.978359"
+            filePath = "RealSocial/Features/Mine/RSAddFriendsViewController.m"
+            timestampString = "542715041.372665"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
-            landmarkName = "-loadDataFromDB"
+            startingLineNumber = "385"
+            endingLineNumber = "385"
+            landmarkName = "-myImageView"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -419,13 +387,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RealSocial/Features/StoryLine/RSSpaceLineViewModel.mm"
-            timestampString = "542459260.978533"
+            filePath = "RealSocial/Features/Mine/RSAddFriendsViewController.m"
+            timestampString = "542715041.3733031"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
-            landmarkName = "-loadDataFromDB"
+            startingLineNumber = "399"
+            endingLineNumber = "399"
+            landmarkName = "-coverView"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RealSocial/Features/Mine/RSAddFriendsViewController.m"
+            timestampString = "542715041.373731"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -181,6 +181,8 @@
         [_delegate dismissCamera:self];
 }
 
+    
+    
 - (DBCameraView *) cameraView
 {
     if ( !_cameraView ) {
@@ -189,6 +191,7 @@
         [_cameraView setSelectedTintColor:self.selectedTintColor];
         [_cameraView defaultInterface];
         [_cameraView setDelegate:self];
+        
     }
 
     return _cameraView;

@@ -100,16 +100,91 @@ BOOL RSenLoginOpCode_IsValidValue(int32_t value__) {
   }
 }
 
+#pragma mark - Enum RSenDelFlag
+
+GPBEnumDescriptor *RSenDelFlag_EnumDescriptor(void) {
+  static GPBEnumDescriptor *descriptor = NULL;
+  if (!descriptor) {
+    static const char *valueNames =
+        "DelflagExist\000DelflagNotExist\000";
+    static const int32_t values[] = {
+        RSenDelFlag_DelflagExist,
+        RSenDelFlag_DelflagNotExist,
+    };
+    GPBEnumDescriptor *worker =
+        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(RSenDelFlag)
+                                       valueNames:valueNames
+                                           values:values
+                                            count:(uint32_t)(sizeof(values) / sizeof(int32_t))
+                                     enumVerifier:RSenDelFlag_IsValidValue];
+    if (!OSAtomicCompareAndSwapPtrBarrier(nil, worker, (void * volatile *)&descriptor)) {
+      [worker release];
+    }
+  }
+  return descriptor;
+}
+
+BOOL RSenDelFlag_IsValidValue(int32_t value__) {
+  switch (value__) {
+    case RSenDelFlag_DelflagExist:
+    case RSenDelFlag_DelflagNotExist:
+      return YES;
+    default:
+      return NO;
+  }
+}
+
+#pragma mark - Enum RSenSyncType
+
+GPBEnumDescriptor *RSenSyncType_EnumDescriptor(void) {
+  static GPBEnumDescriptor *descriptor = NULL;
+  if (!descriptor) {
+    static const char *valueNames =
+        "SyncTypeProfile\000SyncTypeContact\000SyncType"
+        "Group\000";
+    static const int32_t values[] = {
+        RSenSyncType_SyncTypeProfile,
+        RSenSyncType_SyncTypeContact,
+        RSenSyncType_SyncTypeGroup,
+    };
+    GPBEnumDescriptor *worker =
+        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(RSenSyncType)
+                                       valueNames:valueNames
+                                           values:values
+                                            count:(uint32_t)(sizeof(values) / sizeof(int32_t))
+                                     enumVerifier:RSenSyncType_IsValidValue];
+    if (!OSAtomicCompareAndSwapPtrBarrier(nil, worker, (void * volatile *)&descriptor)) {
+      [worker release];
+    }
+  }
+  return descriptor;
+}
+
+BOOL RSenSyncType_IsValidValue(int32_t value__) {
+  switch (value__) {
+    case RSenSyncType_SyncTypeProfile:
+    case RSenSyncType_SyncTypeContact:
+    case RSenSyncType_SyncTypeGroup:
+      return YES;
+    default:
+      return NO;
+  }
+}
+
 #pragma mark - Enum RSenAddFriendOpCode
 
 GPBEnumDescriptor *RSenAddFriendOpCode_EnumDescriptor(void) {
   static GPBEnumDescriptor *descriptor = NULL;
   if (!descriptor) {
     static const char *valueNames =
-        "AddFriendopcodeSucc\000AddFriendopcodeFail\000";
+        "AddFriendOpcodeFail\000AddFriendOpcodeNeedC"
+        "onfirm\000AddFriendOpcodeAddBefore\000AddFrien"
+        "dOpcodeSucc\000";
     static const int32_t values[] = {
-        RSenAddFriendOpCode_AddFriendopcodeSucc,
-        RSenAddFriendOpCode_AddFriendopcodeFail,
+        RSenAddFriendOpCode_AddFriendOpcodeFail,
+        RSenAddFriendOpCode_AddFriendOpcodeNeedConfirm,
+        RSenAddFriendOpCode_AddFriendOpcodeAddBefore,
+        RSenAddFriendOpCode_AddFriendOpcodeSucc,
     };
     GPBEnumDescriptor *worker =
         [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(RSenAddFriendOpCode)
@@ -126,8 +201,10 @@ GPBEnumDescriptor *RSenAddFriendOpCode_EnumDescriptor(void) {
 
 BOOL RSenAddFriendOpCode_IsValidValue(int32_t value__) {
   switch (value__) {
-    case RSenAddFriendOpCode_AddFriendopcodeSucc:
-    case RSenAddFriendOpCode_AddFriendopcodeFail:
+    case RSenAddFriendOpCode_AddFriendOpcodeFail:
+    case RSenAddFriendOpCode_AddFriendOpcodeNeedConfirm:
+    case RSenAddFriendOpCode_AddFriendOpcodeAddBefore:
+    case RSenAddFriendOpCode_AddFriendOpcodeSucc:
       return YES;
     default:
       return NO;

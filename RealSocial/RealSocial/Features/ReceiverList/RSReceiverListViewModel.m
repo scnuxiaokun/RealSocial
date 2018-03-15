@@ -24,7 +24,7 @@
     return self;
 }
 -(void)loadData {
-    NSArray<RSContactModel *> *contactList = [[RSContactService shareInstance] getAllContact];
+    NSArray<RSContactModel *> *contactList = [[RSContactService shareInstance] getExistContact];
     [self updateListData:contactList];
     RACSignal *signal = [[RSContactService shareInstance] loadData];
     @weakify(self);
@@ -34,7 +34,7 @@
         [self sendErrorSignal:error];
     } completed:^{
         @RSStrongify(self);
-        NSArray<RSContactModel *> *contactList = [[RSContactService shareInstance] getAllContact];
+        NSArray<RSContactModel *> *contactList = [[RSContactService shareInstance] getExistContact];
         [self updateListData:contactList];
         [self sendCompleteSignal];
     }];

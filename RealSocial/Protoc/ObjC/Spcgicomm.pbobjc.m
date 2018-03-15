@@ -412,10 +412,12 @@ typedef struct RSMsg__storage_ {
 @dynamic hasNickName, nickName;
 @dynamic hasSex, sex;
 @dynamic hasHeadImgURL, headImgURL;
+@dynamic hasDelFlag, delFlag;
 
 typedef struct RSContact__storage_ {
   uint32_t _has_storage_[1];
   uint32_t sex;
+  uint32_t delFlag;
   NSString *userName;
   NSString *nickName;
   NSString *headImgURL;
@@ -463,6 +465,15 @@ typedef struct RSContact__storage_ {
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
+      {
+        .name = "delFlag",
+        .dataTypeSpecific.className = NULL,
+        .number = RSContact_FieldNumber_DelFlag,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(RSContact__storage_, delFlag),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeUInt32,
+      },
     };
     GPBDescriptor *localDescriptor =
         [GPBDescriptor allocDescriptorForClass:[RSContact class]
@@ -474,7 +485,7 @@ typedef struct RSContact__storage_ {
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
-        "\004\001H\000\002H\000\003C\000\004H!!\000";
+        "\005\001H\000\002H\000\003C\000\004H!!\000\005G\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     NSAssert(descriptor == nil, @"Startup recursed!");

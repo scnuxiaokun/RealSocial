@@ -90,5 +90,6 @@
 - (instancetype) initWithDelegate:(id<DBCameraViewControllerDelegate>)delegate cameraView:(id)camera;
 
 - (void) startRunning;
+- (void) dismissCamera;
 
 @end

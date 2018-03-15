@@ -25,7 +25,9 @@
 #import "DBMotionManager.h"
 #import "RSAddFriendsViewModel.h"
 #import "RSSettingViewController.h"
-@interface RSMineViewController ()<UIScrollViewDelegate,DBCameraViewControllerDelegate>
+#import "RSContactService.h"
+#import "UIButton+WebCache.h"
+@interface RSMineViewController ()<DBCameraViewControllerDelegate>
 /*
  @property (nonatomic, strong) UIImageView *avatarImageView;
  @property (nonatomic, strong) UIButton *logoutButton;
@@ -65,8 +67,23 @@
 -(UIButton *)headImage{
     if (!_headImage) {
         _headImage = [[UIButton alloc] init];
-        [_headImage setImage:[UIImage imageNamed:@"user"] forState:UIControlStateNormal];
+        
+        [_headImage sd_setImageWithURL:[NSURL URLWithString:[[RSContactService shareInstance] getMyAvatarUrl]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"defaultAvatar"]];
+        
+        UIImageView *image = [[UIImageView alloc] init];
+        [image setImage:[UIImage imageNamed:@"btn-memoir-setting"]];
+        
+        
         [_headImage addTarget:self action:@selector(settingCenter) forControlEvents:UIControlEventTouchUpInside];
+        _headImage.layer.cornerRadius = 40;
+        //_headImage.layer.masksToBounds = YES;
+        [_headImage addSubview:image];
+        [image mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(_headImage.mas_bottom).mas_offset(-10);
+            make.centerX.mas_equalTo(_headImage.mas_centerX);
+            make.height.mas_equalTo(20);
+            make.width.mas_equalTo(20);
+        }];
     }
     return _headImage;
 }
@@ -205,15 +222,19 @@
         [camera buildInterface];
         camera.layer.cornerRadius = width/2.0f;
         camera.layer.masksToBounds = YES;
-        
+
         RSAddFriendsViewController* addFriends = [[RSAddFriendsViewController alloc] initWithDelegate:self cameraView:camera];
+        
+        
         addFriends.triggerAction  = ^(NSString *str){
             [camera triggerAction];
         };
-        
+
         [addFriends setUseCameraSegue:NO];
+        
+        
+        
         self.addFriend =addFriends;
-        //[self.navigationController popToRootViewControllerAnimated:YES];
         [self.navigationController pushViewController:addFriends animated:YES];
         
         NSLog(@"添加好友");
@@ -243,7 +264,7 @@
     [cameraViewController restoreFullScreenMode];
 
     [self.addFriend addingFriends];
-    
+    NSLog(@"66666666666666");
     [self uploadImageAndAddFriends:image isUploadImage:NO];
     
 }
@@ -313,8 +334,8 @@
     
     [self.headImage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(self.topView);
-        make.height.mas_equalTo(60);
-        make.width.mas_equalTo(60);
+        make.height.mas_equalTo(80);
+        make.width.mas_equalTo(80);
     }];
     
     [self.addBtn mas_makeConstraints:^(MASConstraintMaker *make) {

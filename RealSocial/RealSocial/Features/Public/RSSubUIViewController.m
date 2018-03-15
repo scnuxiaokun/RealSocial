@@ -112,12 +112,17 @@
         return _contentView;
     }
     _contentView = [[UIView alloc] init];
-    UIView *line = [[UIView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH-40)/2, 10, 40, 4)];
-    line.backgroundColor = RGBA(0, 0, 0, .2f);
-    line.layer.cornerRadius = 2;
-    line.layer.masksToBounds = YES;
-    [_contentView addSubview:line];
+    [_contentView addSubview:self.line];
     _contentView.backgroundColor = [UIColor clearColor];
     return _contentView;
+}
+-(UIView *)line{
+    if (!_line) {
+        _line = [[UIView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH-40)/2, 10, 40, 4)];
+        _line.backgroundColor = RGBA(0, 0, 0, .2f);
+        _line.layer.cornerRadius = 2;
+        _line.layer.masksToBounds = YES;
+    }
+    return _line;
 }
 @end

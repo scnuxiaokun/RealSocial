@@ -31,6 +31,8 @@ optional IdPair CommentId = 1;
 optional string FromUser = 2;
 optional uint32 CreateTime = 3;
 optional string Content = 4;
+optional double PositionX = 5;
+optional double PositionY = 6;
 }
 
 message Star
@@ -49,6 +51,7 @@ message Receiver
 optional uint32 Type = 1;// enReceiverType
 repeated string UserName = 2;
 }
+
 
 message Space
 {

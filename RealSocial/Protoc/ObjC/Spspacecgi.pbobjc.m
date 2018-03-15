@@ -229,6 +229,8 @@ typedef struct RSIdPair__storage_ {
 @dynamic hasFromUser, fromUser;
 @dynamic hasCreateTime, createTime;
 @dynamic hasContent, content;
+@dynamic hasPositionX, positionX;
+@dynamic hasPositionY, positionY;
 
 typedef struct RSComment__storage_ {
   uint32_t _has_storage_[1];
@@ -236,6 +238,8 @@ typedef struct RSComment__storage_ {
   RSIdPair *commentId;
   NSString *fromUser;
   NSString *content;
+  double positionX;
+  double positionY;
 } RSComment__storage_;
 
 // This method is threadsafe because it is initially called
@@ -280,6 +284,24 @@ typedef struct RSComment__storage_ {
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
+      {
+        .name = "positionX",
+        .dataTypeSpecific.className = NULL,
+        .number = RSComment_FieldNumber_PositionX,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(RSComment__storage_, positionX),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeDouble,
+      },
+      {
+        .name = "positionY",
+        .dataTypeSpecific.className = NULL,
+        .number = RSComment_FieldNumber_PositionY,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(RSComment__storage_, positionY),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeDouble,
+      },
     };
     GPBDescriptor *localDescriptor =
         [GPBDescriptor allocDescriptorForClass:[RSComment class]
@@ -291,7 +313,7 @@ typedef struct RSComment__storage_ {
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
-        "\004\001I\000\002H\000\003J\000\004G\000";
+        "\006\001I\000\002H\000\003J\000\004G\000\005I\000\006I\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     NSAssert(descriptor == nil, @"Startup recursed!");

@@ -17,10 +17,28 @@ LOGIN_OPCODE_HOME = 0;
 LOGIN_OPCODE_REGISTER_FACE = 1;
 }
 
+enum enDelFlag
+{
+DELFLAG_EXIST = 0;
+DELFLAG_NOT_EXIST = 1;
+}
+
+/*
+*  按位使用
+*/
+enum enSyncType
+{
+SYNC_TYPE_PROFILE = 1;// 0x1
+SYNC_TYPE_CONTACT = 2;// 0x2
+SYNC_TYPE_GROUP = 4;// 0x4
+}
+
 enum enAddFriendOpCode
 {
-ADD_FRIENDOPCODE_SUCC = 0;
-ADD_FRIENDOPCODE_FAIL = 1;
+ADD_FRIEND_OPCODE_FAIL = 0;// 图像识别失败
+ADD_FRIEND_OPCODE_NEED_CONFIRM = 1;// 等待确认
+ADD_FRIEND_OPCODE_ADD_BEFORE = 2;// 成功添加好友
+ADD_FRIEND_OPCODE_SUCC = 3;// 成功添加好友
 }
 
 enum enSex

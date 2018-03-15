@@ -10,4 +10,5 @@
 
 @interface RSSubUIViewController : RSUIViewController
 @property (nonatomic, strong) UIView *contentView;
+@property (nonatomic, strong) UIView *line;
 @end

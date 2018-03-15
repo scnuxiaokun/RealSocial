@@ -117,6 +117,8 @@ typedef GPB_ENUM(RSComment_FieldNumber) {
   RSComment_FieldNumber_FromUser = 2,
   RSComment_FieldNumber_CreateTime = 3,
   RSComment_FieldNumber_Content = 4,
+  RSComment_FieldNumber_PositionX = 5,
+  RSComment_FieldNumber_PositionY = 6,
 };
 
 @interface RSComment : GPBMessage
@@ -136,6 +138,12 @@ typedef GPB_ENUM(RSComment_FieldNumber) {
 /** Test to see if @c content has been set. */
 @property(nonatomic, readwrite) BOOL hasContent;
 
+@property(nonatomic, readwrite) double positionX;
+
+@property(nonatomic, readwrite) BOOL hasPositionX;
+@property(nonatomic, readwrite) double positionY;
+
+@property(nonatomic, readwrite) BOOL hasPositionY;
 @end
 
 #pragma mark - RSStar
